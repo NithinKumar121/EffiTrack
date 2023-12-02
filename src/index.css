@@ -21,3 +21,19 @@ code {
   grid-template-columns: 22rem auto;
   padding: 0 1rem;
 }
+
+.top{
+  margin-top: 2.5rem;
+}
+
+.top .logo{
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.top .close{
+  display: none;
+}
