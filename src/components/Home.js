@@ -4,7 +4,7 @@ import Main from './Main'
 
 const Home = () => {
   return (
-    <div className='flex flex-row justify-around'>
+    <div className='home_section'>
         <Leftnav/>
         <Main/>
     </div>
