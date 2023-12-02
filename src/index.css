@@ -18,8 +18,9 @@ code {
 
 .home_section{
   display: grid;
-  grid-template-columns: 22rem auto;
+  grid-template-columns: 21rem auto;
   padding: 0 1rem;
+  gap: 1rem;
 }
 
 .top{
