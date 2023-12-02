@@ -1,9 +1,9 @@
 import React from 'react'
 
 const Leftnav = () => {
-  return (
-    <div className=''>Leftnav</div>
-  )
+  return <aside>
+    <p>Helloworld</p>
+  </aside>
 }
 
-export default Leftnav
+export default Leftnav;
