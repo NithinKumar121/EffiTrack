@@ -4,10 +4,10 @@ import Main from './Main'
 
 const Home = () => {
   return (
-    <>
+    <div className='flex flex-row justify-around'>
         <Leftnav/>
         <Main/>
-    </>
+    </div>
   )
 }
 

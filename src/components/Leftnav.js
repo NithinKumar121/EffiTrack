@@ -2,7 +2,7 @@ import React from 'react'
 
 const Leftnav = () => {
   return (
-    <div>Leftnav</div>
+    <div className=''>Leftnav</div>
   )
 }
 
