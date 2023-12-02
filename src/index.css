@@ -20,21 +20,5 @@ code {
   display: grid;
   grid-template-columns: 21rem auto;
   padding: 0 1rem;
-  gap: 1rem;
-}
-
-.top{
-  margin-top: 2.5rem;
-}
-
-.top .logo{
-  display: flex;
-  height: 4rem;
-  align-items: center;
-  gap: 2rem;
-  padding: 1rem;
-}
-
-.top .close{
-  display: none;
+  height: 100vh;
 }

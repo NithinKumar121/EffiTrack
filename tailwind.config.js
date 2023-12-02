@@ -22,6 +22,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        title:'#151D48',
         primary: '#0a0a0a',
         accent: '#B809C3',
         cardbg:'#EEEDED',
