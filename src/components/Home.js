@@ -5,8 +5,11 @@ import Main from './Main'
 const Home = () => {
   return (
     <>
+      <section className='h-[100vh]'>
         <Leftnav/>
         <Main/>
+      </section>
+        
     </>
   )
 }
