@@ -2,6 +2,13 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+
+*{
+  outline: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -18,7 +25,124 @@ code {
 
 .home_section{
   display: grid;
-  grid-template-columns: 21rem auto;
-  padding: 0 1rem;
-  height: 100vh;
+  grid-template-columns: 17rem auto;
+  padding: 0 2rem;
+  gap: 1rem;
+  
 }
+
+
+aside {
+  color: #57606b;
+}
+
+.top{
+  margin-top: 2rem;
+}
+
+.top .logo{
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.top .close{
+  display: none;
+}
+
+.mid{
+  
+  margin-top: 3rem;
+}
+.mid > div{
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem 0;
+  height: 83.9vh;
+}
+
+
+
+.mid > div a{
+  height: 3rem;
+  font-weight: 500;
+  font-size:medium;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap : 1rem;
+  margin-left: 2rem;
+  transition:all 300ms ease;
+}
+.mid > div a span:hover{
+  margin-left: 1rem;
+}
+
+.mid > div a span{
+  transition:all 300ms ease;
+}
+
+
+.mid_in > a.active{
+  background:lightblue;
+  margin-left: 0;
+}
+
+.mid_in > a.active span{
+  margin-left: calc(1rem - 7px);
+}
+
+.mid_in > a:hover span{
+  padding-left: 1rem;
+}
+
+
+.mid_in > a.active::before{
+  content: '';
+  width: 6px;
+  background: blue;
+  height: 100%;
+}
+/* aside bottom */
+
+.aside-bottom{
+  position: absolute;
+  bottom: 3rem;
+  width: 100%;
+  height: 15rem;
+}
+
+.settings{
+  height:60%;
+  border-top: 1px solid #1D1E2C;
+  border-bottom: 1px solid #1D1E2C;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 300ms ease;
+}
+
+.settings > a , .sign-out > a{
+  transition: all 300ms ease;
+}
+
+.settings > a:hover span , .sign-out > a:hover span{
+  margin-left: 1rem;
+}
+
+.sign-out{
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid #1D1E2C;
+  transition: all 300ms ease;
+}
+
+
+
+
