@@ -2,8 +2,8 @@ import React from 'react'
 
 const Leftnav = () => {
   return <aside>
-    Helloworld
- </aside>
+    <p>Helloworld</p>
+  </aside>
 }
 
-export default Leftnav
+export default Leftnav;

@@ -4,14 +4,11 @@ import Main from './Main'
 
 const Home = () => {
   return (
-    <>
-      <section className='h-[100vh]'>
+    <div className='flex flex-row justify-around'>
         <Leftnav/>
         <Main/>
-      </section>
-        
-    </>
+    </div>
   )
 }
 
-export default Home
+export default Home;
