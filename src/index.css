@@ -174,21 +174,21 @@ aside {
   align-items: center;
 }
 
-.mid-top .mid-left .cards .card1{
+.mid-top .mid-left .cards .leetcode{
   background: #FA5A7D40;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-.mid-top .mid-left .cards .card2{
+.mid-top .mid-left .cards .codechef{
   background: rgba(255, 148, 122, 0.25);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.mid-top .mid-left .cards .card3{
+.mid-top .mid-left .cards .codeforces{
   background: rgba(60, 216, 86, 0.25) ;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.mid-top .mid-left .cards .card1:hover{
+.mid-top .mid-left .cards .leetcode:hover{
   box-shadow: 0;
 }
 
@@ -221,20 +221,20 @@ aside {
   stroke-dashoffset: 92;
 }
 
-.mid-top .mid-left .cards .card1 .progress svg circle{
+.mid-top .mid-left .cards .leetcode .progress svg circle{
   stroke-dasharray: 30;
   stroke-dashoffset: 92;
   stroke: #FA5A7D;
 }
 
 
-.mid-top .mid-left .cards .card2 .progress svg circle{
+.mid-top .mid-left .cards .codechef .progress svg circle{
   stroke-dasharray: -50;
   stroke-dashoffset: 92;
   stroke: #FF947A;
 }
 
-.mid-top .mid-left .cards .card3 .progress svg circle{
+.mid-top .mid-left .cards .codeforces .progress svg circle{
   stroke-dasharray: -50;
   stroke-dashoffset: 130;
   stroke: #3CD856;
