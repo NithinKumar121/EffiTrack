@@ -1,6 +1,7 @@
 import Card from "./Card";
 import GitProfile from "./GitProfile";
 import LineChart from "./LIneChart";
+import Upcoming from "./Upcoming";
 
 const Mid = ()=>{
     const cardData = [
@@ -50,9 +51,9 @@ const Mid = ()=>{
                 </div>
             </div>
             <div className="mid-right">
-                
+                <Upcoming/>
             </div>  
-            {/* <Graph/> */}
+           
         </section>
         <section>
             <div className="two-graph">
