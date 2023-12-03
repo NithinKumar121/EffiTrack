@@ -261,9 +261,9 @@ aside {
 /* graph git  */
 .graph-git{
   display: grid;
-  grid-template-columns:2fr 1fr;
+  grid-template-columns:1fr 2fr;
   margin-top: 2rem;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 

@@ -1,4 +1,5 @@
 import Card from "./Card";
+import GitProfile from "./GitProfile";
 import LineChart from "./LIneChart";
 
 const Mid = ()=>{
@@ -39,10 +40,13 @@ const Mid = ()=>{
                     }
                 </div>
                 <div className="graph-git">
-                    <LineChart width="40%"/>
-                    <div className="bg-purple-600 rounded-xl h-full">
-                        
+                    {/* <div className="flex justify-center w-full">
+                        <LineChart/>
+                    </div> */}
+                    <div className="bg-purple-600 rounded-xl h-full item2">
+                        <GitProfile/>
                     </div>
+                    <LineChart/>
                 </div>
             </div>
             <div className="mid-right">
