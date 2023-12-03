@@ -5,11 +5,11 @@ import Theme from './Theme';
 const Navbar = () => {
 
   return (
-    <div className='flex justify-between items-center h-[4rem]'>
-        <div className='p-2 text-2xl font-bold text-title'>
+    <div className='flex justify-between items-center h-[4rem] bg-white rounded-md shadow-sm'>
+        <div className='p-2 px-6 text-2xl font-bold text-title'>
             Dashboard
         </div>
-        <div className='flex justify-center items-center gap-5'>
+        <div className='flex justify-center items-center gap-5 md:flex-row flex-col-reverse sm:px-6'>
             <Theme/>
             <Profile/>
         </div>
