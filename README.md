@@ -1,6 +1,7 @@
 npm install react-icons --save
 npm install react-router-dom
 npm install --save-dev @babel/plugin-proposal-private-property-in-object
+npm install @canvasjs/charts
 
 
 # Getting Started with Create React App

@@ -1,4 +1,5 @@
 import Card from "./Card";
+import {Graph} from "./Graph";
 
 const Mid = ()=>{
     const cardData = [
@@ -41,6 +42,7 @@ const Mid = ()=>{
             <div className="mid-right">
 
             </div>
+            {/* <Graph/> */}
         </section>
     )
 
