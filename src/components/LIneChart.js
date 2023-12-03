@@ -37,7 +37,7 @@ const state = {
 export default class LineChart extends React.Component {
   render() {
     return (
-      <div>
+      <div className=''>
         <Line
           data={state}
           options={{

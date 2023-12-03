@@ -147,7 +147,7 @@ aside {
 
 
 .mid-top{
-  height: 30rem;
+  /* height: 30rem; */
   display: grid;
   grid-template-columns: 75% 23%;
   gap: 1rem;
@@ -164,7 +164,7 @@ aside {
 }
 
 .mid-top .mid-left .cards .card{
-  height: 14rem;
+  height: 13rem;
   width:16rem;
   padding: 1rem;
   border-radius: 16px;
@@ -186,7 +186,7 @@ aside {
 .mid-top .mid-left .cards .codeforces{
   background: rgba(60, 216, 86, 0.25) ;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
+} 
 
 .mid-top .mid-left .cards .leetcode:hover{
   box-shadow: 0;
@@ -255,5 +255,19 @@ aside {
 
 .card-details-top{
   padding: .4rem;
-  transform: translateY(-70%);
+  transform: translateY(-55%);
 }
+
+/* graph git  */
+.graph-git{
+  display: grid;
+  grid-template-columns:2fr 1fr;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+
+
+
+/* mid section graph */
+

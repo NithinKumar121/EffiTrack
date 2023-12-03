@@ -19,11 +19,11 @@ const Leftnav = () => {
     </div>
     <div className='mid '>
         <div className='mid_in'>
-          <a href="#" className=''> 
+          <a href="#" className='active'> 
             <span class="material-icons-sharp">dashboard</span>
            <h4>DashBoard</h4> 
           </a>
-          <a href="#" className='active'> 
+          <a href="#" className=''> 
           <span class="material-icons-sharp">dashboard</span>
           <h4>LeetCode</h4> 
           </a>

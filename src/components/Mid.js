@@ -26,6 +26,7 @@ const Mid = ()=>{
         }
     ]
     return(
+    <>
         <section className="mid-top mt-[1rem]">
             <div className="mid-left">
                 <div className="cards">
@@ -37,15 +38,27 @@ const Mid = ()=>{
                         })
                     }
                 </div>
-                <div className="gi">
+                <div className="graph-git">
                     <LineChart/>
+                    <div className="bg-purple-600 rounded-xl h-full">
+                        
+                    </div>
                 </div>
             </div>
             <div className="mid-right">
-
-            </div>
+                
+            </div>  
             {/* <Graph/> */}
         </section>
+        <section>
+            <div className="two-graph">
+                <div className="graph">
+                    {/* <LineChart/>
+                    <LineChart/> */}
+                </div>
+            </div>
+        </section>
+        </>
     )
 
 }
