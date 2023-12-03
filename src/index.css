@@ -207,8 +207,8 @@ aside {
 }
 
 .mid-top .mid-left .cards .card .progress svg{
-  width: 7rem;
-  height: 7rem; 
+  width: 8rem;
+  height: 8rem; 
 }
 
 .mid-top .mid-left .cards .card .progress svg circle{
@@ -250,5 +250,10 @@ aside {
   display: flex;
   justify-content: center;
   align-items: center;
-  color:white;
+  color:black;
+}
+
+.card-details-top{
+  padding: .4rem;
+  transform: translateY(-70%);
 }

@@ -3,8 +3,11 @@ const Mid = ()=>{
         <section className="mid-top mt-[1rem]">
             <div className="mid-left">
                 <div className="cards">
-                    <div className="card card1"> 
+                    <div className="card card1">        
                         <div className="card-details">
+                            <div className="card-details-top bg-red-400 rounded-xl">
+                                <h1>LeetCode</h1>
+                            </div>
                             <h1>LeetCode</h1>
                             <h3>Count : 340</h3>
                             <h4>Rank : 49+</h4>
@@ -20,6 +23,9 @@ const Mid = ()=>{
                     </div>
                     <div className="card card2"> 
                         <div className="card-details">
+                            <div className="card-details-top bg-orange-300 rounded-xl">
+                                <h1>CodeChef</h1>
+                            </div>
                             <h1>LeetCode</h1>
                             <h3>Count : 340</h3>
                             <h4>Rank : 49+</h4>
@@ -35,8 +41,8 @@ const Mid = ()=>{
                     </div>
                     <div className="card card3"> 
                         <div className="card-details">
-                            <div>
-                                
+                            <div className="card-details-top bg-green-500 rounded-xl">
+                                <h1>CodeForces</h1>
                             </div>
                             <h1>LeetCode</h1>
                             <h3>Count : 340</h3>
