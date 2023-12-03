@@ -19,8 +19,7 @@ const Mid = ()=>{
         },
         {
             title:'CodeForces',
-            class:'codeforces',
-            sub_title:'leetcode',
+            sub_title:'codeforces',
             count:'340',
             rank:'49+',
             comp_percent:'70%'
