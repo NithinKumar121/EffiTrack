@@ -159,8 +159,7 @@ aside {
   flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
-  color: white;
-  font-size: medium;
+  font-size: large;
   font-weight: 500;
 }
 
@@ -172,19 +171,20 @@ aside {
   display: flex;
   flex: 1;
   flex-direction: row;
+  align-items: center;
 }
 
 .mid-top .mid-left .cards .card1{
-  background: #FFDADD;
+  background: #FA5A7D40;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .mid-top .mid-left .cards .card2{
-  background: #FF947A;
+  background: rgba(255, 148, 122, 0.25);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .mid-top .mid-left .cards .card3{
-  background: #34E4B5 ;
+  background: rgba(60, 216, 86, 0.25) ;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -194,8 +194,61 @@ aside {
 
 .mid-top .mid-left .cards .card .card-details{
   width: 60%;
-}
-.mid-top .mid-left .cards .card .card-img{
-  width: 40%;
+  line-height: 2rem;
 }
 
+.mid-top .mid-left .cards .card .progress{
+  width: 40%;
+  position: relative;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  bottom: 0;
+}
+
+.mid-top .mid-left .cards .card .progress svg{
+  width: 7rem;
+  height: 7rem; 
+}
+
+.mid-top .mid-left .cards .card .progress svg circle{
+  fill: none;
+  stroke: green;
+  stroke-width: 14;
+  stroke-linecap: round;
+  transform: translate(5px,5px);
+  stroke-dasharray: 110;
+  stroke-dashoffset: 92;
+}
+
+.mid-top .mid-left .cards .card1 .progress svg circle{
+  stroke-dasharray: 30;
+  stroke-dashoffset: 92;
+  stroke: #FA5A7D;
+}
+
+
+.mid-top .mid-left .cards .card2 .progress svg circle{
+  stroke-dasharray: -50;
+  stroke-dashoffset: 92;
+  stroke: #FF947A;
+}
+
+.mid-top .mid-left .cards .card3 .progress svg circle{
+  stroke-dasharray: -50;
+  stroke-dashoffset: 130;
+  stroke: #3CD856;
+}
+
+
+.mid-top .mid-left .cards .card .progress .number{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
+}
