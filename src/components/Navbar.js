@@ -4,14 +4,12 @@ import Theme from './Theme';
 
 const Navbar = () => {
 
-    const[theme, setTheme] = useState("");
-
   return (
-    <div className='flex justify-between items-center'>
+    <div className='flex justify-between items-center h-[4rem]'>
         <div className='p-2 text-2xl font-bold text-title'>
             Dashboard
         </div>
-        <div>
+        <div className='flex justify-center items-center gap-5'>
             <Theme/>
             <Profile/>
         </div>
