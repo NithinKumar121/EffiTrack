@@ -43,7 +43,7 @@ const Mid = ()=>{
                     {/* <div className="flex justify-center w-full">
                         <LineChart/>
                     </div> */}
-                    <div className="bg-purple-600 rounded-xl h-full item2">
+                    <div className=" bg-slate-300 rounded-xl h-full item2 shadow-md">
                         <GitProfile/>
                     </div>
                     <LineChart/>
