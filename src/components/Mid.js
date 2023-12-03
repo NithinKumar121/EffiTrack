@@ -39,7 +39,7 @@ const Mid = ()=>{
                     }
                 </div>
                 <div className="graph-git">
-                    <LineChart/>
+                    <LineChart width="40%"/>
                     <div className="bg-purple-600 rounded-xl h-full">
                         
                     </div>
