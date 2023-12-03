@@ -1,4 +1,5 @@
 import Card from "./Card";
+import LineChart from "./LIneChart";
 
 const Mid = ()=>{
     const cardData = [
@@ -36,6 +37,9 @@ const Mid = ()=>{
                             );
                         })
                     }
+                </div>
+                <div className="gi">
+                    <LineChart/>
                 </div>
             </div>
             <div className="mid-right">
