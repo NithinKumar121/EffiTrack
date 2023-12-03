@@ -143,6 +143,59 @@ aside {
   transition: all 300ms ease;
 }
 
+/* Mid of the dashboard .... */
 
 
+.mid-top{
+  height: 30rem;
+  display: grid;
+  grid-template-columns: 75% 23%;
+  gap: 1rem;
+}
+
+.mid-top .mid-left .cards{
+  display: flex;  
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  color: white;
+  font-size: medium;
+  font-weight: 500;
+}
+
+.mid-top .mid-left .cards .card{
+  height: 14rem;
+  width:16rem;
+  padding: 1rem;
+  border-radius: 16px;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.mid-top .mid-left .cards .card1{
+  background: #FFDADD;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.mid-top .mid-left .cards .card2{
+  background: #FF947A;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.mid-top .mid-left .cards .card3{
+  background: #34E4B5 ;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.mid-top .mid-left .cards .card1:hover{
+  box-shadow: 0;
+}
+
+.mid-top .mid-left .cards .card .card-details{
+  width: 60%;
+}
+.mid-top .mid-left .cards .card .card-img{
+  width: 40%;
+}
 

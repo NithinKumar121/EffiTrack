@@ -1,12 +1,13 @@
 import React from 'react'
 import Navbar from './Navbar'
-
-const Main = () => {
+import Mid from './Mid'
+ const Main = () => {
   return (
     <div>
         <Navbar/>
+        <Mid/>
     </div>
   )
 }
 
-export default Main
+export default Main;
