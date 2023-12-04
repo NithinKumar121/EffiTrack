@@ -168,7 +168,6 @@ aside {
 
 .mid-top .mid-left .cards .card{
   height: 12rem;
-  width:15rem;
   padding: 1rem;
   border-radius: 16px;
   display: flex;
@@ -265,7 +264,7 @@ aside {
 .graph-git{
   display: grid;
   grid-template-columns:1fr 2fr;
-  margin-top: 2rem;
+  margin-top: 1rem;
   gap: 1.5rem;
 }
 
