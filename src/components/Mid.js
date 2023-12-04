@@ -54,7 +54,7 @@ const Mid = ()=>{
             </div>
             <div className="mid-right">
                 <Upcoming/>
-            </div>  
+            </div>
            
         </section>
         <section>
