@@ -47,7 +47,9 @@ const Mid = ()=>{
                     <div className=" bg-slate-300 rounded-xl h-full item2 shadow-md">
                         <GitProfile/>
                     </div>
-                    <LineChart/>
+                    <div className="p-2 bg-white rounded-xl shadow-md ">
+                        <LineChart/>
+                    </div>
                 </div>
             </div>
             <div className="mid-right">
