@@ -154,18 +154,21 @@ aside {
 }
 
 .mid-top .mid-left .cards{
-  display: flex;  
+  /* display: flex;  
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
   gap: 1rem;
   font-size: large;
   font-weight: 500;
+  justify-content: space-between;
 }
 
 .mid-top .mid-left .cards .card{
-  height: 13rem;
-  width:16rem;
+  height: 12rem;
+  width:15rem;
   padding: 1rem;
   border-radius: 16px;
   display: flex;
@@ -255,7 +258,7 @@ aside {
 
 .card-details-top{
   padding: .4rem;
-  transform: translateY(-55%);
+  transform: translateY(-40%);
 }
 
 /* graph git  */
