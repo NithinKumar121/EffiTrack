@@ -60,11 +60,6 @@ const Mid = ()=>{
                 <Upcoming/>
             </div>  
         </section>
-        <section className="">
-            <div>
-                
-            </div>
-        </section>
         </>
     )
 

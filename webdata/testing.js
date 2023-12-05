@@ -1,29 +1,47 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require("puppeteer");
 
-// URL of the website you want to scrape
-const url = 'https://https://geekflare.com/web-scraping-in-javascript/.com';
-
-(async () => {
-  // Launch a headless browser
-  const browser = await puppeteer.launch();
+const getQuotes = async () => {
+  // Start a Puppeteer session with:
+  // - a visible browser (`headless: false` - easier to debug because you'll see the browser in action)
+  // - no default viewport (`defaultViewport: null` - website page will in full width and height)
+  const browser = await puppeteer.launch({
+    headless: false,
+    defaultViewport: null,
+  });
 
   // Open a new page
   const page = await browser.newPage();
 
-  // Navigate to the specified URL
-  await page.goto(url);
-
-  // Use the page.evaluate method to run JavaScript code in the context of the page
-  const titles = await page.evaluate(() => {
-    // Replace this with your actual scraping logic
-    const titleNodes = document.querySelectorAll('h2');
-    const titlesArray = Array.from(titleNodes).map(node => node.textContent.trim());
-    return titlesArray;
+  // On this new page:
+  // - open the "http://quotes.toscrape.com/" website
+  // - wait until the dom content is loaded (HTML is ready)
+  await page.goto("https://leetcode.com/arulcibi007/", {
+    waitUntil: "domcontentloaded",
   });
 
-  // Print the scraped titles
-  console.log(titles);
+  // Get page data
+  const quotes = await page.evaluate(() => {
+    // Fetch the first element with class "quote"
+    const quote = document.querySelectorAll(".quote");
+
+    // Fetch the sub-elements from the previously fetched quote element
+    // Get the displayed text and return it (`.innerText`)
+    return Array.from(quote).map((quote) => {
+      // Fetch the sub-elements from the previously fetched quote element
+      // Get the displayed text and return it (`.innerText`)
+      const text = quote.querySelector(".text").innerText;
+      const author = quote.querySelector(".author").innerText;
+
+      return { text, author };
+    });
+  });
+
+  // Display the quotes
+  console.log(quotes);
 
   // Close the browser
   await browser.close();
-})();
+};
+
+// Start the scraping
+getQuotes();

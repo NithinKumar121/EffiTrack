@@ -316,3 +316,40 @@ aside {
   filter: blur(2px);
   /* -webkit-filter: blur(8px); */
 }
+
+
+
+/* SHOWCCASE SECTION OF MAIN SCREEN */
+
+.showcase-top{
+  display: grid;
+  grid-template-columns:repeat(2,1fr);
+  gap: 1rem;
+  margin-top:1rem;
+}
+
+.showcase-favourite h1 , .showcase-socails h1{
+  text-align: center;
+  /* display: block; */
+  font-weight: 500;
+  font-size: large;
+  border-radius: 13px;
+}
+
+.repo-favourites{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.repo-favourite{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.repo-favourite img{
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
