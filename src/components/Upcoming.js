@@ -29,7 +29,6 @@ const Upcoming = () =>{
                 <Contest/>
                 <Contest/>
                 <Contest/>
-                <Contest/>
             </div>
         </>
     )

@@ -29,7 +29,7 @@ const Mid = ()=>{
     ]
     return(
     <>
-        <section className="mid-top mt-[1rem]">
+        <section className="mid-top mt-[.5rem]">
             <div className="mid-left">
                 <div className="cards">
                     {
@@ -55,14 +55,23 @@ const Mid = ()=>{
             <div className="mid-right">
                 <Upcoming/>
             </div>  
-           
         </section>
-        <section>
+        <section className="">
             <div className="two-graph">
-                <div className="graph">
-                    {/* <LineChart/>
-                    <LineChart/> */}
-                </div>
+              <div className="max-h-[5rem]">
+                    <LineChart
+                        className=""
+                         width={"30%"}
+                         options={{ maintainAspect4Ratio: false }}
+                    />
+              </div>
+              <div className="max-h-[5rem]">
+                 <LineChart
+                    className=""
+                    width={"30%"}
+                    options={{ maintainAspectRatio: false }}
+                 />
+              </div>
             </div>
         </section>
         </>

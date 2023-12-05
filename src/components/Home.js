@@ -4,7 +4,7 @@ import Main from './Main'
 
 const Home = () => {
   return (
-    <div className='home_section bg-gray-200'>
+    <div className='home_section bg-gray-200 h-[100vh]'>
         <Leftnav/>
         <Main/>
     </div>

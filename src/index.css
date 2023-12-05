@@ -269,7 +269,19 @@ aside {
 }
 
 
+.two-graph{
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem; */
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
 
+.two-graph > div{
+  width: 50%;
+  flex: 1;
+}
 
 /* mid section graph */
 
