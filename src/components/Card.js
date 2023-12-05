@@ -6,7 +6,7 @@ const Card = ({card}) => {
     //template literal
     <div className={`card ${card.sub_title}`}>      
         <div className="card-details">
-            <div className="card-details-top bg-red-400 rounded-xl">
+            <div className={`card-details-top ${card.topic} rounded-xl`}>
                 <h1>{card.title}</h1>
             </div>
             <h1>{card.sub_title}</h1>

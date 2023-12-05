@@ -10,23 +10,27 @@ const Mid = ()=>{
             sub_title:'leetcode',
             count:'340',
             rank:'49+',
-            comp_percent:'80%'
+            comp_percent:'80%',
+            topic:'bg-cd1_red'
         },
         {
-            title:'CodeForces',
+            title:'CodeChef',
             sub_title:'codechef',
             count:'340',
             rank:'49+',
-            comp_percent:'56%'
+            comp_percent:'56%',
+            topic:'bg-cd1_orange'
         },
         {
             title:'CodeForces',
             sub_title:'codeforces',
             count:'340',
             rank:'49+',
-            comp_percent:'70%'
+            comp_percent:'70%',
+            topic:'bg-cd1_green'
         }
     ]
+    const github_data = {topic:"bg-cd1_purple"}
     return(
     <>
         <section className="mid-top mt-[.5rem]">
@@ -44,14 +48,14 @@ const Mid = ()=>{
                     {/* <div className="flex justify-center w-full">
                         <LineChart/>
                     </div> */}
-                    <div className=" bg-slate-300 rounded-xl h-full item2 shadow-md">
-                        <GitProfile/>
+                    <div className="rounded-xl h-full item2 shadow-md git-profile">
+                        <GitProfile modify={github_data}/>
                     </div>
                     <div className="p-2 bg-white rounded-xl shadow-md ">
                         <LineChart/>
                     </div>
                 </div>
-            </div>
+            </div> 
             <div className="mid-right">
                 <Upcoming/>
             </div>  

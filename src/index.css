@@ -260,7 +260,29 @@ aside {
   transform: translateY(-40%);
 }
 
+/* git hub ui design css code */
+
+.github-card{
+  height: 2.5rem;
+  margin-top: .2rem;
+}
+
+.github-card h1{
+  height: 100%;
+  width: 8rem;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 .5rem;
+  font-size: large;
+  font-weight: 500;
+}
+
+
 /* graph git  */
+
+
+
 .graph-git{
   display: grid;
   grid-template-columns:1fr 2fr;
@@ -268,6 +290,9 @@ aside {
   gap: 1.5rem;
 }
 
+.graph-git .git-profile{
+  background: #F3E8FF;
+}
 
 .two-graph{
   /* display: grid;

@@ -1,10 +1,10 @@
 import React from 'react'
 import temp_logo from '../assets/temp_logo.jpeg'
 
-const GitProfile = () => {
+const GitProfile = ({modify}) => {
   return (
     <div className='flex flex-col px-4 gap-2 relative h-full '>
-        <div className='text-2xl p-2 font-medium'>GitHub</div>
+        <div className="github-card "> <h1 className={`${modify.topic}`}>GitHub</h1></div>
         <div className='flex gap-4 items-center'>
             <div className='w-[25%] py-2'>
                 <img src={temp_logo} className='rounded-[100%] shadow-lg'></img>
@@ -23,7 +23,7 @@ const GitProfile = () => {
             <h6 className='bottomS '>
             Hey this is murugaperumal, devloping <br></br>
             <span className='view-more-span'>
-            this website cibiyanna is gay. looking for trans gril for marriage
+                view more
             </span>
             </h6>
             <span class="material-icons-sharp block text-center relative bottom-1 text-gray-700 cursor-pointer">keyboard_double_arrow_down</span>

@@ -22,14 +22,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        title:'#151D48',
-        primary: '#0a0a0a',
-        accent: '#B809C3',
-        cardbg:'#EEEDED',
-        cardcl:"#27374D",
-        tech:"#526D82",
-        ml:'#009FBD',
-        django:"#1B9C85"
+        cd1_red:"#FA5A7D",
+        cd1_orange:"#FF947A",
+        cd1_green:"#3CD856",
+        cd1_purple:"#BF83FF",
       },
       boxShadow:{
         'bottomS':"0 8px 6px -6px black",
