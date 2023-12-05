@@ -323,29 +323,34 @@ aside {
 
 .showcase-top{
   display: grid;
-  grid-template-columns:repeat(2,1fr);
-  gap: 1rem;
+  grid-template-columns:2fr 1fr;
+  gap: 2rem;
   margin-top:1rem;
 }
 
 .showcase-favourite h1 , .showcase-socails h1{
   text-align: center;
   /* display: block; */
-  font-weight: 500;
-  font-size: large;
+  font-weight: 600;
+  font-size:larger;
   border-radius: 13px;
+  padding: .5rem;
 }
 
 .repo-favourites{
   display: flex;
   flex-direction: column;
   gap: .5rem;
+  padding: .5rem;
 }
 
 .repo-favourite{
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
+  display: grid;
+  grid-auto-flow: column;
+  padding: .6rem;
+  border-radius: 13px;
+  background: white ;
+  align-items: center;
 }
 
 .repo-favourite img{
@@ -353,3 +358,27 @@ aside {
   height: 40px;
   border-radius: 100%;
 }
+
+
+/* social medias section */
+
+.socail-medias{
+  display: grid;
+  gap: 1rem;
+}
+
+.social-media{
+  display: flex;
+  align-items: center;
+  padding:1rem;
+  background-color: aliceblue;
+  border-radius: 13px;
+  gap: 1rem;
+}
+
+.social-media-inner{
+  display: grid;
+  align-items: center;
+  grid-auto-flow: row;
+}
+
