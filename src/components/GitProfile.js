@@ -23,7 +23,7 @@ const GitProfile = () => {
             <h6 className='bottomS '>
             Hey this is murugaperumal, devloping <br></br>
             <span className='view-more-span'>
-            this website I proposed a girl in school
+            this website cibiyanna is gay. looking for trans gril for marriage
             </span>
             </h6>
             <span class="material-icons-sharp block text-center relative bottom-1 text-gray-700 cursor-pointer">keyboard_double_arrow_down</span>
