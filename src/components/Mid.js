@@ -57,21 +57,8 @@ const Mid = ()=>{
             </div>  
         </section>
         <section className="">
-            <div className="two-graph">
-              <div className="max-h-[5rem]">
-                    <LineChart
-                        className=""
-                         width={"30%"}
-                         options={{ maintainAspect4Ratio: false }}
-                    />
-              </div>
-              <div className="max-h-[5rem]">
-                 <LineChart
-                    className=""
-                    width={"30%"}
-                    options={{ maintainAspectRatio: false }}
-                 />
-              </div>
+            <div>
+                
             </div>
         </section>
         </>

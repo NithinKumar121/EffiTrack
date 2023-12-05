@@ -31,6 +31,9 @@ module.exports = {
         ml:'#009FBD',
         django:"#1B9C85"
       },
+      boxShadow:{
+        'bottomS':"0 8px 6px -6px black",
+      }
     },
   },
     plugins:[],

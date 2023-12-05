@@ -285,3 +285,9 @@ aside {
 
 /* mid section graph */
 
+
+.view-more .view-more-span{
+  /* box-shadow: 0 8px 6px -6px black; */
+  filter: blur(2px);
+  /* -webkit-filter: blur(8px); */
+}
