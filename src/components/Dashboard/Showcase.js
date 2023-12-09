@@ -1,4 +1,4 @@
-import GitRepo from '../assets/github.png'
+import GitRepo from '../../assets/github.png'
 
 const Favourite = () =>{
     return(
@@ -23,7 +23,6 @@ const Social = () =>{
                     <h4>Platform : LinkedIn</h4>
                 </div>
             </div>
-
         </>
     )
 }

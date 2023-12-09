@@ -1,4 +1,4 @@
-import Leetcode from '../assets/LeetCode_logo.png';
+import Leetcode from '../../assets/LeetCode_logo.png';
 
 const Contest = () =>{
     return  (

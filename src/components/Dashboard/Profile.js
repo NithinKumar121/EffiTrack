@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import temp_logo from '../assets/temp_logo.jpeg'
+import temp_logo from '../../assets/temp_logo.jpeg'
 
 const Profile = () => {
 
