@@ -10,24 +10,24 @@ const Mid = ()=>{
             sub_title:'leetcode',
             count:'340',
             rank:'49+',
-            comp_percent:'80%',
-            topic:'bg-cd1_red'
+            completed_count: 300,
+            topic_color:'cd1_red',
         },
         {
             title:'CodeChef',
             sub_title:'codechef',
             count:'340',
             rank:'49+',
-            comp_percent:'56%',
-            topic:'bg-cd1_orange'
+            completed_count: 400,
+            topic_color:'cd1_orange'
         },
         {
             title:'CodeForces',
             sub_title:'codeforces',
             count:'340',
             rank:'49+',
-            comp_percent:'70%',
-            topic:'bg-cd1_green'
+            completed_count: 700,
+            topic_color:'cd1_green'
         }
     ]
     const github_data = {topic:"bg-cd1_purple"}
