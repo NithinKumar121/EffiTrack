@@ -1,0 +1,385 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+*{
+  outline: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.home_section{
+  display: grid;
+  grid-template-columns: 17rem auto;
+  gap: 1rem;
+  
+}
+
+
+aside {
+  color:black !important;
+  background:#818AA3;
+  /* background-image: radial-gradient( circle 311px at 8.6% 27.9%,  rgba(62,147,252,0.57) 12.9%, rgba(239,183,192,0.44) 91.2% ); */
+}
+
+.top{
+  margin-top: 2rem;
+}
+
+.top .logo{
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.top .close{
+  display: none;
+}
+
+.mid{
+  
+  margin-top: 3rem;
+}
+.mid > div{
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem 0;
+  height: 83.9vh;
+}
+
+
+
+.mid > div a{
+  height: 3rem;
+  font-weight: 500;
+  font-size:medium;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap : 1rem;
+  margin-left: 2rem;
+  transition:all 300ms ease;
+}
+.mid > div a span:hover{
+  margin-left: 1rem;
+}
+
+.mid > div a span{
+  transition:all 300ms ease;
+}
+
+
+.mid_in > a.active{
+  background:lightblue;
+  margin-left: 0;
+}
+
+.mid_in > a.active span{
+  margin-left: calc(1rem - 7px);
+}
+
+.mid_in > a:hover span{
+  padding-left: 1rem;
+}
+
+
+.mid_in > a.active::before{
+  content: '';
+  width: 6px;
+  background: blue;
+  height: 100%;
+}
+/* aside bottom */
+
+.aside-bottom{
+  position: absolute;
+  bottom: 3rem;
+  width: 100%;
+  height: 15rem;
+}
+
+.settings{
+  height:60%;
+  border-top: 1px solid #1D1E2C;
+  border-bottom: 1px solid #1D1E2C;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 300ms ease;
+}
+
+.settings > a , .sign-out > a{
+  transition: all 300ms ease;
+}
+
+.settings > a:hover span , .sign-out > a:hover span{
+  margin-left: 1rem;
+}
+
+.sign-out{
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid #1D1E2C;
+  transition: all 300ms ease;
+}
+
+/* Mid of the dashboard .... */
+
+
+.mid-top{
+  /* height: 30rem; */
+  display: grid;
+  grid-template-columns: 75% 23%;
+  gap: 1rem;
+}
+
+.mid-top .mid-left .cards{
+  /* display: flex;  
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1rem;
+  font-size: large;
+  font-weight: 500;
+  justify-content: space-between;
+}
+
+.mid-top .mid-left .cards .card{
+  height: 12rem;
+  padding: 1rem;
+  border-radius: 16px;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mid-top .mid-left .cards .leetcode{
+  background: #FA5A7D40;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.mid-top .mid-left .cards .codechef{
+  background: rgba(255, 148, 122, 0.25);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.mid-top .mid-left .cards .codeforces{
+  background: rgba(60, 216, 86, 0.25) ;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+} 
+
+.mid-top .mid-left .cards .leetcode:hover{
+  box-shadow: 0;
+}
+
+.mid-top .mid-left .cards .card .card-details{
+  width: 60%;
+  line-height: 2rem;
+}
+
+.mid-top .mid-left .cards .card .progress{
+  width: 40%;
+  position: relative;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  bottom: 0;
+}
+
+.mid-top .mid-left .cards .card .progress svg{
+  width: 8rem;
+  height: 8rem; 
+}
+
+.mid-top .mid-left .cards .card .progress svg circle{
+  fill: none;
+  stroke: green;
+  stroke-width: 14;
+  stroke-linecap: round;
+  transform: translate(5px,5px);
+  stroke-dasharray: 110;
+  stroke-dashoffset: 92;
+}
+
+.mid-top .mid-left .cards .leetcode .progress svg circle{
+  stroke-dasharray: 30;
+  stroke-dashoffset: 92;
+  stroke: #FA5A7D;
+}
+
+
+.mid-top .mid-left .cards .codechef .progress svg circle{
+  stroke-dasharray: -50;
+  stroke-dashoffset: 92;
+  stroke: #FF947A;
+}
+
+.mid-top .mid-left .cards .codeforces .progress svg circle{
+  stroke-dasharray: -50;
+  stroke-dashoffset: 130;
+  stroke: #3CD856;
+}
+
+
+.mid-top .mid-left .cards .card .progress .number{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:black;
+}
+
+.card-details-top{
+  padding: .4rem;
+  transform: translateY(-40%);
+}
+
+/* git hub ui design css code */
+
+.github-card{
+  height: 2.5rem;
+  margin-top: .2rem;
+}
+
+.github-card h1{
+  height: 100%;
+  width: 8rem;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 .5rem;
+  font-size: large;
+  font-weight: 500;
+}
+
+
+/* graph git  */
+
+
+
+.graph-git{
+  display: grid;
+  grid-template-columns:1fr 2fr;
+  margin-top: 1rem;
+  gap: 1.5rem;
+}
+
+.graph-git .git-profile{
+  background: #F3E8FF;
+}
+
+.two-graph{
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem; */
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.two-graph > div{
+  width: 50%;
+  flex: 1;
+}
+
+/* mid section graph */
+
+
+.view-more .view-more-span{
+  /* box-shadow: 0 8px 6px -6px black; */
+  filter: blur(2px);
+  /* -webkit-filter: blur(8px); */
+}
+
+
+
+/* SHOWCCASE SECTION OF MAIN SCREEN */
+
+.showcase-top{
+  display: grid;
+  grid-template-columns:2fr 1fr;
+  gap: 2rem;
+  margin-top:1rem;
+}
+
+.showcase-favourite h1 , .showcase-socails h1{
+  text-align: center;
+  /* display: block; */
+  font-weight: 600;
+  font-size:larger;
+  border-radius: 13px;
+  padding: .5rem;
+}
+
+.repo-favourites{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: .5rem;
+}
+
+.repo-favourite{
+  display: grid;
+  grid-auto-flow: column;
+  padding: .6rem;
+  border-radius: 13px;
+  background: white ;
+  align-items: center;
+}
+
+.repo-favourite img{
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+
+/* social medias section */
+
+.socail-medias{
+  display: grid;
+  gap: 1rem;
+}
+
+.social-media{
+  display: flex;
+  align-items: center;
+  padding:1rem;
+  background-color: aliceblue;
+  border-radius: 13px;
+  gap: 1rem;
+}
+
+.social-media-inner{
+  display: grid;
+  align-items: center;
+  grid-auto-flow: row;
+}
+
