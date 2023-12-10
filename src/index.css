@@ -26,14 +26,15 @@ code {
 .home_section{
   display: grid;
   grid-template-columns: 17rem auto;
-  padding: 0 2rem;
   gap: 1rem;
   
 }
 
 
 aside {
-  color: #57606b;
+  color:black !important;
+  background:#818AA3;
+  /* background-image: radial-gradient( circle 311px at 8.6% 27.9%,  rgba(62,147,252,0.57) 12.9%, rgba(239,183,192,0.44) 91.2% ); */
 }
 
 .top{

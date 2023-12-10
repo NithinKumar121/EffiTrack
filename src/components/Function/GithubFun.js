@@ -1,6 +1,3 @@
-
-
-
 const getGithubRepo = async (username) =>{
     var url = `https://api.github.com/users/${username}/repos`
     const response = await fetch(url,{
