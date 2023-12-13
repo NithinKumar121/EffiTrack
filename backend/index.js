@@ -13,4 +13,5 @@ app.listen(PORT,console.log("listening on port " + PORT));
 
 app.get("/api/login",(req,res)=>{
     console.log("login successful");
+    res.send("successs");
 })
