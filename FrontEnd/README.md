@@ -3,7 +3,7 @@ npm install react-router-dom
 npm install --save-dev @babel/
 plugin-proposal-private-property-in-object
 npm install chart.js react-chartjs-2
-
+npm install @reduxjs/toolkit react-redux
 
 
 # Getting Started with Create React App

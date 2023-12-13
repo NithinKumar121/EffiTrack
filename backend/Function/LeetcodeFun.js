@@ -18,7 +18,7 @@ const getLeetCount =  async (Username) =>{
     const headers = {
     "Content-Type": "application/json",
     };
-
+    var username , submitStats;
     await fetch(url, {
     method: "POST",
     headers: headers,
@@ -26,13 +26,11 @@ const getLeetCount =  async (Username) =>{
     })
     .then(response => response.json())
     .then(data => {
-        const username = data.data.matchedUser.username;
-        const submitStats = data.data.matchedUser.submitStats.acSubmissionNum;
-
-        console.log("Username:", username);
-        console.log("Submit Stats:", submitStats);
+         username = data.data.matchedUser.username;
+         submitStats = data.data.matchedUser.submitStats.acSubmissionNum;
     })
     .catch(error => console.error(`Error: ${error}`));
+    return submitStats;
 }
 
 
@@ -74,21 +72,21 @@ const getLeetRating = async (username) =>{
         variables: { username: username },
       }),
     });
-  
+    var userContestRanking;
+    var userContestRankingHistory;
     if (response.ok) {
         data = await response.json();
-        const userContestRanking = data.data.userContestRanking;
-        const userContestRankingHistory = data.data.userContestRankingHistory.filter((d)=>{
+         userContestRanking = data.data.userContestRanking;
+         userContestRankingHistory = data.data.userContestRankingHistory.filter((d)=>{
             return d.attended == true;
         });
-        console.log("User Contest Ranking:", userContestRanking);
-        console.log("User Contest Ranking History:", userContestRankingHistory);
     } else {
       console.error(`Error: ${response.status}, ${await response.text()}`);
     }
+    return [userContestRanking,userContestRankingHistory];
 }
   
 
-module.exports = [
+module.exports = {
     getLeetCount , getLeetRating
-]
+}
