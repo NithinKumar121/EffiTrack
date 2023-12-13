@@ -31,9 +31,10 @@ code {
 }
 
 
-aside {
+aside , .top-navbar {
   color:black !important;
-  background:#818AA3;
+  /* background:#818AA3; */
+  background-image: radial-gradient( circle 506px at 50.6% 16.5%,  rgba(239,252,250,1) 5.5%, rgba(154,192,206,1) 100.2% );
   /* background-image: radial-gradient( circle 311px at 8.6% 27.9%,  rgba(62,147,252,0.57) 12.9%, rgba(239,183,192,0.44) 91.2% ); */
 }
 

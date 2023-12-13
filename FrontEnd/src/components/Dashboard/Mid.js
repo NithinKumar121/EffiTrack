@@ -3,7 +3,10 @@ import GitProfile from "./GitProfile";
 import LineChart from "./LIneChart";
 import Upcoming from "./Upcoming";
 
+
+
 const Mid = ()=>{
+    fetchLcDate();
     const cardData = [
         {
             title:'Leetcode',
