@@ -1,19 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  LcData: [],
-};
 
 const LcSlice = createSlice({
   name: 'LcSlice',
-  initialState,
+  initialState : {
+    LcData: [],
+    LcContest:[],
+  },
   reducers: {
     addLcData: (state, action) => {
-      state.LcData.push(action.payload);
+      const newItem = action.payload;
+      if(state.LcData.length==0){
+        state.LcData.push(newItem);
+      }
     },
+    addLcContest :(state,action)=>{
+      const newItem = action.payload;
+      if(state.LcContest.length==0){
+        state.LcContest.push(newItem);
+      }
+    }
   },
 });
 
-export const { addLcData } = LcSlice.actions;
+export const { addLcData , addLcContest } = LcSlice.actions;
 
-export default mySlice.reducer;
+
+export default LcSlice.reducer;

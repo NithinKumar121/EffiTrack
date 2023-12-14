@@ -1,12 +1,19 @@
+
+import { useEffect, useState } from "react";
 import Card from "./Card";
 import GitProfile from "./GitProfile";
 import LineChart from "./LIneChart";
 import Upcoming from "./Upcoming";
-
-
+import { useSelector } from "react-redux";
+const {LcSlice} = require('../../redux/LcSlice');
 
 const Mid = ()=>{
-    fetchLcDate();
+
+    var leetcodeCount = useSelector(state => state.Leetcode.LcData);
+    var leetcodeRating = useSelector(state => state.Leetcode.LcContest);
+    console.log("lc count",leetcodeCount);
+    console.log("lc rating",leetcodeRating);
+    
     const cardData = [
         {
             title:'Leetcode',

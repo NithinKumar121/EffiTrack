@@ -3,6 +3,9 @@ import { configureStore, isPending } from '@reduxjs/toolkit'
 import LcReducer from './LcSlice';
 export const store = configureStore({
   reducer: {
-    LcReducer
+    Leetcode:LcReducer
   },
 })
+
+
+export default store;

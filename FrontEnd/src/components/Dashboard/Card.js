@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Card = ({card}) => {
-    console.log(card);
+    // console.log(card);
   return (
     //template literal
     <div className={`card ${card.sub_title}`}>      

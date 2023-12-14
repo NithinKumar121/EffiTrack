@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const {getLcCount,getLcRating} = require('../controllers/leetcodeControllers');
+const {getLcCount,getLcRating,postLcCount,postLcRating} = require('../controllers/leetcodeControllers');
 
-router.route('/count').get(getLcCount);
-router.route('/rating').get(getLcRating);
+router.route('/count').get(getLcCount).post(postLcCount);
+router.route('/rating').get(getLcRating).post(postLcRating);
 
 module.exports = router;
