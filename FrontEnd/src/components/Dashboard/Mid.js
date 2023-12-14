@@ -6,13 +6,14 @@ import LineChart from "./LIneChart";
 import Upcoming from "./Upcoming";
 import { useSelector } from "react-redux";
 const {LcSlice} = require('../../redux/LcSlice');
+const {CodeForce} = require('../../redux/store');
 
 const Mid = ()=>{
 
     var leetcodeCount = useSelector(state => state.Leetcode.LcData);
     var leetcodeRating = useSelector(state => state.Leetcode.LcContest);
-    console.log("lc count",leetcodeCount);
-    console.log("lc rating",leetcodeRating);
+    var codeforce_count = useSelector(state => state.CodeForce.CFcount);
+    var codeforce_rating = useSelector(state => state.CodeForce.CFrating);
     
     const cardData = [
         {

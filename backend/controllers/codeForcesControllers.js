@@ -19,6 +19,28 @@ const getCFrating = async (req,res) =>{
     }
 }
 
+const postCFcount = async (req,res) =>{
+    const username  = req.body.username;
+    try{
+        const submitStats = await getForceCount(username);
+        res.status(200).json({data:submitStats});
+    }catch(err){
+        res.status(500).json({Error:"Error occurred while fetching the data from the leetcode api"})
+    }
+}
+
+
+const postCFrating = async (req,res) =>{
+    const username  = req.body.username;
+    try{
+        const submitStats = await getForceRating(username);
+        res.status(200).json({data:submitStats});
+    }catch(err){
+        res.status(500).json({Error:"Error occurred while fetching the data from the leetcode api"})
+    }
+}
+
+
 module.exports = {
-    getCFcount,getCFrating
+    getCFcount,getCFrating,postCFcount,postCFrating
 }
