@@ -37,16 +37,16 @@ async function getChefUser(username) {
 }
 
 // Example usage
-const username = 'cibiyanna_p';
-getChefUser(username)
-  .then(userDetails => {
-    console.log('User Details:', userDetails);
-})
-  .catch(error => {
-    console.error('Error:', error);
-});
+// const username = 'cibiyanna_p';
+// getChefUser(username)
+//   .then(userDetails => {
+//     console.log('User Details:', userDetails);
+// })
+//   .catch(error => {
+//     console.error('Error:', error);
+// });
 
 
-module.exports = [
+module.exports = {
     getChefUser
-]
+}

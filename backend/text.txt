@@ -7,3 +7,5 @@ git config http.postBuffer 524288000
 
 
 npm install router
+
+npm install puppeteer-core
