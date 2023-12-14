@@ -5,6 +5,7 @@ plugin-proposal-private-property-in-object
 npm install chart.js react-chartjs-2
 npm install @reduxjs/toolkit react-redux
  npm install @reduxjs/toolkit
+ npm install frame-motion
 
 # Getting Started with Create React App
 
