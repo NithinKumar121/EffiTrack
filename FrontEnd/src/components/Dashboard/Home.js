@@ -1,19 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Leftnav from './Leftnav'
 import Main from './Main'
 import {useDispatch} from 'react-redux';
 import {addLcContest, addLcData} from '../../redux/LcSlice';
 import {addCodeForceCount,addCodeForceRating} from '../../redux/codeforcesSlice';
-
+import Shim from './Shimmer';
+import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 
 const Home = () => {
     const dispatch = useDispatch();
+    const [flag,setflag] = useState(0);
+    var leetcodeCount = useSelector(state => state.Leetcode.LcData);
+    var leetcodeRating = useSelector(state => state.Leetcode.LcContest);
+    var codeforce_count = useSelector(state => state.CodeForce.CFcount);
+    var codeforce_rating = useSelector(state => state.CodeForce.CFrating);
+    useMemo(()=>{
+      setflag(flag+1);
+      console.log(flag);
+    },[leetcodeCount,leetcodeRating,codeforce_count,codeforce_rating]);
+
+
     useEffect(()=>{
       FetchLeetcode();
       FetchCodeForce();
     },[]);
 
-  const FetchLeetcode = async (e)=>{
+ 
+    const FetchLeetcode = async (e)=>{
 
       var response = await fetch("http://localhost:5000/api/leetcode/count",{
         method:"POST",
@@ -34,6 +48,8 @@ const Home = () => {
       })
       responseLcRating = await responseLcRating.json();
       dispatch(addLcContest(responseLcRating));
+      console.log("first completed");
+ 
     }
 
     const FetchCodeForce =async () =>{
@@ -56,14 +72,27 @@ const Home = () => {
         })
         resCFrating = await resCFrating.json();
         dispatch(addCodeForceRating(resCFrating));
+        console.log("second completed");  
+
     }
 
 
   return (
-    <div className='home_section bg-gray-200'>
-        <Leftnav/>
-        <Main/>
-    </div>
+    <>
+      {
+        flag >= 4 ?
+        <div className='home_section bg-gray-200'>
+          <Leftnav/>
+          <Main/>
+        </div>  
+        :
+        <Shim/>
+        
+      }
+        
+
+    </>
+   
   )
 }
 

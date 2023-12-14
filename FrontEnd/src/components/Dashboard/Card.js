@@ -1,12 +1,12 @@
 import React from 'react'
 
 const Card = ({card}) => {
-    // console.log(card);
+
   return (
     //template literal
     <div className={`card ${card.sub_title}`}>      
         <div className="card-details">
-            <div className={`card-details-top bg-${card.topic_color} rounded-xl`}>
+            <div className={`card-details-top ${card.topic_color} rounded-xl`}>
                 <h1>{card.title}</h1>
             </div>
             <h1>{card.sub_title}</h1>
