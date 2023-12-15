@@ -16,7 +16,7 @@ const Home = () => {
     var codeforce_count = useSelector(state => state.CodeForce.CFcount);
     var codeforce_rating = useSelector(state => state.CodeForce.CFrating);
     useMemo(()=>{
-      setflag(flag+1)
+      setflag(flag+1);
     },[leetcodeCount,leetcodeRating,codeforce_count,codeforce_rating]);
 
 

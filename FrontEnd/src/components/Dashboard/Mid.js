@@ -16,19 +16,13 @@ const Mid = ()=>{
     var leetcodeRating = useSelector(state => state.Leetcode.LcContest);
     var codeforce_count = useSelector(state => state.CodeForce.CFcount);
     var codeforce_rating = useSelector(state => state.CodeForce.CFrating);
-
-    // const [LCcodecount,setLCcodecount] = useState([]);
-    // console.log(leetcodeCount);
-    // useEffect(()=>{
-    //     setLCcodecount(LCcodecount);
-    //     console.log(LCcodecount);
-    // },[leetcodeCount]);
+    console.log(leetcodeCount[0].data[0].count);
 
     const cardData = [
         {
             title:'Leetcode',
             sub_title:'leetcode',
-            count:'200',
+            count:leetcodeCount[0].data[0].count,
             rank:'49+',
             completed_count: 300,
             topic_color:'bg-cd1_red',
