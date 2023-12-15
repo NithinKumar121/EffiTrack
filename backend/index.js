@@ -8,6 +8,7 @@ const leetcodeRoutes = require('./routes/leetcodeRoutes');
 const codeforcesRoutes = require('./routes/codeforcesRoutes');
 const githubRoutes = require('./routes/githubRoutes');
 const codechefRoutes = require('./routes/codechefRoutes');
+const userRoutes = require('./routes/userRoutes');
 app.use(express.json());
 app.use(cors());
 
@@ -17,5 +18,5 @@ app.use('/api/leetcode',leetcodeRoutes);
 app.use('/api/codeforces',codeforcesRoutes);
 app.use('/api/github',githubRoutes);
 app.use('/api/codechef',codechefRoutes);
-
+app.use('/api/user/',userRoutes);
 connection();
