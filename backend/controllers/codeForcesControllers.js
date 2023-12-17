@@ -2,6 +2,7 @@ const {getForceCount,getForceRating}  = require("../Function/CodeForceFun");
 
 const getCFcount = async (req,res) =>{
     const response = await getForceCount("Cibiyanna26");
+    console.log("data has been retrived",response);
     try{
         res.status(200).json({data:response});
     } catch (err){

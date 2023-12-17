@@ -17,8 +17,11 @@ const Home = () => {
     var codeforce_rating = useSelector(state => state.CodeForce.CFrating);
     useMemo(()=>{
       setflag(flag+1);
-    },[leetcodeCount,leetcodeRating,codeforce_count,codeforce_rating]);
-
+      console.log(flag,leetcodeCount);
+      console.log(flag,leetcodeRating)
+      console.log(flag,codeforce_count)
+      console.log(flag,codeforce_rating)
+    },[leetcodeCount,leetcodeRating]);
 
     useEffect(()=>{
       FetchLeetcode();
@@ -26,7 +29,7 @@ const Home = () => {
     },[]);
 
  
-    const FetchLeetcode = async (e)=>{
+    const FetchLeetcode = async ()=>{
 
       var response = await fetch("http://localhost:5000/api/leetcode/count",{
         method:"POST",
@@ -35,8 +38,9 @@ const Home = () => {
         },
         body:JSON.stringify({username:"arulcibi007"}),
       })
+      console.log("response to fetch",response);
       response = await response.json();
-      dispatch(addLcData(response));
+      dispatch(addLcData(response))
 
       var responseLcRating = await fetch("http://localhost:5000/api/leetcode/rating",{
         method:"POST",
@@ -47,7 +51,6 @@ const Home = () => {
       })
       responseLcRating = await responseLcRating.json();
       dispatch(addLcContest(responseLcRating));
-      console.log("first completed");
  
     }
 
@@ -72,7 +75,6 @@ const Home = () => {
         resCFrating = await resCFrating.json();
         dispatch(addCodeForceRating(resCFrating));
         console.log("second completed");  
-
     }
 
 
