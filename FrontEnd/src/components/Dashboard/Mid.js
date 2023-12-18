@@ -12,18 +12,20 @@ const {CodeForce} = require('../../redux/store');
 
 const Mid = ()=>{
 
-    var leetcodeCount = useSelector(state => state.Leetcode.LcData);
-    var leetcodeRating = useSelector(state => state.Leetcode.LcContest);
-    var codeforce_count = useSelector(state => state.CodeForce.CFcount);
-    var codeforce_rating = useSelector(state => state.CodeForce.CFrating);
+    // var leetcodeCount = useSelector(state => state.Leetcode.LcData);
+    // var leetcodeRating = useSelector(state => state.Leetcode.LcContest);
+    // var codeforce_count = useSelector(state => state.CodeForce.CFcount);
+    // var codeforce_rating = useSelector(state => state.CodeForce.CFrating);
     
 
     const cardData = [
         {
             title:'Leetcode',
             sub_title:'leetcode',
-            count:leetcodeCount[0].data[0].count,
-            rank:leetcodeRating[0].data[0].globalRanking,
+            // count:leetcodeCount[0].data[0].count,
+            count:500,
+            // rank:leetcodeRating[0].data[0].globalRanking,
+            rank:100,
             completed_count: 300,
             topic_color:'bg-cd1_red',
         },
@@ -48,7 +50,7 @@ const Mid = ()=>{
     return(
     <>
     {
-        leetcodeCount.length == 0 ? <Shim/> :
+        // leetcodeCount.length == 0 ? <Shim/> :
         <section className="mid-top mt-[.5rem]">
             <div className="mid-left">
                 <div className="cards">

@@ -21,7 +21,7 @@ app.use((req, res, next) => {
       "Origin, X-Requested-With, Content-Type, Accept"
     );
     next();
-  });
+});
 
 app.use('/api/leetcode',leetcodeRoutes);
 app.use('/api/codeforces',codeforcesRoutes);

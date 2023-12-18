@@ -11,3 +11,7 @@ npm install router
 npm install puppeteer-core
 
 npm install mongoose
+
+npm install jsonwebtoken
+
+npm install bcyrpt
