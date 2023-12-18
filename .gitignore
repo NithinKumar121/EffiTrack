@@ -1,5 +1,5 @@
 ./FrontEnd/.env
-./Backend/.env
+./backend/.env
 npm install jsonwebtoken
 npm init
 npm install nodemon cors express
