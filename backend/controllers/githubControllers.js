@@ -17,7 +17,7 @@ const postRepoDetails = async  (req,res) =>{
         const response  =await getGithubRepo(username);
         getGithubContributions({
             username: 'Cibiyanna26',
-            token: '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' // secret
+            token:'' // secret
           }).then((r) => {
             console.log(r.data.data.user.contributionsCollection.contributionCalendar)
         })
