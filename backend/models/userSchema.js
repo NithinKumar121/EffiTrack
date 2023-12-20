@@ -7,6 +7,10 @@ const userSchema = new Schema({
     email:{type:String, required:true,unique:true},
     password:{type:String,required:true},
     created:{type:Date,default:Date.now()},
+    leetcode:{type:String,default:null},
+    codeforces:{type:String,default:null},
+    codechef:{type:String,default:null},
+    github:{type:String,default:null},
 })
 
 

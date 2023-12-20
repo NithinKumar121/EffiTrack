@@ -15,3 +15,5 @@ npm install mongoose
 npm install jsonwebtoken
 
 npm install bcyrpt
+
+npm i github-contributions-counter
