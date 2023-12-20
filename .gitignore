@@ -7,3 +7,12 @@ git config http.postBuffer 524288000
 npm install router
 npm install puppeteer-core
 npm install mongoose
+
+npm init
+npm install nodemon cors express
+git config http.postBuffer 524288000
+npm install router
+npm install puppeteer-core
+npm install mongoose
+npm install jsonwebtoken
+npm install bcyrpt
