@@ -11,11 +11,11 @@ import Cookies from 'js-cookie';
 const Home = () => {
     const dispatch = useDispatch();
     const [flag,setflag] = useState(0);
-    useMemo(()=>{
-      const token = 'YOUR_JWT_TOKENeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFydWxrYXJ0aGkiLCJpYXQiOjE3MDI5Mjk0MDMsImV4cCI6MTcwMzUzNDIwM30.69kEZNIbd2GFvzX5TFZ18yv_S_qqfYzRvoO_3OJnigw';
-      Cookies.set('token', token, { expires: 7, secure: true });
-      console.log("called cookie");
-    },[flag]);
+    // useMemo(()=>{
+    //   const token = 'YOUR_JWT_TOKENeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFydWxrYXJ0aGkiLCJpYXQiOjE3MDI5Mjk0MDMsImV4cCI6MTcwMzUzNDIwM30.69kEZNIbd2GFvzX5TFZ18yv_S_qqfYzRvoO_3OJnigw';
+    //   Cookies.set('token', token, { expires: 7, secure: true });
+    //   console.log("called cookie");
+    // },[flag]);
     // var leetcodeCount = useSelector(state => state.Leetcode.LcData);
     // var leetcodeRating = useSelector(state => state.Leetcode.LcContest);
     // var codeforce_count = useSelector(state => state.CodeForce.CFcount);
