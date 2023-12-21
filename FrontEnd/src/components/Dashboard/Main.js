@@ -10,7 +10,6 @@ import Calender from './Calender'
         <Navbar/>
         <Shimmer/>
         <Showcase/>
-       
     </div>
   )
 }

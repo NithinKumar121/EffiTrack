@@ -1,8 +1,8 @@
-const {getChefUser} = require('../Function/CodeChefFun');
+const {getChefData} = require('../Function/CodeChefFun');
 
 const getCodeChefDetails =async (req,res)=>{
     try{
-        const response = await getChefUser("cibiyanna_p");
+        const response = await getChefData("cibiyanna_p");
         res.status(200).json({data:response});
     }
     catch(err){

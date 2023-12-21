@@ -28,4 +28,4 @@ const codefroceSchema = new Schema({
 
 const codeforceModel = new model('codeforceSchema',codefroceSchema);
 
-module.exports = codeforceModel;
+module.exports = {codeforceModel};
