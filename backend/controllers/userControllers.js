@@ -52,14 +52,6 @@ const register = async (req,res) =>{
 const login = async  (req,res) =>{
     const {username,password} = req.body;
     try{
-        // const {error} = loginbodyValidation(req.body);
-        // console.log(username,password,error);
-        // if(!error){
-        //     return res
-        //             .status(400)
-        //             .json({error:true,message:error.details[0].message});
-        // }
-
         const user = await userModel.findOne({username:username});
         console.log(user);
         if(!user){
