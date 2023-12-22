@@ -54,7 +54,7 @@ const getChefData =async  (username)=>{
 //     console.error('Error:', error);
 // });
 
-getChefData('cibiyanna_p')
+// getChefData('cibiyanna_p')
 module.exports = {
     getChefData
 }

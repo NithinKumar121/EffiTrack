@@ -17,3 +17,7 @@ npm install jsonwebtoken
 npm install bcyrpt
 
 npm i github-contributions-counter
+
+npm install joi
+
+npm install react-joi-validation --save

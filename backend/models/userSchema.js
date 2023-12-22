@@ -1,19 +1,19 @@
 const mongoose  = require('mongoose');
-const {Schema,model} = mongoose;
+const schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const userSchema = new schema({
     userid:{type:Number,required:true,unique:true},
     username:{type:String, required:true,unique:true},
     email:{type:String, required:true,unique:true},
     password:{type:String,required:true},
     created:{type:Date,default:Date.now()},
-    leetcode:{type:String,default:null},
-    codeforces:{type:String,default:null},
-    codechef:{type:String,default:null},
-    github:{type:String,default:null},
+    leetcode:{type:String,default:"unknown"},
+    codeforces:{type:String,default:"unknown"},
+    codechef:{type:String,default:"unknown"},
+    github:{type:String,default:"unknown"},
 })
 
 
-const userModel = model('user', userSchema);
+const userModel = mongoose.model('user', userSchema);
 
 module.exports = {userModel};
