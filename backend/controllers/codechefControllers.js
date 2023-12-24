@@ -8,7 +8,6 @@ const getCodeChefDetails =async (req,res)=>{
     catch(err){
         res.status(404).json({Error:"Username name is not valid"});
     }
-    
 }
 
 module.exports = {
