@@ -15,7 +15,7 @@ const generateTokens = async(user) =>{
             {expiresIn:"30d"}
         )
         const userT = await userToken.findOne({username:user.username});
-        if(userT) await userToken.remove();
+        if(userT) await userT.remove();
         const newToken = new userToken({username:user.username,token:refreshToken});
         newToken.save();
         return Promise.resolve({accessToken,refreshToken});

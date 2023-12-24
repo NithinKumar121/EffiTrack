@@ -2,7 +2,8 @@ const {userModel} = require("../models/userSchema");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {signupbodyValidation,loginbodyValidation} = require('../utils/validationSchema');
-const {generateTokens} = require("../utils/generateToken")
+const {generateTokens} = require("../utils/generateToken");
+const { userToken } = require("../models/userToken");
 
 const register = async (req,res) =>{
     const {username,password,email,userid} = req.body;
@@ -88,8 +89,29 @@ const getMe = async(req,res) =>{
     res.status(200).json({error:false,message:"NO"})
 }
 
+
+// logout 
+const logout = async(req,res) =>{
+    const refreshToken = req.body.refreshToken;
+    try{
+        const token = await userToken.findOne({token:refreshToken});
+        if(!userToken){
+            return res
+                    .status(200)
+                    .json({error:false,message:"Logged out successfully"});
+        }
+        await userToken.deleteOne({token:refreshToken})
+        console.log(token)
+        res.status(200).json({error:false,message:"Logged out successfully"})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({error:true,message:"Interval Server Error"})
+    }
+}
+
+
 module.exports = {
-    register,login,getMe
+    register,login,getMe, logout
 }
 
 

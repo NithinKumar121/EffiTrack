@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const {userModel} = require('../models/userSchema');
 const {verifyAuthRefreshToken} = require('../utils/verifyRefreshTokens');
 
-const auth =async (req,res,next) =>{
+const auth = async (req,res,next) =>{
     let token;
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
         try{
@@ -34,9 +34,7 @@ const auth =async (req,res,next) =>{
                     }
 
                     req.user = result;
-                    console.log(req.user);
-                    req.body = accessToken;
-                    console.log(req.body);
+                    req.body = {accessToken:accessToken,refreshToken:token};
                     next();
                 })
             });
