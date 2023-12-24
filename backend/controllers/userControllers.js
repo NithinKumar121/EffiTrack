@@ -80,7 +80,6 @@ const login = async  (req,res) =>{
     }
 }
 
-
 const getMe = async(req,res) =>{
     const user = await req.user;
     const accessToken = await req.body;

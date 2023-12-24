@@ -4,5 +4,4 @@ const {getLcCount,getLcRating,postLcCount,postLcRating} = require('../controller
 
 router.route('/count').get(getLcCount).post(postLcCount);
 router.route('/rating').get(getLcRating).post(postLcRating);
-
 module.exports = router;
