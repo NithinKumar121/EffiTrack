@@ -1,24 +1,21 @@
 const fetchContestData = async(req,res)=>{
-    // const fetch = await import('node-fetch');
-    const url = 'https://clist.by/api/v1/contest/?username=Cibiyanna26&api_key=0209cce28bb5e64e3f600db33f3351762f68e68f&resource__id=2';
-
+    
+    const url = `https://clist.by/api/v1/contest/?username=Cibiyanna26&api_key=${process.env.CLIST_TOKEN}&resource__id=2`;
+    console.log(url)
     const response = await fetch(url, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         }
     })
-    const data =await response.json();
-    if(!data)
-        return res
-                .status(400)
-                .json({error:true,message:"can't receive response from the api"})
-    console.log(data);
-    return res.status(200).json({error:false,message:data});
-    // .then(response => response.json())
-    // .then(data => console.log(data))
-    // .catch(error => console.error('Error:', error));
+    .then(response => response.json())
+    .then(data => {
+        return res.status(200).json({error:false,data:data})
+    })
+    .catch(error => {
+        return res.status(500).json({error:true,message:error});
+    });
 }
-
+  
 
 module.exports = fetchContestData;
