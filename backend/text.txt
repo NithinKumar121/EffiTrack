@@ -14,7 +14,7 @@ npm install mongoose
 
 npm install jsonwebtoken
 
-npm install bcyrpt
+npm install bcrypt
 
 npm i github-contributions-counter
 
