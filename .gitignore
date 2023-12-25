@@ -1,10 +1,9 @@
-./FrontEnd/.env
-./backend/.env
-./FrontEnd/node_modules
-./FrontEnd/package.jsonwebtoken
-./backend/package.json
-./backend/package-lock.json
-./FrontEnd/package-lock.json
+
+node_modules/
+
+package-lock.json
+
+package.json
 
 npm install jsonwebtoken
 npm init
@@ -21,5 +20,5 @@ npm install router
 npm install puppeteer-core
 npm install mongoose
 npm install jsonwebtoken
-npm install bcyrpt
+npm install bcrypt
 npm install highcharts highcharts-react-official
