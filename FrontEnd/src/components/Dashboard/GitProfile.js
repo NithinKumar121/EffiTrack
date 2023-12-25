@@ -26,7 +26,7 @@ const GitProfile = ({modify}) => {
                 view more
             </span>
             </h6>
-            <span class="material-icons-sharp block text-center relative bottom-1 text-gray-700 cursor-pointer">keyboard_double_arrow_down</span>
+            <span className="material-icons-sharp block text-center relative bottom-1 text-gray-700 cursor-pointer">keyboard_double_arrow_down</span>
         </div>
         <div className='absolute bottom-2 w-[90%] flex justify-center '>
                 <button className='bg-purple-600 p-2 rounded-xl text-white hover:bg-purple-500'>View More</button>

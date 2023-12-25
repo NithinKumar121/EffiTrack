@@ -2,7 +2,7 @@ const fetchContestData = async(req,res)=>{
     
     const url = `https://clist.by/api/v1/contest/?username=Cibiyanna26&api_key=${process.env.CLIST_TOKEN}&resource__id=2`;
     console.log(url)
-    const response = await fetch(url, {
+    await fetch(url, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

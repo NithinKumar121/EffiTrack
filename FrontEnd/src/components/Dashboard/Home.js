@@ -85,15 +85,10 @@ const Home = () => {
 
   return (
     <>
-      
-     
-        <div className='home_section bg-gray-200'>
+        <div className='home_section bg-gray-200 h-full lg:h-[100vh] scrollbar-hide overflow-hidden'>
           <Leftnav/>
           <Main/>
         </div>  
-      
-        
-    
     </>
    
   )
