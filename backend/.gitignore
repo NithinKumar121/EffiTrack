@@ -1,1 +1,23 @@
 node_modules/
+
+package-lock.json
+
+package.json
+
+npm install jsonwebtoken
+npm init
+npm install nodemon cors express
+git config http.postBuffer 524288000
+npm install router
+npm install puppeteer-core
+npm install mongoose
+
+npm init
+npm install nodemon cors express
+git config http.postBuffer 524288000
+npm install router
+npm install puppeteer-core
+npm install mongoose
+npm install jsonwebtoken
+npm install bcrypt
+npm install highcharts highcharts-react-official
