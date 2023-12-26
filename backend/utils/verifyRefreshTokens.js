@@ -13,26 +13,6 @@ const verifyAuthRefreshToken = async  (refreshToken)=>{
         return {error:true,message:"Invalid refresh token"}
     }
     return {error:false,message:decode};
-    // return new Promise((resolve, reject)=>{ 
-    //          userToken.findOne({token:refreshToken},(err,doc)=>{
-    //             if(!doc){
-    //                 return reject({error:true,message:"Invalid refresh token"});
-    //             }
-    //             jwt.verify(refreshToken,privateKey,(err,tokenDetails)=>{
-    //                 if(err){
-    //                     return reject({error:true,message:"Invalid refresh token"});
-    //                 }
-    //                 console.log(tokenDetails)
-    //                 resolve({
-    //                     tokenDetails,
-    //                     error:false,
-    //                     message:"Valid refresh token",
-    //                 })
-    //             })
-    //          })
-    //         console.log(doc);
-            
-    //     })
 }
 
 module.exports = {verifyAuthRefreshToken};

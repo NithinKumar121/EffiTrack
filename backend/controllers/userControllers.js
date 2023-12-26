@@ -35,12 +35,14 @@ const register = async (req,res) =>{
 
         if(user){
             return res
-            .status(201).json({
+            .status(201)
+            .json({
                 name:username,email:email,userid:userid
             })
         }else{  
             return res
-                   .status(403).json({err:"Invalid user data"});
+                   .status(403)
+                   .json({err:"Invalid user data"});
         }
         
     } catch(err){
@@ -54,38 +56,33 @@ const login = async  (req,res) =>{
     const {username,password} = req.body;
     try{
         const user = await userModel.findOne({username:username});
-        console.log(user);
         if(!user){
-            return res.status(404).json({err:true,message:"user not found"});
+            return res
+                .status(404)
+                .json({err:true,message:"user not found"});
         }
         const verifiedPassword = await bcrypt.compare(password,user.password);
-        console.log(verifiedPassword)
         if(!verifiedPassword){
             return res
-            .status(400)
-            .json({error:true,message:"Invalid email or password"});
+                .status(400)
+                .json({error:true,message:"Invalid email or password"});
         }
-        const {accessToken,refreshToken} = await generateTokens(user);
+        const {accessToken} = await generateTokens(user);
         res.status(200).json({
             error:false,
             accessToken,
-            refreshToken,
             message:"Logged In Successfully",
         })
 
     }catch(e){
-
         return res.status(502).json({error:true,message:"Interval server error"});
-
     }
 }
 
 const getMe = async(req,res) =>{
     const user = await req.user;
-    const accessToken = await req.body;
     console.log(user);
-    console.log(accessToken);
-    res.status(200).json({error:false,message:"NO"})
+    res.status(200).json({error:false,message:user})
 }
 
 
