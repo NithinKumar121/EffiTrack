@@ -19,7 +19,6 @@ const Contest = () =>{
     )
 }
 
-
 const Upcoming = () =>{
     return(
         <>

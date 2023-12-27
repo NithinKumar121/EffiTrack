@@ -46,12 +46,7 @@ code {
 
 aside , .top-navbar {
   color:black !important;
-  /* background:white; */
   background: #f2fcfe;
- 
-
-  /* background-image: radial-gradient( circle 506px at 50.6% 16.5%,  rgba(239,252,250,1) 5.5%, rgba(154,192,206,1) 100.2% ); */
-  /* background-image: radial-gradient( circle 311px at 8.6% 27.9%,  rgba(62,147,252,0.57) 12.9%, rgba(239,183,192,0.44) 91.2% ); */
 }
 
 .top{
@@ -172,10 +167,6 @@ aside , .top-navbar {
 }
 
 .mid-top .mid-left .cards{
-  /* display: flex;  
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between; */
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 1rem;
@@ -313,9 +304,6 @@ aside , .top-navbar {
 }
 
 .two-graph{
-  /* display: grid;h
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem; */
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -330,9 +318,7 @@ aside , .top-navbar {
 
 
 .view-more .view-more-span{
-  /* box-shadow: 0 8px 6px -6px black; */
   filter: blur(2px);
-  /* -webkit-filter: blur(8px); */
 }
 
 
@@ -349,7 +335,6 @@ aside , .top-navbar {
 
 .showcase-favourite h1 , .showcase-socails h1{
   text-align: center;
-  /* display: block; */
   font-weight: 600;
   font-size:larger;
   border-radius: 13px;
@@ -368,9 +353,7 @@ aside , .top-navbar {
   grid-auto-flow: column;
   padding: .6rem;
   border-radius: 13px;
-  /* background: white ; */
   color: white;
-  /* background: #605C3C; */
   background: #6D6027;
   align-items: center;
 }
@@ -393,7 +376,6 @@ aside , .top-navbar {
   display: flex;
   align-items: center;
   padding:1rem;
-  /* background-color: aliceblue; */
   border-radius: 13px;
   gap: 1rem;
 }
