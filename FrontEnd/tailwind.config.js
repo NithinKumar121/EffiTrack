@@ -29,6 +29,9 @@ module.exports = {
       },
       boxShadow:{
         'bottomS':"0 8px 6px -6px black",
+      },
+      backgroundImage: {
+        'five-bg': "url('./assets/five_removed.png')",
       }
     },
   },

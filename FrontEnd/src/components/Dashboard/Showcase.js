@@ -3,7 +3,7 @@ import GitRepo from '../../assets/github.png'
 const Favourite = () =>{
     return(
         <>
-            <div className="repo-favourite shadow-xl hover:shadow-none ease-in duration-300 cursor-default">
+            <div className="repo-favourite shadow-xl hover:shadow-none ease-in duration-300 cursor-default text-white">
                             <img src={GitRepo}></img>
                             <p>Repo name : Helloworld </p>
                             <h6>Star: 50</h6>
@@ -16,7 +16,7 @@ const Favourite = () =>{
 const Social = () =>{
     return(
         <>
-            <div className='social-media shadow-xl hover:shadow-none ease-in duration-300 cursor-default'>
+            <div className='social-media shadow-xl hover:shadow-none ease-in duration-300 cursor-default bg-[#6D6027] text-white'>
                 <img src={GitRepo} className='w-[40px] h-[40px]'></img>
                 <div className='social-media-inner'>
                     <h2 className='text-l font-medium'>username : Cibiyanna26</h2>
@@ -31,8 +31,8 @@ const Social = () =>{
 const Showcase = () =>{
     return(
         <>
-            <div className="showcase-top">
-                <div className="showcase-favourite">
+            <div className="showcase-top ">
+                <div className="showcase-favourite bg-[#D3CBB8] rounded-xl p-3">
                     <h1> Add your Favourite Repository </h1>
                     <div className="repo-favourites">
                         <Favourite/>
@@ -40,7 +40,7 @@ const Showcase = () =>{
                         <Favourite/>
                     </div>
                 </div>
-                <div className="showcase-socails">
+                <div className="showcase-socails bg-[#D3CBB8] rounded-xl p-3">
                     <h1 >Add Your Social Media Links</h1>
                     <div className='socail-medias'>
                         <Social/>

@@ -63,9 +63,6 @@ const Mid = ()=>{
                     }
                 </div>
                 <div className="graph-git">
-                    {/* <div className="flex justify-center w-full">
-                        <LineChart/>
-                    </div> */}
                     <div className="rounded-xl h-full item2 shadow-md git-profile">
                         <GitProfile modify={github_data}/>
                     </div>
