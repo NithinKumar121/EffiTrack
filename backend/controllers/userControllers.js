@@ -6,38 +6,40 @@ const {generateTokens} = require("../utils/generateToken");
 const { userToken } = require("../models/userToken");
 
 const register = async (req,res) =>{
-    const {username,password,email,userid} = req.body;
+    const {username,password,email} = req.body;
 
     try{
         const {error} = signupbodyValidation(req.body);
         console.log(error);
+
         if(error)   
-            return res.status(400).json({error:true,message:'user info is not valid'});
+            return res.status(400).json({error:true,message:error.details[0].message});
+
         const data = await userModel.findOne({
             $or: [
                 { username: username },
-                { email: email },
-                {userid:userid},
+                { email: email }
               ],
         });
+
         if(data){
             return  res
                     .status(400)
-                    .json({message:"User already registered"});
+                    .json({error:true,message:"Username already registered"});
         }
 
         const salt = await bcrypt.genSalt(parseInt(process.env.SALT));
         const hashedPassword = await bcrypt.hash(password,salt);
 
         const user = await userModel.create({
-            username,email,password:hashedPassword,userid
+            username,email,password:hashedPassword
         })
 
         if(user){
             return res
             .status(201)
             .json({
-                name:username,email:email,userid:userid
+                name:username,email:email
             })
         }else{  
             return res
@@ -48,7 +50,6 @@ const register = async (req,res) =>{
     } catch(err){
         res.status(500).json({Error:err.message});
     }
-    
 }
 
 
@@ -59,13 +60,13 @@ const login = async  (req,res) =>{
         if(!user){
             return res
                 .status(404)
-                .json({err:true,message:"user not found"});
+                .json({error:true,message:"user not found"});
         }
         const verifiedPassword = await bcrypt.compare(password,user.password);
         if(!verifiedPassword){
             return res
                 .status(400)
-                .json({error:true,message:"Invalid email or password"});
+                .json({error:true,message:"Invalid password"});
         }
         const {accessToken} = await generateTokens(user);
         res.status(200).json({

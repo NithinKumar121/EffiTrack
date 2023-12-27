@@ -11,7 +11,6 @@ const signupbodyValidation = (body)=>{
         username:Joi.string().required().label('User Name'),
         email:Joi.string().required().label('Email'),
         password:passwordComplexity().required().label('Password'),
-        userid:Joi.number().required().label('User ID'),
     })
     return schema.validate(body);
 }
