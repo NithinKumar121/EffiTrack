@@ -1,4 +1,4 @@
-const {getForceCount,getForceRating}  = require("../Function/CodeForceFun");
+const {getForceCount,getForceRating}  = require("../utils/CodeForceFun");
 
 const getCFcount = async (req,res) =>{
     const response = await getForceCount("Cibiyanna26");

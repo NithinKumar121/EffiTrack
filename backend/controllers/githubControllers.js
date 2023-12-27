@@ -1,4 +1,4 @@
-const {getGithubRepo} = require("../Function/GithubFun");
+const {getGithubRepo} = require("../utils/GithubFun");
 const { getGithubContributions } = require('github-contributions-counter')
 
 

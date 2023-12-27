@@ -1,4 +1,4 @@
-const {getLeetCount , getLeetRating} = require('../Function/LeetcodeFun');
+const {getLeetCount , getLeetRating} = require('../utils/LeetcodeFun');
 
 
 const getLcCount = async (req,res) =>{

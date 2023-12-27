@@ -10,15 +10,6 @@ const generateTokens = async(user) =>{
             process.env.ACCESS_TOKEN_SECRET,
             {expiresIn:"4h"}
         )
-        // const refreshToken = jwt.sign(
-        //     payload,
-        //     process.env.REFRESH_TOKEN_SECRET,
-        //     {expiresIn:"4h"}
-        // )
-        // const userT = await userToken.findOne({username:user.username});
-        // if(userT) await userT.remove();
-        // const newToken = new userToken({username:user.username,token:accessToken});
-        // newToken.save();
         return Promise.resolve({accessToken});
     }catch(err){
         return Promise.reject(err);

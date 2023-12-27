@@ -1,4 +1,4 @@
-const {getChefData} = require('../Function/CodeChefFun');
+const {getChefData} = require('../utils/CodeChefFun');
 
 const getCodeChefDetails =async (req,res)=>{
     try{
