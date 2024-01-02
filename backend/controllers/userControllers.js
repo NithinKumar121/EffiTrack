@@ -10,7 +10,6 @@ const register = async (req,res) =>{
 
     try{
         const {error} = signupbodyValidation(req.body);
-        console.log(error);
 
         if(error)   
             return res.status(400).json({error:true,message:error.details[0].message});
@@ -21,32 +20,31 @@ const register = async (req,res) =>{
                 { email: email }
               ],
         });
-
+        console.log('data',data);
         if(data){
-            return  res
+            return res
                     .status(400)
-                    .json({error:true,message:"Username already registered"});
+                    .json({error:true,message:"Username or Email already registered"});
         }
 
         const salt = await bcrypt.genSalt(parseInt(process.env.SALT));
         const hashedPassword = await bcrypt.hash(password,salt);
-
-        const user = await userModel.create({
-            username,email,password:hashedPassword
+        console.log(username,password,email);
+        const user = new userModel({
+            username: username,
+            password:hashedPassword,
+            email:email
         })
+        await user.save();
 
         if(user){
-            return res
-            .status(201)
-            .json({
-                name:username,email:email
-            })
-        }else{  
+            console.log(user);
+            return res.status(201).json({error:false,message:{name:username,email:email}})
+        }else{   
             return res
                    .status(403)
-                   .json({err:"Invalid user data"});
+                   .json({error:true,message:"Invalid user data"});
         }
-        
     } catch(err){
         res.status(500).json({Error:err.message});
     }
@@ -71,7 +69,7 @@ const login = async  (req,res) =>{
         const {accessToken} = await generateTokens(user);
         res.status(200).json({
             error:false,
-            accessToken,
+            accessToken:accessToken,
             message:"Logged In Successfully",
         })
 

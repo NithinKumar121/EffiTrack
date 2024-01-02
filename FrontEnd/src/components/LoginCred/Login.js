@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 const Login = () =>{
     const navigate = useNavigate();
     const [username,setUsername] = useState('');
-    const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [errorMessage,setErrorMessage]  = useState('');
     const handleSubmit = async (e)=> {
@@ -25,6 +24,7 @@ const Login = () =>{
                 if(data.error){
                     setErrorMessage(data.message);
                 }else{
+                    console.log(data.accessToken)
                     navigate('/');
                 }
             })
@@ -35,7 +35,9 @@ const Login = () =>{
         }
 
     }
-
+    const toSignup = () =>{
+        navigate('/signup');
+    }
     return(
         <>
             <form onSubmit={handleSubmit} className='text-black flex flex-col gap-y-4 p-4 rounded-xl bg-gray-300'>
@@ -50,17 +52,6 @@ const Login = () =>{
                     />
                 
                 <br/>
-                {/* <label>Email:</label>
-                    <input
-                        type="text"
-                        name="lastName"
-                        value={email}
-                        onChange={(e)=>setEmail(e.target.value)}
-                        required
-                        className='text-black'
-                    />
-                
-                <br/> */}
                 <label> Password: </label>
                     <input
                         type="password"
@@ -72,8 +63,9 @@ const Login = () =>{
                     />
                
                 <br/>
+                <p>Don't have an account ? <button className='' onClick={()=>toSignup()}>Signup</button></p>
                 <label>{errorMessage}</label>
-                <button type="submit">Sign Up</button>
+                <button type="submit">Login</button>
             </form>
         </>
     )

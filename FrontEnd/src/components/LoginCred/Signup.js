@@ -2,43 +2,43 @@ import './logincred.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 const Signup = () =>{
     const navigate = useNavigate();
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [errorMessage,setErrorMessage]  = useState('');
+
     const handleSubmit = async (e)=> {
         e.preventDefault();
         try{
-           await fetch('/api/user/register',{
+            const response = await fetch('http://localhost:5000/api/user/register/',{
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json'
                 },
                 body:JSON.stringify({username:username,email:email,password:password})
             })
-            .then((response)=>response.json())
-            .then((data)=>{
-                console.log(data.error)
-                if(data.error){
-                    setErrorMessage(data.message);
-                }else{
-                    navigate('/login');
-                }
-            })
-            
+            const data =await response.json();
+            if(data.error){
+                setErrorMessage(data.message);
+            }
+            if(data.error==false){  
+                navigate('/login')
+            }
         }
         catch(err){
             console.log(err);
         }
+    }
 
+    const toLogin = () =>{
+        navigate('/login');
     }
 
     return(
         <>
-            <form onSubmit={handleSubmit} className='text-black flex flex-col gap-y-4 p-4 rounded-xl bg-gray-300'>
+            <form  className='text-black flex flex-col gap-y-4 p-4 rounded-xl bg-gray-300' onSubmit={handleSubmit} method='POST'>
                 <label>Username:</label>
                     <input
                         type="text"
@@ -48,7 +48,6 @@ const Signup = () =>{
                         required
                         className='text-black'
                     />
-                
                 <br/>
                 <label>Email:</label>
                     <input
@@ -72,6 +71,7 @@ const Signup = () =>{
                     />
                
                 <br/>
+                <p>Already have an account ? <button className='' onClick={()=>toLogin()}>Login</button></p>
                 <label>{errorMessage}</label>
                 <button type="submit">Sign Up</button>
             </form>

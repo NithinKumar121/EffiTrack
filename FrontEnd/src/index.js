@@ -8,21 +8,25 @@ import { Provider } from 'react-redux';
 import { createBrowserRouter,Router,RouterProvider } from 'react-router-dom';
 import Signup from './components/LoginCred/Signup';
 import Login from './components/LoginCred/Login'
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import Error from './components/Error.js';
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 const appRouter = createBrowserRouter(
   [
     {
       path:'/',
       element:<App/>,
+      errorElement:<Error/>
     },
     {
       path:'/signup',
       element:<Signup/>,
+      errorElement:<Error/>
     },
     {
       path:'/login',
       element:<Login/>,
+      errorElement:<Error/>
     }
   ]
 )
