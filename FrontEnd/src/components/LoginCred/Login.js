@@ -1,40 +1,37 @@
 import './logincred.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
+const base_url = process.env.REACT_APP_BASE_URL;
 
 const Login = () =>{
     const navigate = useNavigate();
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     const [errorMessage,setErrorMessage]  = useState('');
-    const handleSubmit = async (e)=> {
+
+    const handleSubmit = async (e) =>{
         e.preventDefault();
         try{
-           await fetch('/api/user/login',{
-                method: 'POST',
-                headers:{
-                    'Content-Type': 'application/json'
-                },
-                body:JSON.stringify({username:username,password:password})
-            })
-            .then((response)=>response.json())
-            .then((data)=>{
-                console.log(data.error)
-                if(data.error){
-                    setErrorMessage(data.message);
-                }else{
-                    console.log(data.accessToken)
-                    navigate('/');
-                }
-            })
-            
-        }
-        catch(err){
-            console.log(err);
-        }
+            const userData = {
+                username:username,
+                password:password
+            }
 
+            const response = await axios.post(`${base_url}/user/login`,userData);
+            const data = response.data;
+            if(data.error){
+                setErrorMessage(data.message);
+            }
+            else{
+                navigate('/');
+            }
+        }
+        catch(error){
+            console.log("Error fetching user data..",error.message);
+        }
     }
+
     const toSignup = () =>{
         navigate('/signup');
     }
