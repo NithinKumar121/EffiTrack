@@ -3,14 +3,41 @@ import Leftnav from './Leftnav'
 import Main from './Main'
 import {useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { getCookie } from '../../services/service.help';
+
+const tokenName = process.env.REACT_APP_JWT_NAME;
+
 const Home = () => {
     const dispatch = useDispatch();
-    const [flag,setflag] = useState(0);
     const navigate = useNavigate();
 
     useEffect(()=>{
-      console.log('helloworld')
+          checkAuth();
     },[]);
+
+    const checkAuth = async() =>{
+      const authToken = getCookie(tokenName);
+      if(!authToken){
+        navigate('/login');
+      }
+      else{
+        try{
+          const axiosInstance = axios.create({
+            headers: {
+              common: {
+                Authorization: `Bearer ${authToken}`
+              }
+            }
+          });
+          const response = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/user/`);
+          console.log(response.data);
+        } catch(error){
+            navigate('/login');
+        }
+      }
+    }
+
 
   return (
     <>

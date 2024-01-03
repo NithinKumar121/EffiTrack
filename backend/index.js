@@ -35,7 +35,7 @@ app.use('/api/leetcode',leetcodeRoutes);
 app.use('/api/codeforces',codeforcesRoutes);
 app.use('/api/github',githubRoutes);
 app.use('/api/codechef',codechefRoutes);
-app.use('/api/user/',userRoutes);
+app.use('/api/user',userRoutes);
 
 
 app.listen(PORT,console.log("listening on port " + PORT));

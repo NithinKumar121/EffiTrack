@@ -2,7 +2,10 @@ import './logincred.css';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { setCookie , getCookie, deleteCookie } from '../../services/service.help';
+
 const base_url = process.env.REACT_APP_BASE_URL;
+const tokenName = process.env.REACT_APP_JWT_NAME;
 
 const Login = () =>{
     const navigate = useNavigate();
@@ -17,22 +20,24 @@ const Login = () =>{
                 username:username,
                 password:password
             }
-
-            const response = await axios.post(`${base_url}/user/login`,userData);
+            const response = await axios.post(`${base_url}/user/login/`,userData);
             const data = response.data;
-            if(data.error){
-                setErrorMessage(data.message);
+            if(getCookie(tokenName)){
+                deleteCookie(tokenName);
             }
-            else{
-                navigate('/');
-            }
+            setCookie(tokenName,data.accessToken,4);
+            navigate('/');
         }
         catch(error){
-            console.log("Error fetching user data..",error.message);
+            if (error.response && (error.response.status === 404 || error.response.status === 401)) {
+                setErrorMessage(error.response.data.message)
+            } else {
+                console.error('Error:', error.message);
+            }
         }
     }
 
-    const toSignup = () =>{
+    const toSignup = () => {
         navigate('/signup');
     }
     return(

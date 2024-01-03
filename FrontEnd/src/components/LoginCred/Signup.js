@@ -21,51 +21,26 @@ const Signup = () =>{
                 password:password,
                 email:email
             }
-            const response = await axios.post(`${base_url}user/register`,userData);
-            const data = response.data;
-            if(data.error){
-                setErrorMessage(data.message);
-            }
-            else{
-                let newPromise = new Promise((resolve, reject) =>{
-                    setTimeout(()=>{
-                        resolve("To login Page");
-                    },3000);
-                })
-                newPromise.then((res)=>{
-                    console.log(res);
-                    navigate('/login')
-                })
-            }
+            const response = await axios.post(`${base_url}/user/register/`,userData);
+            let newPromise = new Promise((resolve, reject) =>{
+                setTimeout(()=>{
+                    resolve("To login Page");
+                },3000);
+            })
+            newPromise.then((res)=>{
+                navigate('/login')
+            
+            })
         }
         catch(error){
-            console.log("Error fetching user data..",error.message);
+            if (error.response && error.response.status === 409) {
+                setErrorMessage(error.response.data.message)
+            } else {
+                console.error('Error:', error.message);
+            }
         }
     }
-
-    // const handleSubmit = async (e)=> {
-    //     e.preventDefault();
-    //     try{
-    //         const response = await fetch('http://localhost:5000/api/user/register/',{
-    //             method: 'POST',
-    //             headers:{
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body:JSON.stringify({username:username,email:email,password:password})
-    //         })
-    //         const data =await response.json();
-    //         if(data.error){
-    //             setErrorMessage(data.message);
-    //         }
-    //         if(data.error==false){  
-    //             navigate('/login')
-    //         }
-    //     }
-    //     catch(err){
-    //         console.log(err);
-    //     }
-    // }
-
+    
     const toLogin = () =>{
         navigate('/login');
     }

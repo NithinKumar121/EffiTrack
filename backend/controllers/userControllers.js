@@ -12,7 +12,7 @@ const register = async (req,res) =>{
         const {error} = signupbodyValidation(req.body);
 
         if(error)   
-            return res.status(400).json({error:true,message:error.details[0].message});
+            return res.status(409).json({error:true,message:error.details[0].message});
 
         const data = await userModel.findOne({
             $or: [
@@ -20,33 +20,34 @@ const register = async (req,res) =>{
                 { email: email }
               ],
         });
-        console.log('data',data);
+
         if(data){
             return res
-                    .status(400)
+                    .status(409)
                     .json({error:true,message:"Username or Email already registered"});
         }
 
         const salt = await bcrypt.genSalt(parseInt(process.env.SALT));
         const hashedPassword = await bcrypt.hash(password,salt);
-        console.log(username,password,email);
         const user = new userModel({
             username: username,
             password:hashedPassword,
             email:email
         })
+        // user creation
         await user.save();
 
         if(user){
-            console.log(user);
-            return res.status(201).json({error:false,message:{name:username,email:email}})
+
+            return res.status(201).json({error:false,message:{name:username,email:email}})  
+            //  201 is for successful creation
         }else{   
             return res
-                   .status(403)
+                   .status(409)
                    .json({error:true,message:"Invalid user data"});
         }
     } catch(err){
-        res.status(500).json({Error:err.message});
+        res.status(409).json({error:true,message:err.message});
     }
 }
 
@@ -63,7 +64,7 @@ const login = async  (req,res) =>{
         const verifiedPassword = await bcrypt.compare(password,user.password);
         if(!verifiedPassword){
             return res
-                .status(400)
+                .status(401)
                 .json({error:true,message:"Invalid password"});
         }
         const {accessToken} = await generateTokens(user);
@@ -80,7 +81,6 @@ const login = async  (req,res) =>{
 
 const getMe = async(req,res) =>{
     const user = await req.user;
-    console.log(user);
     res.status(200).json({error:false,message:user})
 }
 
@@ -96,10 +96,8 @@ const logout = async(req,res) =>{
                     .json({error:false,message:"Logged out successfully"});
         }
         await userToken.deleteOne({token:refreshToken})
-        console.log(token)
         res.status(200).json({error:false,message:"Logged out successfully"})
     }catch(err){
-        console.log(err)
         res.status(500).json({error:true,message:"Interval Server Error"})
     }
 }
