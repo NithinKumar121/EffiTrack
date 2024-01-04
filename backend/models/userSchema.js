@@ -10,6 +10,10 @@ const userSchema = new schema({
     codeforces:{type:String,default:"unknown"},
     codechef:{type:String,default:"unknown"},
     github:{type:String,default:"unknown"},
+    profileImage:{
+        data: { type: String, default: "" }, // Store base64-encoded image data
+        contentType: { type: String, default: "" } // Store content type of the image
+    }
 })
 
 

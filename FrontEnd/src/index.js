@@ -9,6 +9,7 @@ import { createBrowserRouter,Router,RouterProvider } from 'react-router-dom';
 import Signup from './components/LoginCred/Signup';
 import Login from './components/LoginCred/Login'
 import Error from './components/Error.js';
+import EditProfile from './components/ProfilePage/Editprofile';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const appRouter = createBrowserRouter(
@@ -26,6 +27,11 @@ const appRouter = createBrowserRouter(
     {
       path:'/login',
       element:<Login/>,
+      errorElement:<Error/>
+    },
+    {
+      path:'/profile',
+      element:<EditProfile/>,
       errorElement:<Error/>
     }
   ]
