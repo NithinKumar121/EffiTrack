@@ -10,29 +10,29 @@ import Signup from './components/LoginCred/Signup';
 import Login from './components/LoginCred/Login'
 import Error from './components/Error.js';
 import EditProfile from './components/ProfilePage/Editprofile';
-
+import Page404 from './components/404Error/404Error';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const appRouter = createBrowserRouter(
   [
     {
       path:'/',
       element:<App/>,
-      errorElement:<Error/>
+      errorElement:<Page404/>
     },
     {
       path:'/signup',
       element:<Signup/>,
-      errorElement:<Error/>
+      errorElement:<Page404/>
     },
     {
       path:'/login',
       element:<Login/>,
-      errorElement:<Error/>
+      errorElement:<Page404/>
     },
     {
       path:'/profile',
       element:<EditProfile/>,
-      errorElement:<Error/>
+      errorElement:<Page404/>
     }
   ]
 )
