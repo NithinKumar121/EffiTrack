@@ -11,6 +11,7 @@ import Login from './components/LoginCred/Login'
 import Error from './components/Error.js';
 import EditProfile from './components/ProfilePage/Editprofile';
 import Page404 from './components/404Error/404Error';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const appRouter = createBrowserRouter(
   [

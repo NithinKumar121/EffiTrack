@@ -13,7 +13,7 @@ const leetcodeSchema = new Schema({
     Medium:{type:Number,default:0},
     Hard:{type:Number,default:0},
     CurrentRating:{type:Number,default:0},
-    total_contest:{type:Number,default:0},
+    total_contest:{type:Number,default:0},  
     contest:[{title:String,rank:Number,rating:Number}],
     globalRating:Number,
 })
