@@ -8,10 +8,10 @@ const { editImage,
         editCodechefUsername, 
         editGithubUsername} = require('../controllers/editProfileControllers');
 
-router.route('/profileImage',auth,editImage);
-router.route('/leetcode',auth,editLeetcodeUsername);
-router.route('/codefroce',auth,editCodeforceUsername);
-router.route('/codechef',auth,editCodechefUsername);
-router.route('/github',auth,editGithubUsername);
+router.route('/profileImage').post(auth,editImage)
+router.route('/leetcode').post(auth,editLeetcodeUsername)
+router.route('/codefroces').post(auth,editCodeforceUsername);
+router.route('/codechef').post(auth,editCodechefUsername);
+router.route('/github').post(auth,editGithubUsername);
 
 module.exports= router;

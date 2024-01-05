@@ -1,21 +1,39 @@
+const {userModel} = require("../models/userSchema");
+
+
 const editImage = (req,res) =>{
    
 }
 
-const editLeetcodeUsername = (req,res) =>{
-
+const editLeetcodeUsername = async (req,res) =>{
+    const doc = await userModel.findOneAndUpdate(req.user,{leetcode:req.body.newUsername},{
+        new:true,
+    });
+    console.log(req.body);
+    res.send(doc);
 }
 
-const editCodeforceUsername = (req,res) =>{
-
+const editCodeforceUsername = async (req,res) =>{
+    const doc = await userModel.findOneAndUpdate(req.user,{codeforces:req.body.newUsername},{
+        new:true,
+    });
+    console.log(req.body);
+    res.send(doc);
 }
 
-const editCodechefUsername = (req,res) =>{
-
+const editCodechefUsername = async (req,res) =>{
+    const doc = await userModel.findOneAndUpdate(req.user,{codechef:req.body.newUsername},{
+        new:true,
+    });
+    res.send(doc);
 }
 
-const editGithubUsername = (req,res)=>{
-
+const editGithubUsername = async (req,res)=>{
+    const doc = await userModel.findOneAndUpdate(req.user,{github:req.body.newUsername},{
+        new:true,
+    });
+    console.log(req.body);
+    res.send(doc);
 }
 
 
