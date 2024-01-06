@@ -9,9 +9,7 @@ const Shim = () =>{
         {
             title:'Leetcode',
             sub_title:'leetcode',
-            // count:leetcodeCount[0].data[0].count,
             count:500,
-            // rank:leetcodeRating[0].data[0].globalRanking,
             rank:100,
             completed_count: 300,
             topic_color:'bg-cd1_red',

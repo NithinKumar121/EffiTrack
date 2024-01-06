@@ -10,21 +10,13 @@ const {LcSlice} = require('../../redux/LcSlice');
 const {CodeForce} = require('../../redux/store');
 
 
-const Mid = ()=>{
-
-    // var leetcodeCount = useSelector(state => state.Leetcode.LcData);
-    // var leetcodeRating = useSelector(state => state.Leetcode.LcContest);
-    // var codeforce_count = useSelector(state => state.CodeForce.CFcount);
-    // var codeforce_rating = useSelector(state => state.CodeForce.CFrating);
-    
+const Mid = ()=>{   
 
     const cardData = [
         {
             title:'Leetcode',
             sub_title:'leetcode',
-            // count:leetcodeCount[0].data[0].count,
             count:500,
-            // rank:leetcodeRating[0].data[0].globalRanking,
             rank:100,
             completed_count: 300,
             topic_color:'bg-cd1_red',
@@ -46,11 +38,14 @@ const Mid = ()=>{
             topic_color:'bg-cd1_green'
         }
     ]
+    const [hello,sethello] = useState({
+        name:'hello',
+        age:'24',
+    })
     const github_data = {topic:"bg-cd1_purple"}
     return(
     <>
     {
-        // leetcodeCount.length == 0 ? <Shim/> :
         <section className="mid-top mt-[.5rem]">
             <div className="mid-left">
                 <div className="cards">
@@ -63,7 +58,7 @@ const Mid = ()=>{
                     }
                 </div>
                 <div className="graph-git">
-                    <div className="rounded-xl h-full item2 shadow-md git-profile">
+                    <div className="rounded-xl h-full item2 shadow-md bg-purple-300">
                         <GitProfile modify={github_data}/>
                     </div>
                     <div className="p-2 bg-white rounded-xl shadow-md ">
@@ -74,6 +69,11 @@ const Mid = ()=>{
             <div className="mid-right">
                 <Upcoming/>
             </div>  
+            <button onClick={()=>{
+                hello.name = 'new name';
+                sethello(hello);
+                console.log(hello);
+            }}>click</button>
         </section>
     }
         

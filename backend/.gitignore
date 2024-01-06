@@ -18,3 +18,8 @@ npm install mongoose
 npm install jsonwebtoken
 npm install bcrypt
 npm install highcharts highcharts-react-official
+
+#new
+
+npm install cors
+npm install body-parser

@@ -12,3 +12,4 @@ npm install @reduxjs/toolkit
 npm install frame-motion
 npm install react-highcharts --save
 npm install highcharts highcharts-react-official
+npm install react-router-dom

@@ -11,13 +11,9 @@ npm install router
 npm install puppeteer-core
 
 npm install mongoose
-
 npm install jsonwebtoken
-
 npm install bcrypt
-
 npm i github-contributions-counter
-
 npm install joi
 npm install joi-password-complexity
 npm install react-joi-validation --save

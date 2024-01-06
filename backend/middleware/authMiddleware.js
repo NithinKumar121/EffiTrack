@@ -23,14 +23,14 @@ const auth = async(req, res, next)=>{
             next();
         }
         catch(err){
-            return res.status(400).json({err:"Wrong token"})
+            return res.status(400).json({error:true,message:"Wrong token"})
         }
         if(!token){
-            return res.status(401).json({msg:"Not Authorized , No token"});
+            return res.status(401).json({error:true,message:"Not Authorized , No token"});
         }
     }
     else{
-        return res.status(401).json({msg:"Not Authorized , No token"});
+        return res.status(401).json({error:true,message:"Not Authorized , No token"});
     }
 }
 

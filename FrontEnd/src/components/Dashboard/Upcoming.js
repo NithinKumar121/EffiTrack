@@ -3,7 +3,7 @@ import Leetcode from '../../assets/LeetCode_logo.png';
 const Contest = () =>{
     return  (
         <>
-            <div className="contest bg-[#6D6027] text-white rounded-xl 
+            <div className="contest bg-[#497174] text-white rounded-xl 
                             flex flex-row px-3 py-3 mt-3
                              gap-x-3 items-center ">
                     <div>
@@ -19,11 +19,11 @@ const Contest = () =>{
     )
 }
 
-
 const Upcoming = () =>{
+    
     return(
         <>
-        <div className='bg-[#D3CBB8] p-4 rounded-xl lg:h-full'>
+        <div className='bg-[#D6E4E5] p-4 rounded-xl lg:h-full '>
             <h1 className="text-center text-2xl font-bold black lg:mb-4">Upcoming Contest</h1>
             <div className="upcoming-contests overflow-hidden h-[29rem] rounded-xl p-1">
                 <div className='overflow-auto w-full h-full no-scrollbar flex flex-col gap-y-3'>

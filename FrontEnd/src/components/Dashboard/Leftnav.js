@@ -5,9 +5,11 @@ import LCimage from '../../assets/LeetCode_logo.png'
 import CCimage from '../../assets/codechef.jpeg';
 import CFimage from '../../assets/codeforces-3.png'
 import GithubImg from '../../assets/github_left_bar.png'
+import './dashboard.css'
+
 
 const Leftnav = () => {
-  return <aside className='text-black shadow-md h-full overflow-hidden scrollbar-hide'>
+  return <aside className='white text-black h-full overflow-hidden scrollbar-hide'>
     <div className='top'>
       {/* logo  */}
       <div className='logo'>      
@@ -18,44 +20,29 @@ const Leftnav = () => {
         <span className="material-icons-sharp">close</span>
       </div>
     </div>
-    <div className='mid '>
-        <div className='mid_in'>
-          <a href="#" className='active'> 
-          <span className="material-icons-sharp">dashboard</span>
-           <h4>DashBoard</h4> 
-          </a>
-          <a href="#" className=''> 
-          <span><img className="h-[30px] w-[30px]" src={LCimage} ></img> </span>
-          <h4>LeetCode</h4> 
-          </a>
-          <a href="#" className=''>
-          <span><img className="h-[30px] w-[30px]" src={CFimage} ></img> </span> 
-          <h4>CodeForces</h4>
-          </a>
-          <a href="#" className=''> 
-          <span><img className="h-[30px] w-[30px]" src={CCimage} ></img></span>
-          <h4> CodeChef</h4>
-          </a>
-          <a href="#" className=''> 
-          <span><img className="h-[30px] w-[30px]" src={GithubImg} ></img> </span>
-          <h4>Github </h4>
-          </a>
+    <div className='mt-[3rem]'>
+        <div className='mid-container'>
+          <div className='left-nav-link'>
+            <Link to="/" className='left-nav-a l-nav-a-active group'> 
+              <span className="material-icons-sharp ">dashboard</span>
+              <h4 className='group-hover:ml-2 slowmo'>DashBoard</h4> 
+            </Link>
+          </div>
+          <div className='left-nav-link '>
+            <Link to="/" className='left-nav-a group'> 
+            <span class="material-icons-sharp">local_library</span>
+              <h4 className='group-hover:ml-2 slowmo'>Platforms</h4> 
+            </Link>
+          </div>
+
+    
+    
           <div className='aside-bottom'>
-            <div className='settings'>
-              <a href="#" className=''> 
+            <div className='left-nav-link'>
+              <Link href="#" className='left-nav-a l-nav-a-active'> 
                 <span className="material-icons-sharp">settings</span> 
                 <h4>Settings </h4>
-              </a>
-              <a href="#" className=''> 
-                <span className="material-icons-sharp">message</span> 
-                <h4>Support </h4>
-              </a>
-            </div>
-            <div className='sign-out'>
-              <a href="#" className=''> 
-                <span className="material-icons-sharp">dashboard</span> 
-                <h4>Github </h4>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

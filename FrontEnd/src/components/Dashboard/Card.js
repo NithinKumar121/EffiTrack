@@ -3,8 +3,10 @@ import React from 'react'
 const Card = ({card}) => {
 
   return (
-    //template literal
-    <div className={`card ${card.sub_title}`}>      
+    <div>
+
+    
+    <div className={`card ${card.sub_title  }`}>      
         <div className="card-details">
             <div className={`card-details-top ${card.topic_color} rounded-xl`}>
                 <h1>{card.title}</h1>
@@ -44,10 +46,8 @@ const Card = ({card}) => {
                     {card.completed_count.toString()+"%".padStart(1,'0')}
                 </text>
             </svg>
-            {/* <div class="number">
-                <p>{card.completed_count}</p>
-            </div> */}
         </div>
+    </div>
     </div>
   )
 }
