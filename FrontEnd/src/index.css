@@ -44,11 +44,6 @@ code {
 }
 
 
-aside , .top-navbar {
-  color:black !important;
-  background: #f2fcfe;
-}
-
 .top{
   margin-top: 2rem;
 }
@@ -65,104 +60,14 @@ aside , .top-navbar {
   display: none;
 }
 
-.mid{
-  
-  margin-top: 3rem;
-}
-.mid > div{
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem 0;
-  height: 83.9vh;
-}
 
-
-
-.mid > div a{
-  height: 3rem;
-  font-weight: 500;
-  font-size:medium;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  gap : 1rem;
-  margin-left: 2rem;
-  transition:all 300ms ease;
-}
-.mid > div a span:hover{
-  margin-left: 1rem;
-}
-
-.mid > div a span{
-  transition:all 300ms ease;
-}
-
-
-.mid_in > a.active{
-  background:lightblue;
-  margin-left: 0;
-}
-
-.mid_in > a.active span{
-  margin-left: calc(1rem - 7px);
-}
-
-.mid_in > a:hover span{
-  padding-left: 1rem;
-}
-
-
-.mid_in > a.active::before{
-  content: '';
-  width: 6px;
-  background: blue;
-  height: 100%;
-}
-/* aside bottom */
-
-.aside-bottom{
-  position: absolute;
-  bottom: 3rem;
-  width: 100%;
-  height: 15rem;
-}
-
-.settings{
-  height:60%;
-  border-top: 1px solid #1D1E2C;
-  border-bottom: 1px solid #1D1E2C;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition: all 300ms ease;
-}
-
-.settings > a , .sign-out > a{
-  transition: all 300ms ease;
-}
-
-.settings > a:hover span , .sign-out > a:hover span{
-  margin-left: 1rem;
-}
-
-.sign-out{
-  height: 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-bottom: 1px solid #1D1E2C;
-  transition: all 300ms ease;
-}
 
 /* Mid of the dashboard .... */
 
 
 .mid-top{
-  /* height: 30rem; */
   display: grid;
-  grid-template-columns: 75% 23%;
+  grid-template-columns: auto 20rem;
   gap: 1rem;
 }
 
@@ -172,11 +77,15 @@ aside , .top-navbar {
   gap: 1rem;
   font-size: large;
   font-weight: 500;
-  justify-content: space-between;
+  /* justify-content: space-around; */
 }
 
+.cards > div{
+  width: 100%;
+}
 .mid-top .mid-left .cards .card{
   height: 12rem;
+  margin: auto;
   padding: 1rem;
   border-radius: 16px;
   display: flex;
@@ -186,16 +95,13 @@ aside , .top-navbar {
 }
 
 .mid-top .mid-left .cards .leetcode{
-  background: #FA5A7D40;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .mid-top .mid-left .cards .codechef{
-  background: rgba(255, 148, 122, 0.25);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .mid-top .mid-left .cards .codeforces{
-  background: rgba(60, 216, 86, 0.25) ;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 } 
 
@@ -299,9 +205,9 @@ aside , .top-navbar {
   gap: 1.5rem;
 }
 
-.graph-git .git-profile{
+/* .graph-git .git-profile{
   background: #F3E8FF;
-}
+} */
 
 .two-graph{
   display: flex;

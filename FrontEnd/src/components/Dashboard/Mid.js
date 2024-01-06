@@ -10,7 +10,7 @@ const {LcSlice} = require('../../redux/LcSlice');
 const {CodeForce} = require('../../redux/store');
 
 
-const Mid = ()=>{    
+const Mid = ()=>{   
 
     const cardData = [
         {
@@ -38,6 +38,10 @@ const Mid = ()=>{
             topic_color:'bg-cd1_green'
         }
     ]
+    const [hello,sethello] = useState({
+        name:'hello',
+        age:'24',
+    })
     const github_data = {topic:"bg-cd1_purple"}
     return(
     <>
@@ -54,7 +58,7 @@ const Mid = ()=>{
                     }
                 </div>
                 <div className="graph-git">
-                    <div className="rounded-xl h-full item2 shadow-md git-profile">
+                    <div className="rounded-xl h-full item2 shadow-md bg-purple-300">
                         <GitProfile modify={github_data}/>
                     </div>
                     <div className="p-2 bg-white rounded-xl shadow-md ">
@@ -65,6 +69,11 @@ const Mid = ()=>{
             <div className="mid-right">
                 <Upcoming/>
             </div>  
+            <button onClick={()=>{
+                hello.name = 'new name';
+                sethello(hello);
+                console.log(hello);
+            }}>click</button>
         </section>
     }
         

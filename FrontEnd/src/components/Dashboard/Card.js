@@ -3,7 +3,10 @@ import React from 'react'
 const Card = ({card}) => {
 
   return (
-    <div className={`card ${card.sub_title}`}>      
+    <div>
+
+    
+    <div className={`card ${card.sub_title  }`}>      
         <div className="card-details">
             <div className={`card-details-top ${card.topic_color} rounded-xl`}>
                 <h1>{card.title}</h1>
@@ -44,6 +47,7 @@ const Card = ({card}) => {
                 </text>
             </svg>
         </div>
+    </div>
     </div>
   )
 }

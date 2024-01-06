@@ -1,9 +1,6 @@
 const Joi = require('joi');
-// const {validate} = require('react-joi-validation');
-// const {passwordComplexity} =require('joi-password-complexity');
+
 const passwordComplexity = require('joi-password-complexity');
-// import Joi from 'joi';
-// import passwordComplexity from 'joi-password-complexity'
 
 const signupbodyValidation = (body)=>{
     console.log('inside id');
