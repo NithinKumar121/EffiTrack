@@ -4,7 +4,7 @@ import Main from './Main'
 import {useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { getCookie } from '../../services/service.help';
+import { getCookie } from '../../services/servicehelp';
 
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
@@ -18,6 +18,7 @@ const Home = () => {
 
     const checkAuth = async() =>{
       const authToken = getCookie(tokenName);
+      console.log(authToken)
       if(!authToken){
         navigate('/login');
       }

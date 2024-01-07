@@ -23,10 +23,10 @@ const Upcoming = () =>{
     
     return(
         <>
-        <div className='bg-[#D6E4E5] p-4 rounded-xl lg:h-full '>
+        <div className='bg-[#D6E4E5] p-4 rounded-xl h-[73.5vh]'>
             <h1 className="text-center text-2xl font-bold black lg:mb-4">Upcoming Contest</h1>
-            <div className="upcoming-contests overflow-hidden h-[29rem] rounded-xl p-1">
-                <div className='overflow-auto w-full h-full no-scrollbar flex flex-col gap-y-3'>
+            <div className='overflow-hidden h-[65vh] rounded-xl p-1 mb-[1rem]'>
+                <div className='overflow-y-auto w-full h-full no-scrollbar flex flex-col gap-y-3'>
                     <Contest/>
                     <Contest/>
                     <Contest/>

@@ -2,7 +2,7 @@ import './logincred.css';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { setCookie , getCookie, deleteCookie } from '../../services/service.help';
+import { setCookie , getCookie, deleteCookie } from '../../services/servicehelp';
 
 const base_url = process.env.REACT_APP_BASE_URL;
 const tokenName = process.env.REACT_APP_JWT_NAME;

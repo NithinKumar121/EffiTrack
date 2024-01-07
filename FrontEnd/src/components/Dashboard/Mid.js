@@ -6,6 +6,7 @@ import LineChart from "./LIneChart";
 import Upcoming from "./Upcoming";
 import Shim from "./Shimmer";
 import { useSelector } from "react-redux";
+import Chart from "../highcharts";
 const {LcSlice} = require('../../redux/LcSlice');
 const {CodeForce} = require('../../redux/store');
 
@@ -46,7 +47,7 @@ const Mid = ()=>{
     return(
     <>
     {
-        <section className="mid-top mt-[.5rem]">
+        <section className="mid-top ">
             <div className="mid-left">
                 <div className="cards">
                     {
@@ -62,18 +63,13 @@ const Mid = ()=>{
                         <GitProfile modify={github_data}/>
                     </div>
                     <div className="p-2 bg-white rounded-xl shadow-md ">
-                        <LineChart/>
+                      <Chart/>
                     </div>
                 </div>
             </div> 
             <div className="mid-right">
                 <Upcoming/>
             </div>  
-            <button onClick={()=>{
-                hello.name = 'new name';
-                sethello(hello);
-                console.log(hello);
-            }}>click</button>
         </section>
     }
         

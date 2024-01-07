@@ -1,7 +1,7 @@
 const {getForceCount,getForceRating}  = require("../utils/CodeForceFun");
 
 const getCFcount = async (req,res) =>{
-    const response = await getForceCount("Cibiyanna26");
+    const response = await getForceCount("Muthuval_A");
     console.log("data has been retrived",response);
     try{
         res.status(200).json({data:response});
@@ -12,9 +12,9 @@ const getCFcount = async (req,res) =>{
 }
 
 const getCFrating = async (req,res) =>{
-    const response = await getForceRating("Cibiyanna26");
+    const response = await getForceRating("Muthuvel_A");
     try{
-        res.status(200).json({data:response});
+        res.status(200).json({error:false,message:response.result});
     } catch{
         res.status(500).json({Error:"data haven't fetch by the code forece api"});
     }

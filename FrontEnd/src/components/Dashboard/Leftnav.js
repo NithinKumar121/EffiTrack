@@ -28,13 +28,18 @@ const Leftnav = () => {
               <h4 className='group-hover:ml-2 slowmo'>DashBoard</h4> 
             </Link>
           </div>
-          <div className='left-nav-link '>
+          {/* <div className='left-nav-link '>
             <Link to="/" className='left-nav-a group'> 
             <span class="material-icons-sharp">local_library</span>
               <h4 className='group-hover:ml-2 slowmo'>Platforms</h4> 
             </Link>
+          </div> */}
+          <div className='left-nav-link '>
+            <Link to="/" className='left-nav-a group'> 
+            <span class="material-icons-sharp">account_circle</span>
+              <h4 className='group-hover:ml-2 slowmo'>Profile</h4> 
+            </Link>
           </div>
-
     
     
           <div className='aside-bottom'>

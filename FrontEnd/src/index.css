@@ -65,25 +65,25 @@ code {
 /* Mid of the dashboard .... */
 
 
-.mid-top{
+/* .mid-top{
   display: grid;
   grid-template-columns: auto 20rem;
   gap: 1rem;
-}
+} */
 
-.mid-top .mid-left .cards{
+/* .mid-top .mid-left .cards{
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 1rem;
   font-size: large;
   font-weight: 500;
-  /* justify-content: space-around; */
-}
+  justify-content: space-around;
+} */
 
-.cards > div{
+/* .cards > div{
   width: 100%;
-}
-.mid-top .mid-left .cards .card{
+} */
+/* .mid-top .mid-left .cards .card{
   height: 12rem;
   margin: auto;
   padding: 1rem;
@@ -92,9 +92,9 @@ code {
   flex: 1;
   flex-direction: row;
   align-items: center;
-}
+} */
 
-.mid-top .mid-left .cards .leetcode{
+/* .mid-top .mid-left .cards .leetcode{
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .mid-top .mid-left .cards .codechef{
@@ -103,13 +103,13 @@ code {
 
 .mid-top .mid-left .cards .codeforces{
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-} 
+}  */
 
-.mid-top .mid-left .cards .leetcode:hover{
+/* .mid-top .mid-left .cards .leetcode:hover{
   box-shadow: 0;
-}
+} */
 
-.mid-top .mid-left .cards .card .card-details{
+/* .mid-top .mid-left .cards .card .card-details{
   width: 60%;
   line-height: 2rem;
 }
@@ -121,7 +121,7 @@ code {
   height: 92px;
   border-radius: 50%;
   bottom: 0;
-}
+} */
 
 .mid-top .mid-left .cards .card .progress svg{
   width: 8rem;
