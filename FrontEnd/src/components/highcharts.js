@@ -81,7 +81,7 @@ const Chart = () =>{
         console.log('options',options)
     },[options])
     const checkAuth = async() =>{
-      const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlbW9uYW1lIiwiZW1haWwiOiJkZW1vZW1haWwiLCJpYXQiOjE3MDQ2MDQ1NDksImV4cCI6MTcwNDYxODk0OX0.vbSvXZ-2XAHOtcDqvTwSbzOsfDyRXvlqcbRrGrDFnRo';
+      const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlbW9uYW1lIiwiZW1haWwiOiJkZW1vZW1haWwiLCJpYXQiOjE3MDQ3MDQxNDcsImV4cCI6MTcwNDcxODU0N30.0ETC9W546gfUN_jvmguwbkPjkGjpxVNFwww7U2kgYFQ';
       if(!authToken){
         navigate('/login');
       }
@@ -136,12 +136,25 @@ const Chart = () =>{
               {
                 name:'Leetcode',
                 data: Rating,
-                color:'green'
+                color:'green',
+                marker:{
+                  // radius: 5, // Adjust marker size
+                  // // symbol: 'triangle', // Change marker shape (see https://api.highcharts.com/highcharts/series.line.marker.symbol for options)
+                  // fillColor: 'blue', // Set marker fill color
+                  lineWidth: 1, // Set marker outline width
+                  lineColor: 'lightgreen',
+                  symbol:'circle',
+                }
               },
               {
                 name:'Codeforces',
                 data:cfRating,
-                color:'purple'
+                color:'purple',
+                marker:{
+                  lineWidth: 1, // Set marker outline width
+                  lineColor: 'violet',
+                  symbol:'circle',
+                }
               }
             ],
             tooltip: {

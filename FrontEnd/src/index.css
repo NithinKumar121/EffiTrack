@@ -202,7 +202,7 @@ code {
   display: grid;
   grid-template-columns:1fr 2fr;
   margin-top: 1rem;
-  gap: 1.5rem;
+  gap: .5rem;
 }
 
 /* .graph-git .git-profile{
@@ -235,7 +235,7 @@ code {
   display: grid;
   grid-template-columns:2fr 1fr;
   gap: 2rem;
-  margin-top:1rem;
+  margin-top:.5rem;
   
 }
 
@@ -298,3 +298,8 @@ code {
 
 
 /* background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% ); */
+
+.up-bg{
+  background-color: #dbcbd8;
+  background-image: linear-gradient(316deg, #dbcbd8 0%, #2e4057 74%);
+}
