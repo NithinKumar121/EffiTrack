@@ -1,6 +1,53 @@
 import Leetcode from '../../assets/LeetCode_logo.png';
+import { useNavigate } from "react-router-dom";
+import { getCookie } from '../../services/servicehelp';
+import axios from 'axios';
+import { useEffect } from 'react';
+const tokenName = process.env.REACT_APP_JWT_NAME;
+
+function isValidDateString(dateString) {
+    const inputDate = new Date(dateString);
+    // Get current date
+    const currentDate = new Date();
+    // Check if the year matches the current year
+    const inputYear = inputDate.getFullYear();
+    if (inputYear !== currentDate.getFullYear()) {
+      return false;
+    }
+  
+    // Check if the date is present or future
+    if (inputDate < currentDate) {
+      return false;
+    }
+  
+    return true;
+  }
 
 const Contest = () =>{
+    // useEffect(()=>{
+    //     upComing();
+    // },[]);
+    // const upComing = async () =>{
+    //     const authToken = getCookie(tokenName);
+    
+    //     try{
+    //         const axiosInstance = axios.create({
+    //           headers: {
+    //             common: {
+    //               Authorization: `Bearer ${authToken}`
+    //             }
+    //           }
+    //         });
+    //         const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/user/upcoming`);
+    //         console.log(lcresponse);
+    //         const currentContest = lcresponse.filter((contest)=>{
+    //             return isValidDateString(contest.start) == true;
+    //         })
+    //         // q
+    //       } catch(error){
+    //           console.log("upcoming data is not available");
+    //       }
+    // }
     return  (
         <>
             <div className="contest bg-white rounded-lg text-black

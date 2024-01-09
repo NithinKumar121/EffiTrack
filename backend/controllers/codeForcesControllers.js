@@ -1,12 +1,13 @@
 const {getForceCount,getForceRating}  = require("../utils/CodeForceFun");
 
 const getCFcount = async (req,res) =>{
-    const response = await getForceCount("Muthuval_A");
-    console.log("data has been retrived",response);
+    const username = req.user.codeforces;
+    
     try{
-        res.status(200).json({data:response});
+        const response = await getForceCount(username);
+        res.status(200).json({error:false,message:response});
     } catch (err){
-        res.status(500).json({Error:"data haven't fetch by the code forece api"})
+        res.status(500).json({error:true,message:"data haven't fetch by the code forece api"})
     }
     
 }
@@ -16,7 +17,7 @@ const getCFrating = async (req,res) =>{
     try{
         res.status(200).json({error:false,message:response.result});
     } catch{
-        res.status(500).json({Error:"data haven't fetch by the code forece api"});
+        res.status(500).json({error:true,message:"data haven't fetch by the code forece api"});
     }
 }
 
@@ -24,9 +25,9 @@ const postCFcount = async (req,res) =>{
     const username  = req.body.username;
     try{
         const submitStats = await getForceCount(username);
-        res.status(200).json({data:submitStats});
+        res.status(200).json({error:false,message:submitStats});
     }catch(err){
-        res.status(500).json({Error:"Error occurred while fetching the data from the leetcode api"})
+        res.status(500).json({error:true,message:"Error occurred while fetching the data from the leetcode api"})
     }
 }
 
@@ -35,9 +36,9 @@ const postCFrating = async (req,res) =>{
     const username  = req.body.username;
     try{
         const submitStats = await getForceRating(username);
-        res.status(200).json({data:submitStats});
+        res.status(200).json({error:false,message:submitStats});
     }catch(err){
-        res.status(500).json({Error:"Error occurred while fetching the data from the leetcode api"})
+        res.status(500).json({error:true,message:"Error occurred while fetching the data from the leetcode api"})
     }
 }
 

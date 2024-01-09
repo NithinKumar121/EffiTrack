@@ -1,9 +1,11 @@
 import highstock from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import axios from "axios";
-// import  getCookie  from '../../services/servicehelp';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
+
+import { getCookie } from "../services/servicehelp";
+
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
 const options = {
@@ -81,9 +83,9 @@ const Chart = () =>{
         console.log('options',options)
     },[options])
     const checkAuth = async() =>{
-      const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlbW9uYW1lIiwiZW1haWwiOiJkZW1vZW1haWwiLCJpYXQiOjE3MDQ3MDQxNDcsImV4cCI6MTcwNDcxODU0N30.0ETC9W546gfUN_jvmguwbkPjkGjpxVNFwww7U2kgYFQ';
+      const authToken = getCookie(tokenName);
       if(!authToken){
-        navigate('/login');
+        // navigate('/login');
       }
       else{
         try{
@@ -112,10 +114,12 @@ const Chart = () =>{
               name:cfdata[i].contestName,
               y:Math.round(cfdata[i].newRating),
             }
-            console.log('contest',contest)
             cfRating.push(contest);
           }
           setChartOptions({
+            chart: {
+              type: 'spline'
+            },
             xAxis: {
               title: {
                   text: 'Contest Attended' // X-axis label
@@ -179,9 +183,14 @@ const Chart = () =>{
     return(
         <div>
             {
-                chartOptions.length == 0 ? <h1>coming wait</h1>
+              <>{
+                 chartOptions.length == 0 ? <h1>coming wait</h1>
                 :
                 <HighchartsReact options={chartOptions} highcharts={highstock} />
+              }
+              </>
+               
+                
             }
             
         </div>

@@ -5,9 +5,9 @@ const getLcCount = async (req,res) =>{
     const username = req.user.leetcode;
     try{
         const submitStats = await getLeetCount(username);
-        res.status(200).json({data:submitStats});
+        res.status(200).json({error:false,message:submitStats});
     }catch(err){
-        res.status(500).json({Error:"Error occurred while fetching the data from the leetcode api"})
+        res.status(500).json({error:true,message:"Error occurred while fetching the data from the leetcode api"})
     }
    
 }

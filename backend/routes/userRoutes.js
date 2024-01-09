@@ -8,7 +8,8 @@ const {auth} = require("../middleware/authMiddleware");
 router.post('/register',register);
 router.post('/login',login);
 router.get('/',auth,getMe);
-router.route('/upcoming').get(fetchContestData);
+router.route('/upcoming').get(auth,fetchContestData);
 
 
 module.exports= router;
+
