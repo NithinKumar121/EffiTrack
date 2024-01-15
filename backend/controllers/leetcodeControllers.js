@@ -26,6 +26,7 @@ const postLcCount = async (req,res) =>{
 const getLcRating =async (req,res) =>{
     const username = req.user.leetcode;
     var submitStats =await getLeetRating(username);
+    console.log(req.user);
     const attendContest = submitStats[1].filter((data)=>{
         return data.attended==true;
     })

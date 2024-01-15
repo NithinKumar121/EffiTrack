@@ -108,6 +108,7 @@ const Chart = () =>{
               y:Math.round(data[i].rating),
             }
             Rating.push(contest);
+            console.log(Rating);
           }
           for(let i = 0;i<cfdata.length;i++){
             const contest ={

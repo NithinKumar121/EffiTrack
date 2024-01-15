@@ -14,7 +14,7 @@ import Chart from '../highcharts';
         <div className='overflow-hidden h-[92vh]  white p-3 '>
           <div className='overflow-y-auto w-full h-full no-scrollbar'>
             {
-              change  == true ? <div>
+              change  == false ? <div>
                   <Mid/>
                   <Showcase/>
                   <Showcase/>
