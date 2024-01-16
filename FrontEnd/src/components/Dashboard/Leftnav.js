@@ -8,7 +8,8 @@ import GithubImg from '../../assets/github_left_bar.png'
 import './dashboard.css'
 
 
-const Leftnav = () => {
+const Leftnav = ( props ) => {
+  const {display,setDisplay} = {...props};
   return <aside className='white text-black h-full overflow-hidden scrollbar-hide'>
     <div className='top'>
       {/* logo  */}
@@ -23,10 +24,10 @@ const Leftnav = () => {
     <div className='mt-[3rem]'>
         <div className='mid-container'>
           <div className='left-nav-link'>
-            <Link to="/" className='left-nav-a l-nav-a-active group'> 
+            <button className={`left-nav-a ${(display === 'dashboard')?'l-nav-a-active group':''}`} onClick={()=>setDisplay('dashboard')}> 
               <span className="material-icons-sharp ">dashboard</span>
               <h4 className='group-hover:ml-2 slowmo'>DashBoard</h4> 
-            </Link>
+            </button>
           </div>
           {/* <div className='left-nav-link '>
             <Link to="/" className='left-nav-a group'> 
@@ -34,11 +35,11 @@ const Leftnav = () => {
               <h4 className='group-hover:ml-2 slowmo'>Platforms</h4> 
             </Link>
           </div> */}
-          <div className='left-nav-link '>
-            <Link to="/" className='left-nav-a group'> 
+          <div className='left-nav-link'>
+            <button className={`left-nav-a ${(display === 'profile')?'l-nav-a-active group':''}`} onClick={()=>setDisplay('profile')}> 
             <span class="material-icons-sharp">account_circle</span>
               <h4 className='group-hover:ml-2 slowmo'>Profile</h4> 
-            </Link>
+            </button>
           </div>
     
     
