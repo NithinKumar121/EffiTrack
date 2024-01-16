@@ -10,11 +10,11 @@ import Chart from '../highcharts';
   console.log(props.display)
   return (
     <div className='overflow-hidden h-full'>
-        <div className='overflow-hidden h-[92vh]  white p-3 '>
+        <div className='overflow-hidden h-full white p-3 '>
           <div className='overflow-y-auto w-full h-full no-scrollbar'>
+            <Navbar className='fixed'/>
             {
               props.display  === 'dashboard' ? <div>
-                  <Navbar className='fixed'/>
                   <Mid/>
                   <Showcase/>
                   <Showcase/>
