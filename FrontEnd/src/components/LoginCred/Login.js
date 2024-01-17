@@ -1,74 +1,25 @@
 import './logincred.css';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { setCookie , getCookie, deleteCookie } from '../../services/servicehelp';
-
-const base_url = process.env.REACT_APP_BASE_URL;
-const tokenName = process.env.REACT_APP_JWT_NAME;
+import login_bg from '../../assets/login_bg.jpg'
+import { useState } from 'react';
+import { LoginForm, SignupForm } from './Login.helper';
 
 const Login = () =>{
-    const navigate = useNavigate();
-    const [username,setUsername] = useState('');
-    const [password,setPassword] = useState('');
-    const [errorMessage,setErrorMessage]  = useState('');
 
-    const handleSubmit = async (e) =>{
-        e.preventDefault();
-        try{
-            const userData = {
-                username:username,
-                password:password
-            }
-            const response = await axios.post(`${base_url}/user/login/`,userData);
-            const data = response.data;
-            if(getCookie(tokenName)){
-                deleteCookie(tokenName);
-            }
-            setCookie(tokenName,data.accessToken,4);
-            navigate('/');
-        }
-        catch(error){
-            if (error.response && (error.response.status === 404 || error.response.status === 401)) {
-                setErrorMessage(error.response.data.message)
-            } else {
-                console.error('Error:', error.message);
-            }
-        }
-    }
-
-    const toSignup = () => {
-        navigate('/signup');
-    }
+  const [isLogin, setIsLogin] = useState(true)
+   
     return(
         <>
-            <form onSubmit={handleSubmit} className='text-black flex flex-col gap-y-4 p-4 rounded-xl bg-gray-300'>
-                <label>Username:</label>
-                    <input
-                        type="text"
-                        name="firstName"
-                        value={username}
-                        onChange={(e)=>setUsername(e.target.value)}
-                        required
-                        className='text-black'
-                    />
-                
-                <br/>
-                <label> Password: </label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={(e)=>setPassword(e.target.value)}
-                        required
-                        className='text-black'
-                    />
-               
-                <br/>
-                <p>Don't have an account ? <button className='' onClick={()=>toSignup()}>Signup</button></p>
-                <label>{errorMessage}</label>
-                <button type="submit">Login</button>
-            </form>
+          <div className={`h-[100vh] flex justify-center items-center bg-cover}style={{ backgroundImage: url(${login_bg}) }`} >
+            <div className="flex flex-row w-full max-w-[600px] justify-center">
+              <div className="text-white hidden sm:block bg-black p-14 rounded-tl-xl sm:rounded-l-xl sm:rounded-t-xl">
+                <h1 className="text-4xl font-bold">effitrack</h1>
+              </div>
+              {
+                (isLogin === true)?
+                <LoginForm/>:<SignupForm/>
+              }
+            </div>
+          </div>
         </>
     )
 }
