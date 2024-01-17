@@ -2,14 +2,14 @@ import './logincred.css';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { setCookie , getCookie, deleteCookie } from '../../services/service.help';
-import login_bg from '../../assets/login_bg.jpg'
+import { setCookie , getCookie, deleteCookie } from '../../services/servicehelp.js';
 
 const base_url = process.env.REACT_APP_BASE_URL;
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
-export const LoginForm = () => {
+export const LoginForm = ( props ) => {
     const navigate = useNavigate();
+    const {setIsLogin} = {...props};
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     const [errorMessage,setErrorMessage]  = useState('');
@@ -21,7 +21,7 @@ export const LoginForm = () => {
                 username:username,
                 password:password
             }
-            const response = await axios.post(`${base_url}/user/login/,userData`);
+            const response = await axios.post(`${base_url}/user/login/`,userData);  
             const data = response.data;
             if(getCookie(tokenName)){
                 deleteCookie(tokenName);
@@ -39,7 +39,7 @@ export const LoginForm = () => {
     }
 
     const toSignup = () => {
-        navigate('/signup');
+        setIsLogin(false)
     }
 
     return(
@@ -82,7 +82,10 @@ export const LoginForm = () => {
 
 
 
-export const SignupForm = () =>{
+export const SignupForm = (props) =>{
+
+    const {setIsLogin} = {...props};
+
     const navigate = useNavigate();
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
@@ -118,43 +121,48 @@ export const SignupForm = () =>{
     }
     
     const toLogin = () =>{
-        navigate('/login');
+        setIsLogin(true)
     }
     return(
         <>
-            <form onSubmit={handleSubmit} className='text-black flex flex-col gap-y-4 p-14 rounded-xl bg-blue-300'>
-                <label>Username:</label>
+              <form onSubmit={handleSubmit} className='text-white flex flex-col justify-center items-center gap-y-4 p-14 py-10 bg-slate-800 border-slate-400 rounded-tr-xl shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-30 relative sm:rounded-r-xl sm:rounded-t-xl w-full'>
+              <h1 className='text-4xl text-white font-bold text-center mb-6'>Register</h1>
+              <div className='relative my-2'>
                     <input
                         type="text"
                         name="firstName"
                         value={username}
                         onChange={(e)=>setUsername(e.target.value)}
                         required
-                        className='text-black'
+                        className='block w-72 py-2.3 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus-text-white focus:border-blue-600 peer-text-6xl'
                     />
+                     <label htmlFor='' className='absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus-translate-y-6 '>Username</label>
+                     </div>
                 <br/>
-                <label>Email:</label>
+                <div className='relative my-2'>
                     <input
-                        type="text"
+                        type="email"
                         name="lastName"
                         value={email}
                         onChange={(e)=>setEmail(e.target.value)}
                         required
-                        className='text-black'
+                        className='block w-72 py-2.3 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus-text-white focus:border-blue-600 peer-text-6xl'
                     />
-                
+                    <label htmlFor='' className='absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus-translate-y-6 '>Email</label>
+                    </div>
                 <br/>
-                <label> Password: </label>
+                <div className='relative my-2'>
                     <input
                         type="password"
                         name="password"
                         value={password}
                         onChange={(e)=>setPassword(e.target.value)}
                         required
-                        className='text-black'
+                        className='block w-72 py-2.3 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus-text-white focus:border-blue-600 peer-text-6xl'
                     />
-               
+                   <label htmlFor='' className='absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus-translate-y-6 '>Password</label>
                 <br/>
+                </div>
                 <p>Already have an account ? <button className='' onClick={()=>toLogin()}>Login</button></p>
                 <label>{errorMessage}</label>
                 <button type="submit">Sign Up</button>

@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating-element {
+  animation: floatAnimation 2s infinite;
+}
