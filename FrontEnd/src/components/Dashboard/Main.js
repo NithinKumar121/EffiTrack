@@ -14,7 +14,7 @@ import Chart from '../highcharts';
         <div className='overflow-hidden h-[92vh]  white p-3 '>
           <div className='overflow-y-auto w-full h-full no-scrollbar'>
             {
-              change  == false ? <div>
+              change  == true ? <div>
                   <Mid/>
                   <Showcase/>
                   <Showcase/>
@@ -23,7 +23,7 @@ import Chart from '../highcharts';
               :
               <EditProfile/>
             }
-          </div>
+          </div>JJF
         </div>       
     </div>
   )
