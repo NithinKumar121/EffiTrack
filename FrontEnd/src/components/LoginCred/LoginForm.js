@@ -48,6 +48,7 @@ export const LoginForm = ( props ) => {
 
     const toSignup = () => {
         setIsLogin(false)
+        navigate('/signup')
     }
 
     return(

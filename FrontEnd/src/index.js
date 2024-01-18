@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './redux/store'
 import { Provider } from 'react-redux';
 import { createBrowserRouter,Router,RouterProvider } from 'react-router-dom';
-import {Login,Signup} from './components/LoginCred/Login'
+import {Login} from './components/LoginCred/Login'
 import EditProfile from './components/ProfilePage/Editprofile';
 import Page404 from './components/404Error/404Error';
 
@@ -22,12 +22,12 @@ const appRouter = createBrowserRouter(
     },
     {
       path:'/signup',
-      element:<Signup/>,
+      element:<Login page={false}/>,
       errorElement:<Page404/>
     },
     {
       path:'/login',
-      element:<Login/>,
+      element:<Login page={true}/>,
       errorElement:<Page404/>
     },
     {
