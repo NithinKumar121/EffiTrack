@@ -6,11 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './redux/store'
 import { Provider } from 'react-redux';
 import { createBrowserRouter,Router,RouterProvider } from 'react-router-dom';
-import Signup from './components/LoginCred/Signup';
-import Login from './components/LoginCred/Login'
-import Error from './components/Error.js';
+import {Login,Signup} from './components/LoginCred/Login'
 import EditProfile from './components/ProfilePage/Editprofile';
 import Page404 from './components/404Error/404Error';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const appRouter = createBrowserRouter(

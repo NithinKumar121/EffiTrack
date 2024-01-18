@@ -10,6 +10,7 @@ import './dashboard.css'
 
 const Leftnav = ( props ) => {
   const {display,setDisplay} = {...props};
+  
   return <aside className='white text-black h-full overflow-hidden scrollbar-hide'>
     <div className='top'>
       {/* logo  */}

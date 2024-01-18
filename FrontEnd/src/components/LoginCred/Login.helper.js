@@ -49,6 +49,7 @@ export const LoginForm = ( props ) => {
 
     const toSignup = () => {
         setIsLogin(false)
+        navigate('/signup');
     }
 
     return(
@@ -154,6 +155,7 @@ export const SignupForm = (props) =>{
     
     const toLogin = () =>{
         setIsLogin(true)
+        navigate('/login');
     }
     return(
         <>

@@ -74,15 +74,19 @@ const getLeetRating = async (username) =>{
     });
     var userContestRanking;
     var userContestRankingHistory;
-    if (response.ok) {
+    try{
+      if (response.ok) {
         data = await response.json();
          userContestRanking = data.data.userContestRanking;
          userContestRankingHistory = data.data.userContestRankingHistory.filter((d)=>{
             return d.attended == true;
         });
-    } else {
-      console.error(`Error: ${response.status}, ${await response.text()}`);
     }
+    }
+    catch(err){
+      console.log(`Error: ${response.status}, ${await response.text()}`);
+    }
+   
     return [userContestRanking,userContestRankingHistory];
 }
   
