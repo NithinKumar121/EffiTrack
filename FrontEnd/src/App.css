@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating-element {
+  animation: floatAnimation 2s infinite;
+}
+
+input {
+  caret-color: #3498db; /* Set the caret color to blue when focused */
+}
+
+/* Add a subtle animation for the label */
+label.active {
+  transform: translateY(-1.5rem) scale(0.75);
+  color: #3498db; /* Set the label color when active */
+}
