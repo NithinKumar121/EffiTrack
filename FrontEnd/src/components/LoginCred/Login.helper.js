@@ -132,7 +132,7 @@ export const SignupForm = (props) =>{
                 password:password,
                 email:email
             }
-            const response = await axios.post(`${base_url}/user/register/,userData`);
+            const response = await axios.post(`${base_url}/user/register/`, userData);
             let newPromise = new Promise((resolve, reject) =>{
                 setTimeout(()=>{
                     resolve("To login Page");
