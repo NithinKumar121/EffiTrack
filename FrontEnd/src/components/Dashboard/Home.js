@@ -61,12 +61,14 @@ const Home = () => {
       }
     }
 
+    const [display, setDisplay] = useState('dashboard');
+
 
   return (
     <>
         <div className='home_section bg-gray-300 h-full lg:h-[100vh] scrollbar-hide overflow-hidden'>
-          <Leftnav/>
-          <Main/>
+          <Leftnav display = {display} setDisplay={setDisplay}/>
+          <Main display = {display}/>
         </div>  
     </>
    

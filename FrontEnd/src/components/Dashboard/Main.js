@@ -6,15 +6,15 @@ import Shimmer from './Shimmer'
 import EditProfile from '../ProfilePage/Editprofile'
 import Chart from '../highcharts';
 
- const Main = () => {
-  const [change ,setChange] = useState(true);
+ const Main = ( props ) => {
+  console.log(props.display)
   return (
     <div className='overflow-hidden h-full'>
-        <Navbar className='fixed'/>
-        <div className='overflow-hidden h-[92vh]  white p-3 '>
+        <div className='overflow-hidden h-full white p-3 '>
           <div className='overflow-y-auto w-full h-full no-scrollbar'>
+            <Navbar className='fixed'/>
             {
-              change  == true ? <div>
+              props.display  === 'dashboard' ? <div>
                   <Mid/>
                   <Showcase/>
                   <Showcase/>
