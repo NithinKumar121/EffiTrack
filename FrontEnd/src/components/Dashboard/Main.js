@@ -23,7 +23,7 @@ import Chart from '../highcharts';
               :
               <EditProfile/>
             }
-          </div>
+          </div>JJF
         </div>       
     </div>
   )

@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
+import { getCookie } from "../../services/servicehelp";
+import axios from "axios";
+import { useSelector } from "react-redux";
+
+const tokenName = process.env.REACT_APP_JWT_NAME;
 
 
 const ImageUpload = () => {
@@ -68,8 +73,12 @@ export const PROFILE_TOP = () => {
 
 export const USERNAME_EDIT = () => {
   const [edit, setEdit] = useState(false)
-  const [userName, setUserName] = useState();
-
+  const [username, setUserName] = useState();
+  const myUserDetails = useSelector((state)=>state.userDetails);
+  const {userDetials} = myUserDetails;
+  useEffect(()=>{
+    setUserName(userDetials.username);
+  },[])
   const handleSave= (e) => {
     setUserName(e.target.value);
   }
@@ -88,17 +97,17 @@ export const USERNAME_EDIT = () => {
       <div className="flex justify-between p-4 border-b-2 text-lg items-center">
         <div className="flex-row sm:flex justify-between w-full items-center">
           <div className="">
-            Name
+            username
           </div>
           <div className='w-[65%] mr-7'>
             {
               (edit===true)?
-              <input className="bg-white w-full px-4" value={'Muruga Perumal R'} />:
-              <input className="bg-transparent w-full px-4" readOnly value={'Muruga Perumal R'}/>
+              <input className="bg-white w-full px-4" value={username} />:
+              <input className="bg-transparent w-full px-4" readOnly value={username}/>
             }
           </div>
         </div>
-        <div>
+        {/* <div>
           {
             (edit===false)?
             <button onClick={()=>handleEdit(!edit)} className="px-2 py-1">
@@ -115,7 +124,7 @@ export const USERNAME_EDIT = () => {
             </div>
             
           }
-        </div>
+        </div> */}
       </div>
     </>
   )
@@ -123,7 +132,12 @@ export const USERNAME_EDIT = () => {
 
 export const LEETCODE_EDIT = () => {
   const [edit, setEdit] = useState(false)
-
+  const [username,setUsername] = useState('anonymous');
+  const myUserDetails = useSelector((state)=>state.userDetails);
+  const {userDetials} = myUserDetails;
+  useEffect(()=>{
+    setUsername(userDetials.leetcode);
+  },[])
   const handleEdit= (val) =>{
     if(val===true){
       setEdit(val)
@@ -132,7 +146,23 @@ export const LEETCODE_EDIT = () => {
       setEdit(val)
     }
   }
+  const submitLeet =async () =>{
+    const authToken = getCookie(tokenName);
+    try{
+      const axiosInstance = axios.create({
+        headers: {
+          common: {
+            Authorization: `Bearer ${authToken}`
+          }
+        },
+      });
 
+      const lcresponse = await axiosInstance.post(`${process.env.REACT_APP_BASE_URL}/edit/leetcode`,{newUsername:username});
+      console.log(lcresponse.body);
+    }catch(err){
+
+    }
+  }
   return(
     <>
       <div className="flex justify-between p-4 border-b-2 text-lg items-center">
@@ -143,8 +173,8 @@ export const LEETCODE_EDIT = () => {
           <div className='w-[65%] mr-7'>
             {
               (edit===true)?
-              <input className="bg-white w-full px-4" value={'Muruga Perumal R'}/>:
-              <input className="bg-transparent w-full px-4" readOnly value={'Muruga Perumal R'}/>
+              <input className="bg-white w-full px-4" value={username} onChange={(e)=>setUsername(e.target.value)}/>:
+              <input className="bg-transparent w-full px-4" readOnly value={username}/>
             }
           </div>
         </div>
@@ -156,7 +186,10 @@ export const LEETCODE_EDIT = () => {
             </button>
             :
             <div className="flex gap-3">
-              <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1 text-white rounded-md bg-slate-600">
+              <button onClick={()=>{
+                handleEdit(!edit)
+                submitLeet();
+              }}  className="px-2 py-1 text-white rounded-md bg-slate-600">
                 Save
               </button>
               <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1">
@@ -173,6 +206,13 @@ export const LEETCODE_EDIT = () => {
 
 export const CODEFORCES_EDIT = () => {
   const [edit, setEdit] = useState(false)
+  const [username,setUsername] = useState('anonymous');
+
+  const myUserDetails = useSelector((state)=>state.userDetails);
+  const {userDetials} = myUserDetails;
+  useEffect(()=>{
+    setUsername(userDetials.codeforces);
+  },[])
 
   const handleEdit= (val) =>{
     if(val===true){
@@ -180,6 +220,24 @@ export const CODEFORCES_EDIT = () => {
     }
     else{
       setEdit(val)
+    }
+  }
+
+  const submitLeet =async () =>{
+    const authToken = getCookie(tokenName);
+    try{
+      const axiosInstance = axios.create({
+        headers: {
+          common: {
+            Authorization: `Bearer ${authToken}`
+          }
+        },
+      });
+
+      const lcresponse = await axiosInstance.post(`${process.env.REACT_APP_BASE_URL}/edit/codeforces`,{newUsername:username});
+      console.log(lcresponse.body);
+    }catch(err){
+
     }
   }
 
@@ -193,20 +251,25 @@ export const CODEFORCES_EDIT = () => {
           <div className='w-[65%] mr-7'>
             {
               (edit===true)?
-              <input className="bg-white w-full px-4" value={'Muruga Perumal R'}/>:
-              <input className="bg-transparent w-full px-4" readOnly value={'Muruga Perumal R'}/>
+              <input className="bg-white w-full px-4" value={username} onChange={(e)=>setUsername(e.target.value)}/>:
+              <input className="bg-transparent w-full px-4" readOnly value={username}/>
             }
           </div>
         </div>
         <div>
           {
             (edit===false)?
-            <button onClick={()=>handleEdit(!edit)} className="px-2 py-1">
+            <button onClick={()=>{
+              handleEdit(!edit)
+              }} className="px-2 py-1">
               Edit
             </button>
             :
             <div className="flex gap-3">
-              <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1 text-white rounded-md bg-slate-600">
+              <button onClick={()=>{
+                handleEdit(!edit)
+                submitLeet();
+                }}  className="px-2 py-1 text-white rounded-md bg-slate-600">
                 Save
               </button>
               <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1">
@@ -223,13 +286,37 @@ export const CODEFORCES_EDIT = () => {
 
 export const CODECHEF_EDIT = () => {
   const [edit, setEdit] = useState(false)
+  const [username,setUsername] = useState('anonymous');
 
+  const myUserDetails = useSelector((state)=>state.userDetails);
+  const {userDetials} = myUserDetails;
+  useEffect(()=>{
+    setUsername(userDetials.codechef);
+  },[])
   const handleEdit= (val) =>{
     if(val===true){
       setEdit(val)
     }
     else{
       setEdit(val)
+    }
+  }
+
+  const submitLeet =async () =>{
+    const authToken = getCookie(tokenName);
+    try{
+      const axiosInstance = axios.create({
+        headers: {
+          common: {
+            Authorization: `Bearer ${authToken}`
+          }
+        },
+      });
+
+      const lcresponse = await axiosInstance.post(`${process.env.REACT_APP_BASE_URL}/edit/codechef`,{newUsername:username});
+      console.log(lcresponse.body);
+    }catch(err){
+
     }
   }
 
@@ -243,20 +330,25 @@ export const CODECHEF_EDIT = () => {
           <div className='w-[65%] mr-7'>
             {
               (edit===true)?
-              <input className="bg-white w-full px-4" value={'Muruga Perumal R'}/>:
-              <input className="bg-transparent w-full px-4" readOnly value={'Muruga Perumal R'}/>
+              <input className="bg-white w-full px-4" value={username} onChange={(e)=>setUsername(e.target.value)}/>:
+              <input className="bg-transparent w-full px-4" readOnly value={username}/>
             }
           </div>
         </div>
         <div>
           {
             (edit===false)?
-            <button onClick={()=>handleEdit(!edit)} className="px-2 py-1">
+            <button onClick={()=>{
+                handleEdit(!edit)
+                }} className="px-2 py-1">
               Edit
             </button>
             :
             <div className="flex gap-3">
-              <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1 text-white rounded-md bg-slate-600">
+              <button onClick={()=>{
+                handleEdit(!edit)
+                submitLeet();
+                }}  className="px-2 py-1 text-white rounded-md bg-slate-600">
                 Save
               </button>
               <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1">
@@ -273,6 +365,29 @@ export const CODECHEF_EDIT = () => {
 
 export const GITHUB_EDIT = () => {
   const [edit, setEdit] = useState(false)
+  const [username,setUsername] = useState('anonymous');
+  const myUserDetails = useSelector((state)=>state.userDetails);
+  const {userDetials} = myUserDetails;
+  useEffect(()=>{
+    setUsername(userDetials.github);
+  },[])
+  const submitLeet =async () =>{
+    const authToken = getCookie(tokenName);
+    try{
+      const axiosInstance = axios.create({
+        headers: {
+          common: {
+            Authorization: `Bearer ${authToken}`
+          }
+        },
+      });
+
+      const lcresponse = await axiosInstance.post(`${process.env.REACT_APP_BASE_URL}/edit/github`,{newUsername:username});
+      console.log(lcresponse.body);
+    }catch(err){
+
+    }
+  }
 
   const handleEdit= (val) =>{
     if(val===true){
@@ -293,8 +408,8 @@ export const GITHUB_EDIT = () => {
           <div className='w-[65%] mr-7'>
             {
               (edit===true)?
-              <input className="bg-white w-full px-4" value={'Muruga Perumal R'}/>:
-              <input className="bg-transparent w-full px-4" readOnly value={'Muruga Perumal R'}/>
+              <input className="bg-white w-full px-4" value={username} onChange={(e)=>setUsername(e.target.value)}/>:
+              <input className="bg-transparent w-full px-4" readOnly value={username}/>
             }
           </div>
         </div>
@@ -306,7 +421,10 @@ export const GITHUB_EDIT = () => {
             </button>
             :
             <div className="flex gap-3">
-              <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1 text-white rounded-md bg-slate-600">
+              <button onClick={()=>{
+                handleEdit(!edit)
+                submitLeet();
+                }}  className="px-2 py-1 text-white rounded-md bg-slate-600">
                 Save
               </button>
               <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1">

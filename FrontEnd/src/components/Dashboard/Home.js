@@ -5,6 +5,7 @@ import {useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { getCookie } from '../../services/servicehelp';
+import { changeUserDetails } from '../../redux/userSlice';
 
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
@@ -50,18 +51,20 @@ const Home = () => {
             }
           });
 
-          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/user/upcoming`);
-          const currentContest = lcresponse.data.message.objects.filter((contest)=>{
-            return isValidDateString(contest.start) == true;
-          })
-          setContest(currentContest);
+          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/user/`);
+          dispatch(changeUserDetails(lcresponse.data.message))
+          // const currentContest = lcresponse.data.message.objects.filter((contest)=>{
+          //   return isValidDateString(contest.start) == true;
+          // })
+          // setContest(currentContest);
         } catch(error){
-            navigate('/login');
+            console.log(error.message);
         }
       }
     }
 
     const [display, setDisplay] = useState('dashboard');
+
 
 
   return (
