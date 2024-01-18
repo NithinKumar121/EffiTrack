@@ -95,12 +95,12 @@ export const LoginForm = ( props ) => {
             />
             <span className="text-sm text-white">Remember Me</span>
           </label>
-          <a href="#" className="text-blue-500">Forgot Password</a>
+          <a href="#" className="text-violet-500">Forgot Password</a>
         </div>
 
         <button className='w-[70%] font-bold mb-4 text-[18px] mt-4 rounded-full bg-white text-violet-800 hover:bg-violet-600 hover:text-white py-2 transition colors duration-300' type="submit">Login</button>
 
-        <span className='mb-4'>New here? <button className='text-blue-500' onClick={() => toSignup()}>Create an account</button></span>
+        <span className='mb-4'>New here? <button className='text-violet-500' onClick={() => toSignup()}>Create an account</button></span>
         <label>{errorMessage}</label>
     </form>
         </>
@@ -201,7 +201,7 @@ export const SignupForm = (props) =>{
 
                 <br/>
                 </div>
-                <p>Already have an account ? <button className='text-blue-500' onClick={()=>toLogin()}>Login</button></p>
+                <p>Already have an account ? <button className='text-violet-500' onClick={()=>toLogin()}>Login</button></p>
                 <label>{errorMessage}</label>
                 <button className='w-[70%] font-bold mb-4 text-[18px] mt-4 rounded-full bg-white text-violet-800 hover:bg-violet-600 hover:text-white py-2 transition colors duration-300' type="submit">Sign Up</button>
             </form>
