@@ -1,8 +1,18 @@
 const {userModel} = require("../models/userSchema");
 
 
-const editImage = (req,res) =>{
-   
+const editImage = async (req,res) =>{
+   try{
+        const doc = await userModel.findOneAndUpdate(req.user,{profileImage:req.body},{
+            new:true,
+        })
+        if(!doc){
+            return res.status(404).json({error:true,message:'cant  able to set the profile photo'});
+        }
+        return res.status(200).json({error:false,message:'Successfully modified'});
+   } catch(err){
+        return res.status(400).json({error:true,message:err.message});
+   }
 }
 
 const editLeetcodeUsername = async (req,res) =>{

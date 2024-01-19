@@ -18,7 +18,7 @@ const auth = async(req, res, next)=>{
                     .json({error:true,message:"Invalid Bearer token"})
             }
 
-            req.user = await userModel.findOne({username:decode.username}).select('-password -created -profileImage -_id -__v');
+            req.user = await userModel.findOne({username:decode.username}).select('-password -created -_id -__v');
 
             next();
         }
