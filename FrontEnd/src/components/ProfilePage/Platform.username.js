@@ -6,16 +6,56 @@ import { useSelector } from "react-redux";
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
 
-const ImageUpload = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+function convertToBase64(file){
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () =>{
+      resolve(fileReader.result)
+    }
+    fileReader.onerror = (error) =>{
+      reject(error)
+    }
+  })
+}
 
-  const handleImageChange = (e) => {
+const ImageUpload = () => {
+  const [selectedImage, setSelectedImage] = useState({
+    data:"",
+    contentType:"image/*"
+  });
+
+  const createPost = async (newImage) =>{
+    const authToken = getCookie(tokenName);
+        // if(!authToken){
+        //     navigate('/login');
+        // }
+     
+        try{
+          const axiosInstance = axios.create({
+            headers: {
+              common: {
+                Authorization: `Bearer ${authToken}`
+              }
+            }
+          });
+          const lcresponse = await axiosInstance.post(`${process.env.REACT_APP_BASE_URL}/edit/profileImage`,newImage);
+          console.log(lcresponse)
+        } catch(e){
+
+        }
+  }
+
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
-    setSelectedImage(file);
+    const base64 = await convertToBase64(file);
+    console.log(base64);
+    setSelectedImage({data:base64,contentType:'image/*'});
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // createPost(selectedImage);
     if (selectedImage) {
       console.log('Selected Image:', selectedImage);
     } else {
@@ -25,7 +65,23 @@ const ImageUpload = () => {
 
   return (
     <div>
-      <h2>Image Upload Form</h2>
+      <form onSubmit={handleSubmit}>
+          <label htmlFor="file-upload">
+              click
+          </label>
+          <input
+            type="file"
+            label="Image"
+            name="myfile"
+            id="file-upload"
+            accept=".jpeg, .jpg, .png"
+            className=""
+            onChange={handleImageChange}
+          >
+          </input>
+          <button>submit</button>
+       </form> 
+      {/* <h2>Image Upload Form</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="image">Select Image:</label>
         <input
@@ -47,7 +103,7 @@ const ImageUpload = () => {
             style={{ maxWidth: '100%', maxHeight: '200px' }}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
@@ -56,6 +112,7 @@ export const PROFILE_TOP = () => {
   return(
     <div className='h-1/5 bg-[#253D5B] text-white rounded-t-2xl flex px-8 items-center mt-2'>
         <div className='h-[10rem] w-[10rem] rounded-full transform translate-y-[40%]'>
+          <ImageUpload/>
           <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXStJ9Q_xhBhyfeL87XBiTJASapltM_J8Ddg&usqp=CAU' alt='profile pic' className='rounded-full'></img>
         </div>
         <div className='flex flex-col gap-2 mx-10'>
