@@ -119,7 +119,8 @@ const Chart = () =>{
           }
           setChartOptions({
             chart: {
-              type: 'spline'
+              type: 'spline',
+              backgroundColor: 'transparent'
             },
             xAxis: {
               title: {
@@ -129,11 +130,13 @@ const Chart = () =>{
             yAxis: {
                 title: {
                     text: 'Rating' // Y-axis label
-                }
+                },
+                lineColor: '#999',
+                gridLineColor: 'gray',
             },
-            chart: {
-              backgroundColor: 'white' // Chart background
-            },
+            // chart: {
+            //   backgroundColor: 'black' // Chart background
+            // },
             title: {
               text: 'Rating Chart',
             },
@@ -168,11 +171,10 @@ const Chart = () =>{
                   return '<b>' + this.point.name + '</b>: ' + this.y + ' <h3>Rating</h3>';
               }
               },
-              yAxis: {
-                lineColor: '#999', // Axis line color
-                gridLineColor: 'gray', // Gridline color
-
-            }
+            //   yAxis: {
+            //     lineColor: '#999', // Axis line color
+            //     gridLineColor: 'gray', // Gridline color
+            // }
           });
     
         } catch(error){
@@ -185,7 +187,7 @@ const Chart = () =>{
         <div>
             {
               <>{
-                 chartOptions.length == 0 ? <h1>coming wait</h1>
+                 chartOptions.length === 0 ? <h1>coming wait</h1>
                 :
                 <HighchartsReact options={chartOptions} highcharts={highstock} />
               }

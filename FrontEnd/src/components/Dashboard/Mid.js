@@ -99,10 +99,10 @@ const Mid = ()=>{
                     }
                 </div>
                 <div className="graph-git">
-                    <div className="rounded-xl h-full item2 shadow-md bg-purple-300">
+                    <div className="rounded-xl h-full item2 shadow-md bg-purple-300 dark:bg-[#1d1d1d] dark:text-[#f3f3f3]">
                         <GitProfile modify={github_data}/>
                     </div>
-                    <div className="p-2 bg-white rounded-xl shadow-md ">
+                    <div className="p-2 bg-white dark:bg-[#1d1d1d] rounded-xl shadow-md ">
                       <Chart/>
                     </div>
                 </div>

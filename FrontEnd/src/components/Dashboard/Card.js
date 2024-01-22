@@ -6,9 +6,9 @@ const Card = ({card}) => {
     <div>
 
     
-    <div className={`card ${card.sub_title  }`}>      
-        <div className="card-details">
-            <div className={`card-details-top ${card.topic_color} rounded-xl`}>
+    <div className={`card ${card.sub_title  } dark:bg-[#1d1d1d] dark:text-[#f3f3f3]`}>      
+        <div className="card-details ">
+            <div className={`card-details-top ${card.topic_color} dark:bg-[#333] rounded-xl flex justify-center items-center`}>
                 <h1>{card.title}</h1>
             </div>
             <h1>{card.sub_title}</h1>
@@ -22,12 +22,12 @@ const Card = ({card}) => {
                         r="45"
                         cx='50' 
                         cy='50' 
-                        fill='#f9c6cc'
+                        fill='transparent'
                         stroke='currentColor'
                         strokeWidth='0.5rem'
                         strokeDasharray={439.8}
                         strokeDashoffset={0}
-                        className='text-gray-200 w-[50%]'
+                        className='text-gray-300 w-[50%] dark:text-gray-600'
                     ></circle>
                     <circle
                         r="45"
@@ -38,11 +38,11 @@ const Card = ({card}) => {
                         strokeWidth='0.5rem'
                         strokeDasharray={439.8}
                         strokeDashoffset={440 - (440 * card.completed_count) / (2999)}
-                        className= 'text-[#5B6EF7]'
+                        className= 'text-[#2d63f2] dark:text-[#f3f3f3]'
                     >
                     </circle>
                 </g>
-                <text className='text-xl font-bold' x='50%' y='50%' dominantBaseline="central" textAnchor='middle'>
+                <text className='text-xl font-bold' x='50%' y='50%' dominantBaseline="central" textAnchor='middle' fill='gray'>
                     {card.completed_count.toString()+"%".padStart(1,'0')}
                 </text>
             </svg>

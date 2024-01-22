@@ -110,7 +110,7 @@ const ImageUpload = () => {
 
 export const PROFILE_TOP = () => {
   return(
-    <div className='h-1/5 bg-[#253D5B] text-white rounded-t-2xl flex px-8 items-center mt-2'>
+    <div className='h-1/5 bg-[#253D5B] dark:bg-[#1d1d1d] text-white rounded-t-2xl flex px-8 items-center mt-2'>
         <div className='h-[10rem] w-[10rem] rounded-full transform translate-y-[40%]'>
           {/* <ImageUpload/> */}
           <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXStJ9Q_xhBhyfeL87XBiTJASapltM_J8Ddg&usqp=CAU' alt='profile pic' className='rounded-full'></img>
@@ -151,7 +151,7 @@ export const USERNAME_EDIT = () => {
 
   return(
     <>
-      <div className="flex justify-between p-4 border-b-2 text-lg items-center">
+      <div className="flex justify-between p-4 border-b-2 dark:border-black text-lg items-center">
         <div className="flex-row sm:flex justify-between w-full items-center">
           <div className="">
             username
@@ -159,7 +159,7 @@ export const USERNAME_EDIT = () => {
           <div className='w-[65%] mr-7'>
             {
               (edit===true)?
-              <input className="bg-white w-full px-4" value={username} />:
+              <input className="bg-gray-200 w-full px-4" value={username} />:
               <input className="bg-transparent w-full px-4" readOnly value={username}/>
             }
           </div>
@@ -222,7 +222,7 @@ export const LEETCODE_EDIT = () => {
   }
   return(
     <>
-      <div className="flex justify-between p-4 border-b-2 text-lg items-center">
+      <div className="flex justify-between p-4 border-b-2 dark:border-black text-lg items-center">
         <div className="flex-row sm:flex justify-between w-full items-center">
           <div className="">
             Leetcode Userid
@@ -300,7 +300,7 @@ export const CODEFORCES_EDIT = () => {
 
   return(
     <>
-      <div className="flex justify-between p-4 border-b-2 text-lg items-center">
+      <div className="flex justify-between p-4 border-b-2 dark:border-black text-lg items-center">
         <div className="flex-row sm:flex justify-between w-full items-center">
           <div className="">
             CodeForces Username
@@ -379,7 +379,7 @@ export const CODECHEF_EDIT = () => {
 
   return(
     <>
-      <div className="flex justify-between p-4 border-b-2 text-lg items-center">
+      <div className="flex justify-between p-4 border-b-2 dark:border-black text-lg items-center">
         <div className="flex-row sm:flex justify-between w-full items-center">
           <div className="">
             CodeChef UserId
@@ -457,7 +457,7 @@ export const GITHUB_EDIT = () => {
 
   return(
     <>
-      <div className="flex justify-between p-4 border-b-2 text-lg items-center">
+      <div className="flex justify-between p-4 border-b-2 dark:border-black text-lg items-center">
         <div className="flex-row sm:flex justify-between w-full items-center">
           <div className="">
             GitHub UserId
