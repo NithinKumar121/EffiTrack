@@ -5,13 +5,13 @@ const getCodeChefDetails =async (req,res)=>{
     const username = req.user.codechef;    
     try{
         const response = await getChefData(username);
-        if(!response){
-            res.status(404).json({error:true,message:"username not found"});
+        if(response.error){
+           return res.status(404).json({error:true,message:"username not found"});
         }
-        res.status(200).json({error:false,message:response});
+        return res.status(200).json({error:false,message:response.message});
     }
     catch(err){
-        res.status(404).json({error:true,message:"Username name is not valid"});
+        return res.status(500).json({error:true,message:err.message});
     }
 }
 

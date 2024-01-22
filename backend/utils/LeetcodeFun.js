@@ -19,18 +19,22 @@ const getLeetCount =  async (Username) =>{
     "Content-Type": "application/json",
     };
     var username , submitStats;
-    await fetch(url, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify({ query }),
-    })
-    .then(response => response.json())
-    .then(data => {
-         username = data.data.matchedUser.username;
-         submitStats = data.data.matchedUser.submitStats.acSubmissionNum;
-    })
-    .catch(error => console.error(`Error: ${error}`));
-    return submitStats;
+    try{
+      const response = await fetch(url, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({ query }),
+        })
+        const data = await response.json();
+        if(data.data.matchedUser == null){
+          return {error:true,message:"username not found"};
+        }else{
+          return {error:false,message:data.data.matchedUser.submitStats.acSubmissionNum}
+        }
+    } catch(err){
+        return {error:true,message:'internet problem'}
+    }
+    
 }
 
 

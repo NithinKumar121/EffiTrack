@@ -28,9 +28,25 @@ const getCalender = async () =>{
     })
 }
 
+const checkUsername = async(username) =>{
+    url = `https://api.github.com/users/${username}`
+    try{
+        const response = await fetch(url,{
+            method: 'GET',
+        })
+        const data =await response.json();
+        if (data.hasOwnProperty('message') && data.message == 'Not Found') {
+           return {error:true,message:'Username not found'}
+        } else {
+            return {error:false,message:data}
+        }
 
+    } catch(err){
+        return {error:true,message:err.message}
+    }
+}
 
 
 module.exports = {
-    getGithubRepo,getCalender
+    getGithubRepo,getCalender,checkUsername
 }
