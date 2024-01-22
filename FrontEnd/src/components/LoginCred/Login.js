@@ -15,7 +15,7 @@ export const Login = ({page}) =>{
    
     return(
         <>
-          <div className={`h-[100vh] flex justify-center items-center bg-cover`}style={{ backgroundImage: `url(${login_bg}) `}} >
+          <div className={`h-[100vh] flex justify-center items-center bg-cover`} style={{ backgroundImage: `url(${login_bg}) `}} >
             <div className={`flex ${(isLogin===true)?'flex-row':'flex-row-reverse'} w-full max-w-[600px] justify-center`}>
               <div className="min-w-[350px] hidden items-center justify-center text-white md:flex  bg-slate-950 rounded-tl-xl sm:rounded-l-xl sm:rounded-t-xl">
                 <img src={(isLogin===true)?login:signup} alt='login img' className='min-w-[420px] z-10 shadow-md floating-element'/>

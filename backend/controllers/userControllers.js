@@ -103,9 +103,24 @@ const logout = async(req,res) =>{
     }
 }
 
+const verifedUsername = async (req,res) =>{
+    const {leetcode,codechef,codeforces,github} = req.body;
+    try{
+        const doc = await userModel.findOneAndUpdate(req.user,{leetcode,codeforces,codechef,github},{
+            new:true,
+        });
+        if(!doc){
+            return res.status(404).json({error:true,message:'Cant able to change the username'})
+        }
+        return res.status(200).json({error:false,message:'Successfully modified'});
+        // The HTTP status code 204 No Content indicates that the server successfully processed the request, but there is no content to send in the response body. 
+    } catch(err){
+        return res.status(400).json({error:true,message:err.message})
+    }
+}
 
 module.exports = {
-    register,login,getMe, logout
+    register,login,getMe, logout , verifedUsername
 }
 
 
