@@ -27,8 +27,27 @@ const postRepoDetails = async  (req,res) =>{
     }
 }
 
+const checkUsername = async(req,res) =>{
+    const username = req.body.username;
+    console.log("github username entered",username)
+    url = `https://api.github.com/users/${username}`
+    try{
+        const response = await fetch(url,{
+            method: 'GET',
+        })
+        const data =await response.json();
+        if (data.hasOwnProperty('message') && data.message == 'Not Found') {
+           return res.status(404).json({error:true,message:'Username not found'});
+        } else {
+            return res.status(200).json({error:false,message:data});
+        }
+
+    } catch(err){
+        return res.status(500).json({error:true,message:err.message})
+    }
+}
 
 
 module.exports = {
-    getRepoDetails,postRepoDetails
+    getRepoDetails,postRepoDetails,checkUsername
 }

@@ -32,6 +32,7 @@ module.exports = {
       },
       backgroundImage: {
         'five-bg': "url('./assets/five_removed.png')",
+        // 'bg-image':"url()"
       }
     },
   },

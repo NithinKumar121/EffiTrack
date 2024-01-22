@@ -9,7 +9,7 @@ import { createBrowserRouter,Router,RouterProvider } from 'react-router-dom';
 import {Login} from './components/LoginCred/Login'
 import EditProfile from './components/ProfilePage/Editprofile';
 import Page404 from './components/404Error/404Error';
-
+import UserValid from './components/usernameValidate/usernameValidation'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -34,7 +34,12 @@ const appRouter = createBrowserRouter(
       path:'/profile',
       element:<EditProfile/>,
       errorElement:<Page404/>
-    }
+    },
+    {
+      path:'/validUsername',
+      element:<UserValid/>,
+      errorElement:<Page404/>
+    },
   ]
 )
 

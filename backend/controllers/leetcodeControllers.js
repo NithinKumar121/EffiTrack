@@ -45,6 +45,19 @@ const postLcRating = async (req,res) =>{
     }
 }
 
+const checkLcUsername = async (req,res) =>{
+    const username = req.body.username;
+    try{
+        const submitStats = await getLeetCount(username);
+        if(submitStats.error){
+            return res.status(404).json({error:true})
+        }
+        return res.status(200).json({error:false})
+    }catch(err){
+        return res.status(500).json({error:true,message:"Error occurred while fetching the data from the leetcode api"})
+    }
+}
+
 module.exports = {
-    getLcCount,getLcRating,postLcCount,postLcRating
+    getLcCount,getLcRating,postLcCount,postLcRating, checkLcUsername
 }
