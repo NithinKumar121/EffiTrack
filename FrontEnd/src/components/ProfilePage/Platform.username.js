@@ -112,7 +112,7 @@ export const PROFILE_TOP = () => {
   return(
     <div className='h-1/5 bg-[#253D5B] text-white rounded-t-2xl flex px-8 items-center mt-2'>
         <div className='h-[10rem] w-[10rem] rounded-full transform translate-y-[40%]'>
-          <ImageUpload/>
+          {/* <ImageUpload/> */}
           <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXStJ9Q_xhBhyfeL87XBiTJASapltM_J8Ddg&usqp=CAU' alt='profile pic' className='rounded-full'></img>
         </div>
         <div className='flex flex-col gap-2 mx-10'>
