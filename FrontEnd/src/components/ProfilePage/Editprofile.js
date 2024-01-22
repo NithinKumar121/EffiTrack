@@ -3,12 +3,14 @@ import { GITHUB_USERNAME , LEETCODE_USERNAME , CODEFORCES_USERNAME , CODECHEF_US
 
 
 const EditProfile = () => {
+  
     return(
-      <>
-        <PROFILE_TOP/>
-        <div className='flex w-full justify-center items-center pl-[5rem]'> 
-            <div className='w-full max-w-[60rem] mt-10 p-5 rounded-lg shadow-xl'>
-              {/* <ImageUpload/> */}
+      <div className='flex flex-col gap-y-12'>
+        <div>
+          <PROFILE_TOP/>
+        </div>
+        <div className='flex w-full justify-center items-center pl-[5rem] dark:text-white text-center'> 
+            <div className='w-full max-w-[60rem]  p-5 shadow-2xl h-full rounded-xl'>
               <USERNAME_EDIT/>
               <LEETCODE_EDIT/>
               <CODEFORCES_EDIT/>
@@ -16,7 +18,7 @@ const EditProfile = () => {
               <GITHUB_EDIT/>
             </div> 
         </div>
-      </>
+      </div>
     )
 };
 

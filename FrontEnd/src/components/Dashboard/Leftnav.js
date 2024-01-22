@@ -15,8 +15,8 @@ const Leftnav = ( props ) => {
     <div className='top'>
       {/* logo  */}
       <div className='logo'>      
-        <img src={temp_logo}  className='w-[40px] h-[40px]'></img>
-        <h1 className='text-2xl font-semibold'> <span>EFFI</span>TRACK</h1>
+        <img src={temp_logo}  className='w-[50px] h-[50px] rounded-full'></img>
+        <h1 className='text-3xl font-semibold'> <span>Effi</span>track</h1>
       </div>
       <div className='close'>
         <span className="material-icons-sharp">close</span>
@@ -25,19 +25,13 @@ const Leftnav = ( props ) => {
     <div className='mt-[3rem]'>
         <div className='mid-container'>
           <div className='left-nav-link'>
-            <button className={`left-nav-a ${(display === 'dashboard')?'l-nav-a-active group':''}`} onClick={()=>setDisplay('dashboard')}> 
+            <button className={`left-nav-a group ${(display === 'dashboard')?'l-nav-a-active':''}`} onClick={()=>setDisplay('dashboard')}> 
               <span className="material-icons-sharp ">dashboard</span>
               <h4 className='group-hover:ml-2 slowmo'>DashBoard</h4> 
             </button>
           </div>
-          {/* <div className='left-nav-link '>
-            <Link to="/" className='left-nav-a group'> 
-            <span class="material-icons-sharp">local_library</span>
-              <h4 className='group-hover:ml-2 slowmo'>Platforms</h4> 
-            </Link>
-          </div> */}
           <div className='left-nav-link'>
-            <button className={`left-nav-a ${(display === 'profile')?'l-nav-a-active group':''}`} onClick={()=>setDisplay('profile')}> 
+            <button className={`left-nav-a group ${(display === 'profile')?'l-nav-a-active':''}`} onClick={()=>setDisplay('profile')}> 
             <span class="material-icons-sharp">account_circle</span>
               <h4 className='group-hover:ml-2 slowmo'>Profile</h4> 
             </button>
@@ -45,12 +39,12 @@ const Leftnav = ( props ) => {
     
     
           <div className='aside-bottom'>
-            <div className='left-nav-link'>
+            {/* <div className='left-nav-link'>
               <Link href="#" className='left-nav-a l-nav-a-active'> 
                 <span className="material-icons-sharp">settings</span> 
                 <h4>Settings </h4>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
     </div>
