@@ -15,21 +15,26 @@ import Footer from '../Footer'
         <div className='overflow-hidden h-full dark:bg-[#333] white p-3 pb-0 '>
           <div className='overflow-y-auto w-full h-full no-scrollbar flex flex-col justify-between'>
             <div>
-              <Navbar className='fixed' setDark = {setDark}/>
+              
               {
-                props.display  === 'dashboard' ? <div>
+                props.display  === 'dashboard' ? 
+                <div>
+                    <Navbar className='fixed' setDark = {setDark} title={'Dashboard'}/>
                     <Mid/>
                     <Showcase/>
                     <Showcase/>
                     <Showcase/>
                   </div>
                 :
-                <EditProfile/>
+                <>
+                  <Navbar className='fixed' setDark = {setDark} title={'Profile'}/>
+                  <EditProfile/>
+                </>
               }
             </div>
-            <section>
+            <footer>
               <Footer/>
-            </section>
+            </footer>
           </div>  
         </div>       
     </div>

@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className='w-full flex flex-col sm:flex-row justify-between items-center dark:text-[#f3f3f3] sm:px-10 py-2 dark:border-black border-t-2 mt-1'>
         <div className='flex items-center gap-2'>
-            <div className='text-xl text-[#333] font-semibold'>Effitrack</div>
+            <div className='text-xl text-[#333] font-semibold dark:text-[#f3f3f3]'>Effitrack</div>
             <div>| effitrack@gmail.com</div>
         </div>
         <div className='flex items-center gap-2'>

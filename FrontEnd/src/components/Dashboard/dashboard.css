@@ -63,7 +63,7 @@
                 duration-300 mx-auto px-4
     }
     .slowmo{
-        @apply duration-300
+        @apply duration-200 ease-in transition-all
     }
     .leetcode{
         @apply bg-rose-300 hover:shadow-none

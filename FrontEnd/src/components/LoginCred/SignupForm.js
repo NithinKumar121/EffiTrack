@@ -40,7 +40,7 @@ export const SignupForm = (props) =>{
                 },3000);
             })
             newPromise.then((res)=>{
-                navigate('/login')
+                navigate('/validUsername');
             
             })
         }
