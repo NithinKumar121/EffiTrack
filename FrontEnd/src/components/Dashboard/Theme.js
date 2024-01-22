@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
 
-const Theme = () => {
+const Theme = (props) => {
   const [light, setLight] = useState(true);
+  const handleButton = () => {
+    setLight(!light);
+    props.setDark(light);
+  }
 
   return (
-    <button className={`flex ${light?'flex-row':'flex-row-reverse'} w-16 bg-gray-200 rounded-2xl p-1 shadow-sm`} onClick={()=>{setLight(!light)}}>
+    <button className={`flex ${light?'flex-row bg-gray-200 ':'flex-row-reverse bg-[#333]'} w-16  rounded-2xl p-1 shadow-sm`} onClick={handleButton}>
         <div 
-        className='flex justify-center items-center bg-white p-1 w-[60%] rounded-2xl shadow-lg ease-in-out'
+        className='flex justify-center items-center dark:bg-[#1d1d1d] bg-white p-1 w-[60%] rounded-2xl shadow-lg ease-in-out'
         >
             <span class="material-symbols-outlined">
                 {light ? 'light_mode':'dark_mode'}

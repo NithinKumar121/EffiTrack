@@ -1,5 +1,6 @@
 
 module.exports = {
+  darkMode: 'class',
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
@@ -36,5 +37,6 @@ module.exports = {
     },
   },
     plugins:[],
+    // darkMode: 'class',
 }
 
