@@ -50,10 +50,10 @@ const Contest = () =>{
     // }
     return  (
         <>
-            <div className="contest bg-white rounded-lg text-black
+            <div className="contest bg-[#f4f5f6] rounded-lg text-black
                             flex flex-row px-3 py-3  transition-all slowmo
                              gap-x-3 items-center next
-                             dark:bg-[#333] dark:text-[#f3f3f3]">
+                             dark:bg-[#333] dark:text-[#f3f3f3] shadow-md hover:shadow-none">
                     <div>
                         <img src={Leetcode} alt="leetcode" className='w-[30px] h-[30px]'></img>
                     </div>
@@ -71,8 +71,8 @@ const Upcoming = () =>{
     
     return(
         <>
-        <div className='dark:bg-[#1d1d1d] bg-slate-500 px-4 text-white py-4 rounded-xl h-full relative'>
-            <h1 className="text-center text-2xl font-bold black">Upcoming Contest</h1>
+        <div className='dark:bg-[#1d1d1d] bg-[#fff] px-4 text-[#333] py-4 rounded-xl h-full relative'>
+            <h1 className="text-center text-2xl font-bold black dark:text-[#f3f3f3]">Upcoming Contest</h1>
             <div className='overflow-hidden h-[34rem] rounded-xl p-1 mt-3'>
                 <div className='overflow-y-auto w-full h-full no-scrollbar flex flex-col gap-y-3'>
                     <Contest/>

@@ -69,7 +69,7 @@ const Home = () => {
 
   return (
     <div className={dark && 'dark'}>
-        <div className='home_section bg-gray-300 dark:bg-[#484849] dark: h-full lg:h-[100vh] scrollbar-hide overflow-hidden'>
+        <div className='home_section bg-gray-400 dark:bg-[#484849] dark: h-full lg:h-[100vh] scrollbar-hide overflow-hidden'>
           <Leftnav display = {display} setDisplay={setDisplay}/>  
           <Main display = {display} setDark = {setDark}/>
         </div>  
