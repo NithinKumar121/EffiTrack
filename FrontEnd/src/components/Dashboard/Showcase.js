@@ -1,14 +1,32 @@
+import { useEffect, useState } from 'react';
 import GitRepo from '../../assets/github.png'
+import { useSelector } from 'react-redux'
+
 
 const Favourite = () =>{
+    const githubDetails = useSelector((store)=>store.githubDetails);
+    const {userGithubRepo} = githubDetails;
+    const [repoDetails,setRepoDetails] = useState('');
+
+    useEffect(()=>{
+        setRepoDetails(userGithubRepo);
+    },[userGithubRepo])
+
     return(
         <>
-            <div className="repo-favourite shadow-xl hover:shadow-none ease-in duration-300 cursor-default text-white">
-                            <img src={GitRepo}></img>
-                            <p>Repo name : Helloworld </p>
-                            <h6>Star: 50</h6>
-                            <a href="">Link here !</a>
+        {
+            repoDetails.length > 0 ?
+            <div className="repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
+                <img src={GitRepo} alt='github'></img>
+                <p>Repo name : Helloworld </p>
+                <h6>Star: 50</h6>
+                <a href="/">Link here !</a>
             </div>
+            :
+            <div className="h-[4rem] repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
+              {/* emtpy shimmer */}
+            </div>
+        }
         </>
     )
 }
@@ -16,8 +34,8 @@ const Favourite = () =>{
 const Social = () =>{
     return(
         <>
-            <div className='social-media shadow-xl hover:shadow-none ease-in duration-300 cursor-default bg-[#6D6027] text-white'>
-                <img src={GitRepo} className='w-[40px] h-[40px]'></img>
+            <div className='social-media shadow-xl hover:shadow-none ease-in duration-300 cursor-default bg-[#f4f5f6] dark:bg-[#333] dark:text-white text-[#333]'>
+                <img src={GitRepo} alt='github' className='w-[40px] h-[40px]'></img>
                 <div className='social-media-inner'>
                     <h2 className='text-l font-medium'>username : Cibiyanna26</h2>
                     <h4>Platform : LinkedIn</h4>
@@ -32,7 +50,7 @@ const Showcase = () =>{
     return(
         <>
             <div className="showcase-top ">
-                <div className="showcase-favourite bg-[#D3CBB8] rounded-xl p-3">
+                <div className="showcase-favourite bg-[#fff] dark:bg-[#1d1d1d] dark:text-[#f3f3f3] text=[#333] mt-2 rounded-xl p-3">
                     <h1> Add your Favourite Repository </h1>
                     <div className="repo-favourites">
                         <Favourite/>
@@ -40,7 +58,7 @@ const Showcase = () =>{
                         <Favourite/>
                     </div>
                 </div>
-                <div className="showcase-socails bg-[#D3CBB8] rounded-xl p-3">
+                <div className="showcase-socails bg-[#fff] dark:bg-[#1d1d1d] dark:text-[#f1f1f1] rounded-xl p-3">
                     <h1 >Add Your Social Media Links</h1>
                     <div className='socail-medias'>
                         <Social/>

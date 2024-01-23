@@ -4,26 +4,38 @@ import Mid from './Mid'
 import Showcase from './Showcase'
 import Shimmer from './Shimmer'
 import EditProfile from '../ProfilePage/Editprofile'
+import Chart from '../highcharts';
+import Footer from '../Footer'
 
-
- const Main = () => {
-  const [change ,setChange] = useState(true);
+ const Main = ( props ) => {
+  console.log(props.display)
+  const setDark = props.setDark;
   return (
     <div className='overflow-hidden h-full'>
-        <Navbar className='fixed'/>
-        <div className='overflow-hidden h-[92vh]  white p-3 '>
-          <div className='overflow-y-auto w-full h-full no-scrollbar'>
-            {
-              change  == true ? <div>
-                  <Mid/>
-                  <Showcase/>
-                  <Showcase/>
-                  <Showcase/>
-                </div>
-              :
-              <EditProfile/>
-            }
-          </div>
+        <div className='overflow-hidden h-full dark:bg-[#333] bg-[#e1e1e1] p-3 pb-0 '>
+          <div className='overflow-y-auto w-full h-full no-scrollbar flex flex-col justify-between'>
+            <div>
+              
+              {
+                props.display  === 'dashboard' ? 
+                <div>
+                    <Navbar className='fixed' setDark = {setDark} title={'Dashboard'}/>
+                    <Mid/>
+                    <Showcase/>
+                    <Showcase/>
+                    <Showcase/>
+                  </div>
+                :
+                <>
+                  <Navbar className='fixed' setDark = {setDark} title={'Profile'}/>
+                  <EditProfile/>
+                </>
+              }
+            </div>
+            <footer>
+              <Footer/>
+            </footer>
+          </div>  
         </div>       
     </div>
   )

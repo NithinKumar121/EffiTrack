@@ -6,20 +6,170 @@ import LineChart from "./LIneChart";
 import Upcoming from "./Upcoming";
 import Shim from "./Shimmer";
 import { useSelector } from "react-redux";
-const {LcSlice} = require('../../redux/LcSlice');
-const {CodeForce} = require('../../redux/store');
+import Chart from "../highcharts";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import { getCookie } from '../../services/servicehelp';
+import { getLeetCount , getChefData , getForceCount } from "../../services/show.service";
+import LeetCode_logo from '../../assets/LeetCode_logo.png'
+import { modifyCount , modifyRating} from "../../redux/LeetcodeSlice";
+import { cfModifyRating } from "../../redux/codeforcesSlice";
+import {ccUpdateUserDetails} from '../../redux/codechefSlice';
+import { updateGithubRepo } from "../../redux/githubSlice";
 
+import { useDispatch } from "react-redux";
+
+const {LcSlice} = require('../../redux/LcSlice');
+const tokenName = process.env.REACT_APP_JWT_NAME;
 
 const Mid = ()=>{   
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const leetcodeDetails = useSelector((store)=>store.leetcodeDetails);
+    const codechefDetails = useSelector((store)=>store.codechefDetails);
+    const githubDetails = useSelector((store)=>store.githubDetails);
+    const {count, rating} = leetcodeDetails;
+    const {ccUserDetails} = codechefDetails;
+
+
+    useEffect(()=>{
+        leetcodeData();
+        codeforcesData();
+        codechefData();
+        githubData();
+        // codechefData();
+    },[]);
+    
+    const leetcodeData = async () =>{
+        const authToken =await getCookie(tokenName);
+        if(!authToken){
+            navigate('/login');
+        }
+     
+        try{
+          const axiosInstance = axios.create({
+            headers: {
+              common: {
+                Authorization: `Bearer ${authToken}`
+              }
+            }
+          });
+          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/leetcode/count`);
+          const data = lcresponse.data.message;
+          dispatch(modifyCount(data));
+        } catch(error){
+            if(error.response.data.error || error.response.request.status === 400){
+                console.log(error.response.data.message)
+                // navigate('/login')
+            }
+        }
+
+        try{
+            const axiosInstance = axios.create({
+              headers: {
+                common: {
+                  Authorization: `Bearer ${authToken}`
+                }
+              }
+            });
+            const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/leetcode/rating`);
+            const data = lcresponse.data.message;
+
+            dispatch(modifyRating(data));
+          } catch(error){
+              if(error.response.data.error || error.response.request.status === 404|| error.response.request.status === 500){
+                  console.log(error.response.data.message)
+                //   navigate('/login')
+              }
+        }
+      }
+      
+      const codeforcesData = async () =>{
+        const authToken =await getCookie(tokenName);
+        if(!authToken){
+            navigate('/login');
+        }
+     
+        try{
+          const axiosInstance = axios.create({
+            headers: {
+              common: {
+                Authorization: `Bearer ${authToken}`
+              }
+            }
+          });
+          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/codeforces/rating`);
+          const data = lcresponse.data.message;
+          dispatch(cfModifyRating(data));
+        } catch(error){
+            if(error.response.data.error || error.response.request.status === 404 || error.response.request.status === 500){
+                console.log(error.response.data.message)
+            }
+        }
+      }
+
+
+      const codechefData = async () =>{
+        const authToken =await getCookie(tokenName);
+        if(!authToken){
+            navigate('/login');
+        }
+     
+        try{
+          const axiosInstance = axios.create({
+            headers: {
+              common: {
+                Authorization: `Bearer ${authToken}`
+              }
+            }
+          });
+          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/codechef/details`);
+          const data = lcresponse.data.message;
+          dispatch(ccUpdateUserDetails(data));
+        } catch(error){
+            if(error.response.data.error || error.response.request.status === 400 || error.response.request.status === 404){
+                console.log(error.response.data.message)
+                // navigate('/login')
+            }
+        }
+      }
+
+      const githubData = async () =>{
+        const authToken =await getCookie(tokenName);
+        if(!authToken){
+            navigate('/login');
+        }
+     
+        try{
+          const axiosInstance = axios.create({
+            headers: {
+              common: {
+                Authorization: `Bearer ${authToken}`
+              }
+            }
+          });
+          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/github/repo`);
+          const data = lcresponse.data.message;
+          console.log('github data',data);
+          dispatch(updateGithubRepo(data));
+        } catch(error){
+            if(error.response.data.error || error.response.request.status === 400 || error.response.request.status === 404){
+                console.log(error.response.data.message)
+                // navigate('/login')
+            }
+        }
+      }
+
 
     const cardData = [
         {
             title:'Leetcode',
             sub_title:'leetcode',
-            count:500,
-            rank:100,
-            completed_count: 300,
+            count:count[0].count,
+            rank:count[0].submissions,
+            completed_count: count[0].count,
             topic_color:'bg-cd1_red',
+            logo: LeetCode_logo,
         },
         {
             title:'CodeChef',
@@ -27,7 +177,8 @@ const Mid = ()=>{
             count:'340',
             rank:'49+',
             completed_count: 400,
-            topic_color:'bg-cd1_orange'
+            topic_color:'bg-cd1_orange',
+            logo: LeetCode_logo,
         },
         {
             title:'CodeForces',
@@ -35,48 +186,40 @@ const Mid = ()=>{
             count:'340',
             rank:'49+',
             completed_count: 700,
-            topic_color:'bg-cd1_green'
+            topic_color:'bg-cd1_green',
+            logo: LeetCode_logo,
         }
     ]
-    const [hello,sethello] = useState({
-        name:'hello',
-        age:'24',
-    })
+
     const github_data = {topic:"bg-cd1_purple"}
     return(
     <>
     {
-        <section className="mid-top mt-[.5rem]">
+        <section className="mid-top ">
             <div className="mid-left">
                 <div className="cards">
                     {
                         cardData.map((card,index)=>{
                             return(
-                                <Card card={card}/>
+                                <Card card={card} key={index}/>
                             );
                         })
                     }
                 </div>
-                <div className="graph-git">
-                    <div className="rounded-xl h-full item2 shadow-md bg-purple-300">
+                <div className="graph-git mb-3">
+                    <div className="rounded-xl h-full item2 hover:shadow bg-[#fff] shadow-xl dark:bg-[#1d1d1d] dark:text-[#f3f3f3]">
                         <GitProfile modify={github_data}/>
                     </div>
-                    <div className="p-2 bg-white rounded-xl shadow-md ">
-                        <LineChart/>
+                    <div className="p-2 bg-white dark:bg-[#1d1d1d] rounded-xl shadow-md ">
+                      <Chart/>
                     </div>
                 </div>
             </div> 
-            <div className="mid-right">
+            <div className="mid-right mb-3 shadow-lg hover:shadow">
                 <Upcoming/>
             </div>  
-            <button onClick={()=>{
-                hello.name = 'new name';
-                sethello(hello);
-                console.log(hello);
-            }}>click</button>
         </section>
-    }
-        
+    }   
         </>
     )
 

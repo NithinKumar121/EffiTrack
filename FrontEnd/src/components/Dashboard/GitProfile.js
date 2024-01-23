@@ -3,11 +3,15 @@ import temp_logo from '../../assets/temp_logo.jpeg'
 
 const GitProfile = ({modify}) => {
   return (
-    <div className='flex flex-col px-4 gap-2 relative h-full'>
-        <div className="github-card "> <h1 className={`${modify.topic}`}>GitHub</h1></div>
+    <div className='flex flex-col px-4 gap-2 relative mt-3'>
+        <div className="h-[2.5rem] mt-[0.2rem] flex"> <h1 className={`bg-[#253D5B] h-full w-[8rem] rounded-xl flex items-center p-0 pl-2 text-lg font-semibold justify-center dark:bg-[#333] text-[#f3f3f3]`}>
+            <div>
+                GitHub
+            </div>
+        </h1></div>
         <div className='flex gap-4 items-center'>
             <div className='w-[25%] py-2'>
-                <img src={temp_logo} className='rounded-[100%] shadow-lg'></img>
+                <img src={temp_logo} alt='github' className='rounded-[100%] shadow-lg'></img>
             </div>
             <div>
                 <div className='text-xl font-medium'>username</div>
@@ -17,19 +21,6 @@ const GitProfile = ({modify}) => {
         </div>
         <div>
             Total contributions : 99+
-        </div>
-            {/* <div className='overflow-hidden h-[6rem] view-more'>
-                <div className='text-xl'>Description</div>
-                <h6 className='bottomS '>
-                Hey this is murugaperumal, devloping <br></br>
-                <span className='view-more-span'>
-                    view more
-                </span>
-                </h6>
-                <span className="material-icons-sharp block text-center relative bottom-1 text-gray-700 cursor-pointer">keyboard_double_arrow_down</span>
-            </div> */}
-        <div className='absolute bottom-2 w-[90%] flex justify-center '>
-                <button className='bg-purple-600 p-2 rounded-xl text-white hover:bg-purple-500'>View More</button>
         </div>
     </div>
   )

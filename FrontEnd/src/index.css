@@ -65,25 +65,25 @@ code {
 /* Mid of the dashboard .... */
 
 
-.mid-top{
+/* .mid-top{
   display: grid;
   grid-template-columns: auto 20rem;
   gap: 1rem;
-}
+} */
 
-.mid-top .mid-left .cards{
+/* .mid-top .mid-left .cards{
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 1rem;
   font-size: large;
   font-weight: 500;
-  /* justify-content: space-around; */
-}
+  justify-content: space-around;
+} */
 
-.cards > div{
+/* .cards > div{
   width: 100%;
-}
-.mid-top .mid-left .cards .card{
+} */
+/* .mid-top .mid-left .cards .card{
   height: 12rem;
   margin: auto;
   padding: 1rem;
@@ -92,9 +92,9 @@ code {
   flex: 1;
   flex-direction: row;
   align-items: center;
-}
+} */
 
-.mid-top .mid-left .cards .leetcode{
+/* .mid-top .mid-left .cards .leetcode{
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .mid-top .mid-left .cards .codechef{
@@ -103,13 +103,13 @@ code {
 
 .mid-top .mid-left .cards .codeforces{
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-} 
+}  */
 
-.mid-top .mid-left .cards .leetcode:hover{
+/* .mid-top .mid-left .cards .leetcode:hover{
   box-shadow: 0;
-}
+} */
 
-.mid-top .mid-left .cards .card .card-details{
+/* .mid-top .mid-left .cards .card .card-details{
   width: 60%;
   line-height: 2rem;
 }
@@ -121,7 +121,7 @@ code {
   height: 92px;
   border-radius: 50%;
   bottom: 0;
-}
+} */
 
 .mid-top .mid-left .cards .card .progress svg{
   width: 8rem;
@@ -202,7 +202,7 @@ code {
   display: grid;
   grid-template-columns:1fr 2fr;
   margin-top: 1rem;
-  gap: 1.5rem;
+  gap: .5rem;
 }
 
 /* .graph-git .git-profile{
@@ -235,7 +235,7 @@ code {
   display: grid;
   grid-template-columns:2fr 1fr;
   gap: 2rem;
-  margin-top:1rem;
+  margin-top:.5rem;
   
 }
 
@@ -298,3 +298,9 @@ code {
 
 
 /* background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% ); */
+
+.up-bg{
+  background-color: #dbcbd8;
+  background-image: linear-gradient(316deg, #dbcbd8 0%, #2e4057 74%);
+}
+

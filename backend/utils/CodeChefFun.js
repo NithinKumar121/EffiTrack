@@ -1,14 +1,24 @@
-const puppeteer = require('puppeteer-core');
+// const puppeteer = require('puppeteer-core');
 
-const getChefData =async  (username)=>{
+const getChefData =  async  (username)=>{
     const url = `https://codechef-api.vercel.app/${username}`
-    await fetch(url,{
-      method:'GET',
-    })
-    .then((response)=>response.json())
-    .then((data)=>console.log(data))
-}
+    try{
+      const response = await fetch(url,{
+        method:'GET',
+      })
+      const data = await response.json();
+      if(!data.success){
+        return {error:true,message:'username not found'};
+      }
+      return {error:false,message:data}
 
+    } catch(e){
+
+      return {error:true,message:"connection error"}
+
+    }
+    
+}
 
 module.exports = {
     getChefData

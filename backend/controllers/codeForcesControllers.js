@@ -1,47 +1,69 @@
 const {getForceCount,getForceRating}  = require("../utils/CodeForceFun");
 
 const getCFcount = async (req,res) =>{
-    const response = await getForceCount("Cibiyanna26");
-    console.log("data has been retrived",response);
+    const username = req.user.codeforces;
+    console.log("so this is the getcfcount function",username)
     try{
-        res.status(200).json({data:response});
+       const response = await getForceCount(username);
+        if(response.error){
+            return res.status(404).json({error:true,message:response.message})
+        }
+        return res.status(200).json({error:false,message:response.message});
     } catch (err){
-        res.status(500).json({Error:"data haven't fetch by the code forece api"})
+        return res.status(500).json({error:true,message:err.message})
     }
     
 }
 
 const getCFrating = async (req,res) =>{
-    const response = await getForceRating("Cibiyanna26");
+    const username = req.user.codeforces;
     try{
-        res.status(200).json({data:response});
-    } catch{
-        res.status(500).json({Error:"data haven't fetch by the code forece api"});
+        const response = await getForceRating(username);
+        if(response.error){
+            return res.status(404).json({error:true,message:response.message})
+        }
+        return res.status(200).json({error:false,message:response.message});
+    } catch (err){
+        return res.status(500).json({error:true,message:err.message})
     }
 }
 
-const postCFcount = async (req,res) =>{
-    const username  = req.body.username;
+const checkCfUsername = async (req,res) =>{
+    const username = req.body.username;
     try{
-        const submitStats = await getForceCount(username);
-        res.status(200).json({data:submitStats});
-    }catch(err){
-        res.status(500).json({Error:"Error occurred while fetching the data from the leetcode api"})
+       const response = await getForceCount(username);
+        if(response.error){
+            return res.status(404).json({error:true,message:response.message})
+        }
+        return res.status(200).json({error:false,message:response.message});
+    } catch (err){
+        return res.status(500).json({error:true,message:err.message})
     }
+    
 }
 
+// const postCFcount = async (req,res) =>{
+//     const username  = req.body.username;
+//     try{
+//         const submitStats = await getForceCount(username);
+//         res.status(200).json({error:false,message:submitStats});
+//     }catch(err){
+//         res.status(500).json({error:true,message:"Error occurred while fetching the data from the leetcode api"})
+//     }
+// }
 
-const postCFrating = async (req,res) =>{
-    const username  = req.body.username;
-    try{
-        const submitStats = await getForceRating(username);
-        res.status(200).json({data:submitStats});
-    }catch(err){
-        res.status(500).json({Error:"Error occurred while fetching the data from the leetcode api"})
-    }
-}
+
+// const postCFrating = async (req,res) =>{
+//     const username  = req.body.username;
+//     try{
+//         const submitStats = await getForceRating(username);
+//         res.status(200).json({error:false,message:submitStats});
+//     }catch(err){
+//         res.status(500).json({error:true,message:"Error occurred while fetching the data from the leetcode api"})
+//     }
+// }
 
 
 module.exports = {
-    getCFcount,getCFrating,postCFcount,postCFrating
+    getCFcount,getCFrating , checkCfUsername
 }

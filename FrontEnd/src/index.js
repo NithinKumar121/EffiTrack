@@ -6,11 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './redux/store'
 import { Provider } from 'react-redux';
 import { createBrowserRouter,Router,RouterProvider } from 'react-router-dom';
-import Signup from './components/LoginCred/Signup';
-import Login from './components/LoginCred/Login'
-import Error from './components/Error.js';
+import {Login} from './components/LoginCred/Login'
 import EditProfile from './components/ProfilePage/Editprofile';
 import Page404 from './components/404Error/404Error';
+import UserValid from './components/usernameValidate/usernameValidation'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const appRouter = createBrowserRouter(
@@ -22,19 +22,24 @@ const appRouter = createBrowserRouter(
     },
     {
       path:'/signup',
-      element:<Signup/>,
+      element:<Login page={false}/>,
       errorElement:<Page404/>
     },
     {
       path:'/login',
-      element:<Login/>,
+      element:<Login page={true}/>,
       errorElement:<Page404/>
     },
     {
       path:'/profile',
       element:<EditProfile/>,
       errorElement:<Page404/>
-    }
+    },
+    {
+      path:'/validUsername',
+      element:<UserValid/>,
+      errorElement:<Page404/>
+    },
   ]
 )
 

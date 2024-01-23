@@ -1,12 +1,18 @@
 import { configureStore, isPending } from '@reduxjs/toolkit'
 // import LeetCodereducer from './LeetcodeSlice';
-import LcReducer from './LcSlice';
-import CfReducer from './codeforcesSlice';
 
+import userSlice from './userSlice';
+import LeetcodeSlice from './LeetcodeSlice';
+import codeforcesSlice from './codeforcesSlice';
+import codechefSlice from './codechefSlice';
+import githubSlice from './githubSlice';
 export const store = configureStore({
   reducer: {
-    Leetcode:LcReducer,
-    CodeForce:CfReducer,
+      userDetails:userSlice,
+      leetcodeDetails:LeetcodeSlice,
+      codeforcesDetails:codeforcesSlice,
+      codechefDetails:codechefSlice,
+      githubDetails:githubSlice,
   },
 })
 

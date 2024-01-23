@@ -10,7 +10,7 @@ const { editImage,
 
 router.route('/profileImage').post(auth,editImage)
 router.route('/leetcode').post(auth,editLeetcodeUsername)
-router.route('/codefroces').post(auth,editCodeforceUsername);
+router.route('/codeforces').post(auth,editCodeforceUsername);
 router.route('/codechef').post(auth,editCodechefUsername);
 router.route('/github').post(auth,editGithubUsername);
 
