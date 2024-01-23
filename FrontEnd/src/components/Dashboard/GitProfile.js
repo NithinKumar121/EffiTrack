@@ -4,7 +4,7 @@ import temp_logo from '../../assets/temp_logo.jpeg'
 const GitProfile = ({modify}) => {
   return (
     <div className='flex flex-col px-4 gap-2 relative mt-3'>
-        <div className="h-[2.5rem] mt-[0.2rem] flex"> <h1 className={`${modify.topic} h-full w-[8rem] rounded-xl flex items-center p-0 pl-2 text-lg font-semibold justify-center dark:bg-[#333] dark:text-[#f3f3f3]`}>
+        <div className="h-[2.5rem] mt-[0.2rem] flex"> <h1 className={`bg-[#253D5B] h-full w-[8rem] rounded-xl flex items-center p-0 pl-2 text-lg font-semibold justify-center dark:bg-[#333] text-[#f3f3f3]`}>
             <div>
                 GitHub
             </div>

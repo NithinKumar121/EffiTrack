@@ -7,7 +7,7 @@ const Navbar = ( props ) => {
   const setDark = props.setDark;
   const {title} = props;
   return (
-    <div className='border-b-2 dark:bg-[#171717] dark:text-[#f3f3f3] border-gray-400 dark:border-none rounded-xl white flex justify-between items-center h-[4rem] top-navbar z-10'>
+    <div className='border-b-2 bg-[#fff] dark:bg-[#171717] dark:text-[#f3f3f3] border-gray-400 dark:border-none rounded-xl white flex justify-between items-center h-[4rem] top-navbar z-10'>
         <div className='p-2 px-6 text-2xl font-bold text-title'>
             {title}
         </div>

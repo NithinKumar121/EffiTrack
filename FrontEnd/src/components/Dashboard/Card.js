@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Card = ({card}) => {
 
@@ -6,14 +6,17 @@ const Card = ({card}) => {
     <div>
 
     
-    <div className={`card ${card.sub_title  } dark:bg-[#1d1d1d] dark:text-[#f3f3f3]`}>      
+    <div className={`card bg-[#fff] dark:bg-[#1d1d1d] text-[#f3f3f3] shadow-xl hover:shadow`}>      
         <div className="card-details ">
-            <div className={`card-details-top ${card.topic_color} dark:bg-[#333] rounded-xl flex justify-center items-center`}>
+            <div className={`card-details-top bg-[#253D5B] dark:bg-[#333] rounded-xl flex justify-center items-center gap-2`}>
+                <img src={card.logo} alt='leetlogo' className='h-5'></img>
                 <h1>{card.title}</h1>
             </div>
-            <h1>{card.sub_title}</h1>
-            <h3>Count : {card.count}</h3>
-            <h4>Rank : {card.rank}</h4>
+            <div className='px-2 text-[#333] dark:text-[#f3f3f3]'>
+                <h1>{card.sub_title}</h1>
+                <h3>Count : {card.count}</h3>
+                <h4>Rank : {card.rank}</h4>
+            </div>
         </div>
         <div className='flex h-[100px] w-[100px]'>
             <svg width={100} height={100}>
