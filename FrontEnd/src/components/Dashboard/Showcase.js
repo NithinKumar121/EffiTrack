@@ -1,14 +1,32 @@
+import { useEffect, useState } from 'react';
 import GitRepo from '../../assets/github.png'
+import { useSelector } from 'react-redux'
+
 
 const Favourite = () =>{
+    const githubDetails = useSelector((store)=>store.githubDetails);
+    const {userGithubRepo} = githubDetails;
+    const [repoDetails,setRepoDetails] = useState('');
+
+    useEffect(()=>{
+        setRepoDetails(userGithubRepo);
+    },[userGithubRepo])
+
     return(
         <>
+        {
+            repoDetails.length > 0 ?
             <div className="repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
-                            <img src={GitRepo} alt='github'></img>
-                            <p>Repo name : Helloworld </p>
-                            <h6>Star: 50</h6>
-                            <a href="/">Link here !</a>
+                <img src={GitRepo} alt='github'></img>
+                <p>Repo name : Helloworld </p>
+                <h6>Star: 50</h6>
+                <a href="/">Link here !</a>
             </div>
+            :
+            <div className="h-[4rem] repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
+              {/* emtpy shimmer */}
+            </div>
+        }
         </>
     )
 }

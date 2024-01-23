@@ -1,48 +1,55 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+
+
 const initialState = {
-  value: [],
+    count:[
+                {
+                    "difficulty": "All",
+                    "count": 0,
+                    "submissions": 0
+                },
+                {
+                    "difficulty": "Easy",
+                    "count": 0,
+                    "submissions": 0
+                },
+                {
+                    "difficulty": "Medium",
+                    "count": 0,
+                    "submissions": 0
+                },
+                {
+                    "difficulty": "Hard",
+                    "count": 0,
+                    "submissions": 0
+                }
+            ],
+    rating:[],
 }
 
-const LeetCodereducer = (state = initialState,action)=>{
-    switch(action.type){
-        case 'ADD':
-            break
-        case 'REMOVE':
-            break
-    }
-    return state;
-}
+const leetcodeSlice = createSlice({
+    name: 'leetcodeSlice',
+    initialState,
+    reducers: {
+      modifyCount: (state, action) => {
+        return {
+            ...state,
+            count: action.payload,
+        }
+      },
+      modifyRating: (state, action) => {
+        if (action.payload.length > 0) {
+            if(state.rating.length == 0){
+                state.rating.push(action.payload);
+            }
+        }
+      },
+    },
+  });
+  
 
 
+export const {modifyCount,modifyRating} = leetcodeSlice.actions;
 
-module.exports = [
-    LeetCodereducer
-]
-
-
-
-
-
-// export const { increment, decrement, incrementByAmount } = counterSlice.actions
-
-// export default counterSlice.reducer;
-
-
-
-
-// export const LCproblemcount = createSlice({
-//   name: 'LCproblemcount',
-//   initialState,
-//   reducers: {
-//     increment: (state) => {
-//       state.value += 1
-//     },
-//     decrement: (state) => {
-//       state.value -= 1
-//     },
-//     incrementByAmount: (state, action) => {
-//       state.value += action.payload
-//     },
-//   },
-// })
+export default leetcodeSlice.reducer;

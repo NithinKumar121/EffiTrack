@@ -110,7 +110,7 @@ export const PROFILE_TOP = () => {
 export const USERNAME_EDIT = () => {
   const [edit, setEdit] = useState(false)
   const [username, setUserName] = useState();
-  const myUserDetails = useSelector((state)=>state.userDetails);
+  const myUserDetails = useSelector((store)=>store.userDetails);
   const {userDetials} = myUserDetails;
   useEffect(()=>{
     setUserName(userDetials.username);

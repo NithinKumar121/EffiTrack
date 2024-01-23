@@ -1,26 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
 
-const codeFroceSlice = createSlice({
-    name:"codeFroceSlice",
-    initialState:{
-        CFcount:[],
-        CFrating:[],
-    },
+
+
+const initialState = {
+        cfRating: []
+}
+
+const codeforcesSlice = createSlice({
+    name:'codeforcesSlice',
+    initialState,
     reducers:{
-        addCodeForceCount:(state,action)=>{
-            if(state.CFcount.length==0){
-                state.CFcount.push(action.payload);
+        cfModifyRating:(state,action)=>{
+            if(action.payload.length > 0){
+                if(state.cfRating.length == 0){
+                    state.cfRating.push(action.payload);
+                }
             }
-        },
-        addCodeForceRating:(state,action)=>{
-            if(state.CFrating.length==0){
-                state.CFrating.push(action.payload);
-            }
-        },
+           
+        }
     }
 })
 
-export const {addCodeForceCount,addCodeForceRating} = codeFroceSlice.actions;
 
-export default codeFroceSlice.reducer;
+export const {cfModifyRating} = codeforcesSlice.actions;
 
+export default codeforcesSlice.reducer;
