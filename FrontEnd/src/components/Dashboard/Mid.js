@@ -12,22 +12,36 @@ import { useNavigate } from "react-router-dom";
 import { getCookie } from '../../services/servicehelp';
 import { getLeetCount , getChefData , getForceCount } from "../../services/show.service";
 import LeetCode_logo from '../../assets/LeetCode_logo.png'
+import { modifyCount , modifyRating} from "../../redux/LeetcodeSlice";
+import { cfModifyRating } from "../../redux/codeforcesSlice";
+import {ccUpdateUserDetails} from '../../redux/codechefSlice';
+import { updateGithubRepo } from "../../redux/githubSlice";
 
+import { useDispatch } from "react-redux";
 
 const {LcSlice} = require('../../redux/LcSlice');
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
 const Mid = ()=>{   
     const navigate = useNavigate();
-    useEffect(()=>{
-        allplatform();
-    },[]);
-    const [leetcode,setLeetcode] = useState({});
-    const [codechef,setCodechef] = useState({});
-    const [codeforces,setCodeforces] = useState({});
+    const dispatch = useDispatch();
+    const leetcodeDetails = useSelector((store)=>store.leetcodeDetails);
+    const codechefDetails = useSelector((store)=>store.codechefDetails);
+    const githubDetails = useSelector((store)=>store.githubDetails);
+    const {count, rating} = leetcodeDetails;
+    const {ccUserDetails} = codechefDetails;
 
-    const allplatform = async () =>{
-        const authToken = getCookie(tokenName);
+
+    useEffect(()=>{
+        leetcodeData();
+        codeforcesData();
+        codechefData();
+        githubData();
+        // codechefData();
+    },[]);
+    
+    const leetcodeData = async () =>{
+        const authToken =await getCookie(tokenName);
         if(!authToken){
             navigate('/login');
         }
@@ -41,29 +55,119 @@ const Mid = ()=>{
             }
           });
           const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/leetcode/count`);
-          const ccresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/codechef/details`);
-          const cfresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/codeforces/count`);
-          if(!lcresponse.error){
-            setLeetcode(lcresponse.data.message)
-          }
-          if(!ccresponse.error){
-            setCodechef(ccresponse.data.message)
-          }
-          if(!cfresponse.error){
-            setCodeforces(cfresponse.data.message)
-          }
+          const data = lcresponse.data.message;
+          dispatch(modifyCount(data));
         } catch(error){
-            console.log("leetcode data can't be retrieved");
+            if(error.response.data.error || error.response.request.status === 400){
+                console.log(error.response.data.message)
+                // navigate('/login')
+            }
+        }
+
+        try{
+            const axiosInstance = axios.create({
+              headers: {
+                common: {
+                  Authorization: `Bearer ${authToken}`
+                }
+              }
+            });
+            const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/leetcode/rating`);
+            const data = lcresponse.data.message;
+
+            dispatch(modifyRating(data));
+          } catch(error){
+              if(error.response.data.error || error.response.request.status === 404|| error.response.request.status === 500){
+                  console.log(error.response.data.message)
+                //   navigate('/login')
+              }
         }
       }
-    
+      
+      const codeforcesData = async () =>{
+        const authToken =await getCookie(tokenName);
+        if(!authToken){
+            navigate('/login');
+        }
+     
+        try{
+          const axiosInstance = axios.create({
+            headers: {
+              common: {
+                Authorization: `Bearer ${authToken}`
+              }
+            }
+          });
+          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/codeforces/rating`);
+          const data = lcresponse.data.message;
+          dispatch(cfModifyRating(data));
+        } catch(error){
+            if(error.response.data.error || error.response.request.status === 404 || error.response.request.status === 500){
+                console.log(error.response.data.message)
+            }
+        }
+      }
+
+
+      const codechefData = async () =>{
+        const authToken =await getCookie(tokenName);
+        if(!authToken){
+            navigate('/login');
+        }
+     
+        try{
+          const axiosInstance = axios.create({
+            headers: {
+              common: {
+                Authorization: `Bearer ${authToken}`
+              }
+            }
+          });
+          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/codechef/details`);
+          const data = lcresponse.data.message;
+          dispatch(ccUpdateUserDetails(data));
+        } catch(error){
+            if(error.response.data.error || error.response.request.status === 400 || error.response.request.status === 404){
+                console.log(error.response.data.message)
+                // navigate('/login')
+            }
+        }
+      }
+
+      const githubData = async () =>{
+        const authToken =await getCookie(tokenName);
+        if(!authToken){
+            navigate('/login');
+        }
+     
+        try{
+          const axiosInstance = axios.create({
+            headers: {
+              common: {
+                Authorization: `Bearer ${authToken}`
+              }
+            }
+          });
+          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/github/repo`);
+          const data = lcresponse.data.message;
+          console.log('github data',data);
+          dispatch(updateGithubRepo(data));
+        } catch(error){
+            if(error.response.data.error || error.response.request.status === 400 || error.response.request.status === 404){
+                console.log(error.response.data.message)
+                // navigate('/login')
+            }
+        }
+      }
+
+
     const cardData = [
         {
             title:'Leetcode',
             sub_title:'leetcode',
-            count:500,
-            rank:100,
-            completed_count: 300,
+            count:count[0].count,
+            rank:count[0].submissions,
+            completed_count: count[0].count,
             topic_color:'bg-cd1_red',
             logo: LeetCode_logo,
         },

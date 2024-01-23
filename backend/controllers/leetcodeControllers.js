@@ -5,45 +5,31 @@ const getLcCount = async (req,res) =>{
     const username = req.user.leetcode;
     try{
         const submitStats = await getLeetCount(username);
-        res.status(200).json({error:false,message:submitStats});
+        res.status(200).json({error:false,message:submitStats.message});
     }catch(err){
         res.status(500).json({error:true,message:"Error occurred while fetching the data from the leetcode api"})
     }
    
 }
 
-const postLcCount = async (req,res) =>{
-    const username  = req.body.username;
-    try{
-        const submitStats = await getLeetCount(username);
-       
-        res.status(200).json({data:submitStats});
-    }catch(err){
-        res.status(500).json({Error:"Error occurred while fetching the data from the leetcode api"})
-    }
-}
 
 const getLcRating =async (req,res) =>{
     const username = req.user.leetcode;
-    var submitStats =await getLeetRating(username);
-    console.log(req.user);
-    const attendContest = submitStats[1].filter((data)=>{
-        return data.attended==true;
-    })
-    console.log(attendContest.length)
-    res.status(200).json({error:false,message:attendContest});
-}
-
-const postLcRating = async (req,res) =>{
-    const username = req.body.username;
     try{
-        const submitStats = await getLeetRating(username);
-        
-        res.status(200).json({data:attendContest});
-    }catch(err){
-        res.status(500).json({Error:"Error occurred while fetching the data from the leetcode api"})
+        var submitStats =await getLeetRating(username);
+        if(submitStats.error){
+            return res.status(404).json({error:true,message:'Username not found or network problem'})
+        }
+        const attendContest = submitStats.message[1].filter((data)=>{
+            return data.attended==true;
+        })
+        return res.status(200).json({error:false,message:attendContest});
+    }
+    catch(err){
+        res.status(500).json({error:true,message:err.message});
     }
 }
+
 
 const checkLcUsername = async (req,res) =>{
     const username = req.body.username;
@@ -59,5 +45,5 @@ const checkLcUsername = async (req,res) =>{
 }
 
 module.exports = {
-    getLcCount,getLcRating,postLcCount,postLcRating, checkLcUsername
+    getLcCount,getLcRating,checkLcUsername
 }

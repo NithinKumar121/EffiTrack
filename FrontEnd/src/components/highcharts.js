@@ -3,7 +3,7 @@ import HighchartsReact from "highcharts-react-official";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
-
+import { useSelector } from "react-redux";
 import { getCookie } from "../services/servicehelp";
 
 const tokenName = process.env.REACT_APP_JWT_NAME;
@@ -50,6 +50,11 @@ const options = {
 
 const Chart = () =>{
     const navigate = useNavigate();
+    const leetcodeDetails = useSelector((store)=>store.leetcodeDetails);
+    const {rating} = leetcodeDetails;
+    const codeforcesDetails = useSelector((store)=>store.codeforcesDetails);
+    const {cfRating} = codeforcesDetails;
+  
     const [chartOptions, setChartOptions] = useState({
       // Initial chart options
       xAxis: {
@@ -76,47 +81,43 @@ const Chart = () =>{
     });
     useEffect(()=>{
           checkAuth();
-    },[]);
+    },[rating,cfRating]);
 
-    useEffect(()=>{
-        console.log('leetcode or options any one of them have been changed')
-        console.log('options',options)
-    },[options])
+
     const checkAuth = async() =>{
-      const authToken = getCookie(tokenName);
-      if(!authToken){
-        // navigate('/login');
-      }
-      else{
-        try{
-          const axiosInstance = axios.create({
-            headers: {
-              common: {
-                Authorization: `Bearer ${authToken}`
-              }
-            }
-          });
-          const response = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/leetcode/rating`);
-          const cfresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/codeforces/rating`);
-          const data = response.data.message;
-          const cfdata = cfresponse.data.message;
+          const data = rating;
+          const cfdata = cfRating;
           const Rating = [];
-          const cfRating = [];
-          for(let i = 0;i<data.length;i++){
-            const contest = {
-              name:data[i].contest.title,
-              y:Math.round(data[i].rating),
+          const cfFilterRating = [];
+          if(data.length > 0){
+            for(let i = 0;i<data[0].length;i++){
+              const contest = {
+                name:data[0][i].contest.title,
+                y:Math.round(data[0][i].rating),
+              }
+              Rating.push(contest);
+              console.log(Rating);
             }
-            Rating.push(contest);
-            console.log(Rating);
+          }else{
+            Rating.push({name:'Contest none',y:1500})
           }
-          for(let i = 0;i<cfdata.length;i++){
+          
+          if(cfdata.length > 0){
+            for(let i = 0;i<cfdata[0].length;i++){
+              const contest ={
+                name:cfdata[0][i].contestName,
+                y:Math.round(cfdata[0][i].newRating),
+              }
+              cfFilterRating.push(contest);
+            }
+          }else{
             const contest ={
-              name:cfdata[i].contestName,
-              y:Math.round(cfdata[i].newRating),
+              name:'Contest None',
+              y:600,
             }
-            cfRating.push(contest);
+            cfFilterRating.push(contest);
           }
+          
           setChartOptions({
             chart: {
               type: 'spline',
@@ -156,7 +157,7 @@ const Chart = () =>{
               },
               {
                 name:'Codeforces',
-                data:cfRating,
+                data:cfFilterRating,
                 color:'purple',
                 marker:{
                   lineWidth: 1, // Set marker outline width
@@ -176,12 +177,9 @@ const Chart = () =>{
             //     gridLineColor: 'gray', // Gridline color
             // }
           });
-    
-        } catch(error){
-            // navigate('/login');
-        }
+
       }
-    }
+    
 
     return(
         <div>

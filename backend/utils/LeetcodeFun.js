@@ -85,13 +85,17 @@ const getLeetRating = async (username) =>{
          userContestRankingHistory = data.data.userContestRankingHistory.filter((d)=>{
             return d.attended == true;
         });
-    }
+        return {error:false,message:[userContestRanking,userContestRankingHistory]}
+      }
+      else{
+          return {error:true,message:'Username not found'}
+      }
     }
     catch(err){
-      console.log(`Error: ${response.status}, ${await response.text()}`);
+      return {error:true,message:'Internet Error'}
     }
    
-    return [userContestRanking,userContestRankingHistory];
+    
 }
   
 

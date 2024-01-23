@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { getCookie } from '../../services/servicehelp';
 import { changeUserDetails } from '../../redux/userSlice';
+import LeetcodeSlice from '../../redux/LeetcodeSlice';
 
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
@@ -35,6 +36,7 @@ const Home = () => {
     useEffect(()=>{
           checkAuth();
     },[]);
+    
     const checkAuth = async() =>{
       const authToken = getCookie(tokenName);
       console.log(authToken)
@@ -53,15 +55,54 @@ const Home = () => {
 
           const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/user/`);
           dispatch(changeUserDetails(lcresponse.data.message))
-          // const currentContest = lcresponse.data.message.objects.filter((contest)=>{
-          //   return isValidDateString(contest.start) == true;
-          // })
-          // setContest(currentContest);
         } catch(error){
-            console.log(error.message);
+            if(error.response.data.error==true){
+              navigate('/login');
+            }
         }
       }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     const [display, setDisplay] = useState('dashboard');
     const [dark,setDark] = useState();
