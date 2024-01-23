@@ -64,46 +64,6 @@ const Home = () => {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     const [display, setDisplay] = useState('dashboard');
     const [dark,setDark] = useState();
 

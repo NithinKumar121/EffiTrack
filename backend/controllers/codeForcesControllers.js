@@ -12,7 +12,6 @@ const getCFcount = async (req,res) =>{
     } catch (err){
         return res.status(500).json({error:true,message:err.message})
     }
-    
 }
 
 const getCFrating = async (req,res) =>{
