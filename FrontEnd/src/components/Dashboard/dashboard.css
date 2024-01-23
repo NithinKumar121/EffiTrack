@@ -56,7 +56,8 @@
         @apply  w-full 
     }
     .l-nav-a-active{
-        @apply  bg-[#253D5B] mx-auto px-2 rounded-xl text-white dark:bg-[#333]
+        /* 253D5B */
+        @apply  bg-[#363448] mx-auto px-2 rounded-xl text-white dark:bg-[#333]
     }
     .left-nav-a{
         @apply w-[85%] h-[3rem] font-semibold text-xl flex flex-row items-center gap-x-3 transition-all
