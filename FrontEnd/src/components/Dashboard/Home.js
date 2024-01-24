@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import Leftnav from './Leftnav'
-import Main from './Main'
-import {useDispatch} from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { getCookie } from '../../services/servicehelp';
-import { changeUserDetails  ,changeUpcomingContest} from '../../redux/userSlice';
-import LeetcodeSlice from '../../redux/LeetcodeSlice';
+import React, { useEffect, useState } from "react";
+import Leftnav from "./Leftnav";
+import Main from "./Main";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { getCookie } from "../../services/servicehelp";
+import {
+  changeUserDetails,
+  changeUpcomingContest,
+} from "../../redux/userSlice";
+import LeetcodeSlice from "../../redux/LeetcodeSlice";
 
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
@@ -28,70 +31,71 @@ function isValidDateString(dateString) {
   return true;
 }
 
-
 const Home = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const [contest,setContest] = useState({});
-    useEffect(()=>{
-          checkAuth();
-    },[]);
-    
-    const checkAuth = async() =>{
-      const authToken = getCookie(tokenName);
-      if(!authToken){
-        navigate('/login');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [contest, setContest] = useState({});
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
+  const checkAuth = async () => {
+    const authToken = getCookie(tokenName);
+    if (!authToken) {
+      navigate("/login");
+    } else {
+      try {
+        const axiosInstance = axios.create({
+          headers: {
+            common: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          },
+        });
+
+        const lcresponse = await axiosInstance.get(
+          `${process.env.REACT_APP_BASE_URL}/user/`,
+        );
+        dispatch(changeUserDetails(lcresponse.data.message));
+      } catch (error) {
+        console.log("error in authentication", error);
       }
-      else{
-        try{
-          const axiosInstance = axios.create({
-            headers: {
-              common: {
-                Authorization: `Bearer ${authToken}`
-              }
-            }
-          });
 
-          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/user/`);
-          dispatch(changeUserDetails(lcresponse.data.message))
-        } catch(error){
-          console.log("error in authentication",error);
-        }
+      try {
+        const axiosInstance = axios.create({
+          headers: {
+            common: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          },
+        });
+        const lcresponse = await axiosInstance.get(
+          `${process.env.REACT_APP_BASE_URL}/user/upcoming`,
+        );
 
-        try{
-          const axiosInstance = axios.create({
-            headers: {
-              common: {
-                Authorization: `Bearer ${authToken}`
-              }
-            }
-          });
-          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/user/upcoming`);
-
-          const currentContest = lcresponse.data.message.objects.filter((contest)=>{
-              return isValidDateString(contest.start) == true;
-          })
-          dispatch(changeUpcomingContest(currentContest));
-        } catch(error){
-            console.log("upcoming data is not available");
-        }
+        const currentContest = lcresponse.data.message.objects.filter(
+          (contest) => {
+            return isValidDateString(contest.start) == true;
+          },
+        );
+        dispatch(changeUpcomingContest(currentContest));
+      } catch (error) {
+        console.log("upcoming data is not available");
       }
     }
+  };
 
-
-    const [display, setDisplay] = useState('dashboard');
-    const [dark,setDark] = useState();
-
+  const [display, setDisplay] = useState("dashboard");
+  const [dark, setDark] = useState();
 
   return (
-    <div className={dark && 'dark'}>
-        <div className='home_section bg-gray-400 dark:bg-[#484849] dark: h-full lg:h-[100vh] scrollbar-hide overflow-hidden'>
-          <Leftnav display = {display} setDisplay={setDisplay}/>  
-          <Main display = {display} setDark = {setDark}/>
-        </div>  
+    <div className={dark && "dark"}>
+      <div className="home_section bg-gray-400 dark:bg-[#484849] dark: h-full lg:h-[100vh] scrollbar-hide overflow-hidden">
+        <Leftnav display={display} setDisplay={setDisplay} />
+        <Main display={display} setDark={setDark} />
+      </div>
     </div>
-   
-  )
-}
+  );
+};
 
 export default Home;

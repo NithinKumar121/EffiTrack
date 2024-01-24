@@ -1,22 +1,20 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @layer utilities {
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
-      display: none;
+    display: none;
   }
- /* Hide scrollbar for IE, Edge and Firefox */
+  /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-}
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
 
-
-*{
+* {
   outline: 0;
   border: 0;
   box-sizing: border-box;
@@ -24,31 +22,29 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-.home_section{
+.home_section {
   display: grid;
   grid-template-columns: 15.5rem auto;
   gap: 1rem;
-  
 }
 
-
-.top{
+.top {
   margin-top: 2rem;
 }
 
-.top .logo{
+.top .logo {
   display: flex;
   height: 4rem;
   align-items: center;
@@ -56,14 +52,11 @@ code {
   padding: 1rem;
 }
 
-.top .close{
+.top .close {
   display: none;
 }
 
-
-
 /* Mid of the dashboard .... */
-
 
 /* .mid-top{
   display: grid;
@@ -123,184 +116,171 @@ code {
   bottom: 0;
 } */
 
-.mid-top .mid-left .cards .card .progress svg{
+.mid-top .mid-left .cards .card .progress svg {
   width: 8rem;
-  height: 8rem; 
+  height: 8rem;
 }
 
-.mid-top .mid-left .cards .card .progress svg circle{
+.mid-top .mid-left .cards .card .progress svg circle {
   fill: none;
   stroke: green;
   stroke-width: 14;
   stroke-linecap: round;
-  transform: translate(5px,5px);
+  transform: translate(5px, 5px);
   stroke-dasharray: 110;
   stroke-dashoffset: 92;
 }
 
-.mid-top .mid-left .cards .leetcode .progress svg circle{
+.mid-top .mid-left .cards .leetcode .progress svg circle {
   stroke-dasharray: 30;
   stroke-dashoffset: 92;
-  stroke: #FA5A7D;
+  stroke: #fa5a7d;
 }
 
-
-.mid-top .mid-left .cards .codechef .progress svg circle{
+.mid-top .mid-left .cards .codechef .progress svg circle {
   stroke-dasharray: -50;
   stroke-dashoffset: 92;
-  stroke: #FF947A;
+  stroke: #ff947a;
 }
 
-.mid-top .mid-left .cards .codeforces .progress svg circle{
+.mid-top .mid-left .cards .codeforces .progress svg circle {
   stroke-dasharray: -50;
   stroke-dashoffset: 130;
-  stroke: #3CD856;
+  stroke: #3cd856;
 }
 
-
-.mid-top .mid-left .cards .card .progress .number{
+.mid-top .mid-left .cards .card .progress .number {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  width:100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color:black;
+  color: black;
 }
 
-.card-details-top{
-  padding: .4rem;
+.card-details-top {
+  padding: 0.4rem;
   transform: translateY(-40%);
 }
 
 /* git hub ui design css code */
 
-.github-card{
+.github-card {
   height: 2.5rem;
-  margin-top: .2rem;
+  margin-top: 0.2rem;
 }
 
-.github-card h1{
+.github-card h1 {
   height: 100%;
   width: 8rem;
   border-radius: 13px;
   display: flex;
   align-items: center;
-  padding: 0 0 0 .5rem;
+  padding: 0 0 0 0.5rem;
   font-size: large;
   font-weight: 500;
 }
 
-
 /* graph git  */
 
-
-
-.graph-git{
+.graph-git {
   display: grid;
-  grid-template-columns:1fr 2fr;
+  grid-template-columns: 1fr 2fr;
   margin-top: 1rem;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 /* .graph-git .git-profile{
   background: #F3E8FF;
 } */
 
-.two-graph{
+.two-graph {
   display: flex;
   flex-direction: row;
   gap: 1rem;
 }
 
-.two-graph > div{
+.two-graph > div {
   width: 50%;
   flex: 1;
 }
 
 /* mid section graph */
 
-
-.view-more .view-more-span{
+.view-more .view-more-span {
   filter: blur(2px);
 }
 
-
-
 /* SHOWCCASE SECTION OF MAIN SCREEN */
 
-.showcase-top{
+.showcase-top {
   display: grid;
-  grid-template-columns:2fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 2rem;
-  margin-top:.5rem;
-  
+  margin-top: 0.5rem;
 }
 
-.showcase-favourite h1 , .showcase-socails h1{
+.showcase-favourite h1,
+.showcase-socails h1 {
   text-align: center;
   font-weight: 600;
-  font-size:larger;
+  font-size: larger;
   border-radius: 13px;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
-.repo-favourites{
+.repo-favourites {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
-  padding: .5rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 
-.repo-favourite{
+.repo-favourite {
   display: grid;
   grid-auto-flow: column;
-  padding: .6rem;
+  padding: 0.6rem;
   border-radius: 13px;
   color: white;
-  background: #6D6027;
+  background: #6d6027;
   align-items: center;
 }
 
-.repo-favourite img{
+.repo-favourite img {
   width: 40px;
   height: 40px;
   border-radius: 100%;
 }
 
-
 /* social medias section */
 
-.socail-medias{
+.socail-medias {
   display: grid;
   gap: 1rem;
 }
 
-.social-media{
+.social-media {
   display: flex;
   align-items: center;
-  padding:1rem;
+  padding: 1rem;
   border-radius: 13px;
   gap: 1rem;
 }
 
-.social-media-inner{
+.social-media-inner {
   display: grid;
   align-items: center;
   grid-auto-flow: row;
 }
 
-
-
 /* Shimmer */
-
 
 /* background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% ); */
 
-.up-bg{
+.up-bg {
   background-color: #dbcbd8;
   background-image: linear-gradient(316deg, #dbcbd8 0%, #2e4057 74%);
 }
-
