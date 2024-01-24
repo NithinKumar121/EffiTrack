@@ -5,7 +5,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getCookie } from "../../services/servicehelp";
-import { changeUserDetails } from "../../redux/userSlice";
+import {
+  changeUserDetails,
+  changeUpcomingContest,
+} from "../../redux/userSlice";
 import LeetcodeSlice from "../../redux/LeetcodeSlice";
 
 const tokenName = process.env.REACT_APP_JWT_NAME;
@@ -38,7 +41,6 @@ const Home = () => {
 
   const checkAuth = async () => {
     const authToken = getCookie(tokenName);
-    console.log(authToken);
     if (!authToken) {
       navigate("/login");
     } else {
@@ -56,9 +58,29 @@ const Home = () => {
         );
         dispatch(changeUserDetails(lcresponse.data.message));
       } catch (error) {
-        if (error.response.data.error == true) {
-          navigate("/login");
-        }
+        console.log("error in authentication", error);
+      }
+
+      try {
+        const axiosInstance = axios.create({
+          headers: {
+            common: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          },
+        });
+        const lcresponse = await axiosInstance.get(
+          `${process.env.REACT_APP_BASE_URL}/user/upcoming`,
+        );
+
+        const currentContest = lcresponse.data.message.objects.filter(
+          (contest) => {
+            return isValidDateString(contest.start) == true;
+          },
+        );
+        dispatch(changeUpcomingContest(currentContest));
+      } catch (error) {
+        console.log("upcoming data is not available");
       }
     }
   };

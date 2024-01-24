@@ -86,8 +86,8 @@ export const CodeChefCard = () => {
           </div>
           <div className="px-2 text-[#333] dark:text-[#f3f3f3]">
             <h1>Top Rating : {ccUserDetails.highestRating}</h1>
-            <h3>GlobalRank : {ccUserDetails.globalRank}</h3>
-            <h4>Starts : {ccUserDetails.stars}</h4>
+            <h3>Rank : {ccUserDetails.globalRank}</h3>
+            <h4>Stars : {ccUserDetails.stars}</h4>
           </div>
         </div>
         <div className="flex h-[100px] w-[100px]">
@@ -149,7 +149,7 @@ export const CodeforcesCard = () => {
             className={`card-details-top bg-[#253D5B] dark:bg-[#333] rounded-xl flex justify-center items-center gap-2`}
           >
             <img src={LeetCode_logo} alt="leetlogo" className="h-5"></img>
-            <h1>CodoForces</h1>
+            <h1>CodeForces</h1>
           </div>
           <div className="px-2 text-[#333] dark:text-[#f3f3f3]">
             <h1>
