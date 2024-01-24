@@ -17,19 +17,44 @@ function isValidDateString(dateString) {
   const inputDate = new Date(dateString);
   // Get current date
   const currentDate = new Date();
-  // Check if the year matches the current year
+
+  // Check if the year and month match the current year and month
   const inputYear = inputDate.getFullYear();
-  if (inputYear !== currentDate.getFullYear()) {
+  const inputMonth = inputDate.getMonth();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+
+  if (inputYear !== currentYear || inputMonth !== currentMonth) {
     return false;
   }
+  // Check if the date is within one month from the current date
+  const oneMonthLater = new Date(currentDate);
+  oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
 
-  // Check if the date is present or future
-  if (inputDate < currentDate) {
+  if (inputDate >= oneMonthLater) {
     return false;
   }
 
   return true;
 }
+
+// function isValidDateString(dateString) {
+//   const inputDate = new Date(dateString);
+//   // Get current date
+//   const currentDate = new Date();
+//   // Check if the year matches the current year
+//   const inputYear = inputDate.getFullYear();
+//   if (inputYear !== currentDate.getFullYear()) {
+//     return false;
+//   }
+
+//   // Check if the date is present or future
+//   if (inputDate < currentDate) {
+//     return false;
+//   }
+
+//   return true;
+// }
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -87,7 +112,7 @@ const Home = () => {
 
         const currentContest = lcresponse.data.message.objects.filter(
           (contest) => {
-            return isValidDateString(contest.start) == true;
+            return isValidDateString(contest.start) === true;
           },
         );
         dispatch(changeUpcomingContest(currentContest));

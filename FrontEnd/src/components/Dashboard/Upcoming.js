@@ -11,7 +11,7 @@ const Contest = (props) => {
   const { onecontestData } = props;
   return (
     <>
-      <div
+      <a href={`${onecontestData?.href}`} target="_blank" rel="noreferrer"
         className="contest bg-[#f4f5f6] rounded-lg text-black
                             flex flex-row px-3 py-3 slowmo
                              gap-x-3 items-center next
@@ -31,7 +31,7 @@ const Contest = (props) => {
             {onecontestData.resource.name}
           </h2>
         </div>
-      </div>
+      </a>
     </>
   );
 };
