@@ -39,8 +39,15 @@ const register = async (req,res) =>{
         await user.save();
 
         if(user){
-
-            return res.status(201).json({error:false,message:{name:username,email:email}})  
+            const verifiedPassword = await bcrypt.compare(password,user.password);
+            if(!verifiedPassword){
+                return res
+                    .status(401)
+                    .json({error:true,message:"Invalid password"});
+            }
+            const {accessToken} = await generateTokens(user);
+            return res.status(201).json({error:false,message:{name:username,email:email,accessToken:accessToken}})  
+          
             //  201 is for successful creation
         }else{   
             return res

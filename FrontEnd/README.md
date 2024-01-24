@@ -4,10 +4,11 @@ npm install --save-dev @babel/
 plugin-proposal-private-property-in-object
 npm install chart.js react-chartjs-2
 npm install @reduxjs/toolkit react-redux
- npm install @reduxjs/toolkit
- npm install frame-motion
+npm install @reduxjs/toolkit
+npm install frame-motion
 npm install react-highcharts --save
- npm install highcharts highcharts-react-official
+npm install highcharts highcharts-react-official
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
