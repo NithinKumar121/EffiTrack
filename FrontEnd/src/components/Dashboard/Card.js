@@ -119,7 +119,7 @@ export const CodeChefCard = () =>{
 export const CodeforcesCard = () =>{
     const codeforcesDetails = useSelector((store)=>store.codeforcesDetails);
     const {cfProfile} = codeforcesDetails;
-    console.log(cfProfile);
+
     return (
         <div> 
         <div className={`card bg-[#fff] dark:bg-[#1d1d1d] text-[#f3f3f3] slowmo shadow-xl hover:shadow`}>      
@@ -129,8 +129,8 @@ export const CodeforcesCard = () =>{
                     <h1>CodoForces</h1>
                 </div>
                 <div className='px-2 text-[#333] dark:text-[#f3f3f3]'>
-                    <h1>Rating : {cfProfile[0].rating}</h1>
-                    <h3>Rank   : {cfProfile[0].rank}</h3>
+                    <h1>Rating : {cfProfile[0].hasOwnProperty('rating') ? cfProfile[0].rating : 'null'}</h1>
+                    <h3>Rank   : {cfProfile[0].hasOwnProperty('rank') ? cfProfile[0].rank : 'null'}</h3>
                     <h4>FriendCount : {cfProfile[0].friendOfCount}</h4>    
                 </div>
             </div>
@@ -162,7 +162,12 @@ export const CodeforcesCard = () =>{
                         </circle>
                     </g>
                     <text className='text-xl font-bold' x='50%' y='50%' dominantBaseline="central" textAnchor='middle' fill='gray'>
-                        {cfProfile[0].maxRating.toString().padStart(1,'0')}
+                        {
+                            cfProfile[0].hasOwnProperty('maxRating') ? 
+                            (cfProfile[0].maxRating?.toString().padStart(1,'0')) 
+                            :
+                            '0'.toString().padStart(1,'0') 
+                        }
                     </text>
                 </svg>
             </div>

@@ -29,6 +29,7 @@ const codeforcesSlice = createSlice({
     initialState,
     reducers:{
         cfModifyProfile:(state,action)=>{
+            
             return{
                 cfRating:state.cfRating,
                 ...state,
