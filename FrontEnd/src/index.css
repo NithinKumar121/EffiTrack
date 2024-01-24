@@ -219,7 +219,7 @@ code {
 .showcase-top {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+  gap: 1rem;
   margin-top: 0.5rem;
 }
 

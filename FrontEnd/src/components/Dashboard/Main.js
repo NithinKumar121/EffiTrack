@@ -19,7 +19,7 @@ const Main = (props) => {
             {props.display === "dashboard" ? (
               <div>
                 <Navbar
-                  className="fixed"
+                  className=""
                   setDark={setDark}
                   title={"Dashboard"}
                   dark={dark}
@@ -29,7 +29,7 @@ const Main = (props) => {
               </div>
             ) : (
               <>
-                <Navbar className="fixed" setDark={setDark} title={"Profile"} dark={dark} />
+                <Navbar className="" setDark={setDark} title={"Profile"} dark={dark} />
                 <EditProfile />
               </>
             )}

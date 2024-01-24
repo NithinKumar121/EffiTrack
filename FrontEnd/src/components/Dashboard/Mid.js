@@ -268,8 +268,8 @@ const Mid = () => {
               <CodeChefCard />
               <CodeforcesCard />
             </div>
-            <div className="graph-git mb-3">
-              <div className="rounded-xl h-full item2 hover:shadow bg-[#fff] slowmo shadow-xl dark:bg-[#1d1d1d] dark:text-[#f3f3f3]">
+            <div className="graph-git mb-2">
+              <div className="rounded-xl h-full item2 hover:shadow bg-[#fff] slowmo shadow-xl dark:bg-[#1d1d1d] dark:text-[#f3f3f3] mr-2">
                 <GitProfile modify={github_data} />
               </div>
               <div className="p-2 bg-white dark:bg-[#1d1d1d] rounded-xl shadow-md ">
@@ -277,7 +277,7 @@ const Mid = () => {
               </div>
             </div>
           </div>
-          <div className="mid-right mb-3 shadow-lg hover:shadow">
+          <div className="mid-right mt-1 mb-2 shadow-lg hover:shadow">
             <Upcoming />
           </div>
         </section>
