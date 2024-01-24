@@ -1,5 +1,5 @@
-*{
-  @apply transition-colors duration-100
+* {
+  @apply transition-colors duration-100;
 }
 
 .App {
@@ -42,7 +42,8 @@
 }
 
 @keyframes floatAnimation {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
