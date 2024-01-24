@@ -29,7 +29,7 @@
     @apply w-full;
   }
   .card {
-    @apply h-48 mx-auto p-4 rounded-xl flex items-center;
+    @apply h-48 mx-auto p-4 rounded-xl flex items-center mt-1;
   }
   .mid-top .mid-left .cards .card .card-details {
     width: 60%;
