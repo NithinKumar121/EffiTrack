@@ -8,6 +8,9 @@ import {
   setCookie,
   getCookie,
   deleteCookie,
+  storeDataInLocalStorage,
+  deleteDataFromLocalStorage,
+  getDataFromLocalStorage
 } from "../../services/servicehelp.js";
 
 const base_url = process.env.REACT_APP_BASE_URL;
@@ -38,7 +41,11 @@ export const LoginForm = (props) => {
       if (getCookie(tokenName)) {
         deleteCookie(tokenName);
       }
-      setCookie(tokenName, data.accessToken, 4);
+      // if (getDataFromLocalStorage('mode')) {
+      //   deleteDataFromLocalStorage('mode')
+      // }
+      setCookie(tokenName, data.accessToken, 168);
+      storeDataInLocalStorage('mode',false);
       navigate("/");
     } catch (error) {
       if (
