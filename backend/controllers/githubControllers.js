@@ -4,7 +4,6 @@ const { getGithubContributions } = require('github-contributions-counter')
 
 const getRepoDetails = async  (req,res) =>{
     const username = req.user.github;
-    console.log("github username",username);
     try{
         const response  =await  getGithubRepo(username);
         res.status(200).json({error:false,message:response});
@@ -31,7 +30,6 @@ const postRepoDetails = async  (req,res) =>{
 
 const checkUsername = async(req,res) =>{
     const username = req.body.username;
-    console.log("github username entered",username)
     url = `https://api.github.com/users/${username}`
     try{
         const response = await fetch(url,{
@@ -51,7 +49,6 @@ const checkUsername = async(req,res) =>{
 
 const githubProfile= async (req,res)=>{
     const username = req.user.github;
-    console.log("incoming",username)
     url = `https://api.github.com/users/${username}`
     try{
         const response = await fetch(url,{
