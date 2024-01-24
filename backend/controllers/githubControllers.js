@@ -38,8 +38,10 @@ const checkUsername = async(req,res) =>{
         const data =await response.json();
         if (data.hasOwnProperty('message') && data.message == 'Not Found') {
            return res.status(404).json({error:true,message:'Username not found'});
-        } else {
-            return res.status(200).json({error:false,message:data});
+        } 
+        
+        else {
+            return res.status(200).json({error:false,message:data.message});
         }
 
     } catch(err){
@@ -57,7 +59,11 @@ const githubProfile= async (req,res)=>{
         const data =await response.json();
         if (data.hasOwnProperty('message') && data.message == 'Not Found') {
            return res.status(404).json({error:true,message:'Username not found'});
-        } else {
+        }
+        else if(data.hasOwnProperty('message') && data.message.includes('API rate limit exceeded')){
+            return res.status(408).json({error:true,message:"rate limit exceeded"});
+        } 
+        else {
             return res.status(200).json({error:false,message:data});
         }
 

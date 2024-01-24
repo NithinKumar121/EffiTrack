@@ -10,6 +10,7 @@ import Footer from "../Footer";
 const Main = (props) => {
   console.log(props.display);
   const setDark = props.setDark;
+  const {dark} = props;
   return (
     <div className="overflow-hidden h-full">
       <div className="overflow-hidden h-full dark:bg-[#333] bg-[#e1e1e1] p-3 pb-0 ">
@@ -21,13 +22,14 @@ const Main = (props) => {
                   className="fixed"
                   setDark={setDark}
                   title={"Dashboard"}
+                  dark={dark}
                 />
                 <Mid />
                 <Showcase />
               </div>
             ) : (
               <>
-                <Navbar className="fixed" setDark={setDark} title={"Profile"} />
+                <Navbar className="fixed" setDark={setDark} title={"Profile"} dark={dark} />
                 <EditProfile />
               </>
             )}

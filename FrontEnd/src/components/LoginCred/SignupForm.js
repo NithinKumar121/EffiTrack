@@ -43,7 +43,7 @@ export const SignupForm = (props) => {
       if (getCookie(tokenName)) {
         deleteCookie(tokenName);
       }
-      setCookie(tokenName, response.data.message.accessToken, 4);
+      setCookie(tokenName, response.data.message.accessToken, 168);
       let newPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve("validation page");

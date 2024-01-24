@@ -214,7 +214,6 @@ const Mid = () => {
       const lcresponse = await axiosInstance.get(
         `${process.env.REACT_APP_BASE_URL}/github/profile`,
       );
-      console.log(process.env.REACT_APP_BASE_URL);
       const data = lcresponse.data.message;
       dispatch(updateGithubProfile(data));
     } catch (error) {

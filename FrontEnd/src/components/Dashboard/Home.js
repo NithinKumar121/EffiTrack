@@ -4,7 +4,7 @@ import Main from "./Main";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { getCookie } from "../../services/servicehelp";
+import { getCookie, getDataFromLocalStorage } from "../../services/servicehelp";
 import {
   changeUserDetails,
   changeUpcomingContest,
@@ -35,10 +35,22 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [contest, setContest] = useState({});
+  const [display, setDisplay] = useState("dashboard");
+  const [dark, setDark] = useState();
+
   useEffect(() => {
+    changeMode();
     checkAuth();
   }, []);
 
+
+  // useEffect(()=>{
+
+  // },[light])
+  const changeMode=()=>{
+    const mode = getDataFromLocalStorage('mode');
+    setDark(mode);
+  }
   const checkAuth = async () => {
     const authToken = getCookie(tokenName);
     if (!authToken) {
@@ -80,21 +92,33 @@ const Home = () => {
         );
         dispatch(changeUpcomingContest(currentContest));
       } catch (error) {
-        console.log("upcoming data is not available");
+        if(error.response.request.status === 409 || error.response.request.status === 500 || error.response.data.error){
+          console.log(error.response.data.message)
+        }
       }
     }
   };
 
-  const [display, setDisplay] = useState("dashboard");
-  const [dark, setDark] = useState();
-
   return (
-    <div className={dark && "dark"}>
-      <div className="home_section bg-gray-400 dark:bg-[#484849] dark: h-full lg:h-[100vh] scrollbar-hide overflow-hidden">
-        <Leftnav display={display} setDisplay={setDisplay} />
-        <Main display={display} setDark={setDark} />
+    <>
+        {
+      dark ? <div className={"dark"}>
+              <div className="home_section bg-gray-400 dark:bg-[#484849] dark: h-full lg:h-[100vh] scrollbar-hide overflow-hidden">
+                <Leftnav display={display} setDisplay={setDisplay} />
+                <Main display={display} dark={dark} setDark={setDark} />
+              </div>
+            </div>
+        :
+        <div className="">
+        <div className="home_section bg-gray-400 dark:bg-[#484849] dark: h-full lg:h-[100vh] scrollbar-hide overflow-hidden">
+          <Leftnav display={display} setDisplay={setDisplay} />
+          <Main display={display} dark={dark} setDark={setDark} />
+        </div>
       </div>
-    </div>
+      }
+    
+    </>
+    
   );
 };
 

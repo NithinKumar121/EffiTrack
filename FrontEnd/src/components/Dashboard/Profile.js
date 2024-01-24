@@ -4,12 +4,14 @@ import { useSelector } from "react-redux";
 
 const Profile = () => {
   const myUserDetails = useSelector((state) => state.userDetails);
+  const githubDetails = useSelector((store) => store.githubDetails);
   const { userDetials } = myUserDetails;
+  const { GithubProfile } = githubDetails;
   const [role, setRole] = useState("Student");
   return (
     <div className="flex gap-3">
       <div>
-        <img src={temp_logo} className="w-[3rem] rounded-[100%]"></img>
+        <img src={GithubProfile.avatar_url} className="w-[3rem] rounded-[100%]"></img>
       </div>
       <div>
         <div className="text-primary font-medium">{userDetials.username}</div>
