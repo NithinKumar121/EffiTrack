@@ -51,7 +51,7 @@ const Contest = () =>{
     return  (
         <>
             <div className="contest bg-[#f4f5f6] rounded-lg text-black
-                            flex flex-row px-3 py-3  transition-all slowmo
+                            flex flex-row px-3 py-3 slowmo
                              gap-x-3 items-center next
                              dark:bg-[#333] dark:text-[#f3f3f3] shadow-md hover:shadow-none">
                     <div>

@@ -22,8 +22,6 @@ import Footer from '../Footer'
                     <Navbar className='fixed' setDark = {setDark} title={'Dashboard'}/>
                     <Mid/>
                     <Showcase/>
-                    <Showcase/>
-                    <Showcase/>
                   </div>
                 :
                 <>

@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import Card, { LeetcodeCard , CodeChefCard , CodeforcesCard } from "./Card";
 import GitProfile from "./GitProfile";
 import LineChart from "./LIneChart";
 import Upcoming from "./Upcoming";
@@ -13,13 +13,12 @@ import { getCookie } from '../../services/servicehelp';
 import { getLeetCount , getChefData , getForceCount } from "../../services/show.service";
 import LeetCode_logo from '../../assets/LeetCode_logo.png'
 import { modifyCount , modifyRating} from "../../redux/LeetcodeSlice";
-import { cfModifyRating } from "../../redux/codeforcesSlice";
+import { cfModifyRating , cfModifyProfile } from "../../redux/codeforcesSlice";
 import {ccUpdateUserDetails} from '../../redux/codechefSlice';
-import { updateGithubRepo } from "../../redux/githubSlice";
-
+import { updateGithubRepo , updateGithubProfile } from "../../redux/githubSlice";
 import { useDispatch } from "react-redux";
 
-const {LcSlice} = require('../../redux/LcSlice');
+
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
 const Mid = ()=>{   
@@ -28,16 +27,16 @@ const Mid = ()=>{
     const leetcodeDetails = useSelector((store)=>store.leetcodeDetails);
     const codechefDetails = useSelector((store)=>store.codechefDetails);
     const githubDetails = useSelector((store)=>store.githubDetails);
+
     const {count, rating} = leetcodeDetails;
     const {ccUserDetails} = codechefDetails;
-
+    const {GithubProfile} = githubDetails;
 
     useEffect(()=>{
         leetcodeData();
         codeforcesData();
         codechefData();
         githubData();
-        // codechefData();
     },[]);
     
     const leetcodeData = async () =>{
@@ -60,7 +59,6 @@ const Mid = ()=>{
         } catch(error){
             if(error.response.data.error || error.response.request.status === 400){
                 console.log(error.response.data.message)
-                // navigate('/login')
             }
         }
 
@@ -79,7 +77,6 @@ const Mid = ()=>{
           } catch(error){
               if(error.response.data.error || error.response.request.status === 404|| error.response.request.status === 500){
                   console.log(error.response.data.message)
-                //   navigate('/login')
               }
         }
       }
@@ -106,15 +103,31 @@ const Mid = ()=>{
                 console.log(error.response.data.message)
             }
         }
-      }
 
+        try{
+          const axiosInstance = axios.create({
+            headers: {
+              common: {
+                Authorization: `Bearer ${authToken}`
+              }
+            }
+          });
+          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/codeforces/count`);
+          const data = lcresponse.data.message;
+          dispatch(cfModifyProfile(data));
+        } catch(error){
+            if(error.response.data.error || error.response.request.status === 404 || error.response.request.status === 500){
+                console.log(error.response.data.message)
+            }
+        }
+      }
 
       const codechefData = async () =>{
         const authToken =await getCookie(tokenName);
         if(!authToken){
             navigate('/login');
         }
-     
+
         try{
           const axiosInstance = axios.create({
             headers: {
@@ -129,7 +142,6 @@ const Mid = ()=>{
         } catch(error){
             if(error.response.data.error || error.response.request.status === 400 || error.response.request.status === 404){
                 console.log(error.response.data.message)
-                // navigate('/login')
             }
         }
       }
@@ -150,12 +162,27 @@ const Mid = ()=>{
           });
           const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/github/repo`);
           const data = lcresponse.data.message;
-          console.log('github data',data);
           dispatch(updateGithubRepo(data));
         } catch(error){
             if(error.response.data.error || error.response.request.status === 400 || error.response.request.status === 404){
                 console.log(error.response.data.message)
-                // navigate('/login')
+            }
+        }
+
+        try{
+          const axiosInstance = axios.create({
+            headers: {
+              common: {
+                Authorization: `Bearer ${authToken}`
+              }
+            }
+          });
+          const lcresponse = await axiosInstance.get(`${process.env.REACT_APP_BASE_URL}/github/profile`);
+          const data = lcresponse.data.message;
+          dispatch(updateGithubProfile(data))
+        } catch(error){
+            if(error.response.data.error || error.response.request.status === 400 || error.response.request.status === 404){
+                console.log(error.response.data.message)
             }
         }
       }
@@ -198,16 +225,12 @@ const Mid = ()=>{
         <section className="mid-top ">
             <div className="mid-left">
                 <div className="cards">
-                    {
-                        cardData.map((card,index)=>{
-                            return(
-                                <Card card={card} key={index}/>
-                            );
-                        })
-                    }
+                <LeetcodeCard/>
+                <CodeChefCard/>
+                <CodeforcesCard/>
                 </div>
                 <div className="graph-git mb-3">
-                    <div className="rounded-xl h-full item2 hover:shadow bg-[#fff] shadow-xl dark:bg-[#1d1d1d] dark:text-[#f3f3f3]">
+                    <div className="rounded-xl h-full item2 hover:shadow bg-[#fff] slowmo shadow-xl dark:bg-[#1d1d1d] dark:text-[#f3f3f3]">
                         <GitProfile modify={github_data}/>
                     </div>
                     <div className="p-2 bg-white dark:bg-[#1d1d1d] rounded-xl shadow-md ">

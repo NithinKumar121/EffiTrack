@@ -1,31 +1,25 @@
 import { useEffect, useState } from 'react';
 import GitRepo from '../../assets/github.png'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom';
+import './dashboard.css'
 
-
-const Favourite = () =>{
-    const githubDetails = useSelector((store)=>store.githubDetails);
-    const {userGithubRepo} = githubDetails;
-    const [repoDetails,setRepoDetails] = useState('');
-
-    useEffect(()=>{
-        setRepoDetails(userGithubRepo);
-    },[userGithubRepo])
+const Favourite = (props) =>{
+    const {repoDetails} = props;
 
     return(
         <>
         {
-            repoDetails.length > 0 ?
-            <div className="repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
+            <div className="repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] slowmo shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
                 <img src={GitRepo} alt='github'></img>
-                <p>Repo name : Helloworld </p>
-                <h6>Star: 50</h6>
-                <a href="/">Link here !</a>
+                <p>Repo name : {repoDetails.name} </p>
+                <h6>Star: 1</h6>
+                <Link to={repoDetails.url}>Here !</Link>
             </div>
-            :
-            <div className="h-[4rem] repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
-              {/* emtpy shimmer */}
-            </div>
+            // :
+            // <div className="h-[4rem] repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
+            //   {/* emtpy shimmer */}
+            // </div>
         }
         </>
     )
@@ -47,15 +41,33 @@ const Social = () =>{
 
 
 const Showcase = () =>{
+    const githubDetails = useSelector((store)=>store.githubDetails);
+    const {userGithubRepo} = githubDetails;
+    const [repoDetails,setRepoDetails] = useState('');
+
+    useEffect(()=>{
+        setRepoDetails(userGithubRepo);
+    },[userGithubRepo])
     return(
         <>
-            <div className="showcase-top ">
-                <div className="showcase-favourite bg-[#fff] dark:bg-[#1d1d1d] dark:text-[#f3f3f3] text=[#333] mt-2 rounded-xl p-3">
-                    <h1> Add your Favourite Repository </h1>
-                    <div className="repo-favourites">
-                        <Favourite/>
-                        <Favourite/>
-                        <Favourite/>
+            <div className="showcase-top">
+                <div className="showcase-favourite bg-[#fff] dark:bg-[#1d1d1d] dark:text-[#f3f3f3] text=[#333]  rounded-xl p-3">
+                    <h1>Your Repository </h1>
+                    
+                    <div className="repo-favourites h-[13rem] overflow-auto no-scrollbar">
+                        {   
+                            repoDetails.length > 0 ? <> 
+                                {   repoDetails && repoDetails.map((repo)=>{   
+                                    return(
+                                        <Favourite repoDetails={repo}/>
+                                    )
+                                })  }
+                            </>
+                            :
+                             <div className="h-[4rem] repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
+                            {/* emtpy shimmer */}
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className="showcase-socails bg-[#fff] dark:bg-[#1d1d1d] dark:text-[#f1f1f1] rounded-xl p-3">
