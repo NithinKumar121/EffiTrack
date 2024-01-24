@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BiUser } from 'react-icons/bi';
 import axios from 'axios';
-
+import { setCookie , getCookie, deleteCookie } from '../../services/servicehelp.js';
 
 const base_url = process.env.REACT_APP_BASE_URL;
 const tokenName = process.env.REACT_APP_JWT_NAME;
@@ -33,15 +33,19 @@ export const SignupForm = (props) =>{
                 password:password,
                 email:email
             }
-            const response = await axios.post(`${base_url}/user/register/`, userData);
+            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/user/register/`, userData);
+            console.log(response);
+            if(getCookie(tokenName)){
+                deleteCookie(tokenName);
+            }
+            setCookie(tokenName,response.data.message.accessToken,4);
             let newPromise = new Promise((resolve, reject) =>{
                 setTimeout(()=>{
-                    resolve("To login Page");
+                    resolve("validation page");
                 },3000);
             })
             newPromise.then((res)=>{
                 navigate('/validUsername');
-            
             })
         }
         catch(error){

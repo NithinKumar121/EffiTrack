@@ -10,6 +10,7 @@ const initialState = {
         codechef: "unknown",
         github: "unknown",
     },
+    upcomingContest:[],
 }
 
 const userSlice = createSlice({
@@ -21,11 +22,17 @@ const userSlice = createSlice({
           ...state,
           userDetials:action.payload
         } 
+      },
+      changeUpcomingContest:(state,action)=>{
+        return{
+          ...state,
+          upcomingContest:action.payload,
+        }        
       }
     },
   });
   
-  export const { changeUserDetails } = userSlice.actions;
+  export const { changeUserDetails , changeUpcomingContest } = userSlice.actions;
   
   
   export default userSlice.reducer;

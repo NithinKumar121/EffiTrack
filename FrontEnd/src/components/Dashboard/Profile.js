@@ -6,7 +6,6 @@ const Profile = () => {
   const myUserDetails = useSelector((state)=>state.userDetails);
   const {userDetials} = myUserDetails;
   const[role, setRole] = useState("Student");
-
   return (
     <div className='flex gap-3'>
       <div>

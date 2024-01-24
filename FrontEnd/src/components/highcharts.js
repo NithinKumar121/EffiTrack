@@ -1,52 +1,9 @@
 import highstock from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
-import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getCookie } from "../services/servicehelp";
 
-const tokenName = process.env.REACT_APP_JWT_NAME;
-
-const options = {
-
-    tooltip: {
-        headerFormat: '<b>{series.name}</b><br/>',
-        // ... other tooltip options
-    },
-
-    title:{
-        text:'Rating'
-    },
-    series: [
-      {
-        name:'Leetcode',
-        data: [
-          29.9,
-          71.5,
-          106.4,
-          129.2,
-          144.0,
-          176.0,
-          135.6,
-          148.5,
-          216.4,
-          194.1,
-          95.6,
-          54.4
-        ]
-      },
-      {
-        name:'codeforces',
-        data: [ 
-          194.1,
-          95.6,
-          54.4
-        ]
-      },
-
-    ]
-  };
 
 const Chart = () =>{
     const navigate = useNavigate();
@@ -96,7 +53,6 @@ const Chart = () =>{
                 y:Math.round(data[0][i].rating),
               }
               Rating.push(contest);
-              console.log(Rating);
             }
           }else{
             Rating.push({name:'Contest none',y:1500})
@@ -113,7 +69,7 @@ const Chart = () =>{
           }else{
             const contest ={
               name:'Contest None',
-              y:600,
+              y:0,
             }
             cfFilterRating.push(contest);
           }
