@@ -4,8 +4,9 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const GitProfile = ({ modify }) => {
   const githubDetails = useSelector((store) => store.githubDetails);
+  const myUserDetails = useSelector((state) => state.userDetails);
   const { GithubProfile } = githubDetails;
-
+  const { userDetials } = myUserDetails;
   return (
     <div className="flex flex-col px-4 gap-y-4 relative mt-3">
       <div className="h-[2.5rem] mt-[0.2rem] flex">
@@ -19,7 +20,7 @@ const GitProfile = ({ modify }) => {
       <div className="flex flex-col gap-x-8  mt-2">
         <div className="w-full">
           <div className="w-[40%] mx-auto">
-            <Link to={`https://github.com/${GithubProfile.name}`}>
+            <Link to={`https://github.com/${userDetials?.github}`}>
               <img
                 src={GithubProfile.avatar_url}
                 alt="github"
