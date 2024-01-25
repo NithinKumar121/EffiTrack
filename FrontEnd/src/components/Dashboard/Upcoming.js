@@ -47,7 +47,7 @@ const Upcoming = () => {
         </h1>
         <div className="overflow-hidden h-[34rem] rounded-xl p-1 mt-3">
           <div className="overflow-y-auto w-full h-full no-scrollbar flex flex-col gap-y-3">
-            {upcomingContest &&
+            { upcomingContest &&
               upcomingContest.map((oneContestData) => {
                 return <Contest onecontestData={oneContestData} />;
               })}

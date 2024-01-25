@@ -8,7 +8,6 @@ export const LeetcodeCard = () => {
   const { count } = leetcodeDetails;
 
   return (
-    <div>
       <div
         className={`card bg-[#fff] dark:bg-[#1d1d1d] text-[#f3f3f3] shadow-xl slowmo hover:shadow`}
       >
@@ -64,7 +63,6 @@ export const LeetcodeCard = () => {
           </svg>
         </div>
       </div>
-    </div>
   );
 };
 
@@ -73,7 +71,7 @@ export const CodeChefCard = () => {
   const { ccUserDetails } = codechefDetails;
 
   return (
-    <div>
+
       <div
         className={`card bg-[#fff] dark:bg-[#1d1d1d] text-[#f3f3f3] shadow-xl slowmo hover:shadow`}
       >
@@ -131,7 +129,7 @@ export const CodeChefCard = () => {
           </svg>
         </div>
       </div>
-    </div>
+
   );
 };
 
@@ -140,7 +138,6 @@ export const CodeforcesCard = () => {
   const { cfProfile } = codeforcesDetails;
 
   return (
-    <div>
       <div
         className={`card bg-[#fff] dark:bg-[#1d1d1d] text-[#f3f3f3] slowmo shadow-xl hover:shadow`}
       >
@@ -206,7 +203,7 @@ export const CodeforcesCard = () => {
           </svg>
         </div>
       </div>
-    </div>
+
   );
 };
 

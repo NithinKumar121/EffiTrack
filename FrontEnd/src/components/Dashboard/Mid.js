@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './dashboard.css'
 import Card, { LeetcodeCard, CodeChefCard, CodeforcesCard } from "./Card";
 import GitProfile from "./GitProfile";
 import LineChart from "./LIneChart";
@@ -261,7 +262,7 @@ const Mid = () => {
   return (
     <>
       {
-        <section className="mid-top ">
+        <section className="mid-top">
           <div className="mid-left">
             <div className="cards">
               <LeetcodeCard />

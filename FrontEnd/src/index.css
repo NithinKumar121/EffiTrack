@@ -34,11 +34,7 @@ code {
     monospace;
 }
 
-.home_section {
-  display: grid;
-  grid-template-columns: 15.5rem auto;
-  gap: 1rem;
-}
+
 
 .top {
   margin-top: 2rem;
@@ -186,12 +182,12 @@ code {
 
 /* graph git  */
 
-.graph-git {
+/* .graph-git {
   display: grid;
   grid-template-columns: 1fr 2fr;
   margin-top: 1rem;
   gap: 0.5rem;
-}
+} */
 
 /* .graph-git .git-profile{
   background: #F3E8FF;
@@ -216,12 +212,12 @@ code {
 
 /* SHOWCCASE SECTION OF MAIN SCREEN */
 
-.showcase-top {
+/* .showcase-top {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 1rem;
   margin-top: 0.5rem;
-}
+} */
 
 .showcase-favourite h1,
 .showcase-socails h1 {

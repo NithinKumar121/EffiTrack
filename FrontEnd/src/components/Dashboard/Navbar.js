@@ -3,13 +3,25 @@ import Profile from "./Profile";
 import Theme from "./Theme";
 
 const Navbar = (props) => {
-  const {dark,setDark} = props;
+  const {dark,setDark,leftHide,setLeftHide} = props;
   const { title } = props;
 
   return (
-    <div className="border-b-2 bg-[#fff] dark:bg-[#171717] dark:text-[#f3f3f3] border-gray-400 dark:border-none rounded-xl white flex justify-between items-center h-[4rem] top-navbar z-10 mb-3">
+    <div className="border-b-2 bg-[#fff] dark:bg-[#171717] dark:text-[#f3f3f3] 
+                  border-gray-400 dark:border-none rounded-xl 
+                  white flex flew-row justify-between items-center h-[4rem] top-navbar z-10 mb-3 lg:w-full ">
       <div className="p-2 px-6 text-2xl font-bold text-title">{title}</div>
-      <div className="flex justify-center items-center gap-5 md:flex-row flex-col-reverse sm:px-6">
+      <div className="lg:hidden block mr-4">
+        <button onClick={()=>{setLeftHide(!leftHide)
+          console.log(leftHide)
+          }}>
+            <span class="material-icons-sharp">
+              list
+            </span>
+        </button>
+            
+      </div>
+      <div className="lg:flex justify-center items-center gap-5 md:flex-row flex-col-reverse sm:px-6 hidden">
         <Theme dark={dark} setDark={setDark} />
         <Profile />
       </div>
