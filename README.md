@@ -19,7 +19,6 @@ EffiTracker is a web application that empowers users to effortlessly track and m
 ## Getting Started
 
 ### Prerequisites
-
 - Node.js
 - npm
 - yarn
