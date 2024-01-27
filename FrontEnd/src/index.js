@@ -10,6 +10,7 @@ import { Login } from "./components/LoginCred/Login";
 import EditProfile from "./components/ProfilePage/Editprofile";
 import Page404 from "./components/404Error/404Error";
 import UserValid from "./components/usernameValidate/usernameValidation";
+import { Analytics } from '@vercel/analytics/react';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const appRouter = createBrowserRouter([
@@ -38,6 +39,11 @@ const appRouter = createBrowserRouter([
     element: <UserValid />,
     errorElement: <Page404 />,
   },
+  {
+    path: "/admin-vercel-analytics",
+    element: <Analytics />,
+    errorElement: <Page404 />,
+  }
 ]);
 
 root.render(
