@@ -6,10 +6,11 @@ import LCimage from "../../assets/LeetCode_logo.png";
 import CCimage from "../../assets/codechef.jpeg";
 import CFimage from "../../assets/codeforces-3.png";
 import GithubImg from "../../assets/github_left_bar.png";
+import Theme from "./Theme";
 import "./dashboard.css";
 
 const Leftnav = (props) => {
-  const { display, setDisplay , leftHide , setLeftHide} = { ...props };
+  const { display, setDisplay , leftHide , setLeftHide , dark , setDark} = { ...props };
   // const [leftHide,setLeftHide] = useState(false);
   return (
     <aside className={`w-[60%] sm:w-auto text-[#f3f3f3] bg-[#000] dark:bg-[#1d1d1d] h-[100vh]  lg:block lg:relative ${leftHide?'fixed left-0 z-10':'hidden'} overflow-hidden scrollbar-hide`}>
@@ -50,7 +51,13 @@ const Leftnav = (props) => {
               <h4 className="group-hover:ml-2 slowmo">Profile</h4>
             </button>
           </div>
-
+          <div className={`${!leftHide ? 'hidden' :'left-nav-link w-[80%] mx-auto'}  `}>
+           
+            <Theme dark={dark} setDark={setDark} />
+            
+           
+          </div>
+          
           <div className="aside-bottom">
             {/* <div className='left-nav-link'>
               <Link href="#" className='left-nav-a l-nav-a-active'> 
