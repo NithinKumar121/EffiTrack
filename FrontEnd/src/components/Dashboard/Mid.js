@@ -16,6 +16,7 @@ import {
   getForceCount,
 } from "../../services/show.service";
 import LeetCode_logo from "../../assets/LeetCode_logo.png";
+import Codeforces_logo from "../../assets/codeforces.png";
 import { modifyCount, modifyRating } from "../../redux/LeetcodeSlice";
 import { cfModifyRating, cfModifyProfile } from "../../redux/codeforcesSlice";
 import { ccUpdateUserDetails } from "../../redux/codechefSlice";
@@ -228,35 +229,35 @@ const Mid = () => {
     }
   };
 
-  const cardData = [
-    {
-      title: "Leetcode",
-      sub_title: "leetcode",
-      count: count[0].count,
-      rank: count[0].submissions,
-      completed_count: count[0].count,
-      topic_color: "bg-cd1_red",
-      logo: LeetCode_logo,
-    },
-    {
-      title: "CodeChef",
-      sub_title: "codechef",
-      count: "340",
-      rank: "49+",
-      completed_count: 400,
-      topic_color: "bg-cd1_orange",
-      logo: LeetCode_logo,
-    },
-    {
-      title: "CodeForces",
-      sub_title: "codeforces",
-      count: "340",
-      rank: "49+",
-      completed_count: 700,
-      topic_color: "bg-cd1_green",
-      logo: LeetCode_logo,
-    },
-  ];
+  // const cardData = [
+  //   {
+  //     title: "Leetcode",
+  //     sub_title: "leetcode",
+  //     count: count[0].count,
+  //     rank: count[0].submissions,
+  //     completed_count: count[0].count,
+  //     topic_color: "bg-cd1_red",
+  //     logo: LeetCode_logo,
+  //   },
+  //   {
+  //     title: "CodeChef",
+  //     sub_title: "codechef",
+  //     count: "340",
+  //     rank: "49+",
+  //     completed_count: 400,
+  //     topic_color: "bg-cd1_orange",
+  //     logo: LeetCode_logo,
+  //   },
+  //   {
+  //     title: "CodeForces",
+  //     sub_title: "codeforces",
+  //     count: "340",
+  //     rank: "49+",
+  //     completed_count: 700,
+  //     topic_color: "bg-cd1_green",
+  //     logo: Codeforces_logo,
+  //   },
+  // ];
 
   const github_data = { topic: "bg-cd1_purple" };
   return (

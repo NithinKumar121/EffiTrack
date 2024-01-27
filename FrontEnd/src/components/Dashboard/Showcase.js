@@ -3,6 +3,8 @@ import GitRepo from "../../assets/github.png";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./dashboard.css";
+import { FaRegFolderClosed } from "react-icons/fa6";
+
 
 const Favourite = (props) => {
   const { repoDetails } = props;
@@ -10,12 +12,21 @@ const Favourite = (props) => {
   return (
     <>
       {
-        <div className="repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] slowmo shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
-          <img src={GitRepo} alt="github"></img>
-          <p>Repo name : {repoDetails.name} </p>
-          <h6>Star: 1</h6>
-          <Link to={repoDetails.url}>Here !</Link>
-        </div>
+        <div className="repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] slowmo shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3] flex items-center justify-between p-4">
+   <div className="flex items-center">
+   <img src={GitRepo} alt="github" className="mr-4" />
+   <div className="flex-grow pl-4 border-l border-[#000] dark:border-[#FFF] justify-between">
+    <p className="font-medium">Repository name : {repoDetails.name}</p>
+    </div>
+    </div>
+    {/* <h6>Stars Earned : 1</h6> */}
+    <div>
+      <a href={repoDetails.url} target="_blank" rel="noopener noreferrer">
+      <FaRegFolderClosed style={{ fontSize: '20px'}} className="mr-2 hover:text-blue-500"></FaRegFolderClosed>
+      </a>
+  </div>
+</div>
+
         // :
         // <div className="h-[4rem] repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
         //   {/* emtpy shimmer */}
