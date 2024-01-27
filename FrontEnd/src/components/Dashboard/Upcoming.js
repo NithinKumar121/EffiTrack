@@ -9,6 +9,20 @@ const tokenName = process.env.REACT_APP_JWT_NAME;
 
 const Contest = (props) => {
   const { onecontestData } = props;
+
+const getFirstTwoWords = (line) => {
+    // Split the line into words
+    const words = line.split(' ');
+
+    // Take the first two words
+    const firstTwoWords = words.slice(0, 2);
+
+    // Join the words back into a string
+    const result = firstTwoWords.join(' ');
+
+    return result;
+}
+
   return (
     <>
       <a href={`${onecontestData?.href}`} target="_blank" rel="noreferrer"
@@ -25,7 +39,7 @@ const Contest = (props) => {
           ></img>
         </div>
         <div className="grid">
-          <h1 className="font-semibold text-base">{onecontestData.event}</h1>
+          <h1 className="font-semibold text-base">{getFirstTwoWords(onecontestData.event)}</h1>
           <h4 className="font-semibold text-base">{onecontestData.start} </h4>
           <h2 className="font-semibold text-base">
             {onecontestData.resource.name}
