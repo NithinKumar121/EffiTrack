@@ -135,6 +135,7 @@ const Showcase = () => {
             LinkedIn,Twitter,Reddit
           }
         );
+        setShow(!show);
       } catch (error) {
         console.log("error in authentication", error);
       }
