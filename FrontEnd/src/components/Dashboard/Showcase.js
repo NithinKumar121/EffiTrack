@@ -72,10 +72,10 @@ const Showcase = () => {
   const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
-  const [LinkedIn, setLinkedIn] = useState(undefined);
-  // const [GitHub, setGitHub] = useState(undefined);
-  const [Twitter, setTwitter] = useState(undefined);
-  const [Reddit, setReddit] = useState(undefined);
+  const [LinkedIn, setLinkedIn] = useState("unknown");
+  // const [GitHub, setGitHub] = useState("unknown");
+  const [Twitter, setTwitter] = useState("unknown");
+  const [Reddit, setReddit] = useState("unknown");
   
   const myUserDetails = useSelector((store) => store.userDetails);
   const { userDetials } = myUserDetails;
@@ -169,19 +169,19 @@ const Showcase = () => {
           <h1>Add Your Social Media Links</h1>
           <div className="socail-medias h-[13rem] overflow-auto no-scrollbar">
             {
-              (userDetials.socialMedia.linkedIn !== undefined)?
+              (userDetials.socialMedia.linkedIn !== "unknown")?
               <Social platform = {'LinkedIn'} url={LinkedIn}/>:''
             }
             {
-              (userDetials.socialMedia.linkedIn !== undefined)?
+              (userDetials.socialMedia.linkedIn !== "unknown")?
               <Social platform = {'LinkedIn'} url={LinkedIn}/>:''
             }
             {
-              (userDetials.socialMedia.twitter !== undefined)?
+              (userDetials.socialMedia.twitter !== "unknown")?
               <Social platform = {'Twitter'} url={Twitter}/>:''
             }
             {
-              (userDetials.socialMedia.reddit !== undefined)?
+              (userDetials.socialMedia.reddit !== "unknown")?
               <Social platform = {'Reddit'} url={Reddit}/>:''
             }
           </div>

@@ -15,9 +15,9 @@ const userSchema = new schema({
         contentType: { type: String, default: "" } // Store content type of the image
     },
     socialMedia:{
-        linkedIn: {type: String, default:undefined},
-        twitter: {type: String, default:undefined},
-        reddit: {type: String, default:undefined}
+        linkedIn: {type: String, default:"unknown"},
+        twitter: {type: String, default:"unknown"},
+        reddit: {type: String, default:"unknown"}
     }
 })
 
