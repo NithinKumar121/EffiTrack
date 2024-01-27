@@ -1,6 +1,6 @@
-# EffiTracker
+# EffiTrack
 
-EffiTracker is a web application that empowers users to effortlessly track and monitor their coding profiles from popular platforms like LeetCode, CodeChef, GitHub, and Codeforces. With a user-friendly dashboard, EffiTracker provides accessibility and insights into coding accomplishments, progress, and achievements across multiple coding platforms.
+EffiTrack is a web application that empowers users to effortlessly track and monitor their coding profiles from popular platforms like LeetCode, CodeChef, GitHub, and Codeforces. With a user-friendly dashboard, EffiTrack provides accessibility and insights into coding accomplishments, progress, and achievements across multiple coding platforms.
 
 ## Features
 
@@ -19,7 +19,6 @@ EffiTracker is a web application that empowers users to effortlessly track and m
 ## Getting Started
 
 ### Prerequisites
-
 - Node.js
 - npm
 - yarn

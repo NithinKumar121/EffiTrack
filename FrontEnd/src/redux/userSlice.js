@@ -8,6 +8,11 @@ const initialState = {
     codeforces: "unknown",
     codechef: "unknown",
     github: "unknown",
+    socialMedia:{
+      linkedIn: undefined,
+      twitter: undefined,
+      reddit: undefined
+    }
   },
   upcomingContest: [],
 };
