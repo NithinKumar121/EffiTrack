@@ -13,6 +13,11 @@ const userSchema = new schema({
     profileImage:{
         data: { type: String, default: "" }, // Store base64-encoded image data
         contentType: { type: String, default: "" } // Store content type of the image
+    },
+    socialMedia:{
+        linkedIn: {type: String, default:undefined},
+        twitter: {type: String, default:undefined},
+        reddit: {type: String, default:undefined}
     }
 })
 

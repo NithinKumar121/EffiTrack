@@ -11,6 +11,7 @@ const githubRoutes = require('./routes/githubRoutes');
 const codechefRoutes = require('./routes/codechefRoutes');
 const userRoutes = require('./routes/userRoutes');
 const editRoutes = require('./routes/editRoutes');
+const SocialMediaRoutes = require('./routes/socialMediaRoutes');
 const corsOptions ={
   origin:'*', 
   credentials:true,            //access-control-allow-credentials:true
@@ -37,6 +38,6 @@ app.use('/api/github',githubRoutes);
 app.use('/api/codechef',codechefRoutes);
 app.use('/api/user',userRoutes);
 app.use('/api/edit',editRoutes)
-
+app.use('/api/socialMedia',SocialMediaRoutes)
 
 app.listen(PORT,console.log("listening on port " + PORT));
