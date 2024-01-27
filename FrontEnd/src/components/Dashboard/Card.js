@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import LeetCode_logo from "../../assets/LeetCode_logo.png";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import Codechef_logo from "../../assets/codechef-01.png";
+import Codeforces_logo from "../../assets/codeforces.png";
 
 export const LeetcodeCard = () => {
   const leetcodeDetails = useSelector((store) => store.leetcodeDetails);
   const { count } = leetcodeDetails;
 
   return (
-    <div>
       <div
         className={`card bg-[#fff] dark:bg-[#1d1d1d] text-[#f3f3f3] shadow-xl slowmo hover:shadow`}
       >
@@ -52,19 +53,25 @@ export const LeetcodeCard = () => {
               ></circle>
             </g>
             <text
-              className="text-xl font-bold"
+              className="text-xl font-medium"
               x="50%"
-              y="50%"
+              y="40%"
               dominantBaseline="central"
               textAnchor="middle"
               fill="gray"
             >
               {count[0].count.toString().padStart(1, "0")}
             </text>
+            <text
+              className="text-sm font-medium"
+              x="50%"
+              y="65%"
+              dominantBaseline="central"
+              textAnchor="middle"
+              fill="gray">Solved</text>
           </svg>
         </div>
       </div>
-    </div>
   );
 };
 
@@ -73,7 +80,7 @@ export const CodeChefCard = () => {
   const { ccUserDetails } = codechefDetails;
 
   return (
-    <div>
+
       <div
         className={`card bg-[#fff] dark:bg-[#1d1d1d] text-[#f3f3f3] shadow-xl slowmo hover:shadow`}
       >
@@ -81,7 +88,7 @@ export const CodeChefCard = () => {
           <div
             className={`card-details-top bg-[#253D5B] dark:bg-[#333] rounded-xl flex justify-center items-center gap-2`}
           >
-            <img src={LeetCode_logo} alt="leetlogo" className="h-5"></img>
+            <img src={Codechef_logo} alt="codecheflogo" className="h-5 mt-[-3px]"></img>
             <h1>CodeChef</h1>
           </div>
           <div className="px-2 text-[#333] dark:text-[#f3f3f3]">
@@ -119,19 +126,26 @@ export const CodeChefCard = () => {
               ></circle>
             </g>
             <text
-              className="text-xl font-bold"
+              className="text-xl font-medium"
               x="50%"
-              y="50%"
+              y="40%"
               dominantBaseline="central"
               textAnchor="middle"
               fill="gray"
             >
               {ccUserDetails.currentRating.toString().padStart(1, "0")}
             </text>
+            <text
+              className="text-sm font-medium"
+              x="50%"
+              y="65%"
+              dominantBaseline="central"
+              textAnchor="middle"
+              fill="gray">Rating</text>
           </svg>
         </div>
       </div>
-    </div>
+
   );
 };
 
@@ -140,7 +154,6 @@ export const CodeforcesCard = () => {
   const { cfProfile } = codeforcesDetails;
 
   return (
-    <div>
       <div
         className={`card bg-[#fff] dark:bg-[#1d1d1d] text-[#f3f3f3] slowmo shadow-xl hover:shadow`}
       >
@@ -148,7 +161,7 @@ export const CodeforcesCard = () => {
           <div
             className={`card-details-top bg-[#253D5B] dark:bg-[#333] rounded-xl flex justify-center items-center gap-2`}
           >
-            <img src={LeetCode_logo} alt="leetlogo" className="h-5"></img>
+            <img src={Codeforces_logo} alt="codeforceslogo" className="h-5"></img>
             <h1>CodeForces</h1>
           </div>
           <div className="px-2 text-[#333] dark:text-[#f3f3f3]">
@@ -192,9 +205,9 @@ export const CodeforcesCard = () => {
               ></circle>
             </g>
             <text
-              className="text-xl font-bold"
+              className="text-xl font-medium"
               x="50%"
-              y="50%"
+              y="40%"
               dominantBaseline="central"
               textAnchor="middle"
               fill="gray"
@@ -203,10 +216,17 @@ export const CodeforcesCard = () => {
                 ? cfProfile[0].maxRating?.toString().padStart(1, "0")
                 : "0".toString().padStart(1, "0")}
             </text>
+            <text
+              className="text-sm font-medium"
+              x="50%"
+              y="65%"
+              dominantBaseline="central"
+              textAnchor="middle"
+              fill="gray">Rating</text>
           </svg>
         </div>
       </div>
-    </div>
+
   );
 };
 

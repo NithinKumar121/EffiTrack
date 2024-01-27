@@ -7,6 +7,13 @@ const GitProfile = ({ modify }) => {
   const myUserDetails = useSelector((state) => state.userDetails);
   const { GithubProfile } = githubDetails;
   const { userDetials } = myUserDetails;
+
+  const TableRow = ({ label, value }) => (
+   <div className="flex justify-between pb-3">
+   <p className="font-medium ml-2">{label}</p>
+   <p class="flex items-center font-semibold text-l">{value}</p>
+   </div>
+  );
   return (
     <div className="flex flex-col px-4 gap-y-4 relative mt-3">
       <div className="h-[2.5rem] mt-[0.2rem] flex">
@@ -29,26 +36,25 @@ const GitProfile = ({ modify }) => {
             </Link>
           </div>
         </div>
-        <div className="flex flex-col gap-y-3 mt-4">
+        <div className="flex flex-col gap-y-3 mt-4 lg:mb-0 mb-4">
           <div className="text-xl font-medium text-center">
             <h1>{GithubProfile.name}</h1>
           </div>
-          <p className="font-semibold ml-2">
-            Followers : {GithubProfile.followers}
-          </p>
-          <p className="font-semibold ml-2">
-            Following : {GithubProfile.following}
-          </p>
-          <p className="font-semibold ml-2">
-            Public Repos : {GithubProfile.public_repos}
-          </p>
-          <p className="font-semibold ml-2">
-            Public Gists : {GithubProfile.public_gists}
-          </p>
+          <div className="bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow cursor-default dark:text-[#f3f3f3] rounded-xl pt-3">
+          <table className="border-separate w-3/4 ml-5">
+        <tbody className="">
+          <TableRow label="Followers" value={GithubProfile.followers} />
+          <TableRow label="Following" value={GithubProfile.following} />
+          <TableRow label="Public Repos" value={GithubProfile.public_repos} />
+          <TableRow label="Public Gists" value={GithubProfile.public_gists} />
+        </tbody>
+      </table>
+      </div>
         </div>
       </div>
     </div>
   );
+
 };
 
 export default GitProfile;
