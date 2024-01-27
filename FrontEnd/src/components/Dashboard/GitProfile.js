@@ -29,7 +29,7 @@ const GitProfile = ({ modify }) => {
             </Link>
           </div>
         </div>
-        <div className="flex flex-col gap-y-3 mt-4">
+        <div className="flex flex-col gap-y-3 mt-4 lg:mb-0 mb-4">
           <div className="text-xl font-medium text-center">
             <h1>{GithubProfile.name}</h1>
           </div>
