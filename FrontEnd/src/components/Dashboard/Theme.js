@@ -9,7 +9,7 @@ const Theme = (props) => {
   };
 
   return (
-    <div className="">
+    <div className="lg:mr-0 mr-4">
         <button
           className={`flex ${dark ? "flex-row-reverse bg-[#333]" : "flex-row bg-gray-200 "} w-16  rounded-2xl p-1 shadow-sm`}
           onClick={handleButton}

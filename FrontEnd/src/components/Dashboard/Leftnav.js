@@ -1,4 +1,5 @@
-import React from "react";
+import React  from "react";
+import { useState } from "react";
 import temp_logo from "../../assets/temp_logo.jpeg";
 import { Link } from "react-router-dom";
 import LCimage from "../../assets/LeetCode_logo.png";
@@ -8,10 +9,10 @@ import GithubImg from "../../assets/github_left_bar.png";
 import "./dashboard.css";
 
 const Leftnav = (props) => {
-  const { display, setDisplay } = { ...props };
-
+  const { display, setDisplay , leftHide , setLeftHide} = { ...props };
+  // const [leftHide,setLeftHide] = useState(false);
   return (
-    <aside className="text-[#f3f3f3] bg-[#000] dark:bg-[#1d1d1d] h-full overflow-hidden scrollbar-hide">
+    <aside className={`w-[60%] sm:w-auto text-[#f3f3f3] bg-[#000] dark:bg-[#1d1d1d] h-[100vh]  lg:block lg:relative ${leftHide?'fixed left-0 z-10':'hidden'} overflow-hidden scrollbar-hide`}>
       <div className="top">
         {/* logo  */}
         <div className="logo">
@@ -20,9 +21,13 @@ const Leftnav = (props) => {
             {" "}
             <span>Effi</span>track
           </h1>
+         
         </div>
         <div className="close">
-          <span className="material-icons-sharp">close</span>
+          <button onClick={()=>setLeftHide(false)}>
+            <span class="material-icons-sharp">close</span>
+          </button>
+         
         </div>
       </div>
       <div className="mt-[3rem]">
