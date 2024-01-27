@@ -89,7 +89,7 @@ export const PROFILE_TOP = () => {
   const { GithubProfile } = githubDetails;
   return (
     <div className="h-1/5 bg-[#253D5B] dark:bg-[#1d1d1d] text-white rounded-t-2xl flex px-8 items-center mt-2">
-      <div className="h-[10rem] w-[10rem] rounded-full transform translate-y-[40%]">
+      <div className="h-[10rem] w-[10rem] rounded-full transform sm:translate-y-[40%] translate-y-[30%]">
         {/* <ImageUpload/> */}
         <img
           src={GithubProfile.avatar_url}
@@ -139,9 +139,9 @@ export const USERNAME_EDIT = () => {
   return (
     <>
       <div className="flex justify-between p-4 border-b-2 dark:border-black text-lg items-center">
-        <div className="flex-row sm:flex justify-between w-full items-center">
+        <div className="flex-row flex justify-between w-full items-center">
           <div className="">Username</div>
-          <div className="w-[65%] mr-7">
+          <div className="sm:w-[65%] w-[50%] sm:mr-7">
             {edit === true ? (
               <input className="bg-gray-200 w-full px-4" value={username} />
             ) : (
@@ -194,9 +194,9 @@ export const LEETCODE_EDIT = () => {
   return (
     <>
       <div className="flex justify-between p-4 border-b-2 dark:border-black text-lg items-center">
-        <div className="flex-row sm:flex justify-between w-full items-center">
-          <div className="">Leetcode Userid</div>
-          <div className="w-[65%] mr-7">
+        <div className="flex-row flex justify-between w-full items-center">
+          <div className="">Leetcode</div>
+          <div className="sm:w-[65%] w-[50%] sm:mr-7">
             {edit === true ? (
               <input
                 className="bg-white w-full px-4"
@@ -278,9 +278,11 @@ export const CODEFORCES_EDIT = () => {
   return (
     <>
       <div className="flex justify-between p-4 border-b-2 dark:border-black text-lg items-center">
-        <div className="flex-row sm:flex justify-between w-full items-center">
-          <div className="">CodeForces Username</div>
-          <div className="w-[65%] mr-7">
+        <div className="flex-row flex justify-between w-full items-center">
+          <div className="">
+            <h1>CodeForces</h1>
+          </div>
+          <div className="sm:w-[65%] w-[50%] sm:mr-7">
             {edit === true ? (
               <input
                 className="bg-white w-full px-4"
@@ -363,9 +365,9 @@ export const CODECHEF_EDIT = () => {
   return (
     <>
       <div className="flex justify-between p-4 border-b-2 dark:border-black text-lg items-center">
-        <div className="flex-row sm:flex justify-between w-full items-center">
-          <div className="">CodeChef UserId</div>
-          <div className="w-[65%] mr-7">
+        <div className="flex-row flex justify-between w-full items-center">
+          <div className="">CodeChef</div>
+          <div className="sm:w-[65%] w-[50%] sm:mr-7">
             {edit === true ? (
               <input
                 className="bg-white w-full px-4"
@@ -447,9 +449,9 @@ export const GITHUB_EDIT = () => {
   return (
     <>
       <div className="flex justify-between p-4 border-b-2 dark:border-black text-lg items-center">
-        <div className="flex-row sm:flex justify-between w-full items-center">
-          <div className="">GitHub UserId</div>
-          <div className="w-[65%] mr-7">
+        <div className="flex-row flex justify-between w-full items-center">
+          <div className="">GitHub</div>
+          <div className="sm:w-[65%] w-[50%] sm:mr-7">
             {edit === true ? (
               <input
                 className="bg-white w-full px-4"

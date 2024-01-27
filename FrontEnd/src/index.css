@@ -36,21 +36,22 @@ code {
 
 
 
-.top {
+/* .top {
   margin-top: 2rem;
-}
+} */
 
-.top .logo {
+/* .top .logo {
   display: flex;
+  flex-direction: row;
   height: 4rem;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-}
+} */
 
-.top .close {
+/* .top .close {
   display: none;
-}
+} */
 
 /* Mid of the dashboard .... */
 

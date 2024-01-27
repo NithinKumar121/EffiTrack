@@ -18,6 +18,15 @@
   .home_section {
     @apply grid lg:grid-cols-[15.5rem,auto] gap-4
   }
+  .top{
+    @apply mt-8 
+  }
+  .close{
+    @apply lg:hidden absolute top-4 right-4 text-lg 
+  }
+  .logo{
+    @apply flex flex-row h-16 items-center gap-4 p-4 gap-x-3
+  }
   .white {
     @apply text-black bg-gray-100;
   }

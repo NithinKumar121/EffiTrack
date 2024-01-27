@@ -58,7 +58,7 @@ export const LeetcodeCard = () => {
               y="40%"
               dominantBaseline="central"
               textAnchor="middle"
-              fill="white"
+              fill="gray"
             >
               {count[0].count.toString().padStart(1, "0")}
             </text>
@@ -131,7 +131,7 @@ export const CodeChefCard = () => {
               y="40%"
               dominantBaseline="central"
               textAnchor="middle"
-              fill="white"
+              fill="gray"
             >
               {ccUserDetails.currentRating.toString().padStart(1, "0")}
             </text>
@@ -210,7 +210,7 @@ export const CodeforcesCard = () => {
               y="40%"
               dominantBaseline="central"
               textAnchor="middle"
-              fill="white"
+              fill="gray"
             >
               {cfProfile[0].hasOwnProperty("maxRating")
                 ? cfProfile[0].maxRating?.toString().padStart(1, "0")
