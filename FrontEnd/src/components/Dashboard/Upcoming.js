@@ -10,12 +10,16 @@ const tokenName = process.env.REACT_APP_JWT_NAME;
 const Contest = (props) => {
   const { onecontestData } = props;
 
-const getFirstTwoWords = (line) => {
+const helper = (line, val) => {
     // Split the line into words
-    const words = line.split(' ');
+    const words = line.split(val);
 
     // Take the first two words
     const firstTwoWords = words.slice(0, 2);
+
+    if(val === 'T'){
+      return words[0]
+    }
 
     // Join the words back into a string
     const result = firstTwoWords.join(' ');
@@ -29,7 +33,7 @@ const getFirstTwoWords = (line) => {
         className="contest bg-[#f4f5f6] rounded-lg text-black
                             flex flex-row px-3 py-3 slowmo
                              gap-x-3 items-center next
-                             dark:bg-[#333] dark:text-[#f3f3f3] shadow-md hover:shadow-none"
+                             dark:bg-[#333] dark:text-[#f3f3f3] shadow-md hover:shadow-none  p-2"
       >
         <div>
           <img
@@ -38,9 +42,11 @@ const getFirstTwoWords = (line) => {
             className="w-[30px] h-[30px]"
           ></img>
         </div>
-        <div className="grid">
-          <h1 className="font-semibold text-base">{getFirstTwoWords(onecontestData.event)}</h1>
-          <h4 className="font-semibold text-base">{onecontestData.start} </h4>
+        <div className="grid p-2">
+          <div className="flex gap-4 items-center">
+            <h1 className="font-semibold text-base">{helper(onecontestData.event,' ')}</h1>
+            <small className="">{helper(onecontestData.start,'T')} </small>
+          </div>
           <h2 className="font-semibold text-base">
             {onecontestData.resource.name}
           </h2>
