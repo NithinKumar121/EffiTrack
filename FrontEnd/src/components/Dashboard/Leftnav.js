@@ -51,11 +51,8 @@ const Leftnav = (props) => {
               <h4 className="group-hover:ml-2 slowmo">Profile</h4>
             </button>
           </div>
-          <div className={`${!leftHide ? 'hidden' :'left-nav-link w-[80%] mx-auto'}  `}>
-           
+          <div className={`${!leftHide ? 'hidden' :'left-nav-link w-[80%] mx-auto'} `}>
             <Theme dark={dark} setDark={setDark} />
-            
-           
           </div>
           
           <div className="aside-bottom">

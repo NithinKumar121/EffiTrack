@@ -89,13 +89,12 @@ const Home = () => {
             },
           },
         });
-
         const lcresponse = await axiosInstance.get(
           `${process.env.REACT_APP_BASE_URL}/user/`,
         );
         dispatch(changeUserDetails(lcresponse.data.message));
       } catch (error) {
-        console.log("error in authentication", error);
+        navigate("/login");
       }
 
       try {
