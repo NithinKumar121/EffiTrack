@@ -39,7 +39,7 @@ export const SignupForm = (props) => {
         `${process.env.REACT_APP_BASE_URL}/user/register/`,
         userData,
       );
-      console.log(response);
+
       if (getCookie(tokenName)) {
         deleteCookie(tokenName);
       }
