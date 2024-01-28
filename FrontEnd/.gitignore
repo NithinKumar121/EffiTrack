@@ -1,6 +1,6 @@
 
 node_modules/
-
+.env
 
 npm install react-icons --save
 npm install react-router-dom
