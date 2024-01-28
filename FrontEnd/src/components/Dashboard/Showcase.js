@@ -80,7 +80,7 @@ const Showcase = () => {
   const myUserDetails = useSelector((store) => store.userDetails);
   const { userDetials } = myUserDetails;
 
-  useEffect(()=>{
+  useEffect(()=>{ 
     setLinkedIn(userDetials.socialMedia?.linkedIn)
     setTwitter(userDetials.socialMedia?.twitter)
     setReddit(userDetials.socialMedia?.reddit)
