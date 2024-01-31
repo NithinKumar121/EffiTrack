@@ -13,8 +13,7 @@ const Leftnav = (props) => {
   const [activeButton, setActiveButton] = useState("page1");
 
   const handleButtonClick = (page) => {
-    setActiveButton(page);  // Update the active button
-    // history.push(`/${page}`);  // Navigate to the corresponding page
+    setActiveButton(page);  
   };
   return (
     <aside className={`w-[60%] sm:w-auto text-[#f3f3f3] bg-[#000] dark:bg-[#1d1d1d] h-[100vh]  lg:block lg:relative ${mobileScreenNav?'fixed left-0 z-10':'hidden'} overflow-hidden scrollbar-hide`}>

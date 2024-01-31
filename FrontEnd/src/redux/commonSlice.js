@@ -11,7 +11,6 @@ const commonSlice = createSlice({
     initialState,
     reducers:{
         toggleMode:((state,action)=>{
-            console.log(action.payload)
             return{
                 ...state,
                 mode:action.payload,
