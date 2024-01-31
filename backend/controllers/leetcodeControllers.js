@@ -49,7 +49,7 @@ const checkLcUsername = async (req,res) =>{
 const  getLeetcodeBatch = async (req,res) =>{
     const leetcode = req.user.leetcode;
     try{
-        const response = await axios.get(`https://alfa-leetcode-api.vercel.app/All_1s_Well/badges`);
+        const response = await axios.get(`https://alfa-leetcode-api.vercel.app/${leetcode}/badges`);
         if(response.data.badgesCount === 0){
 
             return res.status(202).json({error:true,message:"User doesn't have badges"})
