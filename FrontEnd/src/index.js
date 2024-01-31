@@ -5,18 +5,30 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
-import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Login } from "./components/LoginCred/Login";
 import EditProfile from "./components/ProfilePage/Editprofile";
 import Page404 from "./components/404Error/404Error";
 import UserValid from "./components/usernameValidate/usernameValidation";
 import { Analytics } from '@vercel/analytics/react';
+import DemoProfile from "./components/ProfilePage/Demoprofile";
+import Home from "./components/Dashboard/Home";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    children:[
+      {
+        path:"/",
+        element:<Home/>,
+      },
+      {
+        path:"profile",
+        element:<DemoProfile/>,
+      }
+    ],
     errorElement: <Page404 />,
   },
   {
@@ -43,6 +55,10 @@ const appRouter = createBrowserRouter([
     path: "/admin-vercel-analytics",
     element: <Analytics />,
     errorElement: <Page404 />,
+  },
+  {
+    path:"/demo",
+    element:<DemoProfile/>
   }
 ]);
 

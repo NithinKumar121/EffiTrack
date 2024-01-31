@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Leftnav from "./Leftnav";
 import Main from "./Main";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getCookie, getDataFromLocalStorage } from "../../services/servicehelp";
@@ -9,72 +9,47 @@ import {
   changeUserDetails,
   changeUpcomingContest,
 } from "../../redux/userSlice";
-import LeetcodeSlice from "../../redux/LeetcodeSlice";
+import {toggleMode} from '../../redux/commonSlice';
 
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
 function isValidDateString(dateString) {
   const inputDate = new Date(dateString);
-  // Get current date
   const currentDate = new Date();
-
-  // Check if the year and month match the current year and month
   const inputYear = inputDate.getFullYear();
   const inputMonth = inputDate.getMonth();
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth();
-
   if (inputYear !== currentYear || inputMonth !== currentMonth) {
     return false;
   }
-  // Check if the date is within one month from the current date
   const oneMonthLater = new Date(currentDate);
   oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
-
   if (inputDate >= oneMonthLater) {
     return false;
   }
-
   return true;
 }
 
-// function isValidDateString(dateString) {
-//   const inputDate = new Date(dateString);
-//   // Get current date
-//   const currentDate = new Date();
-//   // Check if the year matches the current year
-//   const inputYear = inputDate.getFullYear();
-//   if (inputYear !== currentDate.getFullYear()) {
-//     return false;
-//   }
-
-//   // Check if the date is present or future
-//   if (inputDate < currentDate) {
-//     return false;
-//   }
-
-//   return true;
-// }
 
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [contest, setContest] = useState({});
   const [display, setDisplay] = useState("dashboard");
-  const [dark, setDark] = useState();
 
+  const commonDetails = useSelector((store)=>store.commonDetails);
+
+  const {mode} = commonDetails;
   useEffect(() => {
     changeMode();
     checkAuth();
   }, []);
 
-
-  // useEffect(()=>{
-
-  // },[light])
+  
   const changeMode=()=>{
-    const mode = getDataFromLocalStorage('mode');
-    setDark(mode);
+    const modes = getDataFromLocalStorage('mode');
+    dispatch(toggleMode(modes));
   }
   const checkAuth = async () => {
     const authToken = getCookie(tokenName);
@@ -122,26 +97,17 @@ const Home = () => {
       }
     }
   };
-  const [leftHide,setLeftHide] = useState(false);
 
   return (
     <>
-        {
-      dark ? <div className={"dark"}>
-              <div className="home_section bg-gray-400 dark:bg-[#484849] h-full lg:h-[100vh] scrollbar-hide overflow-hidden">
-                <Leftnav display={display} setDisplay={setDisplay} leftHide={leftHide} setLeftHide={setLeftHide} dark={dark} setDark={setDark}/>
-                <Main display={display} dark={dark} setDark={setDark} leftHide={leftHide} setLeftHide={setLeftHide} />
-              </div>
-            </div>
-        :
-        <div className="">
-        <div className="home_section bg-gray-400 dark:bg-[#484849] dark: h-full lg:h-[100vh] scrollbar-hide overflow-hidden">
-          <Leftnav display={display} setDisplay={setDisplay} leftHide={leftHide} setLeftHide={setLeftHide} dark={dark} setDark={setDark}/>
-          <Main display={display} dark={dark} setDark={setDark}leftHide={leftHide} setLeftHide={setLeftHide} />
+        
+      {/* <div className={`${mode === true ? 'dark' : ''}`}>
+        <div className="home_section bg-gray-400 dark:bg-[#484849] h-full lg:h-[100vh] scrollbar-hide overflow-hidden">
+          <Leftnav display={display} setDisplay={setDisplay}/>
+          <Main display={display} />
         </div>
-      </div>
-      }
-    
+      </div> */}
+      <Main/>
     </>
     
   );

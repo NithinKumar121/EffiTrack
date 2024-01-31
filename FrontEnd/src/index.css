@@ -36,83 +36,6 @@ code {
 
 
 
-/* .top {
-  margin-top: 2rem;
-} */
-
-/* .top .logo {
-  display: flex;
-  flex-direction: row;
-  height: 4rem;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-} */
-
-/* .top .close {
-  display: none;
-} */
-
-/* Mid of the dashboard .... */
-
-/* .mid-top{
-  display: grid;
-  grid-template-columns: auto 20rem;
-  gap: 1rem;
-} */
-
-/* .mid-top .mid-left .cards{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 1rem;
-  font-size: large;
-  font-weight: 500;
-  justify-content: space-around;
-} */
-
-/* .cards > div{
-  width: 100%;
-} */
-/* .mid-top .mid-left .cards .card{
-  height: 12rem;
-  margin: auto;
-  padding: 1rem;
-  border-radius: 16px;
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-} */
-
-/* .mid-top .mid-left .cards .leetcode{
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-.mid-top .mid-left .cards .codechef{
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-.mid-top .mid-left .cards .codeforces{
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}  */
-
-/* .mid-top .mid-left .cards .leetcode:hover{
-  box-shadow: 0;
-} */
-
-/* .mid-top .mid-left .cards .card .card-details{
-  width: 60%;
-  line-height: 2rem;
-}
-
-.mid-top .mid-left .cards .card .progress{
-  width: 40%;
-  position: relative;
-  width: 92px;
-  height: 92px;
-  border-radius: 50%;
-  bottom: 0;
-} */
-
 .mid-top .mid-left .cards .card .progress svg {
   width: 8rem;
   height: 8rem;
@@ -181,18 +104,6 @@ code {
   font-weight: 500;
 }
 
-/* graph git  */
-
-/* .graph-git {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  margin-top: 1rem;
-  gap: 0.5rem;
-} */
-
-/* .graph-git .git-profile{
-  background: #F3E8FF;
-} */
 
 .two-graph {
   display: flex;
@@ -210,15 +121,6 @@ code {
 .view-more .view-more-span {
   filter: blur(2px);
 }
-
-/* SHOWCCASE SECTION OF MAIN SCREEN */
-
-/* .showcase-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1rem;
-  margin-top: 0.5rem;
-} */
 
 .showcase-favourite h1,
 .showcase-socails h1 {
@@ -272,10 +174,6 @@ code {
   align-items: center;
   grid-auto-flow: row;
 }
-
-/* Shimmer */
-
-/* background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% ); */
 
 .up-bg {
   background-color: #dbcbd8;

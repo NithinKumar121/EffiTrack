@@ -157,7 +157,7 @@ const UserValid = () => {
             }, 2000);
           });
           waitBro.then((waiting_over) => {
-            navigate("/");
+            navigate("/dashboard");
           });
         } else {
           const waitBro = new Promise((resolve, reject) => {
