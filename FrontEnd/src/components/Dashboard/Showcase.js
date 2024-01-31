@@ -140,15 +140,15 @@ const Showcase = () => {
           <h1>Add Your Social Media Links</h1>
           <div className="socail-medias h-[13rem] overflow-auto no-scrollbar">
             {
-              (userDetials.socialMedia.linkedIn !== "unknown")?
+              (LinkedIn !== "unknown" && LinkedIn !== "")?
               <Social platform = {'LinkedIn'} url={LinkedIn}/>:''
             }
             {
-              (userDetials.socialMedia.twitter !== "unknown")?
+              (Twitter !== "unknown" && Twitter != "")?
               <Social platform = {'Twitter'} url={Twitter}/>:''
             }
             {
-              (userDetials.socialMedia.reddit !== "unknown")?
+              (Reddit !== "unknown" && Reddit !== "")?
               <Social platform = {'Reddit'} url={Reddit}/>:''
             }
           </div>
