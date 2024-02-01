@@ -89,13 +89,12 @@ const Home = () => {
             },
           },
         });
-
         const lcresponse = await axiosInstance.get(
           `${process.env.REACT_APP_BASE_URL}/user/`,
         );
         dispatch(changeUserDetails(lcresponse.data.message));
       } catch (error) {
-        console.log("error in authentication", error);
+        navigate("/login");
       }
 
       try {
@@ -130,14 +129,14 @@ const Home = () => {
         {
       dark ? <div className={"dark"}>
               <div className="home_section bg-gray-400 dark:bg-[#484849] h-full lg:h-[100vh] scrollbar-hide overflow-hidden">
-                <Leftnav display={display} setDisplay={setDisplay} leftHide={leftHide} setLeftHide={setLeftHide}/>
+                <Leftnav display={display} setDisplay={setDisplay} leftHide={leftHide} setLeftHide={setLeftHide} dark={dark} setDark={setDark}/>
                 <Main display={display} dark={dark} setDark={setDark} leftHide={leftHide} setLeftHide={setLeftHide} />
               </div>
             </div>
         :
         <div className="">
         <div className="home_section bg-gray-400 dark:bg-[#484849] dark: h-full lg:h-[100vh] scrollbar-hide overflow-hidden">
-          <Leftnav display={display} setDisplay={setDisplay} leftHide={leftHide} setLeftHide={setLeftHide}/>
+          <Leftnav display={display} setDisplay={setDisplay} leftHide={leftHide} setLeftHide={setLeftHide} dark={dark} setDark={setDark}/>
           <Main display={display} dark={dark} setDark={setDark}leftHide={leftHide} setLeftHide={setLeftHide} />
         </div>
       </div>

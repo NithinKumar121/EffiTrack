@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import temp_logo from "../../assets/temp_logo.jpeg";
 import { useSelector } from "react-redux";
 import {deleteCookie} from "../../services/servicehelp.js";
+import { Link } from "react-router-dom";
 import './dashboard.css'
 const Profile = () => {
   const myUserDetails = useSelector((state) => state.userDetails);
@@ -26,7 +27,7 @@ const Profile = () => {
         
         <div className="pop-up subProfile">
           <div className="flex flex-col gap-y-2 cursor-pointer">
-              <h1 className="rounded-xl p-1 font-medium">Profile</h1>
+            <Link to="/validUsername" className="font-medium">Edit</Link>
               <button 
                 className="rounded-xl p-1 font-medium"
                 onClick={()=>{

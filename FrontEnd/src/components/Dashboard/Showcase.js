@@ -69,8 +69,8 @@ const Social = (props) => {
   }
   return (
     <>
-      <Link to={url} target="_blank" rel="noopener noreferrer" className="social-media shadow-xl hover:shadow-none ease-in duration-300 cursor-default bg-[#f4f5f6] dark:bg-[#333] dark:text-white text-[#333]">
-        <img src={logoSrc} alt={platform}  className="w-[40px] h-[40px]"></img>
+      <Link to={url} target="_blank" rel="noopener noreferrer" className="h-[4rem] cursor-pointer social-media shadow-xl hover:shadow-none ease-in duration-300 bg-[#f4f5f6] dark:bg-[#333] dark:text-white text-[#333]">
+        <img src={GitRepo} alt="github" className="w-[40px] h-[40px]"></img>
         <div className="social-media-inner">
           <h4 className="font-medium">{platform}</h4>
         </div>
@@ -99,41 +99,12 @@ const Showcase = () => {
   const myUserDetails = useSelector((store) => store.userDetails);
   const { userDetials } = myUserDetails;
 
-  useEffect(()=>{
+  useEffect(()=>{ 
     setLinkedIn(userDetials.socialMedia?.linkedIn)
     setTwitter(userDetials.socialMedia?.twitter)
     setReddit(userDetials.socialMedia?.reddit)
   },[userDetials.socialMedia.linkedIn, userDetials.socialMedia.twitter, userDetials.socialMedia.reddit])
 
-  // useEffect(()=>{
-  //   const handleInitial = async()=>{
-  //     console.log(Linkedin, Twitter, Reddit)
-  //     const authToken = getCookie(process.env.REACT_APP_JWT_NAME);
-  //     if (!authToken) {
-  //       navigate("/login");
-  //     } else {
-  //       try {
-  //         const axiosInstance = axios.create({
-  //           headers: {
-  //             common: {
-  //               Authorization: `Bearer ${authToken}`,
-  //             },
-  //           },
-  //         });
-
-  //         const response = await axiosInstance.post(
-  //           `${process.env.REACT_APP_BASE_URL}/socialMedia`,
-  //           {
-  //             Linkedin,Twitter,Reddit
-  //           }
-  //         );
-  //           console.log(response)
-  //       } catch (error) {
-  //         console.log("error in authentication", error);
-  //       }
-  //     }
-  //   }
-  // })
 
   const handleSubmit = async() =>{
 
@@ -187,10 +158,6 @@ const Showcase = () => {
         <div className="showcase-socails bg-[#fff] dark:bg-[#1d1d1d] dark:text-[#f1f1f1] rounded-xl p-3 relative">
           <h1>Add Your Social Media Links</h1>
           <div className="socail-medias h-[13rem] overflow-auto no-scrollbar">
-            {
-              (userDetials.socialMedia.linkedIn !== "unknown")?
-              <Social platform = {'LinkedIn'} url={LinkedIn}/>:''
-            }
             {
               (userDetials.socialMedia.linkedIn !== "unknown")?
               <Social platform = {'LinkedIn'} url={LinkedIn}/>:''
