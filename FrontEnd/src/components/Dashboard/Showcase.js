@@ -50,7 +50,7 @@ const Social = (props) => {
   const {platform, url} = {...props};
   return (
     <>
-      <Link to={url} target="_blank" rel="noopener noreferrer" className="h-[4rem] cursor-pointer social-media shadow-xl hover:shadow-none ease-in duration-300 bg-[#f4f5f6] dark:bg-[#333] dark:text-white text-[#333]">
+      <Link to={url} target="_blank" rel="noopener noreferrer" className="h-[4rem] cursor-pointer social-media shadow-xl hover:shadow-none slowmo bg-[#f4f5f6] dark:bg-[#333] dark:text-white text-[#333]">
         <img src={GitRepo} alt="github" className="w-[40px] h-[40px]"></img>
         <div className="social-media-inner">
           <h4>{platform}</h4>

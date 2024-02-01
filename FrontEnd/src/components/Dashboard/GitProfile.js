@@ -40,15 +40,15 @@ const GitProfile = ({ modify }) => {
           <div className="text-xl font-medium text-center">
             <h1>{GithubProfile.name}</h1>
           </div>
-          <div className="bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow cursor-default dark:text-[#f3f3f3] rounded-xl pt-3">
-          <table className="border-separate w-3/4 ml-5">
-        <tbody className="">
-          <TableRow label="Followers" value={GithubProfile.followers} />
-          <TableRow label="Following" value={GithubProfile.following} />
-          <TableRow label="Public Repos" value={GithubProfile.public_repos} />
-          <TableRow label="Public Gists" value={GithubProfile.public_gists} />
-        </tbody>
-      </table>
+          <div className="bg-[#f4f5f6] text-[#333] slowmo dark:bg-[#333] shadow-xl hover:shadow cursor-default dark:text-[#f3f3f3] rounded-xl pt-3">
+          <table className="border-separate w-3/4 ml-5 ">
+            <tbody className="">
+              <TableRow label="Followers" value={GithubProfile.followers} />
+              <TableRow label="Following" value={GithubProfile.following} />
+              <TableRow label="Public Repos" value={GithubProfile.public_repos} />
+              <TableRow label="Public Gists" value={GithubProfile.public_gists} />
+            </tbody>
+          </table>
       </div>
         </div>
       </div>

@@ -80,12 +80,12 @@ const Home = () => {
           `${process.env.REACT_APP_BASE_URL}/user/upcoming`,
         );
 
-        const currentContest = lcresponse.data.message.objects.filter(
-          (contest) => {
-            return isValidDateString(contest.start) === true;
-          },
-        );
-        dispatch(changeUpcomingContest(currentContest));
+        // const currentContest = lcresponse.data.message.objects.filter(
+        //   (contest) => {
+        //     return isValidDateString(contest.start) === true;
+        //   },
+        // );
+        dispatch(changeUpcomingContest(lcresponse.data.message));
       } catch (error) {
         if(error.response.request.status === 409 || error.response.request.status === 500 || error.response.data.error){
           console.log(error.response.data.message)

@@ -1,31 +1,25 @@
 import Leetcode from "../../assets/LeetCode_logo.png";
 import CodeChef from "../../assets/codechef.jpeg";
+import Codeforces_logo from "../../assets/codeforces.png";
 import { useNavigate } from "react-router-dom";
 import { getCookie } from "../../services/servicehelp";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
 const Contest = (props) => {
   const { onecontestData } = props;
 
-const helper = (line, val) => {
-    // Split the line into words
-    const words = line.split(val);
-
-    // Take the first two words
-    const firstTwoWords = words.slice(0, 2);
-
-    if(val === 'T'){
-      return words[0]
-    }
-
-    // Join the words back into a string
-    const result = firstTwoWords.join(' ');
-
-    return result;
-}
+  const helper = (line, val) => {
+      const words = line.split(val);
+      const firstTwoWords = words.slice(0, 2);
+      if(val === 'T'){
+        return words[0]
+      }
+      const result = firstTwoWords.join(' ');
+      return line;
+  }
 
   return (
     <>
@@ -36,20 +30,22 @@ const helper = (line, val) => {
                              dark:bg-[#333] dark:text-[#f3f3f3] shadow-md hover:shadow-none  p-2"
       >
         <div>
-          <img
-            src={CodeChef}
-            alt="leetcode"
-            className="w-[30px] h-[30px]"
-          ></img>
+          {
+            onecontestData?.resource?.name.includes("codechef") ? 
+                <img src={CodeChef} alt="leetcode"className="w-[30px] h-[30px]"></img>
+            :
+              <img src={Codeforces_logo} alt="leetcode" className="w-[30px] h-[30px]"></img>
+          }
+          
         </div>
         <div className="grid p-2">
-          <div className="flex gap-4 items-center">
-            <h1 className="font-semibold text-base">{helper(onecontestData.event,' ')}</h1>
-            <small className="">{helper(onecontestData.start,'T')} </small>
+          <div className="flex flex-col ">
+            <h1 className="font-semibold text-sm">{helper(onecontestData.event,' ')}</h1>
+            <small className="font-medium">{helper(onecontestData.start,'T')} </small>
           </div>
-          <h2 className="font-semibold text-base">
+          {/* <h2 className="font-semibold text-base">
             {onecontestData.resource.name}
-          </h2>
+          </h2> */}
         </div>
       </a>
     </>
