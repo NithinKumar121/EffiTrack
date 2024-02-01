@@ -69,7 +69,7 @@ const Social = (props) => {
   }
   return (
     <>
-      <Link to={url} target="_blank" rel="noopener noreferrer" className="h-[4rem] cursor-pointer social-media shadow-xl hover:shadow-none ease-in duration-300 bg-[#f4f5f6] dark:bg-[#333] dark:text-white text-[#333]">
+      <Link to={url} target="_blank" rel="noopener noreferrer" className="h-[4rem] cursor-pointer social-media shadow-xl hover:shadow-none slowmo bg-[#f4f5f6] dark:bg-[#333] dark:text-white text-[#333]">
         <img src={logoSrc} alt={platform} className="w-[40px] h-[40px]"></img>
         <div className="social-media-inner">
           <h4 className="font-medium">{platform}</h4>
@@ -159,15 +159,15 @@ const Showcase = () => {
           <h1  >Add Your Social Media Links</h1>
           <div className="socail-medias h-[13rem] overflow-auto no-scrollbar">
             {
-              (userDetials.socialMedia.linkedIn !== "unknown")?
+              (LinkedIn !== "unknown" && LinkedIn !== "")?
               <Social platform = {'LinkedIn'} url={LinkedIn}/>:''
             }
             {
-              (userDetials.socialMedia.twitter !== "unknown")?
+              (Twitter !== "unknown" && Twitter != "")?
               <Social platform = {'Twitter'} url={Twitter}/>:''
             }
             {
-              (userDetials.socialMedia.reddit !== "unknown")?
+              (Reddit !== "unknown" && Reddit !== "")?
               <Social platform = {'Reddit'} url={Reddit}/>:''
             }
           </div>

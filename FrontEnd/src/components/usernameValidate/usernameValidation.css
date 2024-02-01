@@ -16,19 +16,21 @@
 
 @layer utilities {
   .valid_section {
-    @apply w-full h-[100vh] flex items-center justify-center bg-cover;
+    @apply w-full sm:h-[100vh] flex items-center justify-center bg-cover;
   }
   .valid_box {
-    @apply bg-[rgba(23,24,29,255)] text-white w-[50rem] h-[35rem] rounded-xl p-3 overflow-hidden;
+    @apply bg-[rgba(23,24,29,255)] text-white w-[50rem] sm:h-[35rem]  rounded-xl p-3 overflow-hidden;
   }
   .valid_top {
     @apply text-center flex flex-col gap-y-4;
   }
   .validation_div form {
-    @apply grid grid-cols-2 gap-8 mt-6;
+    /* @apply grid grid-cols-2 gap-8 mt-6; */
+    @apply flex flex-wrap mt-6 justify-center gap-8
   }
   .validation_div > form > div {
-    @apply flex flex-col gap-y-4 w-[80%] m-auto h-[10rem];
+    /* @apply flex flex-col gap-y-4 w-[80%]  m-auto h-[10rem]; */
+    @apply sm:w-[45%] w-[80%] gap-y-4 h-[10rem] flex flex-col
   }
   .input_field {
     @apply bg-[rgba(30,35,38,255)] p-3 rounded-md ease-in duration-200;
@@ -51,9 +53,10 @@
     @apply bg-[rgba(25,48,30,255)] border-2 border-[rgba(48,209,88,255)] flex flex-row gap-x-2;
   }
   .submit_div {
-    @apply text-center col-span-2;
+    @apply text-center sm:h-auto;
+    height: 4rem !important;
   }
   .submit_but {
-    @apply bg-[rgba(0,144,254,255)] text-white inline-block p-3 rounded-xl hover:bg-[#2596be];
+    @apply bg-[rgba(0,144,254,255)] text-white inline-block p-3 rounded-xl hover:bg-[#2596be] ;
   }
 }

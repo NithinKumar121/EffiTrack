@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { deleteCookie, getCookie, setCookie ,getDataFromLocalStorage,storeDataInLocalStorage,deleteDataFromLocalStorage } from "../../services/servicehelp";
+import {useSelector, useDispatch} from "react-redux";
+import {toggleMode} from '../../redux/commonSlice';
+import {  deleteCookie, 
+          getCookie, 
+          setCookie, 
+          getDataFromLocalStorage, storeDataInLocalStorage, deleteDataFromLocalStorage } from "../../services/servicehelp";
+
 const Theme = (props) => {
+  const dispatch = useDispatch();
   const {dark,setDark} = props;
+  const commonDetails = useSelector((store)=>store.commonDetails);
+  const {mode} = commonDetails;
+  const [temp,setTemp] = useState(mode);
+
 
   const handleButton = async () => {
-    storeDataInLocalStorage('mode',!dark);
-    setDark(!dark);
+    storeDataInLocalStorage('mode',!mode);
+    dispatch(toggleMode(!mode));
   };
 
   return (
     <div className="lg:mr-0 mr-4">
         <button
-          className={`flex ${dark ? "flex-row-reverse bg-[#333]" : "flex-row bg-gray-200 "} w-16  rounded-2xl p-1 shadow-sm`}
+          className={`flex ${mode ? "flex-row-reverse bg-[#333]" : "flex-row bg-gray-200 "} w-16  rounded-2xl p-1 shadow-sm`}
           onClick={handleButton}
         >
         <div className="flex justify-center items-center dark:bg-[#1d1d1d] bg-white p-1 w-[60%] rounded-2xl shadow-lg ease-in-out">
           <span class="material-symbols-outlined">
-            {dark ? "dark_mode" : "light_mode"}
+            {mode ? "dark_mode" : "light_mode"}
           </span>
         </div>
       </button>
