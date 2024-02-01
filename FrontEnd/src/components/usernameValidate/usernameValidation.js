@@ -229,7 +229,7 @@ const UserValid = () => {
           </div>
           <div className="validation_div">
             <form onSubmit={handleSubmit}>
-              <div className="">
+              <div>
                 <label htmlFor="leetcode">Leetcode *</label>
                 <input
                   type="text"
