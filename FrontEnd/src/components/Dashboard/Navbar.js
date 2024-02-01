@@ -21,7 +21,6 @@ const Navbar = (props) => {
         <div className="lg:hidden block mr-4">
           <button onClick={() => {
            dispatch(toggleLeftMobileNav(!mobileScreenNav));
-           console.log(mobileScreenNav)
           }}>
             <span class="material-icons-sharp text-black text-2xl dark:text-white">
               list
