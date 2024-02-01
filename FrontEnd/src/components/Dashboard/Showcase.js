@@ -155,8 +155,8 @@ const Showcase = () => {
             )}  
           </div>
         </div>
-        <div className="showcase-socails bg-[#fff] dark:bg-[#1d1d1d] dark:text-[#f1f1f1] rounded-xl p-3 relative">
-          <h1>Add Your Social Media Links</h1>
+        <div className="showcase-socails text-[#000] bg-[#fff] dark:bg-[#1d1d1d] dark:text-[#f1f1f1] rounded-xl p-3 relative">
+          <h1  >Add Your Social Media Links</h1>
           <div className="socail-medias h-[13rem] overflow-auto no-scrollbar">
             {
               (userDetials.socialMedia.linkedIn !== "unknown")?
@@ -181,7 +181,7 @@ const Showcase = () => {
       <div className={`fixed inset-0 ${(show)?'block':'hidden'} text-white h-full w-full flex justify-center items-center m-auto`}>
         <div className="bg-[#f3f4f5] dark:bg-[#1d1d1d] m-4 p-4 rounded-lg text- dark:text-white shadow-xl ">
           <div className="text-lg flex border-b-2 mb-2">
-            <div className="p-4">
+            <div className="p-4 text-[#000] dark:text-[#f1f1f1">
               Add Your Social Media links
             </div>
             <button onClick={()=>setShow(!show)}>
