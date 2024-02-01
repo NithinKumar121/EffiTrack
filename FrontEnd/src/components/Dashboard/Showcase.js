@@ -12,8 +12,9 @@ import Button from '@mui/material/Button';
 import axios from "axios";
 import { getCookie } from "../../services/servicehelp";
 import { useNavigate } from "react-router-dom";
-
-
+import RedditLogo from "../../assets/reddit-logo.png";
+import linkedlogo from "../../assets/linkedin.png";
+import twitter from "../../assets/X-logo.jpg";
 const Favourite = (props) => {
   const { repoDetails } = props;
 
@@ -48,12 +49,30 @@ const Favourite = (props) => {
 
 const Social = (props) => {
   const {platform, url} = {...props};
+  let logoSrc;
+
+  switch (platform.toLowerCase()) {
+    case 'github':
+      logoSrc = GitRepo;
+      break;
+    case 'linkedin':
+      logoSrc = linkedlogo;
+      break;
+    case 'twitter':
+      logoSrc = twitter;
+      break;
+    case 'reddit':
+      logoSrc = RedditLogo;
+      break;
+    default:
+      logoSrc = GitRepo; 
+  }
   return (
     <>
       <Link to={url} target="_blank" rel="noopener noreferrer" className="social-media shadow-xl hover:shadow-none ease-in duration-300 cursor-default bg-[#f4f5f6] dark:bg-[#333] dark:text-white text-[#333]">
-        <img src={GitRepo} alt="github" className="w-[40px] h-[40px]"></img>
+        <img src={logoSrc} alt={platform}  className="w-[40px] h-[40px]"></img>
         <div className="social-media-inner">
-          <h4>{platform}</h4>
+          <h4 className="font-medium">{platform}</h4>
         </div>
       </Link>
     </>
@@ -193,7 +212,7 @@ const Showcase = () => {
         </div>
       </div>
       <div className={`fixed inset-0 ${(show)?'block':'hidden'} text-white h-full w-full flex justify-center items-center m-auto`}>
-        <div className="bg-[#f3f4f5] dark:bg-[#1d1d1d] m-4 p-4 rounded-lg text-black dark:text-white shadow-xl ">
+        <div className="bg-[#f3f4f5] dark:bg-[#1d1d1d] m-4 p-4 rounded-lg text- dark:text-white shadow-xl ">
           <div className="text-lg flex border-b-2 mb-2">
             <div className="p-4">
               Add Your Social Media links
