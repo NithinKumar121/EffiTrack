@@ -46,7 +46,7 @@ export const LoginForm = (props) => {
       // }
       setCookie(tokenName, data.accessToken, 168);
       storeDataInLocalStorage('mode',false);
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       if (
         error.response &&

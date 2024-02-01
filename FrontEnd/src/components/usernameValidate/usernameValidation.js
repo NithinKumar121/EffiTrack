@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { getCookie } from "../../services/servicehelp";
 import { useNavigate } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 const Error = () => {
   return (
     <>
@@ -62,6 +62,19 @@ const UserValid = () => {
   const [cfflag, setCfflag] = useState(0);
   const [githubFlag, setGithubFlag] = useState(0);
   const [verified, setVerified] = useState(0);
+  const userSlice  = useSelector((store)=>store.userDetails);
+  const {userDetials} = userSlice;
+
+  useEffect(()=>{
+    setLcUsername(userDetials.leetcode)
+    setCfUsername(userDetials.codeforces)
+    setCcUsername(userDetials.codechef)
+    setGithubUsername(userDetials.github)
+  },[userDetials.leetcode,userDetials.codechef,userDetials.codeforces,userDetials.github])
+
+  
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = process.env.REACT_APP_BASE_URL;
@@ -157,7 +170,7 @@ const UserValid = () => {
             }, 2000);
           });
           waitBro.then((waiting_over) => {
-            navigate("/dashboard");
+            navigate("/");
           });
         } else {
           const waitBro = new Promise((resolve, reject) => {
@@ -216,7 +229,7 @@ const UserValid = () => {
           </div>
           <div className="validation_div">
             <form onSubmit={handleSubmit}>
-              <div className="">
+              <div>
                 <label htmlFor="leetcode">Leetcode *</label>
                 <input
                   type="text"
