@@ -35,6 +35,9 @@ const Chart = () => {
   
   useEffect(() => {
     checkAuth();
+    console.log("leetcode",rating)
+    console.log("codeforces",cfRating)
+
   }, [rating, cfRating ,id]);
 
   const checkAuth = async () => {
@@ -43,10 +46,10 @@ const Chart = () => {
     const Rating = [];
     const cfFilterRating = [];
     if (data.length > 0) {
-      for (let i = 0; i < data[0].length; i++) {
+      for (let i = 0; i < data.length; i++) {
         const contest = {
-          name: data[0][i].contest.title,
-          y: Math.round(data[0][i].rating),
+          name: data[i].contest.title,
+          y: Math.round(data[i].rating),
         };
         Rating.push(contest);
       }
@@ -55,10 +58,10 @@ const Chart = () => {
     }
 
     if (cfdata.length > 0) {
-      for (let i = 0; i < cfdata[0].length; i++) {
+      for (let i = 0; i < cfdata.length; i++) {
         const contest = {
-          name: cfdata[0][i].contestName,
-          y: Math.round(cfdata[0][i].newRating),
+          name: cfdata[i].contestName,
+          y: Math.round(cfdata[i].newRating),
         };
         cfFilterRating.push(contest);
       }

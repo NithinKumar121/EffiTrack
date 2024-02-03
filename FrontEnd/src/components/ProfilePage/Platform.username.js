@@ -123,7 +123,7 @@ export const USERNAME_EDIT = () => {
   const { userDetials } = myUserDetails;
   useEffect(() => {
     setUserName(userDetials.username);
-  }, []);
+  }, [userDetials.username]);
   const handleSave = (e) => {
     setUserName(e.target.value);
   };
@@ -165,7 +165,7 @@ export const LEETCODE_EDIT = () => {
   const { userDetials } = myUserDetails;
   useEffect(() => {
     setUsername(userDetials.leetcode);
-  }, []);
+  }, [userDetials.leetcode]);
   const handleEdit = (val) => {
     if (val === true) {
       setEdit(val);
@@ -246,7 +246,7 @@ export const CODEFORCES_EDIT = () => {
   const { userDetials } = myUserDetails;
   useEffect(() => {
     setUsername(userDetials.codeforces);
-  }, []);
+  }, [userDetials.codeforces]);
 
   const handleEdit = (val) => {
     if (val === true) {
@@ -334,7 +334,7 @@ export const CODECHEF_EDIT = () => {
   const { userDetials } = myUserDetails;
   useEffect(() => {
     setUsername(userDetials.codechef);
-  }, []);
+  }, [userDetials.codechef]);
   const handleEdit = (val) => {
     if (val === true) {
       setEdit(val);
@@ -418,7 +418,7 @@ export const GITHUB_EDIT = () => {
   const { userDetials } = myUserDetails;
   useEffect(() => {
     setUsername(userDetials.github);
-  }, []);
+  }, [userDetials.github]);
   const submitLeet = async () => {
     const authToken = getCookie(tokenName);
     try {

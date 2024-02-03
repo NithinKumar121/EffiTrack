@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { getCookie } from "../../services/servicehelp";
 import { useNavigate } from "react-router-dom";
+import Friends from '../../assets/jpg/friends-removebg.jpg';
+import Effitrack from '../../assets/temp_logo.jpeg'
+import arrow from "../../assets/jpg/next.jpg"
 import './publicStats.css'
 
 const PublicStats = () =>{
@@ -43,20 +46,26 @@ const PublicStats = () =>{
     }   
     return(
         <>
-            <div className="w-full h-[80.5vh] flex justify-center items-center bg-white dark:bg-[#1d1d1d] text-black dark:text-white rounded-xl shadow-xl ">
-                <div className="w-full text-center flex flex-col gap-y-7">
+            <div className="w-full h-[80.5vh] grid sm:grid-cols-2 sm:mt-0 mt-4  justify-center items-center bg-white dark:bg-[#1d1d1d] text-black dark:text-white rounded-xl shadow-xl ">
+                <div className=" text-center flex flex-col gap-y-7 justify-center items-center">
                     <div className="py-3 flex flex-col gap-y-4">
                         <div className="flex flex-row gap-x-4 justify-center items-center">
-                            <img src={
-                                "https://i.ibb.co/0YBRzmJ/temp-logo.jpg"} className="w-[3rem] h-[3rem] rounded-full"></img>
-                            <h1 className="text-3xl font-bold">Effitrack Username</h1>
+                            {/* <img src={
+                                "https://i.ibb.co/0YBRzmJ/temp-logo.jpg"} className="w-[3rem] h-[3rem] rounded-full"></img> */}
+                            <h1 className="text-4xl font-bold"><span className="text-purple-700">Effitrack Username</span></h1>
                         </div>
                         
-                        <p className="text-xl font-medium">Explore your friends growth !</p>
+                        <p className="text-xl font-medium"><span className="text-gray-400">Explore your friends growth ! </span>🚀</p>
                     </div>
-                    <div className="flex flex-row gap-x-4 justify-center">
-                        <input type="text" onChange={(e)=>setEffiUsername(e.target.value)} value={effiUsername} className=" effiuser-input" placeholder="Enter effitrack Username"></input>
-                        <button onClick={()=>submitButton()} className="rounded-full bg-black text-white p-3 hover:bg-gray-600 dark:bg-white dark:text-[#333] "><span className="material-icons-sharp flex items-center">arrow_forward</span></button>
+                    <div className="flex flex-row gap-x-3 justify-center relative items-center">
+                        <img src={Effitrack} className="w-[2rem] h-[2rem] rounded-full absolute left-3 top-3"></img>
+                        <input type="text" onChange={(e)=>setEffiUsername(e.target.value)} value={effiUsername} className=" effiuser-input" placeholder="Enter effitrack Username">
+                            
+                        </input>
+                        <button onClick={()=>submitButton()} className="arrow-forward-button absolute right-3 top-3">
+                            {/* <span className="material-icons-sharp translate-y-1 font-extrabold font-2xl">arrow_forward</span> */}
+                            <img className="" src={arrow }></img>
+                        </button>
                     </div>
                     {
                         userNotFound == true ?
@@ -69,7 +78,9 @@ const PublicStats = () =>{
                         <></>
                     }
                 </div>
-                
+                <div className="md:translate-x-[-1rem] md:block hidden">
+                    <img src={Friends} className=""></img>
+                </div>
             </div>
         </>
     )

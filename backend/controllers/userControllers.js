@@ -35,7 +35,7 @@ const register = async (req,res) =>{
             email:email
         })
         console.log(user);
-        // user creation
+     
         await user.save();
 
         if(user){
