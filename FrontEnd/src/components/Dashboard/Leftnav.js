@@ -1,31 +1,34 @@
-import React  from "react";
+import React from "react";
 import { useState } from "react";
 import temp_logo from "../../assets/temp_logo.jpeg";
 import Theme from "./Theme";
 import "./dashboard.css";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toggleLeftMobileNav } from "../../redux/commonSlice";
 import { Link } from "react-router-dom";
 const Leftnav = (props) => {
   const dispatch = useDispatch();
-  const commonDetails = useSelector((store)=>store.commonDetails)
-  const {mobileScreenNav} = commonDetails;
+  const commonDetails = useSelector((store) => store.commonDetails);
+  const { mobileScreenNav } = commonDetails;
   const [activeButton, setActiveButton] = useState("page1");
 
   const handleButtonClick = (page) => {
-    setActiveButton(page);  
+    setActiveButton(page);
   };
   return (
     <aside className={`w-[60%] sm:w-auto text-[#f3f3f3] bg-[#000] dark:bg-[#1d1d1d] h-[100vh]  lg:block sm:relative ${mobileScreenNav?'fixed left-0 z-10':'hidden'} overflow-hidden scrollbar-hide`}>
 
       <div className="top">
         <div className="logo">
-          <img src={temp_logo} className="w-[50px] h-[50px] rounded-full"></img>
+          <img
+            src={temp_logo}
+            className="w-[50px] h-[50px] rounded-full"
+            alt="logo"
+          ></img>
           <h1 className="text-3xl font-semibold">
             {" "}
             <span>Effi</span>track
           </h1>
-         
         </div>
         <div className="close">
           <button onClick={()=>{
@@ -62,8 +65,8 @@ const Leftnav = (props) => {
                         dispatch(toggleLeftMobileNav(!mobileScreenNav))
                       }}
               >
-              <span class="material-icons-sharp">account_circle</span>
-              <h4 className="group-hover:ml-2 slowmo">Profile</h4>
+                <span class="material-icons-sharp">account_circle</span>
+                <h4 className="group-hover:ml-2 slowmo">Profile</h4>
               </button>
             </Link>
           </div>
@@ -76,8 +79,8 @@ const Leftnav = (props) => {
                         dispatch(toggleLeftMobileNav(!mobileScreenNav))
                     }}
               >
-              <span class="material-icons-sharp">search</span>
-              <h4 className="group-hover:ml-2 slowmo">Search</h4>
+                <span class="material-icons-sharp">search</span>
+                <h4 className="group-hover:ml-2 slowmo">Search</h4>
               </button>
             </Link>
           </div>
@@ -88,7 +91,6 @@ const Leftnav = (props) => {
       </div>
 
       <div className="bottom"></div>
-
     </aside>
   );
 };
