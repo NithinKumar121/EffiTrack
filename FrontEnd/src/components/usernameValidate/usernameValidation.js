@@ -222,15 +222,15 @@ const UserValid = () => {
       >
         <div className="valid_box">
           <div className="valid_top">
-            <h1 className="font-semibold text-3xl">Effitrack</h1>
-            <h4 className="font-semibold">
-              Let's begin your effitrack journey from here !
+            <h1 className="font-semibold text-3xl mt-4 ml-3">Effitrack🚀</h1>
+            <h4 className="font-semibold mb-4 ml-5">
+              Let's begin your Effitrack journey from here 😄!
             </h4>
           </div>
           <div className="validation_div">
             <form onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="leetcode">Leetcode *</label>
+                <label htmlFor="leetcode">Enter Leetcode Username  <span className="text-red-500 text-lg">*</span></label>
                 <input
                   type="text"
                   placeholder="Leetcode username"
@@ -250,7 +250,7 @@ const UserValid = () => {
                 )}
               </div>
               <div>
-                <label htmlFor="codechef">Codechef *</label>
+                <label htmlFor="codechef">Enter Codechef Username <span className="text-red-500 text-lg">*</span></label>
                 <input
                   type="text"
                   placeholder="Codechef username"
@@ -270,7 +270,7 @@ const UserValid = () => {
                 )}
               </div>
               <div>
-                <label htmlFor="codeforces">Codeforces *</label>
+                <label htmlFor="codeforces">Enter Codeforces Username  <span className="text-red-500 text-lg">*</span></label>
                 <input
                   type="text"
                   placeholder="Codeforces username"
@@ -290,7 +290,7 @@ const UserValid = () => {
                 )}
               </div>
               <div>
-                <label htmlFor="github">Github *</label>
+                <label htmlFor="github">Enter GitHub Username  <span className="text-red-500 text-lg">*</span></label>
                 <input
                   type="text"
                   placeholder="Github username"
@@ -309,10 +309,10 @@ const UserValid = () => {
                   <Validation />
                 )}
               </div>
-              <div className="submit_div translate-y-[-1rem]">
+              <div className="submit_div translate-y-[-1rem] -mt-2">
                 {verified == 0 ? (
                   <div>
-                    <button className="submit_but">Submit</button>
+                    <button className=" font-bold mb-4 text-[18px]  rounded-full bg-white text-violet-800 hover:bg-violet-600 hover:text-white py-2 px-10 transition colors duration-300 ">Submit</button>
                   </div>
                 ) : verified == 1 ? (
                   <div>

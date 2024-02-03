@@ -3,6 +3,9 @@ import temp_logo from "../../assets/temp_logo.jpeg";
 import { useSelector } from "react-redux";
 import {deleteCookie} from "../../services/servicehelp.js";
 import { Link } from "react-router-dom";
+import { FaCircleChevronDown } from "react-icons/fa6";
+import { RiEditCircleFill } from "react-icons/ri";
+import { HiOutlineLogout } from "react-icons/hi";
 import './dashboard.css'
 const Profile = () => {
   const myUserDetails = useSelector((state) => state.userDetails);
@@ -11,12 +14,13 @@ const Profile = () => {
   const { GithubProfile } = githubDetails;
   const [role, setRole] = useState("Student");
   const [subProfile,setSubProfile] = useState(false);
+  const [isDropdown,setIsDropdown] = useState(false);
 
   return (
     <>
       <div className="profile_div">
         <div>
-          <img src={GithubProfile.avatar_url} className="w-[3rem] rounded-[100%]"></img>
+          <img src={GithubProfile.avatar_url} alt="user-profile" className="w-[3rem] rounded-[100%]"></img>
         </div>
         <div>
           <div className="text-primary font-medium">{userDetials.username}</div>
@@ -24,23 +28,28 @@ const Profile = () => {
             <small>{role}</small>
           </div>
         </div>
-        
-        <div className="pop-up subProfile">
-          <div className="flex flex-col gap-y-2 cursor-pointer">
-            <Link to="/validUsername" className="font-medium">Edit</Link>
+        <div className="dropdown-indicator cursor-pointer text-xl mt-3 ml-2" onClick={()=>setIsDropdown(!isDropdown)}>
+        <FaCircleChevronDown />
+        </div>
+        {isDropdown && ( 
+          <div className="pop-up subProfile">
+          <div className=" flex flex-col gap-y-2 cursor-pointer">
+            <Link to="/validUsername" className="font-medium hover:bg-blue-500 hover:text-white rounded-md flex items-center justify-between p-2">
+            <span>Edit</span>
+            <div className="text-xl"><RiEditCircleFill /></div>
+            </Link>
               <button 
-                className="rounded-xl p-1 font-medium"
+                className="font-medium hover:bg-blue-500 hover:text-white rounded-md flex items-center justify-between p-2"
                 onClick={()=>{
                     deleteCookie(process.env.REACT_APP_JWT_NAME)
                     window.location.reload();
                   }}
                 >
-                    Logout
+                    <span>Logout</span>
+                    <div className="text-xl"><HiOutlineLogout/></div>
             </button>
           </div>
-        </div>
-          
-      
+        </div>)}
       </div>
     </>
   );
