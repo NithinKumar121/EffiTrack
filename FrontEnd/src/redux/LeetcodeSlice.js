@@ -37,10 +37,15 @@ const leetcodeSlice = createSlice({
       };
     },
     modifyRating: (state, action) => {
-      if (action.payload.length > 0) {
-        if (state.rating.length == 0) {
-          state.rating.push(action.payload);
-        }
+      
+      // if (action.payload.length > 0) {
+      //   if (state.rating.length == 0) {
+      //     state.rating.push(action.payload);
+      //   }
+      // }
+      return{
+        ...state,
+        rating:action.payload
       }
     },
   },
