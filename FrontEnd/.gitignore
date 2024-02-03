@@ -1,6 +1,8 @@
 
 node_modules/
 .env
+pnpm-lock.yaml
+yarn.lock
 
 npm install react-icons --save
 npm install react-router-dom

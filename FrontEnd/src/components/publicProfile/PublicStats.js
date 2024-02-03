@@ -58,13 +58,13 @@ const PublicStats = () =>{
                         <p className="text-xl font-medium"><span className="text-gray-400">Explore your friends growth ! </span>🚀</p>
                     </div>
                     <div className="flex flex-row gap-x-3 justify-center relative items-center">
-                        <img src={Effitrack} className="w-[2rem] h-[2rem] rounded-full absolute left-3 top-3"></img>
+                        <img src={Effitrack} className="w-[2rem] h-[2rem] rounded-full absolute left-3 top-3" alt="logo"></img>
                         <input type="text" onChange={(e)=>setEffiUsername(e.target.value)} value={effiUsername} className=" effiuser-input" placeholder="Enter effitrack Username">
                             
                         </input>
                         <button onClick={()=>submitButton()} className="arrow-forward-button absolute right-3 top-3">
                             {/* <span className="material-icons-sharp translate-y-1 font-extrabold font-2xl">arrow_forward</span> */}
-                            <img className="" src={arrow }></img>
+                            <img className="" src={arrow} alt="arrow"></img>
                         </button>
                     </div>
                     {
@@ -79,7 +79,7 @@ const PublicStats = () =>{
                     }
                 </div>
                 <div className="md:translate-x-[-1rem] md:block hidden">
-                    <img src={Friends} className=""></img>
+                    <img src={Friends} className="" alt="friends"></img>
                 </div>
             </div>
         </>
