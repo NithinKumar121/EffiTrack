@@ -58,6 +58,17 @@ const Leftnav = (props) => {
               </button>
             </Link>
           </div>
+          <div className="left-nav-link">
+            <Link to={'/usernameSearch'} 
+            >
+              <button className={`left-nav-a group ${activeButton == "page3" ? "l-nav-a-active" : ""}`}
+                      onClick={() => handleButtonClick("page3")}
+              >
+              <span class="material-icons-sharp">search</span>
+              <h4 className="group-hover:ml-2 slowmo">Search</h4>
+              </button>
+            </Link>
+          </div>
           <div className={`${!mobileScreenNav ? 'hidden' :'left-nav-link w-[80%] mx-auto'} `}>
             <Theme/>
           </div>

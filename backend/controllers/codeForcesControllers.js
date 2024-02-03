@@ -1,9 +1,9 @@
 const {getForceCount,getForceRating}  = require("../utils/CodeForceFun");
 
 const getCFcount = async (req,res) =>{
-    const username = req.user.codeforces;
-    console.log("so this is the getcfcount function",username)
+
     try{
+        const username = req.user.codeforces;
        const response = await getForceCount(username);
         if(response.error){
             return res.status(404).json({error:true,message:response.message})
@@ -15,8 +15,9 @@ const getCFcount = async (req,res) =>{
 }
 
 const getCFrating = async (req,res) =>{
-    const username = req.user.codeforces;
+   
     try{
+        const username = req.user.codeforces;
         const response = await getForceRating(username);
         if(response.error){
             return res.status(404).json({error:true,message:response.message})
@@ -28,8 +29,9 @@ const getCFrating = async (req,res) =>{
 }
 
 const checkCfUsername = async (req,res) =>{
-    const username = req.body.username;
+    
     try{
+        const username = req.body.username;
        const response = await getForceCount(username);
         if(response.error){
             return res.status(404).json({error:true,message:response.message})

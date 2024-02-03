@@ -2,8 +2,9 @@ const {getChefData} = require('../utils/CodeChefFun');
 
 const getCodeChefDetails =async (req,res)=>{
 
-    const username = req.user.codechef;    
+     
     try{
+        const username = req.user.codechef; 
         const response = await getChefData(username);
         if(response.error){
            return res.status(404).json({error:true,message:"username not found"});
@@ -17,9 +18,9 @@ const getCodeChefDetails =async (req,res)=>{
 
 const checkCfUsername =async (req,res) =>{
 
-    const username = req.body.username;
 
     try{
+        const username = req.body.username;
         const response = await getChefData(username);
         if(response.error){
            return res.status(404).json({error:true});

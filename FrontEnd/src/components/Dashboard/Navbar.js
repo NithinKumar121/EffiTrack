@@ -23,7 +23,7 @@ const Navbar = (props) => {
            dispatch(toggleLeftMobileNav(!mobileScreenNav));
           }}>
             <span class="material-icons-sharp text-black text-2xl dark:text-white">
-              list
+              menu
             </span>
           </button>
 

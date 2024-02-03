@@ -3,20 +3,24 @@ const {getLeetCount , getLeetRating} = require('../utils/LeetcodeFun');
 
 
 const getLcCount = async (req,res) =>{
-    const username = req.user.leetcode;
+    
     try{
+        const username = req.user.leetcode;
         const submitStats = await getLeetCount(username);
-        res.status(200).json({error:false,message:submitStats.message});
+        if(submitStats.length === 0){
+            res.status(404).json({message:true,message:"No data from Leetcode Api"})
+        }
+        return res.status(200).json({error:false,message:submitStats.message});
     }catch(err){
-        res.status(500).json({error:true,message:"Error occurred while fetching the data from the leetcode api"})
+        return res.status(500).json({error:true,message:"Error occurred while fetching the data from the leetcode api"})
     }
-   
 }
 
 
 const getLcRating =async (req,res) =>{
-    const username = req.user.leetcode;
+    
     try{
+        const username = req.user.leetcode;
         var submitStats =await getLeetRating(username);
         if(submitStats.error){
             return res.status(404).json({error:true,message:'Username not found or network problem'})
@@ -27,14 +31,15 @@ const getLcRating =async (req,res) =>{
         return res.status(200).json({error:false,message:attendContest});
     }
     catch(err){
-        res.status(500).json({error:true,message:err.message});
+        return res.status(500).json({error:true,message:err.message});
     }
 }
 
 
 const checkLcUsername = async (req,res) =>{
-    const username = req.body.username;
+    
     try{
+        const username = req.body.username;
         const submitStats = await getLeetCount(username);
         if(submitStats.error){
             return res.status(404).json({error:true})
@@ -47,8 +52,9 @@ const checkLcUsername = async (req,res) =>{
 
 
 const  getLeetcodeBatch = async (req,res) =>{
-    const leetcode = req.user.leetcode;
+    
     try{
+        const leetcode = req.user.leetcode;
         const response = await axios.get(`https://alfa-leetcode-api.vercel.app/${leetcode}/badges`);
         if(response.data.badgesCount === 0){
 

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fetchContestData = require('../controllers/futureContestController');
 const {auth} = require("../middleware/authMiddleware");
+const {authPublic} =require("../middleware/publicMiddleware");
 const { editImage, 
         editLeetcodeUsername, 
         editCodeforceUsername, 
