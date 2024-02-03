@@ -28,9 +28,9 @@ const Profile = () => {
             <small>{role}</small>
           </div>
         </div>
-        <div className="dropdown-indicator cursor-pointer text-xl mt-3 ml-2" onClick={()=>setIsDropdown(!isDropdown)}>
+        <button className="text-xl mt-1 ml-2" onClick={() => setIsDropdown(!isDropdown)} aria-label="Toggle Dropdown">
         <FaCircleChevronDown />
-        </div>
+        </button>
         {isDropdown && ( 
           <div className="pop-up subProfile">
           <div className=" flex flex-col gap-y-2 cursor-pointer">
