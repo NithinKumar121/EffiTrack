@@ -11,7 +11,6 @@ const Contest = (props) => {
   const { onecontestData } = props;
 
   const helper = (line, val) => {
-      // console.log("helper function",line)
       if(line.includes("AtCoder")){
           const spliting = line.split("AtCoder");
           var res = spliting[1];

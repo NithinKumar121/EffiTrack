@@ -1,16 +1,23 @@
 import React from "react";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import temp_logo from "../../assets/temp_logo.jpeg";
 import Theme from "./Theme";
 import "./dashboard.css";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleLeftMobileNav } from "../../redux/commonSlice";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 const Leftnav = (props) => {
   const dispatch = useDispatch();
   const commonDetails = useSelector((store) => store.commonDetails);
   const { mobileScreenNav } = commonDetails;
   const [activeButton, setActiveButton] = useState("page1");
+  const {id} = useParams();
+
+  useEffect(()=>{
+    if(id!==undefined){
+      setActiveButton("page3")
+    }
+  },[id])
 
   const handleButtonClick = (page) => {
     setActiveButton(page);
