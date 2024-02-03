@@ -34,7 +34,7 @@ const register = async (req,res) =>{
             password:hashedPassword,
             email:email
         })
-        console.log(user);
+
      
         await user.save();
 
