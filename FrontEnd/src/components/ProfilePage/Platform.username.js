@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getCookie } from "../../services/servicehelp";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import './profile.css'
 
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
@@ -87,15 +88,46 @@ export const PROFILE_TOP = () => {
   const githubDetails = useSelector((store) => store.githubDetails);
   const { userDetials } = myUserDetails;
   const { GithubProfile } = githubDetails;
+
+  const [base64Image, setBase64Image] = useState('');
+
+  useEffect(()=>{
+    console.log(base64Image)
+  })
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        console.log(typeof(reader.result))
+        setBase64Image(reader.result);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div className="h-1/5 bg-[#253D5B] dark:bg-[#1d1d1d] text-white rounded-t-2xl flex px-8 items-center mt-2">
       <div className="h-[10rem] w-[10rem] rounded-full transform sm:translate-y-[40%] translate-y-[30%]">
         {/* <ImageUpload/> */}
         <img
+          // src={`https://avatar.vercel.sh/${userDetials.username}.svg?text=${userDetials.username}`}
           src={GithubProfile.avatar_url}
           alt="profile pic"
           className="rounded-full"
         ></img>
+          {/* <input
+            type="file"
+            id="file-input" name="file-input"
+            className="hidden"
+            onChange={handleImageChange}
+          />
+          <label for="file-input" className="profile_edit_cover"></label>
+          i dont know how this shit works */}
       </div>
       <div className="flex flex-col gap-2 mx-10">
         <div className="flex gap-3">
