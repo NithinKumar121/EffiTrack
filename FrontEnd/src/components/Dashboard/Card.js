@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LeetCode_logo from "../../assets/LeetCode_logo.png";
+import LeetCode_logo from "../../assets/jpg/LeetCode_logo.jpg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Codechef_logo from "../../assets/codechef-01.png";
