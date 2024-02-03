@@ -5,6 +5,7 @@ import signup from "../../assets/signup.png";
 import { useEffect, useState } from "react";
 import { LoginForm } from "./LoginForm.js";
 import { SignupForm } from "./SignupForm.js";
+import { Helmet } from "react-helmet";
 
 export const Login = ({ page }) => {
   const [isLogin, setIsLogin] = useState(true);

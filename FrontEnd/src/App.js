@@ -1,7 +1,7 @@
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { Outlet } from "react-router-dom";
-import {  useSelector ,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import Leftnav from "./components/Dashboard/Leftnav";
 import { modifyCount, modifyRating } from "././redux/LeetcodeSlice";
@@ -11,28 +11,25 @@ import { updateGithubRepo, updateGithubProfile } from "././redux/githubSlice";
 import { getCookie } from "././services/servicehelp";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import {
-  changeUserDetails,
-  changeUpcomingContest,
-} from "././redux/userSlice";
+import { changeUserDetails, changeUpcomingContest } from "././redux/userSlice";
 
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const commonDetails = useSelector((store)=>store.commonDetails);
-  const {mode} = commonDetails;
+  const commonDetails = useSelector((store) => store.commonDetails);
+  const { mode } = commonDetails;
   const [display, setDisplay] = useState("dashboard");
-  const {id} = useParams();
- 
-  useEffect(()=>{
+  const { id } = useParams();
+
+  useEffect(() => {
     checkAuth();
     leetcodeData();
     codeforcesData();
     codechefData();
     githubData();
-  },[id])
+  }, [id]);
 
   useEffect(() => {
     leetcodeData();
@@ -56,25 +53,25 @@ function App() {
           },
         });
 
-        if(id !==undefined){
+        if (id !== undefined) {
           const lcresponse = await axiosInstance.post(
-            `${process.env.REACT_APP_BASE_URL}/user/`,{username:id}
-          );
-          dispatch(changeUserDetails(lcresponse.data.message));
-        }else{
-          const lcresponse = await axiosInstance.get(
             `${process.env.REACT_APP_BASE_URL}/user/`,
+            { username: id }
           );
           dispatch(changeUserDetails(lcresponse.data.message));
-          }
+        } else {
+          const lcresponse = await axiosInstance.get(
+            `${process.env.REACT_APP_BASE_URL}/user/`
+          );
+          dispatch(changeUserDetails(lcresponse.data.message));
+        }
       } catch (error) {
-        if(error.response.status === 404){
-            navigate("/user/404error")
+        if (error.response.status === 404) {
+          navigate("/user/404error");
         }
-        if(error.response.status === 401 || error.response.status === 400){
-           navigate("/login");
+        if (error.response.status === 401 || error.response.status === 400) {
+          navigate("/login");
         }
-        
       }
 
       try {
@@ -85,20 +82,25 @@ function App() {
             },
           },
         });
-        if( id !== undefined){
+        if (id !== undefined) {
           const lcresponse = await axiosInstance.post(
-            `${process.env.REACT_APP_BASE_URL}/user/upcoming`,{username:id}
+            `${process.env.REACT_APP_BASE_URL}/user/upcoming`,
+            { username: id }
           );
           dispatch(changeUpcomingContest(lcresponse.data.message));
-        }else{
+        } else {
           const lcresponse = await axiosInstance.get(
-            `${process.env.REACT_APP_BASE_URL}/user/upcoming`,
+            `${process.env.REACT_APP_BASE_URL}/user/upcoming`
           );
           dispatch(changeUpcomingContest(lcresponse.data.message));
         }
       } catch (error) {
-        if(error.response.request.status === 409 || error.response.request.status === 500 || error.response.data.error){
-          console.log(error.response.data.message)
+        if (
+          error.response.request.status === 409 ||
+          error.response.request.status === 500 ||
+          error.response.data.error
+        ) {
+          console.log(error.response.data.message);
         }
       }
     }
@@ -114,26 +116,25 @@ function App() {
     try {
       const axiosInstance = axios.create({
         headers: {
-          common: {  
+          common: {
             Authorization: `Bearer ${authToken}`,
           },
         },
       });
-      if( id !== undefined){
+      if (id !== undefined) {
         const lcresponse = await axiosInstance.post(
-          `${process.env.REACT_APP_BASE_URL}/leetcode/count`,{username:id}
-        )
+          `${process.env.REACT_APP_BASE_URL}/leetcode/count`,
+          { username: id }
+        );
         const data = lcresponse.data.message;
         dispatch(modifyCount(data));
-      }else{
+      } else {
         const lcresponse = await axiosInstance.get(
-          `${process.env.REACT_APP_BASE_URL}/leetcode/count`,
-        )
+          `${process.env.REACT_APP_BASE_URL}/leetcode/count`
+        );
         const data = lcresponse.data.message;
         dispatch(modifyCount(data));
       }
-      
-      
     } catch (error) {
       if (error.response.data.error || error.response.request.status === 400) {
         console.log(error.response.data.message);
@@ -148,22 +149,22 @@ function App() {
           },
         },
       });
-      if(id !== undefined){
+      if (id !== undefined) {
         const lcresponse = await axiosInstance.post(
-          `${process.env.REACT_APP_BASE_URL}/leetcode/rating`,{username:id}
-        );
-        const data = lcresponse.data.message;
-  
-        dispatch(modifyRating(data));
-      }else{  
-        const lcresponse = await axiosInstance.get(
           `${process.env.REACT_APP_BASE_URL}/leetcode/rating`,
+          { username: id }
         );
         const data = lcresponse.data.message;
-  
+
+        dispatch(modifyRating(data));
+      } else {
+        const lcresponse = await axiosInstance.get(
+          `${process.env.REACT_APP_BASE_URL}/leetcode/rating`
+        );
+        const data = lcresponse.data.message;
+
         dispatch(modifyRating(data));
       }
-      
     } catch (error) {
       if (
         error.response.data.error ||
@@ -189,20 +190,20 @@ function App() {
           },
         },
       });
-      if(id !== undefined){
+      if (id !== undefined) {
         const lcresponse = await axiosInstance.post(
-          `${process.env.REACT_APP_BASE_URL}/codeforces/rating`,{username:id}
+          `${process.env.REACT_APP_BASE_URL}/codeforces/rating`,
+          { username: id }
         );
         const data = lcresponse.data.message;
         dispatch(cfModifyRating(data));
-      }else{
+      } else {
         const lcresponse = await axiosInstance.get(
-          `${process.env.REACT_APP_BASE_URL}/codeforces/rating`,
+          `${process.env.REACT_APP_BASE_URL}/codeforces/rating`
         );
         const data = lcresponse.data.message;
         dispatch(cfModifyRating(data));
       }
-      
     } catch (error) {
       if (
         error.response.data.error ||
@@ -221,20 +222,20 @@ function App() {
           },
         },
       });
-      if(id !== undefined){
+      if (id !== undefined) {
         const lcresponse = await axiosInstance.post(
-          `${process.env.REACT_APP_BASE_URL}/codeforces/count`,{username:id},
+          `${process.env.REACT_APP_BASE_URL}/codeforces/count`,
+          { username: id }
         );
         const data = lcresponse.data.message;
         dispatch(cfModifyProfile(data));
-      }else{
+      } else {
         const lcresponse = await axiosInstance.get(
-          `${process.env.REACT_APP_BASE_URL}/codeforces/count`,
+          `${process.env.REACT_APP_BASE_URL}/codeforces/count`
         );
         const data = lcresponse.data.message;
         dispatch(cfModifyProfile(data));
       }
-      
     } catch (error) {
       if (
         error.response.data.error ||
@@ -260,20 +261,20 @@ function App() {
           },
         },
       });
-      if(id !== undefined){
+      if (id !== undefined) {
         const lcresponse = await axiosInstance.post(
-          `${process.env.REACT_APP_BASE_URL}/codechef/details`,{username:id},
+          `${process.env.REACT_APP_BASE_URL}/codechef/details`,
+          { username: id }
         );
         const data = lcresponse.data.message;
         dispatch(ccUpdateUserDetails(data));
-      }else{
+      } else {
         const lcresponse = await axiosInstance.get(
-          `${process.env.REACT_APP_BASE_URL}/codechef/details`,
+          `${process.env.REACT_APP_BASE_URL}/codechef/details`
         );
         const data = lcresponse.data.message;
         dispatch(ccUpdateUserDetails(data));
       }
-      
     } catch (error) {
       if (
         error.response.data.error ||
@@ -299,20 +300,20 @@ function App() {
           },
         },
       });
-      if(id !== undefined){
+      if (id !== undefined) {
         const lcresponse = await axiosInstance.post(
-          `${process.env.REACT_APP_BASE_URL}/github/repo`,{username:id}
+          `${process.env.REACT_APP_BASE_URL}/github/repo`,
+          { username: id }
         );
         const data = lcresponse.data.message;
         dispatch(updateGithubRepo(data));
-      }else{
+      } else {
         const lcresponse = await axiosInstance.get(
-          `${process.env.REACT_APP_BASE_URL}/github/repo`,
+          `${process.env.REACT_APP_BASE_URL}/github/repo`
         );
         const data = lcresponse.data.message;
         dispatch(updateGithubRepo(data));
       }
-      
     } catch (error) {
       if (
         error.response.data.error ||
@@ -331,20 +332,20 @@ function App() {
           },
         },
       });
-      if(id !== undefined){
+      if (id !== undefined) {
         const lcresponse = await axiosInstance.post(
-          `${process.env.REACT_APP_BASE_URL}/github/profile`,{username:id},
+          `${process.env.REACT_APP_BASE_URL}/github/profile`,
+          { username: id }
         );
         const data = lcresponse.data.message;
         dispatch(updateGithubProfile(data));
-      }else{
+      } else {
         const lcresponse = await axiosInstance.get(
-          `${process.env.REACT_APP_BASE_URL}/github/profile`,
+          `${process.env.REACT_APP_BASE_URL}/github/profile`
         );
         const data = lcresponse.data.message;
         dispatch(updateGithubProfile(data));
       }
-      
     } catch (error) {
       if (
         error.response.data.error ||
@@ -356,19 +357,16 @@ function App() {
     }
   };
 
-  
   return (
     <>
-    <div className={`${mode === true ? 'dark' : ''}`}>
+      <div className={`${mode === true ? "dark" : ""}`}>
         <div className="home_section bg-gray-400 dark:bg-[#484849] h-full lg:h-[100vh] scrollbar-hide overflow-hidden">
-          <Leftnav display={display} setDisplay={setDisplay}/>
-          <Outlet/>
+          <Leftnav display={display} setDisplay={setDisplay} />
+          <Outlet />
         </div>
       </div>
     </>
   );
 }
-
-
 
 export default App;

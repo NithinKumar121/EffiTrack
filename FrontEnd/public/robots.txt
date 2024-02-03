@@ -1,3 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
+
 User-agent: *
-Disallow:
+Disallow: /admin-vercel-analytics/
+Disallow: /demo/
+Disallow: /validUsername/
+Allow: /
+
+Sitemap: https://effitrack.vercel.app/sitemap.xml

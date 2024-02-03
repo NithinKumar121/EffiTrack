@@ -10,34 +10,34 @@ import { Login } from "./components/LoginCred/Login";
 import EditProfile from "./components/ProfilePage/Editprofile";
 import Page404 from "./components/404Error/404Error";
 import UserValid from "./components/usernameValidate/usernameValidation";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 import DemoProfile from "./components/ProfilePage/Demoprofile";
 import Home from "./components/Dashboard/Home";
 import PublicProfile from "./components/publicProfile/PublicProfile";
-
+import { Helmet } from "react-helmet";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children:[
+    children: [
       {
-        path:"/",
-        element:<Home/>,
+        path: "/",
+        element: <Home />,
       },
       {
-        path:"/usernameSearch",
-        element:<PublicProfile/>
+        path: "/usernameSearch",
+        element: <PublicProfile />,
       },
       {
-        path:"usernameSearch/:id",
-        element:<Home/>
+        path: "usernameSearch/:id",
+        element: <Home />,
       },
       {
-        path:"profile",
-        element:<DemoProfile/>,
-      }
+        path: "profile",
+        element: <DemoProfile />,
+      },
     ],
     errorElement: <Page404 />,
   },
@@ -67,17 +67,49 @@ const appRouter = createBrowserRouter([
     errorElement: <Page404 />,
   },
   {
-    path:"/demo",
-    element:<DemoProfile/>
-  }
+    path: "/demo",
+    element: <DemoProfile />,
+  },
 ]);
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <Helmet>
+        <title>Effitrack</title>
+        <meta
+          name="description"
+          content="EffiTrack is a web application that empowers users to effortlessly track and monitor their coding profiles from popular platforms like LeetCode, CodeChef, GitHub, and Codeforces. With a user-friendly dashboard, EffiTrack provides accessibility and insights into coding accomplishments, progress, and achievements across multiple coding platforms."
+        />
+        <link rel="canonical" href="https://effitrack.vercel.app" />
+        <meta property="og:title" content="Effitrack" />
+        <meta
+          property="og:description"
+          content="EffiTrack is a web application that empowers users to effortlessly track and monitor their coding profiles from popular platforms like LeetCode, CodeChef, GitHub, and Codeforces. With a user-friendly dashboard, EffiTrack provides accessibility and insights into coding accomplishments, progress, and achievements across multiple coding platforms."
+        />
+        <meta
+          property="og:image"
+          content="https://effitrack.vercel.app/favicon_io/android-chrome-512x512.png"
+        />
+        <meta property="og:url" content="https://effitrack.vercel.app" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:title" content="Effitrack" />
+        <meta
+          name="twitter:description"
+          content="EffiTrack is a web application that empowers users to effortlessly track and monitor their coding profiles from popular platforms like LeetCode, CodeChef, GitHub, and Codeforces. With a user-friendly dashboard, EffiTrack provides accessibility and insights into coding accomplishments, progress, and achievements across multiple coding platforms."
+        />
+        <meta
+          name="twitter:image"
+          content="https://effitrack.vercel.app/favicon_io/android-chrome-512x512.png"
+        />
+        <meta
+          name="twitter:card"
+          content="EffiTrack is a web application that empowers users to effortlessly track and monitor their coding profiles from popular platforms like LeetCode, CodeChef, GitHub, and Codeforces. With a user-friendly dashboard, EffiTrack provides accessibility and insights into coding accomplishments, progress, and achievements across multiple coding platforms."
+        />
+      </Helmet>
       <RouterProvider router={appRouter} />
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
 reportWebVitals();
