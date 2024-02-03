@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken')
 const {userModel} = require('../models/userSchema');
 const {verifyAuthRefreshToken} = require('../utils/verifyRefreshTokens');
 
-const auth = async(req, res, next)=>{
-
+const authPublic = async(req, res, next)=>{
+    let token;
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
         try{
             
@@ -17,8 +17,10 @@ const auth = async(req, res, next)=>{
                     .json({error:true,message:"Invalid Bearer token"})
             }
 
-            req.user = await userModel.findOne({username:decode.username}).select('-password -created -_id -__v');
-
+            req.user = await userModel.findOne({username:req.body.username}).select('-password -created -_id -__v');
+            if(!req.user){
+                return res.status(404).json({error:true,message:"Invalid username"})
+            }
             next();
         }
         catch(err){
@@ -34,4 +36,4 @@ const auth = async(req, res, next)=>{
 }
 
 
-module.exports = {auth};
+module.exports = {authPublic};

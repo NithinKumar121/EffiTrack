@@ -3,13 +3,14 @@ import HighchartsReact from "highcharts-react-official";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
+import { useParams } from "react-router-dom";
 const Chart = () => {
   const navigate = useNavigate();
   const leetcodeDetails = useSelector((store) => store.leetcodeDetails);
   const { rating } = leetcodeDetails;
   const codeforcesDetails = useSelector((store) => store.codeforcesDetails);
   const { cfRating } = codeforcesDetails;
+  const {id} = useParams();
 
   const [chartOptions, setChartOptions] = useState({
     // Initial chart options
@@ -31,9 +32,13 @@ const Chart = () => {
       { name: "Codefroces", data: [2] },
     ],
   });
+  
   useEffect(() => {
     checkAuth();
-  }, [rating, cfRating]);
+    console.log("leetcode",rating)
+    console.log("codeforces",cfRating)
+
+  }, [rating, cfRating ,id]);
 
   const checkAuth = async () => {
     const data = rating;
@@ -41,10 +46,10 @@ const Chart = () => {
     const Rating = [];
     const cfFilterRating = [];
     if (data.length > 0) {
-      for (let i = 0; i < data[0].length; i++) {
+      for (let i = 0; i < data.length; i++) {
         const contest = {
-          name: data[0][i].contest.title,
-          y: Math.round(data[0][i].rating),
+          name: data[i].contest.title,
+          y: Math.round(data[i].rating),
         };
         Rating.push(contest);
       }
@@ -53,10 +58,10 @@ const Chart = () => {
     }
 
     if (cfdata.length > 0) {
-      for (let i = 0; i < cfdata[0].length; i++) {
+      for (let i = 0; i < cfdata.length; i++) {
         const contest = {
-          name: cfdata[0][i].contestName,
-          y: Math.round(cfdata[0][i].newRating),
+          name: cfdata[i].contestName,
+          y: Math.round(cfdata[i].newRating),
         };
         cfFilterRating.push(contest);
       }
@@ -124,10 +129,6 @@ const Chart = () => {
           );
         },
       },
-      //   yAxis: {
-      //     lineColor: '#999', // Axis line color
-      //     gridLineColor: 'gray', // Gridline color
-      // }
     });
   };
 

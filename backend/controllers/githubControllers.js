@@ -3,8 +3,9 @@ const { getGithubContributions } = require('github-contributions-counter')
 
 
 const getRepoDetails = async  (req,res) =>{
-    const username = req.user.github;
+    
     try{
+        const username = req.user.github;
         const response  =await  getGithubRepo(username);
         res.status(200).json({error:false,message:response});
     }catch(err){
@@ -13,8 +14,9 @@ const getRepoDetails = async  (req,res) =>{
 }
 
 const postRepoDetails = async  (req,res) =>{
-    const username = req.body.username;
+    
     try{
+        const username = req.body.username;
         const response  =await getGithubRepo(username);
         getGithubContributions({
             username: 'Cibiyanna26',
@@ -29,9 +31,10 @@ const postRepoDetails = async  (req,res) =>{
 }
 
 const checkUsername = async(req,res) =>{
-    const username = req.body.username;
-    url = `https://api.github.com/users/${username}`
+    
     try{
+        const username = req.body.username;
+        url = `https://api.github.com/users/${username}`
         const response = await fetch(url,{
             method: 'GET',
         })
@@ -50,9 +53,10 @@ const checkUsername = async(req,res) =>{
 }
 
 const githubProfile= async (req,res)=>{
-    const username = req.user.github;
-    url = `https://api.github.com/users/${username}`
+    
     try{
+        const username = req.user.github;
+        url = `https://api.github.com/users/${username}`
         const response = await fetch(url,{
             method: 'GET',
         })

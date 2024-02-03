@@ -36,10 +36,14 @@ const codeforcesSlice = createSlice({
       };
     },
     cfModifyRating: (state, action) => {
-      if (action.payload.length > 0) {
-        if (state.cfRating.length == 0) {
-          state.cfRating.push(action.payload);
-        }
+      // if (action.payload.length > 0) {
+      //   if (state.cfRating.length == 0) {
+      //     state.cfRating.push(action.payload);
+      //   }
+      // }
+      return    {
+        ...state,
+        cfRating:action.payload
       }
     },
   },

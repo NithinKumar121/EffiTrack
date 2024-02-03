@@ -29,7 +29,6 @@ function storeDataInLocalStorage(key, data) {
     // Convert data to a JSON string before storing
     const dataString = JSON.stringify(data);
     localStorage.setItem(key, dataString);
-    console.log(`Data with key "${key}" stored in localStorage.`);
   } catch (error) {
     return false;
   }
