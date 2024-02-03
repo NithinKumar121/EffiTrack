@@ -22,7 +22,7 @@ const Favourite = (props) => {
     <>
       {
     <a href={repoDetails.url} target="_blank" rel="noopener noreferrer">
-      <div className="repo-favourite cursor-pointer bg-[#f4f5f6] text-[#333] dark:bg-[#333] slowmo shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3] flex items-center justify-between p-4">
+      <div className="repo-favourite  bg-[#f4f5f6] text-[#333] dark:bg-[#333] slowmo shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3] flex items-center justify-between p-4">
       <div className="flex items-center">
         <img src={GitRepo} alt="github" className="mr-4" />
         <div className="flex-grow pl-4 border-l border-[#000] dark:border-[#FFF] justify-between">

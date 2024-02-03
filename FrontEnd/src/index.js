@@ -13,6 +13,8 @@ import UserValid from "./components/usernameValidate/usernameValidation";
 import { Analytics } from '@vercel/analytics/react';
 import DemoProfile from "./components/ProfilePage/Demoprofile";
 import Home from "./components/Dashboard/Home";
+import PublicProfile from "./components/publicProfile/PublicProfile";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const appRouter = createBrowserRouter([
@@ -23,6 +25,14 @@ const appRouter = createBrowserRouter([
       {
         path:"/",
         element:<Home/>,
+      },
+      {
+        path:"/usernameSearch",
+        element:<PublicProfile/>
+      },
+      {
+        path:"usernameSearch/:id",
+        element:<Home/>
       },
       {
         path:"profile",

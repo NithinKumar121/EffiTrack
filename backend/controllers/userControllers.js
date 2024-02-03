@@ -6,11 +6,11 @@ const {generateTokens} = require("../utils/generateToken");
 const { userToken } = require("../models/userToken");
 
 const register = async (req,res) =>{
-    const {username,password,email} = req.body;
 
     try{
+        var {username,password,email} = req.body;
         const {error} = signupbodyValidation(req.body);
-
+        username = username.trim();
         if(error)   
             return res.status(409).json({error:true,message:error.details[0].message});
 
@@ -61,8 +61,9 @@ const register = async (req,res) =>{
 
 
 const login = async  (req,res) =>{
-    const {username,password} = req.body;
+    
     try{
+        const {username,password} = req.body;
         const user = await userModel.findOne({username:username});
         if(!user){
             return res
@@ -95,8 +96,9 @@ const getMe = async(req,res) =>{
 
 // logout 
 const logout = async(req,res) =>{
-    const refreshToken = req.body.refreshToken;
+
     try{
+        const refreshToken = req.body.refreshToken;
         const token = await userToken.findOne({token:refreshToken});
         if(!userToken){
             return res
@@ -111,8 +113,9 @@ const logout = async(req,res) =>{
 }
 
 const verifedUsername = async (req,res) =>{
-    const {leetcode,codechef,codeforces,github} = req.body;
+
     try{
+        const {leetcode,codechef,codeforces,github} = req.body;
         const doc = await userModel.findOneAndUpdate(req.user,{leetcode,codeforces,codechef,github},{
             new:true,
         });

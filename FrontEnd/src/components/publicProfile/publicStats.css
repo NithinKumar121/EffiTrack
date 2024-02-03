@@ -1,0 +1,26 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+@layer utilities {
+    .effiuser-input{
+        @apply py-4 pr-4 pl-[3.5rem] rounded-xl bg-gray-100 dark:bg-[#333] duration-300 ease-in;
+        box-shadow: inset 2px 2px 2px 2px gray;
+    }
+    .effiuser-input:focus{
+        @apply bg-gray-200 dark:bg-[#333];
+       
+    }
+}

@@ -3,13 +3,14 @@ import HighchartsReact from "highcharts-react-official";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
+import { useParams } from "react-router-dom";
 const Chart = () => {
   const navigate = useNavigate();
   const leetcodeDetails = useSelector((store) => store.leetcodeDetails);
   const { rating } = leetcodeDetails;
   const codeforcesDetails = useSelector((store) => store.codeforcesDetails);
   const { cfRating } = codeforcesDetails;
+  const {id} = useParams();
 
   const [chartOptions, setChartOptions] = useState({
     // Initial chart options
@@ -31,9 +32,10 @@ const Chart = () => {
       { name: "Codefroces", data: [2] },
     ],
   });
+  
   useEffect(() => {
     checkAuth();
-  }, [rating, cfRating]);
+  }, [rating, cfRating ,id]);
 
   const checkAuth = async () => {
     const data = rating;
@@ -124,10 +126,6 @@ const Chart = () => {
           );
         },
       },
-      //   yAxis: {
-      //     lineColor: '#999', // Axis line color
-      //     gridLineColor: 'gray', // Gridline color
-      // }
     });
   };
 

@@ -39,7 +39,7 @@ const Home = () => {
 
   useEffect(() => {
     changeMode();
-    checkAuth();
+    
   }, []);
 
   
@@ -47,52 +47,6 @@ const Home = () => {
     const modes = getDataFromLocalStorage('mode');
     dispatch(toggleMode(modes));
   }
-  const checkAuth = async () => {
-    const authToken = getCookie(tokenName);
-    if (!authToken) {
-      navigate("/login");
-    } else {
-      try {
-        const axiosInstance = axios.create({
-          headers: {
-            common: {
-              Authorization: `Bearer ${authToken}`,
-            },
-          },
-        });
-        const lcresponse = await axiosInstance.get(
-          `${process.env.REACT_APP_BASE_URL}/user/`,
-        );
-        dispatch(changeUserDetails(lcresponse.data.message));
-      } catch (error) {
-        navigate("/login");
-      }
-
-      try {
-        const axiosInstance = axios.create({
-          headers: {
-            common: {
-              Authorization: `Bearer ${authToken}`,
-            },
-          },
-        });
-        const lcresponse = await axiosInstance.get(
-          `${process.env.REACT_APP_BASE_URL}/user/upcoming`,
-        );
-
-        // const currentContest = lcresponse.data.message.objects.filter(
-        //   (contest) => {
-        //     return isValidDateString(contest.start) === true;
-        //   },
-        // );
-        dispatch(changeUpcomingContest(lcresponse.data.message));
-      } catch (error) {
-        if(error.response.request.status === 409 || error.response.request.status === 500 || error.response.data.error){
-          console.log(error.response.data.message)
-        }
-      }
-    }
-  };
 
   return (
     <>

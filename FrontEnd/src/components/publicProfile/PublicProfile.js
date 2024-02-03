@@ -1,7 +1,8 @@
-import EditProfile from "./Editprofile"
+import PublicStats from "./PublicStats"
 import Footer from "../Footer"
 import Navbar from "../Dashboard/Navbar"
-const DemoProfile = () =>{
+
+const PublicProfile = () =>{
     return(
         <>
         <div className="overflow-hidden lg:h-full h-[100vh]">
@@ -10,10 +11,10 @@ const DemoProfile = () =>{
               <div>
                 <Navbar
                   className=""
-                  title={"Profile"}
+                  title={"Search"}
                 />
-                <div>
-                  <EditProfile />
+                <div className="">
+                  <PublicStats/>
                 </div>
               </div>
               <footer>
@@ -26,4 +27,4 @@ const DemoProfile = () =>{
     )
 }
 
-export default DemoProfile;
+export default PublicProfile;

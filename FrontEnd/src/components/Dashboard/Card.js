@@ -77,7 +77,7 @@ export const LeetcodeCard = () => {
               textAnchor="middle"
               fill="gray"
             >
-              {count[0].count.toString().padStart(1, "0")}
+              {count[0]?.count?.toString()?.padStart(1, "0")}
             </text>
             <text
               className="text-sm font-medium"
