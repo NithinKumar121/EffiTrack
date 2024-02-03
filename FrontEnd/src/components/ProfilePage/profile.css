@@ -1,0 +1,12 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer utilities{
+    .profile_edit{
+        @apply absolute left-0 bottom-0 h-full w-full bg-transparent hover:content-['change'] rounded-full flex justify-center items-center hover:bg-gray-800 hover:bg-opacity-50
+    }
+    .profile_edit_cover{
+        @apply before:absolute before:left-0 before:bottom-0 before:h-full before:w-full before:bg-transparent hover:before:content-['change'] before:rounded-full before:flex before:justify-center before:items-center hover:before:bg-gray-800 hover:before:bg-opacity-50
+    }
+}
