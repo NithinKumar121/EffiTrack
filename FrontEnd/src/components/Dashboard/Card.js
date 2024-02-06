@@ -203,7 +203,7 @@ export const CodeforcesCard = () => {
         className={`card bg-[#fff] dark:bg-[#1d1d1d] text-[#f3f3f3] slowmo shadow-xl hover:shadow`}
       >
         <div className="card-details ">
-          <Link  to={`${userDetials.codechef === "unknown" ? '#' : codeforcesUrl}`} target="_blank" className={`${userDetials.codechef === "unknown" ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+          <Link  to={`${userDetials.codeforces === "unknown" ? '#' : codeforcesUrl}`} target="_blank" className={`${userDetials.codeforces === "unknown" ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
 
             <div
               className={`card-details-top bg-[#253D5B] dark:bg-[#333] rounded-xl flex justify-center items-center gap-2`}
