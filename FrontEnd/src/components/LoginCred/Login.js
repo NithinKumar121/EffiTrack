@@ -4,7 +4,7 @@ import login from "../../assets/login.png";
 import signup from "../../assets/signup.png";
 import { useEffect, useState } from "react";
 import { LoginForm } from "./LoginForm.js";
-import { SignupForm } from "./SignupForm.js";
+import { SignupForm , Validation , Testing } from "./SignupForm.js";
 import { Helmet } from "react-helmet";
 
 export const Login = ({ page }) => {
@@ -32,7 +32,8 @@ export const Login = ({ page }) => {
           {isLogin ? (
             <LoginForm setIsLogin={setIsLogin} />
           ) : (
-            <SignupForm setIsLogin={setIsLogin} />
+            // <SignupForm setIsLogin={setIsLogin} />
+            <Testing setIsLogin={setIsLogin}/>
           )}
         </div>
       </div>
