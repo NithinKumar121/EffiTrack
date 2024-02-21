@@ -30,7 +30,7 @@ export const LeetcodeCard = () => {
           <Link  to={`${userDetials.leetcode === "unknown" ? '#' : leetcodeUrl}`} target="_blank" className={`${userDetials.leetcode === "unknown" ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
 
             <div
-              className={`card-details-top bg-[#253D5B] dark:bg-[#333] rounded-xl flex justify-center items-center gap-2`}
+              className={`card-details-top bg-[#253D5B] dark:bg-[#333] rounded-xl flex justify-center items-center gap-x-2`}
             >
               <img src={LeetCode_logo} alt="leetlogo" className="h-5"></img>
               <h1>Leetcode</h1>

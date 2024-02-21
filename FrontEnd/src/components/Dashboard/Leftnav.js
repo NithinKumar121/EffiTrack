@@ -26,25 +26,26 @@ const Leftnav = (props) => {
     <aside className={`w-[60%] sm:w-auto text-[#f3f3f3] bg-[#000] dark:bg-[#1d1d1d] h-[100vh]  lg:block sm:relative ${mobileScreenNav?'fixed left-0 z-10':'hidden'} overflow-hidden scrollbar-hide`}>
 
       <div className="top">
-        <div className="logo">
-          <img
-            src={temp_logo}
-            className="w-[50px] h-[50px] rounded-full"
-            alt="logo"
-          ></img>
-          <h1 className="text-3xl font-semibold">
-            {" "}
-            <span>Effi</span>track
-          </h1>
-        </div>
-        <div className="close">
-          <button onClick={()=>{
-              dispatch(toggleLeftMobileNav(!mobileScreenNav))
+        <Link to="/">
+          <div className="logo">
+            <img
+              src={temp_logo}
+              className="w-[50px] h-[50px] rounded-full"
+              alt="logo"
+            ></img>
+            <h1 className="text-3xl font-semibold">
+              <span>Effi</span>track
+            </h1>
+          </div>
+          <div className="close">
+            <button onClick={()=>{
+                dispatch(toggleLeftMobileNav(!mobileScreenNav))
 
-            }}>
-            <span class="material-icons-sharp">close</span>
-          </button>
-        </div>
+              }}>
+              <span class="material-icons-sharp">close</span>
+            </button>
+          </div>
+        </Link>
       </div>
 
       <div className="mt-[3rem]">
