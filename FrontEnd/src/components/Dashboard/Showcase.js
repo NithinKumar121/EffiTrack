@@ -1,23 +1,22 @@
 import { useEffect, useState } from "react";
 import GitRepo from "../../assets/github.png";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams , useNavigate } from "react-router-dom";
 import "./dashboard.css";
 import { FaRegFolderClosed } from "react-icons/fa6";
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from "axios";
 import { getCookie } from "../../services/servicehelp";
-import { useNavigate } from "react-router-dom";
 import RedditLogo from "../../assets/reddit-logo.png";
 import linkedlogo from "../../assets/linkedin.png";
-import twitter from "../../assets/X-logo.jpg";
+import twitter_logo from "../../assets/X-logo.jpg";
+
+
 const Favourite = (props) => {
   const { repoDetails } = props;
-
   return (
     <>
       {
@@ -37,11 +36,6 @@ const Favourite = (props) => {
   </div>
 </div>
 </a>
-
-        // :
-        // <div className="h-[4rem] repo-favourite bg-[#f4f5f6] text-[#333] dark:bg-[#333] shadow-xl hover:shadow-none ease-in duration-300 cursor-default dark:text-[#f3f3f3]">
-        //   {/* emtpy shimmer */}
-        // </div>
       }
     </>
   );
@@ -59,7 +53,7 @@ const Social = (props) => {
       logoSrc = linkedlogo;
       break;
     case 'twitter':
-      logoSrc = twitter;
+      logoSrc = twitter_logo;
       break;
     case 'reddit':
       logoSrc = RedditLogo;
@@ -91,10 +85,9 @@ const Showcase = () => {
   const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
-  const [LinkedIn, setLinkedIn] = useState("unknown");
-  // const [GitHub, setGitHub] = useState("unknown");
-  const [Twitter, setTwitter] = useState("unknown");
-  const [Reddit, setReddit] = useState("unknown");
+  const [linkedIn, setLinkedIn] = useState("unknown");
+  const [twitter, setTwitter] = useState("unknown");
+  const [reddit, setReddit] = useState("unknown");
   
   const myUserDetails = useSelector((store) => store.userDetails);
   const { userDetials } = myUserDetails;
@@ -124,7 +117,7 @@ const Showcase = () => {
         const response = await axiosInstance.post(
           `${process.env.REACT_APP_BASE_URL}/socialMedia`,
           {
-            LinkedIn,Twitter,Reddit
+            linkedIn,twitter,reddit
           }
         );
         setShow(!show);
@@ -159,16 +152,16 @@ const Showcase = () => {
           <h1  >Add Your Social Media Links</h1>
           <div className="socail-medias h-[13rem] overflow-auto no-scrollbar">
             {
-              (LinkedIn !== "unknown" && LinkedIn !== "")?
-              <Social platform = {'LinkedIn'} url={LinkedIn}/>:''
+              (linkedIn !== "unknown" && linkedIn !== "")?
+              <Social platform = {'LinkedIn'} url={linkedIn}/>:''
             }
             {
-              (Twitter !== "unknown" && Twitter != "")?
-              <Social platform = {'Twitter'} url={Twitter}/>:''
+              (twitter !== "unknown" && twitter != "")?
+              <Social platform = {'Twitter'} url={twitter}/>:''
             }
             {
-              (Reddit !== "unknown" && Reddit !== "")?
-              <Social platform = {'Reddit'} url={Reddit}/>:''
+              (reddit !== "unknown" && reddit !== "")?
+              <Social platform = {'Reddit'} url={reddit}/>:''
             }
           </div>
           <div className="absolute bottom-2 right-2 m-4">
@@ -197,29 +190,24 @@ const Showcase = () => {
               </div>
             </button>
           </div>
-          {/* <div className="flex gap-2 items-center p-2">
-            <div>
-              link
-            </div>
-            <TextField id="outlined-basic" label="GitHub - url" variant="outlined" className="bg-white dark:bg-[#333]" onChange={(e)=>{setGitHub(e.target.value)}}/>
-          </div> */}
+
           <div className="flex gap-2 items-center p-2">
             <div className="h-10 w-10">
             <img src={linkedlogo} alt="LinkedIn Logo" className="object-cover w-full h-full"></img>
             </div>
-            <TextField id="outlined-basic" label="LinkedIn - url" variant="outlined" className="bg-white dark:bg-[#333] text"  value={LinkedIn} onChange={(e)=>{setLinkedIn(e.target.value)}} />
+            <TextField id="outlined-basic" label="LinkedIn - url" variant="outlined" className="bg-white dark:bg-[#333] text"  value={linkedIn} onChange={(e)=>{setLinkedIn(e.target.value)}} />
           </div>
           <div className="flex gap-2 items-center p-2">
             <div className="h-10 w-10 ">
               <img src={RedditLogo}  alt="Reddit Logo" className="object-cover w-full h-full"/>
             </div>
-            <TextField id="outlined-basic" label="Reddit - url" variant="outlined" className="bg-white dark:bg-[#333]" value={Reddit} onChange={(e)=>{setReddit(e.target.value)}} />
+            <TextField id="outlined-basic" label="Reddit - url" variant="outlined" className="bg-white dark:bg-[#333]" value={reddit} onChange={(e)=>{setReddit(e.target.value)}} />
           </div>
           <div className="flex gap-2 items-center p-2">
             <div className="h-10 w-10">
-            <img src={twitter} alt="X Logo" className="object-cover w-full h-full rounded-full"></img>
+            <img src={twitter_logo} alt="X Logo" className="object-cover w-full h-full rounded-full"></img>
             </div>
-            <TextField id="outlined-basic" label="Twitter - url" variant="outlined" className="bg-white dark:bg-[#333]" value={Twitter} onChange={(e)=>{setTwitter(e.target.value)}}/>
+            <TextField id="outlined-basic" label="Twitter - url" variant="outlined" className="bg-white dark:bg-[#333]" value={twitter} onChange={(e)=>{setTwitter(e.target.value)}}/>
           </div>
           <div className="flex justify-center m-4">
             <div>

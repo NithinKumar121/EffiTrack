@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getCookie } from "../../services/servicehelp";
-import { useNavigate } from "react-router-dom";
 import Friends from '../../assets/jpg/friends-removebg.jpg';
 import Effitrack from '../../assets/temp_logo.jpeg'
 import arrow from "../../assets/jpg/next.jpg"
@@ -68,7 +67,7 @@ const PublicStats = () =>{
                         </button>
                     </div>
                     {
-                        userNotFound == true ?
+                        userNotFound && userNotFound === true ?
                         <>
                             <div className="">
                                 <h1 className="text-red-400 font-semibold">Username Not Found !</h1>

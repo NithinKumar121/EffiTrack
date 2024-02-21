@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Mid from "./Mid";
 import Showcase from "./Showcase";
-import Shimmer from "./Shimmer";
 import EditProfile from "../ProfilePage/Editprofile";
 import Footer from "../Footer";
 import { useParams } from "react-router-dom";

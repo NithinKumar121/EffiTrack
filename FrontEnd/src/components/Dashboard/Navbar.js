@@ -6,7 +6,6 @@ import { toggleLeftMobileNav } from "../../redux/commonSlice";
 
 const Navbar = (props) => {
   const dispatch = useDispatch();
-  const {leftHide,setLeftHide} = props;
   const commonDetails = useSelector((store)=>store.commonDetails)
   const {mobileScreenNav} = commonDetails;
   const { title } = props;
