@@ -156,18 +156,7 @@ export const Username_edit = () => {
   useEffect(() => {
     setUsername(userDetials.username);
   }, [userDetials.username]);
-  const handleSave = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handleEdit = (val) => {
-    if (val === true) {
-      setEdit(val);
-    } else {
-      setEdit(val);
-    }
-  };
-
+  
   return (
     <>
       <div className="flex justify-between p-4 border-b-2 dark:border-black text-lg items-center">
