@@ -13,6 +13,14 @@ const PublicStats = () =>{
     const navigate = useNavigate();
     const [effiUsername,setEffiUsername] = useState(undefined);
     const [userNotFound,setUserNotFound] = useState(false);
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+          // Call your search function here
+          submitButton()
+        }
+      };
+
     const submitButton=async()=>{
         if(effiUsername===undefined){
             setUserNotFound(true);
@@ -59,9 +67,14 @@ const PublicStats = () =>{
                     </div>
                     <div className="flex flex-row gap-x-3 justify-center relative items-center">
                         <img src={Effitrack} className="w-[2rem] h-[2rem] rounded-full absolute left-3 top-3" alt="logo"></img>
-                        <input type="text" onChange={(e)=>setEffiUsername(e.target.value)} value={effiUsername} className=" effiuser-input" placeholder="Enter effitrack Username">
-                            
-                        </input>
+                        <input 
+                        type="text" 
+                        onChange={(e) => setEffiUsername(e.target.value)} 
+                        value={effiUsername} 
+                        className="effiuser-input" 
+                        placeholder="Enter effitrack Username" 
+                        onKeyPress={handleKeyPress} 
+                        />
                         <button onClick={()=>submitButton()} className="arrow-forward-button absolute right-3 top-3">
                             {/* <span className="material-icons-sharp translate-y-1 font-extrabold font-2xl">arrow_forward</span> */}
                             <img className="" src={arrow} alt="arrow"></img>
