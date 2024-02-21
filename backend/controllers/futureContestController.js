@@ -5,17 +5,11 @@ const axios = require("axios");
 function isValidDateString(dateString) {
     const inputDate = new Date(dateString);
     const currentDate = new Date();
-    const inputYear = inputDate.getFullYear();
-    const inputMonth = inputDate.getMonth();
-    const currentYear = currentDate.getFullYear();
-    const currentMonth = currentDate.getMonth();
-    if (inputYear !== currentYear || inputMonth !== currentMonth) {
-      return false;
-    }
-    const oneMonthLater = new Date(currentDate);
-    oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
-    if (inputDate >= oneMonthLater) {
-      return false;
+    const thirtyDaysLater = new Date();
+    thirtyDaysLater.setDate(thirtyDaysLater.getDate() + 30);
+
+    if (inputDate < currentDate || inputDate > thirtyDaysLater) {
+        return false;
     }
     return true;
 }
