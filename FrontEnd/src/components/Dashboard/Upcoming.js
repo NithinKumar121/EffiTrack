@@ -5,7 +5,7 @@ import Leetcode_logo from "../../assets/jpg/LeetCode_logo.jpg"
 import atCoder_logo from "../../assets/jpg/atcoder.jpg"
 import geekforgeeks_logo from "../../assets/svg/gglogo.svg"
 import { useSelector } from "react-redux";
-const tokenName = process.env.REACT_APP_JWT_NAME;
+import PropTypes from 'prop-types';
 
 const Contest = (props) => {
   const { onecontestData } = props;
@@ -65,6 +65,11 @@ const Contest = (props) => {
   );
 };
 
+Contest.propTypes = {
+  onecontestData: PropTypes.object, // Check if the prop is an object
+};
+
+
 const Upcoming = () => {
   const myUserDetails = useSelector((state) => state.userDetails);
   const { upcomingContest } = myUserDetails;
@@ -80,13 +85,6 @@ const Upcoming = () => {
               upcomingContest.map((oneContestData) => {
                 return <Contest onecontestData={oneContestData} />;
               })}
-
-            {/* <Contest/>
-                    <Contest/>
-                    <Contest/>
-                    <Contest/>
-                    <Contest/>
-                    <Contest/> */}
           </div>
         </div>
       </div>

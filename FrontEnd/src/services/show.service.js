@@ -22,8 +22,8 @@ var getForceCount = async (username) => {
 };
 
 const getForceRating = async (username) => {
-  var url = ` https://codeforces.com/api/user.rating?handle=${username}`;
-  var data;
+  const url = ` https://codeforces.com/api/user.rating?handle=${username}`;
+  const data = null;
   await fetch(url, {
     method: "GET",
   })
@@ -36,7 +36,7 @@ const getForceRating = async (username) => {
 };
 
 const getGithubRepo = async (username) => {
-  var url = `https://api.github.com/users/${username}/repos`;
+  const url = `https://api.github.com/users/${username}/repos`;
   const response = await fetch(url, {
     method: "GET",
   });
@@ -147,7 +147,8 @@ const getLeetRating = async (username) => {
     userContestRanking = data.data.userContestRanking;
     userContestRankingHistory = data.data.userContestRankingHistory.filter(
       (d) => {
-        return d.attended == true;
+        if(d.attended)return true
+        return false;
       },
     );
   } else {

@@ -83,7 +83,7 @@ const ImageUpload = () => {
   );
 };
 
-export const PROFILE_TOP = () => {
+export const Profile_edit = () => {
   const myUserDetails = useSelector((state) => state.userDetails);
   const githubDetails = useSelector((store) => store.githubDetails);
   const { userDetials } = myUserDetails;
@@ -148,16 +148,16 @@ export const PROFILE_TOP = () => {
   );
 };
 
-export const USERNAME_EDIT = () => {
+export const Username_edit = () => {
   const [edit, setEdit] = useState(false);
-  const [username, setUserName] = useState();
+  const [username, setUsername] = useState();
   const myUserDetails = useSelector((store) => store.userDetails);
   const { userDetials } = myUserDetails;
   useEffect(() => {
-    setUserName(userDetials.username);
+    setUsername(userDetials.username);
   }, [userDetials.username]);
   const handleSave = (e) => {
-    setUserName(e.target.value);
+    setUsername(e.target.value);
   };
 
   const handleEdit = (val) => {
@@ -190,7 +190,7 @@ export const USERNAME_EDIT = () => {
   );
 };
 
-export const LEETCODE_EDIT = () => {
+export const Leetcode_edit = () => {
   const [edit, setEdit] = useState(false);
   const [username, setUsername] = useState("anonymous");
   const myUserDetails = useSelector((state) => state.userDetails);
@@ -244,33 +244,13 @@ export const LEETCODE_EDIT = () => {
             )}
           </div>
         </div>
-        {/* <div>
-          {
-            (edit===false)?
-            <button onClick={()=>handleEdit(!edit)} className="px-2 py-1">
-              Edit
-            </button>
-            :
-            <div className="flex gap-3">
-              <button onClick={()=>{
-                handleEdit(!edit)
-                submitLeet();
-              }}  className="px-2 py-1 text-white rounded-md bg-slate-600">
-                Save
-              </button>
-              <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1">
-                Cancel
-              </button>
-            </div>
-            
-          }
-        </div> */}
+    
       </div>
     </>
   );
 };
 
-export const CODEFORCES_EDIT = () => {
+export const Codeforces_edit = () => {
   const [edit, setEdit] = useState(false);
   const [username, setUsername] = useState("anonymous");
 
@@ -330,35 +310,13 @@ export const CODEFORCES_EDIT = () => {
             )}
           </div>
         </div>
-        {/* <div>
-          {
-            (edit===false)?
-            <button onClick={()=>{
-              handleEdit(!edit)
-              }} className="px-2 py-1">
-              Edit
-            </button>
-            :
-            <div className="flex gap-3">
-              <button onClick={()=>{
-                handleEdit(!edit)
-                submitLeet();
-                }}  className="px-2 py-1 text-white rounded-md bg-slate-600">
-                Save
-              </button>
-              <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1">
-                Cancel
-              </button>
-            </div>
-            
-          }
-        </div> */}
+
       </div>
     </>
   );
 };
 
-export const CODECHEF_EDIT = () => {
+export const Codechef_edit = () => {
   const [edit, setEdit] = useState(false);
   const [username, setUsername] = useState("anonymous");
 
@@ -415,35 +373,12 @@ export const CODECHEF_EDIT = () => {
             )}
           </div>
         </div>
-        {/* <div>
-          {
-            (edit===false)?
-            <button onClick={()=>{
-                handleEdit(!edit)
-                }} className="px-2 py-1">
-              Edit
-            </button>
-            :
-            <div className="flex gap-3">
-              <button onClick={()=>{
-                handleEdit(!edit)
-                submitLeet();
-                }}  className="px-2 py-1 text-white rounded-md bg-slate-600">
-                Save
-              </button>
-              <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1">
-                Cancel
-              </button>
-            </div>
-            
-          }
-        </div> */}
       </div>
     </>
   );
 };
 
-export const GITHUB_EDIT = () => {
+export const Github_edit = () => {
   const [edit, setEdit] = useState(false);
   const [username, setUsername] = useState("anonymous");
   const myUserDetails = useSelector((state) => state.userDetails);
@@ -499,27 +434,6 @@ export const GITHUB_EDIT = () => {
             )}
           </div>
         </div>
-        {/* <div>
-          {
-            (edit===false)?
-            <button onClick={()=>handleEdit(!edit)} className="px-2 py-1">
-              Edit
-            </button>
-            :
-            <div className="flex gap-3">
-              <button onClick={()=>{
-                handleEdit(!edit)
-                submitLeet();
-                }}  className="px-2 py-1 text-white rounded-md bg-slate-600">
-                Save
-              </button>
-              <button onClick={()=>handleEdit(!edit)}  className="px-2 py-1">
-                Cancel
-              </button>
-            </div>
-            
-          }
-        </div> */}
       </div>
     </>
   );
