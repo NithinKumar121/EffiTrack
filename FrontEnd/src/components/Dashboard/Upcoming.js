@@ -1,11 +1,11 @@
 
+import { useEffect, useState } from "react";
 import CodeChef from "../../assets/codechef.jpeg";
 import Codeforces_logo from "../../assets/codeforces.png";
 import Leetcode_logo from "../../assets/jpg/LeetCode_logo.jpg"
 import atCoder_logo from "../../assets/jpg/atcoder.jpg"
 import geekforgeeks_logo from "../../assets/svg/gglogo.svg"
-import { useSelector } from "react-redux";
-const tokenName = process.env.REACT_APP_JWT_NAME;
+import { useSelector } from "react-redux";a
 
 const Contest = (props) => {
   const { onecontestData } = props;
@@ -65,28 +65,84 @@ const Contest = (props) => {
   );
 };
 
+const ContestFilter = (props) =>{
+    const {platformNeed} =props;
+    // const [isChecked,setChecked] = useState(false);
+    let n = localStorage.getItem(platformNeed);
+    console.log(n);
+    const handleCheckBoxChange = () =>{
+      localStorage.setItem(platformNeed, !n);
+      n = !n;
+    }
+    const [isChecked,setChecked] = useState(n);
+    useEffect(()=>{
+      setChecked(n);
+    },[n])
+
+    return <>
+      <div target="_blank" rel="noreferrer"
+        className="contest bg-[#f4f5f6] rounded-lg text-black
+                            flex flex-row px-3 py-3 slowmo
+                             gap-x-2 items-center next
+                             dark:bg-[#333] dark:text-[#f3f3f3] shadow-md hover:shadow-none  p-2"
+      >
+        <div className="w-[2.5rem] rounded-full overflow-hidden">
+            <img src={Codeforces_logo} className="p-2"></img>
+        </div>
+        <div className="grid grid-cols-2 w-full font-sm text-lg items-center">
+          <p className="w-[80%] mx-auto">{platformNeed}</p>
+          <input
+            type="checkbox"
+            className="w-[1.3rem] h-[1.3rem]"
+            checked={isChecked}
+            onChange={handleCheckBoxChange}
+          >
+          </input>
+  
+        </div>
+      </div>
+    </>
+}
+
+
 const Upcoming = () => {
   const myUserDetails = useSelector((state) => state.userDetails);
   const { upcomingContest } = myUserDetails;
+  console.log('upcoming Contest', upcomingContest);
+  const platformList = ["leetcode","codechef","codeforces"];
+  const [twoToggle,setTwoToggle] = useState(1);
+
   return (
     <>
-      <div className="dark:bg-[#1d1d1d] bg-[#fff] px-4 text-[#333] py-4 rounded-xl h-full relative">
-        <h1 className="text-center text-2xl font-bold black dark:text-[#f3f3f3]">
-          Upcoming Contest
-        </h1>
+      <div className="dark:bg-[#1d1d1d] bg-[#fff] px-4 text-[#333] py-4 rounded-xl h-full relative w-full">
+        <div className="text-white grid grid-cols-2 text-center">
+            <button className="w-[50%] mx-auto" onClick={()=>setTwoToggle(1)}>  
+                  Upcoming
+            </button>
+            <button className="w-[50%] mx-auto" onClick={()=>setTwoToggle(0)}>
+                  Filter
+            </button>
+        </div>
         <div className="overflow-hidden h-[34rem] rounded-xl p-1 mt-3">
           <div className="overflow-y-auto w-full h-full no-scrollbar flex flex-col gap-y-3">
-            { upcomingContest &&
-              upcomingContest.map((oneContestData) => {
-                return <Contest onecontestData={oneContestData} />;
-              })}
+            {
+              twoToggle ? <>
+                  { upcomingContest &&
+                    upcomingContest.map((oneContestData) => {
+                      return <Contest onecontestData={oneContestData} />;
+                  })}
+              </> :
+              <>
+                {
+                  platformList.map((platformNeed)=>{
+                    return <ContestFilter platformNeed={platformNeed}/>
+                  })
+                }
+                
+              </>
+            }
 
-            {/* <Contest/>
-                    <Contest/>
-                    <Contest/>
-                    <Contest/>
-                    <Contest/>
-                    <Contest/> */}
+            
           </div>
         </div>
       </div>
