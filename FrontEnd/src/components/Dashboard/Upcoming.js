@@ -1,4 +1,5 @@
 
+import { useState, useEffect } from "react";
 import CodeChef from "../../assets/codechef.jpeg";
 import Codeforces_logo from "../../assets/codeforces.png";
 import Leetcode_logo from "../../assets/jpg/LeetCode_logo.jpg"
@@ -9,23 +10,6 @@ const tokenName = process.env.REACT_APP_JWT_NAME;
 
 const Contest = (props) => {
   const { onecontestData } = props;
-
-  const helper = (line, val) => {
-      if(line.includes("AtCoder")){
-          const spliting = line.split("AtCoder");
-          var res = spliting[1];
-          res.trim();
-          res = res.substring(0,res.length-1)
-          return "AtCoder "+res;
-      }
-      const words = line.split(val);
-      const firstTwoWords = words.slice(0, 2);
-      if(val === 'T'){
-        return words[0]
-      }
-      const result = firstTwoWords.join(' ');
-      return line;
-  }
 
   return (
     <>
@@ -56,8 +40,8 @@ const Contest = (props) => {
         </div>
         <div className="grid p-2">
           <div className="flex flex-col ">
-            <h1 className="font-semibold text-sm">{helper(onecontestData.event,' ')}</h1>
-            <small className="font-medium">{helper(onecontestData.start,'T')} </small>
+            <h1 className="font-semibold text-sm">{onecontestData.contestName}</h1>
+            <small className="font-medium">{onecontestData.contestDate} </small>
           </div>
         </div>
       </a>
@@ -68,6 +52,40 @@ const Contest = (props) => {
 const Upcoming = () => {
   const myUserDetails = useSelector((state) => state.userDetails);
   const { upcomingContest } = myUserDetails;
+  const [ contestDetails, SetContestDetails ] = useState([]); //this is the sorted contest details
+  useEffect(()=>{
+    var contest = [];
+    const helper = (line, val) => {
+      if(line.includes("AtCoder")){
+          const spliting = line.split("AtCoder");
+          var res = spliting[1];
+          res.trim();
+          res = res.substring(0,res.length-1)
+          return "AtCoder "+res;
+      }
+      const words = line.split(val);
+      const firstTwoWords = words.slice(0, 2);
+      if(val === 'T'){
+        return words[0]
+      }
+      const result = firstTwoWords.join(' ');
+      return line;
+    }
+    upcomingContest.forEach(element => {
+      contest.push(
+        {
+          "contestName": helper(element.event,' '),
+          "contestDate" : helper(element.end, 'T'),
+          "resource": element.resource,
+          "href": element.href,
+        }
+      ) 
+      console.log(element)
+    });
+    contest.sort((a, b) => new Date(a.contestDate) - new Date(b.contestDate));
+    SetContestDetails(contest)
+    console.log("checking:",contestDetails);
+  },[upcomingContest])
   return (
     <>
       <div className="dark:bg-[#1d1d1d] bg-[#fff] px-4 text-[#333] py-4 rounded-xl h-full relative">
@@ -76,8 +94,8 @@ const Upcoming = () => {
         </h1>
         <div className="overflow-hidden h-[34rem] rounded-xl p-1 mt-3">
           <div className="overflow-y-auto w-full h-full no-scrollbar flex flex-col gap-y-3">
-            { upcomingContest &&
-              upcomingContest.map((oneContestData) => {
+            { contestDetails &&
+              contestDetails.map((oneContestData) => {
                 return <Contest onecontestData={oneContestData} />;
               })}
 
