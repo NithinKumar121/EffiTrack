@@ -1,4 +1,3 @@
-import React from "react";
 import { useState , useEffect } from "react";
 import temp_logo from "../../assets/temp_logo.jpeg";
 import Theme from "./Theme";
@@ -6,6 +5,7 @@ import "./dashboard.css";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleLeftMobileNav } from "../../redux/commonSlice";
 import { Link, useParams } from "react-router-dom";
+
 const Leftnav = (props) => {
   const dispatch = useDispatch();
   const commonDetails = useSelector((store) => store.commonDetails);

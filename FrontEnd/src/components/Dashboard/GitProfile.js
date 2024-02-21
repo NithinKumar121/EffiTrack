@@ -1,19 +1,25 @@
 import React from "react";
-import temp_logo from "../../assets/temp_logo.jpeg";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+const TableRow = ({ label, value }) => {
+  return (
+    <>
+      <div className="flex justify-between pb-3">
+        <p className="font-medium ml-2">{label}</p>
+        <p class="flex items-center font-semibold text-l">{value}</p>
+      </div>
+    </>
+  )
+}
+
 const GitProfile = ({ modify }) => {
   const githubDetails = useSelector((store) => store.githubDetails);
   const myUserDetails = useSelector((state) => state.userDetails);
   const { GithubProfile } = githubDetails;
   const { userDetials } = myUserDetails;
 
-  const TableRow = ({ label, value }) => (
-   <div className="flex justify-between pb-3">
-   <p className="font-medium ml-2">{label}</p>
-   <p class="flex items-center font-semibold text-l">{value}</p>
-   </div>
-  );
+
   return (
     <div className="flex flex-col px-4 gap-y-4 relative mt-3">
       <div className="h-[2.5rem] mt-[0.2rem] flex">
