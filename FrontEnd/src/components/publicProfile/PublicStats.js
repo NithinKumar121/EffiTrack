@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getCookie } from "../../services/servicehelp";
-import { useNavigate } from "react-router-dom";
 import Friends from '../../assets/jpg/friends-removebg.jpg';
 import Effitrack from '../../assets/temp_logo.jpeg'
 import arrow from "../../assets/jpg/next.jpg"
@@ -13,6 +12,14 @@ const PublicStats = () =>{
     const navigate = useNavigate();
     const [effiUsername,setEffiUsername] = useState(undefined);
     const [userNotFound,setUserNotFound] = useState(false);
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+          // Call your search function here
+          submitButton()
+        }
+      };
+
     const submitButton=async()=>{
         if(effiUsername===undefined){
             setUserNotFound(true);
@@ -59,16 +66,21 @@ const PublicStats = () =>{
                     </div>
                     <div className="flex flex-row gap-x-3 justify-center relative items-center">
                         <img src={Effitrack} className="w-[2rem] h-[2rem] rounded-full absolute left-3 top-3" alt="logo"></img>
-                        <input type="text" onChange={(e)=>setEffiUsername(e.target.value)} value={effiUsername} className=" effiuser-input" placeholder="Enter effitrack Username">
-                            
-                        </input>
+                        <input 
+                        type="text" 
+                        onChange={(e) => setEffiUsername(e.target.value)} 
+                        value={effiUsername} 
+                        className="effiuser-input" 
+                        placeholder="Enter effitrack Username" 
+                        onKeyPress={handleKeyPress} 
+                        />
                         <button onClick={()=>submitButton()} className="arrow-forward-button absolute right-3 top-3">
                             {/* <span className="material-icons-sharp translate-y-1 font-extrabold font-2xl">arrow_forward</span> */}
                             <img className="" src={arrow} alt="arrow"></img>
                         </button>
                     </div>
                     {
-                        userNotFound == true ?
+                        userNotFound && userNotFound === true ?
                         <>
                             <div className="">
                                 <h1 className="text-red-400 font-semibold">Username Not Found !</h1>

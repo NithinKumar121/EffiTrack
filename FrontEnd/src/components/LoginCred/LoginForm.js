@@ -1,6 +1,5 @@
-import "./logincred.css";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BiUser } from "react-icons/bi";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -9,8 +8,6 @@ import {
   getCookie,
   deleteCookie,
   storeDataInLocalStorage,
-  deleteDataFromLocalStorage,
-  getDataFromLocalStorage
 } from "../../services/servicehelp.js";
 
 const base_url = process.env.REACT_APP_BASE_URL;
@@ -106,12 +103,12 @@ export const LoginForm = (props) => {
           <label className="absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-0 -z-10 origin-[0] peer=focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus-translate-y-6 ">
             Password
           </label>
-          <div
+          <button
             className="absolute top-1 right-4 cursor-pointer"
             onClick={handleTogglePassword}
           >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
-          </div>
+          </button>
         </div>
         <br />
         <div className="flex items-center justify-between w-full">
@@ -124,9 +121,9 @@ export const LoginForm = (props) => {
             />
             <span className="text-sm text-white">Remember Me</span>
           </label>
-          <a href="#" className="text-violet-500">
+          <Link to="#" className="text-violet-500">
             Forgot Password
-          </a>
+          </Link>
         </div>
 
         <button

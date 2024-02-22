@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import Leftnav from "./components/Dashboard/Leftnav";
@@ -9,8 +8,7 @@ import { cfModifyRating, cfModifyProfile } from "././redux/codeforcesSlice";
 import { ccUpdateUserDetails } from "././redux/codechefSlice";
 import { updateGithubRepo, updateGithubProfile } from "././redux/githubSlice";
 import { getCookie } from "././services/servicehelp";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useNavigate , Outlet , useParams} from "react-router-dom";
 import { changeUserDetails, changeUpcomingContest } from "././redux/userSlice";
 
 const tokenName = process.env.REACT_APP_JWT_NAME;

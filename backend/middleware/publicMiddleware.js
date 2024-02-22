@@ -7,7 +7,7 @@ const authPublic = async(req, res, next)=>{
     let token;
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
         try{
-            
+            let query = {username:req.body.username};
             token = req.headers.authorization.split(' ')[1];
             
             const decode = jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
@@ -17,7 +17,7 @@ const authPublic = async(req, res, next)=>{
                     .json({error:true,message:"Invalid Bearer token"})
             }
 
-            req.user = await userModel.findOne({username:req.body.username}).select('-password -created -_id -__v');
+            req.user = await userModel.findOne(query).select('-password -created -_id -__v');
             if(!req.user){
                 return res.status(404).json({error:true,message:"Invalid username"})
             }

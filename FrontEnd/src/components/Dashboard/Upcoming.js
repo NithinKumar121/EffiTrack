@@ -5,7 +5,8 @@ import Codeforces_logo from "../../assets/codeforces.png";
 import Leetcode_logo from "../../assets/jpg/LeetCode_logo.jpg"
 import atCoder_logo from "../../assets/jpg/atcoder.jpg"
 import geekforgeeks_logo from "../../assets/svg/gglogo.svg"
-import { useSelector } from "react-redux";a
+import { useSelector } from "react-redux";
+import PropTypes from 'prop-types';
 
 const Contest = (props) => {
   const { onecontestData } = props;
@@ -65,6 +66,11 @@ const Contest = (props) => {
   );
 };
 
+Contest.propTypes = {
+  onecontestData: PropTypes.object, // Check if the prop is an object
+};
+
+
 const ContestFilter = (props) =>{
     const {platformNeed} =props;
     // const [isChecked,setChecked] = useState(false);
@@ -103,6 +109,7 @@ const ContestFilter = (props) =>{
       </div>
     </>
 }
+
 
 
 const Upcoming = () => {

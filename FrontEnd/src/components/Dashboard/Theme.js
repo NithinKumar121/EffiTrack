@@ -8,10 +8,8 @@ import {  deleteCookie,
 
 const Theme = (props) => {
   const dispatch = useDispatch();
-  const {dark,setDark} = props;
   const commonDetails = useSelector((store)=>store.commonDetails);
   const {mode} = commonDetails;
-  const [temp,setTemp] = useState(mode);
 
 
   const handleButton = async () => {
