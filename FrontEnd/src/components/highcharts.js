@@ -17,6 +17,8 @@ const Chart = () => {
       title: {
         text: "Contest Attended", // X-axis label
       },
+      startOnTick: false, // Set to false to prevent axis from starting on tick
+      min: 1, 
     },
     yAxis: {
       title: {
@@ -117,8 +119,10 @@ const Chart = () => {
       tooltip: {
         enabled: true,
         formatter: function () {
+          const point =  this.point.name
+          const y = this.y;
           return (
-            "<b>" + this.point.name + "</b>: " + this.y + " <h3>Rating</h3>"
+            "<b>" + point + "</b>: " + y + " <h3>Rating</h3>"
           );
         },
       },
