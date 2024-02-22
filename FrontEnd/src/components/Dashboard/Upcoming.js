@@ -5,12 +5,12 @@ import Codeforces_logo from "../../assets/codeforces.png";
 import Leetcode_logo from "../../assets/jpg/LeetCode_logo.jpg"
 import atCoder_logo from "../../assets/jpg/atcoder.jpg"
 import geekforgeeks_logo from "../../assets/svg/gglogo.svg"
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
+import { toggleUpcoming } from "../../redux/persistReducer";
 import PropTypes from 'prop-types';
 
 const Contest = (props) => {
   const { onecontestData } = props;
-
   return (
     <>
       <a href={`${onecontestData?.href}`} target="_blank" rel="noreferrer"
@@ -56,17 +56,15 @@ Contest.propTypes = {
 
 const ContestFilter = (props) =>{
     const {platformNeed} =props;
-    // const [isChecked,setChecked] = useState(false);
-    let n = localStorage.getItem(platformNeed);
-    console.log(n);
+    const dispatch = useDispatch();
+    const rootReducer = useSelector((store)=>store.persistedReducer);
+    console.log(rootReducer);
     const handleCheckBoxChange = () =>{
-      localStorage.setItem(platformNeed, !n);
-      n = !n;
+        dispatch(toggleUpcoming({key:platformNeed}))
     }
-    const [isChecked,setChecked] = useState(n);
-    useEffect(()=>{
-      setChecked(n);
-    },[n])
+    const paragraphStyle = {
+      textTransform: 'capitalize',
+    };
 
     return <>
       <div target="_blank" rel="noreferrer"
@@ -76,14 +74,29 @@ const ContestFilter = (props) =>{
                              dark:bg-[#333] dark:text-[#f3f3f3] shadow-md hover:shadow-none  p-2"
       >
         <div className="w-[2.5rem] rounded-full overflow-hidden">
-            <img src={Codeforces_logo} className="p-2"></img>
+        {
+            platformNeed.includes("codechef") ? 
+                (<img src={CodeChef} alt="codechef"className="p-2"></img>)
+            :
+            platformNeed.includes("codeforces") ?
+            (<img src={Codeforces_logo} alt="codeforces" className="p-2"></img>)
+            : 
+            platformNeed.includes("leetcode") ?
+            (<img src={Leetcode_logo} alt="leetcode" className="p-2"></img>)
+            : 
+            platformNeed.includes("atcoder") ?
+            (<img src={atCoder_logo} alt="atcoder" className="p-2"></img>)
+            : platformNeed.includes("geeksforgeeks") ?
+            (<img src={geekforgeeks_logo} alt="atcoder" className="p-2"></img>)
+            : <></>
+          }
         </div>
-        <div className="grid grid-cols-2 w-full font-sm text-lg items-center">
-          <p className="w-[80%] mx-auto">{platformNeed}</p>
+        <div className="grid grid-cols-3 w-full font-sm text-lg items-center">
+          <p className="w-[80%] mx-auto col-span-2" style={paragraphStyle}>{platformNeed}</p>
           <input
             type="checkbox"
-            className="w-[1.3rem] h-[1.3rem]"
-            checked={isChecked}
+            className="w-[1.3rem] h-[1.3rem] cursor-pointer"
+            checked={rootReducer[platformNeed]}
             onChange={handleCheckBoxChange}
           >
           </input>
@@ -93,14 +106,17 @@ const ContestFilter = (props) =>{
     </>
 }
 
-
+ContestFilter.propTypes = {
+  platformNeed:PropTypes.string.isRequired,
+}
 
 const Upcoming = () => {
   const myUserDetails = useSelector((state) => state.userDetails);
   const { upcomingContest } = myUserDetails;
   console.log('upcoming Contest', upcomingContest);
-  const platformList = ["leetcode","codechef","codeforces"];
+  const platformList = ["leetcode","codechef","codeforces","atcoder","geeksforgeeks"];
   const [twoToggle,setTwoToggle] = useState(1);
+  const rootSlice = useSelector((store)=>store.persistedReducer);
 
   const [ contestDetails, SetContestDetails ] = useState([]); //this is the sorted contest details
   useEffect(()=>{
@@ -122,28 +138,30 @@ const Upcoming = () => {
       return line;
     }
     upcomingContest.forEach(element => {
-      contest.push(
-        {
-          "contestName": helper(element.event,' '),
-          "contestDate" : helper(element.end, 'T'),
-          "resource": element.resource,
-          "href": element.href,
-        }
-      ) 
-      console.log(element)
+      const domain = element.resource.name;
+      const textDomain = domain.split('.')[0];
+      if(rootSlice[textDomain]){
+        contest.push(
+          {
+            "contestName": helper(element.event,' '),
+            "contestDate" : helper(element.end, 'T'),
+            "resource": element.resource,
+            "href": element.href,
+          }
+        ) 
+      }
     });
     contest.sort((a, b) => new Date(a.contestDate) - new Date(b.contestDate));
     SetContestDetails(contest)
-    console.log("checking:",contestDetails);
-  },[upcomingContest])
+  },[upcomingContest,rootSlice])
   return (
     <>
-      <div className="dark:bg-[#1d1d1d] bg-[#fff] px-4 text-[#333] py-4 rounded-xl h-full relative w-full">
+      <div className="dark:bg-[#1d1d1d] bg-[#fff] px-4 text-[#333] py-4 rounded-xl h-full w-full relative">
         <div className="text-white grid grid-cols-2 text-center">
-            <button className="w-[50%] mx-auto" onClick={()=>setTwoToggle(1)}>  
+            <button className={`w-[70%] mx-auto rounded-xl p-1 ${twoToggle?"contest-filter":""}`} onClick={()=>setTwoToggle(1)}>  
                   Upcoming
             </button>
-            <button className="w-[50%] mx-auto" onClick={()=>setTwoToggle(0)}>
+            <button className={`w-[70%] mx-auto rounded-xl p-1 ${!twoToggle?"contest-filter":""}`} onClick={()=>setTwoToggle(0)}>
                   Filter
             </button>
         </div>
