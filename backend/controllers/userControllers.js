@@ -4,11 +4,12 @@ const jwt = require('jsonwebtoken')
 const {signupbodyValidation,loginbodyValidation} = require('../utils/validationSchema');
 const {generateTokens} = require("../utils/generateToken");
 const { userToken } = require("../models/userToken");
-
+const OTP = require("../models/otpModel")
+const emailSender = require("../utils/emailSender");
 const register = async (req,res) =>{
 
     try{
-        var {username,password,email} = req.body;
+        var {username,password,email,otp} = req.body;
         const {error} = signupbodyValidation(req.body);
         username = username.trim();
         if(error)   
@@ -27,6 +28,14 @@ const register = async (req,res) =>{
                     .json({error:true,message:"Username or Email already registered"});
         }
 
+        const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1);
+        if (response.length === 0 || otp !== response[0].otp) {
+            return res.status(400).json({
+                error: true,
+                message: 'The OTP is not valid',
+            });
+        }
+
         const salt = await bcrypt.genSalt(parseInt(process.env.SALT));
         const hashedPassword = await bcrypt.hash(password,salt);
         const user = new userModel({
@@ -34,7 +43,6 @@ const register = async (req,res) =>{
             password:hashedPassword,
             email:email
         })
-
      
         await user.save();
 
@@ -71,6 +79,7 @@ const login = async  (req,res) =>{
                 .json({error:true,message:"user not found"});
         }
         const verifiedPassword = await bcrypt.compare(password,user.password);
+        
         if(!verifiedPassword){
             return res
                 .status(401)
@@ -129,8 +138,34 @@ const verifedUsername = async (req,res) =>{
     }
 }
 
+const checkUserExist = async (req,res) =>{
+    const username = req.body.username;
+    try{
+        const user = await userModel.findOne({username:username});
+        if(user){
+            return res.status(406).json({error:true,message:"Username already exists"});
+        }
+        return res.status(200).json({error:false,message:"New user"});
+    } catch(err){
+        return res.status(409).json({error:true,message:"Internet Error"})
+    }   
+}   
+
+const checkEmailExist =async (req, res) => {
+    const email = req.body.email;
+    try{
+        const doc = await userModel.findOne({email:email});
+        if(doc){
+            return res.status(406).json({error:true,message:"Email already exists"});
+        }
+        return res.status(200).json({error:false,message:"Email user"});
+    } catch(err){
+        return res.status(409).json({error:true,message:"Internet Error"})
+    }
+}
+
 module.exports = {
-    register,login,getMe, logout , verifedUsername
+    register,login,getMe, logout , verifedUsername , checkUserExist , checkEmailExist
 }
 
 

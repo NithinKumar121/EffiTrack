@@ -3,10 +3,10 @@ import login from "../../assets/login.png";
 import signup from "../../assets/signup.png";
 import { useEffect, useState } from "react";
 import { LoginForm } from "./LoginForm.js";
-import { SignupForm } from "./SignupForm.js";
+import { SignupForm , Validation , SignupUser } from "./SignupForm.js";
 import PropTypes from 'prop-types';
 
-export const Login = ({ page }) => {
+export const Login = ({ page , validateOTP }) => {
   const [isLogin, setIsLogin] = useState(true);
   useEffect(() => {
     setIsLogin(page);
@@ -31,7 +31,8 @@ export const Login = ({ page }) => {
           {isLogin ? (
             <LoginForm setIsLogin={setIsLogin} />
           ) : (
-            <SignupForm setIsLogin={setIsLogin} />
+            // <SignupForm setIsLogin={setIsLogin} />
+            <SignupUser setIsLogin={setIsLogin} validateOTP={validateOTP}/>
           )}
         </div>
       </div>
