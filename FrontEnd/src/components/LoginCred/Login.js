@@ -3,7 +3,7 @@ import login from "../../assets/login.png";
 import signup from "../../assets/signup.png";
 import { useEffect, useState } from "react";
 import { LoginForm } from "./LoginForm.js";
-import { SignupForm , Validation , Testing } from "./SignupForm.js";
+import { SignupForm , Validation , SignupUser } from "./SignupForm.js";
 import PropTypes from 'prop-types';
 
 export const Login = ({ page , validateOTP }) => {
@@ -32,7 +32,7 @@ export const Login = ({ page , validateOTP }) => {
             <LoginForm setIsLogin={setIsLogin} />
           ) : (
             // <SignupForm setIsLogin={setIsLogin} />
-            <Testing setIsLogin={setIsLogin} validateOTP={validateOTP}/>
+            <SignupUser setIsLogin={setIsLogin} validateOTP={validateOTP}/>
           )}
         </div>
       </div>

@@ -18,8 +18,8 @@ const emailSender = async (email,title,body) =>{
             port: 587,
             secure: false,
             auth: {
-                user: "noreply.gmarket@gmail.com",
-                pass: "esgx wvli yrxl xkpv",
+                user: process.env.EMAIL_SENDER_EMAIL,
+                pass: process.env.APP_PASS,
             },
         })
         
@@ -47,7 +47,6 @@ const emailSender = async (email,title,body) =>{
         // };
            
         const info = await transporter.sendMail(mailOptions);
-        console.log(info);
         return info;
     }catch(err){
         console.log("error in sending the email")
