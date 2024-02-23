@@ -15,7 +15,7 @@ import DemoProfile from "./components/ProfilePage/Demoprofile";
 import Home from "./components/Dashboard/Home";
 import PublicProfile from "./components/publicProfile/PublicProfile";
 import { Helmet } from "react-helmet";
-
+import { Validation } from "./components/LoginCred/SignupForm";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const appRouter = createBrowserRouter([
   {
@@ -43,7 +43,16 @@ const appRouter = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <Login page={false} />,
+    children:[
+      {
+        path:"/signup",
+        element: <Login page={false} validateOTP={false}/>,
+      },
+      {
+        path:"/signup/otpverify",
+        element: <Login page={false} validateOTP={true}/>
+      },
+    ],
     errorElement: <Page404 />,
   },
   {

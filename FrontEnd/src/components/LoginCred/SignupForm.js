@@ -10,12 +10,16 @@ import {
   getCookie,
   deleteCookie,
 } from "../../services/servicehelp.js";
+import { useSelector , useDispatch } from "react-redux";
 import './logincred.css';
 import {validatePassword} from "../../services/helper.js";
 const tokenName = process.env.REACT_APP_JWT_NAME;
 
+
+
 export const Validation = (props) =>{
-  const {firstDigit,secondDigit,thirdDigit,fourthDigit,setThirdDigit,setFourthDigit,setSecondDigit,setFirstDigit,otpError,setOtpError,email,signUpVerification} = props;
+  const navigate = useNavigate();
+  const {firstDigit,secondDigit,thirdDigit,fourthDigit,setThirdDigit,setFourthDigit,setSecondDigit,setFirstDigit,setEmail,setOtpError,email,signUpVerification,otpError} = props;
   const [optMessage,setOptMessage] = useState("Send OTP");  
   function check(e,digit){
     if(Number.isInteger(Number(e.value)) && digit === "1"){
@@ -32,45 +36,34 @@ export const Validation = (props) =>{
     }
   }
 
-  // function startTimer(){
-  //   // document.querySelector('button').disabled = true;
-  //   let remainingSeconds = 5 * 60;
-  //   // Update the timer every second
-  //   const timerInterval = setInterval(() => {
-
-  //     if (remainingSeconds <= 0 || otpError === false) {
-  //       // Stop the timer when the specified duration is reached
-  //       clearInterval(timerInterval);
-  //       // document.querySelector('button').disabled = false; 
-  //     } else {
-  //       // Calculate minutes and seconds
-  //       const minutes = Math.floor(remainingSeconds / 60);
-  //       const seconds = remainingSeconds % 60;
-
-  //       // Display the timer
-  //       document.getElementById('timer').innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-  //       // Decrease the remaining time
-  //       remainingSeconds--;
-  //     }
-  //   }, 1000); 
-  // }
+  useEffect(()=>{
+    const email = getCookie(process.env.REACT_APP_SIGNUP_EMAIL);
+    setEmail(email);
+  },[])
 
   const sendOTP = async () =>{
+    
       try{
         const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/otp/send-otp`,{email:email})
+        console.log(response);
         setOptMessage("Resend");
         setOtpError(null);
       }catch(err){
-        if(err.response.data.error){
-          setOtpError(err.response.data.message);
-        }
+        // 
+        console.log(err);
       }
   }
-
+  function navigateToSignup(){
+    console.log("navigation is called");
+    navigate("/signup");
+  }
   return (
     <>
-      <div className="text-white min-w-[350px] flex flex-col justify-center items-center gap-y-4 p-8  bg-slate-800 border-slate-400 rounded-tr-xl shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-30 relative sm:rounded-r-xl sm:rounded-t-xl ">
+       <button className="absolute z-10 right-6 top-4" onClick={navigateToSignup}>
+          <span className="material-icons-sharp text-white">arrow_back</span>
+        </button>
+      <div 
+          className="text-white min-w-[350px] flex flex-col justify-center items-center gap-y-4 p-8  bg-slate-800 border-slate-400 rounded-tr-xl shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-30 relative sm:rounded-r-xl sm:rounded-t-xl ">
         <div> 
           <h1 className="text-4xl text-white font-bold text-center ">
             Validation
@@ -99,7 +92,9 @@ export const Validation = (props) =>{
             </div>
            
         </div>
-
+        <div>
+          <p>{otpError}</p>
+        </div>
         <button
           className="w-[70%] font-bold mb-4 text-[18px] mt-4 rounded-full bg-white text-violet-800 hover:bg-violet-600 hover:text-white py-2 transition colors duration-300"
           type="submit" onClick={()=>signUpVerification()}
@@ -114,9 +109,10 @@ export const Validation = (props) =>{
 
 
 export const SignupForm = (props) => {
-  const { setIsLogin } = { ...props };
+  const { setIsLogin } = props;
 
-  const navigate = useNavigate();
+const navigate = useNavigate();
+ 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -125,46 +121,8 @@ export const SignupForm = (props) => {
   const [otp,setOtp] = useState("");
   const [showOpt,setShowOtp] = useState(false);
 
-
-
-
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const userData = {
-        username: username,
-        password: password,
-        email: email,
-        otp:otp,
-      };
-      const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/user/register/`,
-        userData,
-      );
-
-      if (getCookie(tokenName)) {
-        deleteCookie(tokenName);
-      }
-      setCookie(tokenName, response.data.message.accessToken, 168);
-      let newPromise = new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve("validation page");
-        }, 3000);
-      });
-      newPromise.then((res) => {
-        navigate("/validUsername");
-      });
-    } catch (error) {
-      if (error.response && error.response.status === 409) {
-        setErrorMessage(error.response.data.message);
-      } else {
-        console.error("Error:", error.message);
-      }
-    }
   };
 
   const toLogin = () => {
@@ -260,8 +218,19 @@ export const SignupForm = (props) => {
 };
 
 const UserInfo = (props) =>{
-  const {username,setUsername,password,setPassword,showPassword,setIsLogin,setShowPassword,setSteps,usernameError,setUsernameError,passwordError,setPasswordError} = props;
-  
+  const {username,setUsername,password,setPassword,
+        showPassword,setIsLogin,setShowPassword,
+        usernameError,setUsernameError,passwordError,setPasswordError,
+       email,setEmail,setEmailErrorMessage,emailErrorMessage} = props;
+
+  useEffect(()=>{
+    const username = getCookie("username");
+    const email = getCookie("email");
+    const password = getCookie("password");
+    if(username)setUsername(username);else setUsername(null)
+    if(email)setEmail(email) ; else setEmail(null)
+    if(password)setPassword(password) ; else setPassword(null)
+  },[])
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -274,29 +243,39 @@ const UserInfo = (props) =>{
     navigate("/login");
   };
 
-  useEffect(()=>{
-    if(usernameError === false && passwordError === false){
-        setSteps(2);
-    }
-  },[usernameError,passwordError])
-
   const checkInputs = async () =>{
       try{
         const response = await axios.post(
           `${process.env.REACT_APP_BASE_URL}/user/existUsername/`,
           {username:username},
         ); 
+        setCookie(process.env.REACT_APP_SIGNUP_USERNAME,username,15/60);
         setUsernameError(false);
       } catch(error){
 
           setUsernameError(error.response.data.message);
       }
+      try{
+        const response = await axios.post(
+          `${process.env.REACT_APP_BASE_URL}/user/existEmail/`,
+          {email:email},
+        ); 
+        setCookie(process.env.REACT_APP_SIGNUP_EMAIL,email,15/60);
+        setEmailErrorMessage(false);
+      } catch(error){
+        setEmailErrorMessage(error.response.data.message);
+      }
 
       const passwordValidMessage = validatePassword(password);
       if (passwordValidMessage.length === 0) {
+        setCookie(process.env.REACT_APP_SIGNUP_PASSWORD,password,15/60);
         setPasswordError(false);
       } else {
         setPasswordError(passwordValidMessage[0]);
+      }
+      // if all are satisfied then navigate to otp page
+      if(usernameError === false && passwordError === false && emailErrorMessage === false){
+        navigate("/signup/otpverify");
       }
   } 
 
@@ -352,67 +331,10 @@ const UserInfo = (props) =>{
 
               {/* <br /> */}
             </div>
-            <div className="text-left block w-full">
+            <div className="text-left block w-full ">
               <p className="text-sm">{passwordError}</p>
             </div>
             <br/>
-            <p>
-              Already have an account ?{" "}
-              <button className="text-blue-500" onClick={() => toLogin()}>
-                Login
-              </button>
-            </p>
-            <button
-              className="w-[70%] font-bold mb-4 text-[18px] mt-4 rounded-full bg-white text-violet-800 hover:bg-violet-600 hover:text-white py-2 transition colors duration-300"
-              type="submit" onClick={()=>checkInputs()}
-            >
-              Continue  
-            </button>
-      </div>
-    </>
-  )
-}
-
-const SuccessSignUp = () =>{
-  return(
-    <>
-        <div
-        className="text-white flex flex-col w-[17rem] items-center gap-y-4 p-14 py-10 bg-slate-800 border-slate-400 rounded-tr-xl shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-30 relative sm:rounded-r-xl sm:rounded-t-xl "
-        >
-              <h1 className="block w-full text-2xl font-bold">Successfully Registered</h1>
-        </div>
-    </>
-  )
-}
-
-
-const EmailInfo = (props) =>{
-  const {email,setEmail,setSteps,emailErrorMessage,setEmailErrorMessage} = props;
-  useEffect(()=>{
-    if(emailErrorMessage === false){
-
-        setSteps(3);
-    }
-  },[emailErrorMessage])
-  const checkInputs = async () =>{
-      try{
-        const response = await axios.post(
-          `${process.env.REACT_APP_BASE_URL}/user/existEmail/`,
-          {email:email},
-        ); 
-        setEmailErrorMessage(false);
-      } catch(error){
-          setEmailErrorMessage(error.response.data.message);
-      }
-  } 
-  return(
-    <>
-         <div
-        className="text-white flex flex-col justify-center items-center gap-y-4 p-14 py-10 bg-slate-800 border-slate-400 rounded-tr-xl shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-30 relative sm:rounded-r-xl sm:rounded-t-xl w-full"
-        >
-            <h1 className="text-4xl text-white font-bold text-center mb-6">
-              Enter Your Email
-            </h1>
             <div className="relative ">     
               <input
                 type="email"
@@ -432,22 +354,41 @@ const EmailInfo = (props) =>{
               <AiOutlineMail className="absolute top-1 right-4" />
             </div>
            
-            <label className="text-sm">{emailErrorMessage}</label>
-            <br />
-            <button
+            <div className="text-left block w-full ">
+              <p className="text-sm">{emailErrorMessage}</p>
+            </div>
+                      {/* <br/> */}
+            <p>
+              Already have an account ?{" "}
+              <button className="text-blue-500" onClick={() => toLogin()}>
+                Login
+              </button>
+            </p>
+            {<button
               className="w-[70%] font-bold mb-4 text-[18px] mt-4 rounded-full bg-white text-violet-800 hover:bg-violet-600 hover:text-white py-2 transition colors duration-300"
               type="submit" onClick={()=>checkInputs()}
             >
-              Continue  
-            </button>
+              Verify 
+            </button>}
       </div>
     </>
   )
 }
 
+const SuccessSignUp = () =>{
+  return(
+    <>
+        <div
+        className="text-white flex flex-col w-[17rem] items-center gap-y-4 p-14 py-10 bg-slate-800 border-slate-400 rounded-tr-xl shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-30 relative sm:rounded-r-xl sm:rounded-t-xl "
+        >
+              <h1 className="block w-full text-2xl font-bold">Successfully Registered</h1>
+        </div>
+    </>
+  )
+}
+
 export const Testing = (props) =>{
-  const { setIsLogin } = { ...props };
-  // const navigate = useNavigate();
+  const { setIsLogin , validateOTP} = { ...props };
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -456,27 +397,23 @@ export const Testing = (props) =>{
   const [thirdDigit,setThirdDigit] = useState(null);
   const [fourthDigit,setFourthDigit] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-  const [steps , setSteps ] = useState(1);
   const [usernameError, setUsernameError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
   const [otpError, setOtpError] = useState(null);
 
+  useEffect(()=>{
+    const username = getCookie("username");
+    const email = getCookie("email");
+    const password = getCookie("password");
+    if(username)setUsername(username);else setUsername(null)
+    if(email)setEmail(email) ; else setEmail(null)
+    if(password)setPassword(password) ; else setPassword(null)
+  },[])
+
+
   const [emailErrorMessage,setEmailErrorMessage] = useState(null);
 
-  useEffect(()=>{
-      if(usernameError === false && passwordError === false && emailErrorMessage === false && otpError === false){
-        setSteps(4);
-      }
-      else if(usernameError === false && passwordError === false && emailErrorMessage === false){
-        setSteps(3);
-      }
-      else if(usernameError === false && passwordError === false){
-        setSteps(2);
-      }else{
-        setSteps(1);
-      }
-  },[usernameError,passwordError,emailErrorMessage,otpError])
-
+const navigate = useNavigate();
 
   async function signUpVerification(){
     try {
@@ -491,16 +428,18 @@ export const Testing = (props) =>{
         `${process.env.REACT_APP_BASE_URL}/user/register/`,
         userData,
       );
-        setOtpError(false);
-
-        var successMessage = new Promise((resolve,reject)=>{
-          setTimeout(()=>{
-              resolve();
-          },2000);
-        })
-        successMessage.then((resolve)=>{
-          setSteps(4);
-        })
+      deleteCookie("username");
+      deleteCookie("email");
+      deleteCookie("password");
+      setOtpError(false);
+      var successMessage = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve();
+        },2000);
+      })
+      successMessage.then(()=>{
+        navigate("/validUsername")
+      })
     }
     catch(err){
       setOtpError(err.response.data.message);
@@ -512,38 +451,26 @@ export const Testing = (props) =>{
   return(
     <>
       <div className="relative">
-      <button className="absolute top-4 right-6 text-white z-10" onClick={()=>{
-          // changePage();
-      }}>
-        <span className="material-icons-sharp text-[1rem] hover:bg-white hover:text-black  items-center p-1 rounded-full">
-          arrow_back_ios
-        </span> 
-      </button>
+        
       {
-        steps === 1 ?
-        <UserInfo username={username} setUsername={setUsername}
-                password={password} setPassword={setPassword} showPassword={showPassword} setShowPassword={setShowPassword} 
-                setIsLogin={setIsLogin} setSteps={setSteps}
-                usernameError ={usernameError} setUsernameError={setUsernameError}
-                passwordError ={passwordError} setPasswordError={setPasswordError}
-                />
-        : (steps === 2) ?
-        <EmailInfo email={email} setEmail={setEmail} setSteps={setSteps}
-                        emailErrorMessage={emailErrorMessage} setEmailErrorMessage={setEmailErrorMessage}
-        />
-        : (steps === 3) ?
-        <Validation firstDigit={firstDigit} setFirstDigit={setFirstDigit}
-                    secondDigit={secondDigit} setSecondDigit={setSecondDigit}
-                    thirdDigit={thirdDigit} setThirdDigit={setThirdDigit}
-                    fourthDigit={fourthDigit} setFourthDigit={setFourthDigit} email={email}
-                    signUpVerification = {signUpVerification} otpError={otpError} setOtpError={setOtpError}
-        /> : (steps === 4) ? <SuccessSignUp/> :
-        <></>
+        !validateOTP ?
+          <UserInfo username={username} setUsername={setUsername}
+                  password={password} setPassword={setPassword} showPassword={showPassword} setShowPassword={setShowPassword} 
+                  setIsLogin={setIsLogin}  
+                  email={email} setEmail={setEmail} emailErrorMessage={emailErrorMessage} setEmailErrorMessage={setEmailErrorMessage}
+                  usernameError ={usernameError} setUsernameError={setUsernameError}
+                  passwordError ={passwordError} setPasswordError={setPasswordError}
+          />
+          :
+          <Validation firstDigit={firstDigit} setFirstDigit={setFirstDigit}
+                      secondDigit={secondDigit} setSecondDigit={setSecondDigit}
+                      thirdDigit={thirdDigit} setThirdDigit={setThirdDigit}
+                      fourthDigit={fourthDigit} setFourthDigit={setFourthDigit} email={email} setEmail={setEmail}
+                      signUpVerification = {signUpVerification} otpError={otpError} setOtpError={setOtpError}
+          />
       }
       </div>
-      
-      
-      {/* <EmailInfo email={email} setEmail={setEmail} errorMessage={errorMessage}/> */}
+
     </>
   )
 }

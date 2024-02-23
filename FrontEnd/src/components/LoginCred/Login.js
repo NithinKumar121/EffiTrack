@@ -6,7 +6,7 @@ import { LoginForm } from "./LoginForm.js";
 import { SignupForm , Validation , Testing } from "./SignupForm.js";
 import PropTypes from 'prop-types';
 
-export const Login = ({ page }) => {
+export const Login = ({ page , validateOTP }) => {
   const [isLogin, setIsLogin] = useState(true);
   useEffect(() => {
     setIsLogin(page);
@@ -32,7 +32,7 @@ export const Login = ({ page }) => {
             <LoginForm setIsLogin={setIsLogin} />
           ) : (
             // <SignupForm setIsLogin={setIsLogin} />
-            <Testing setIsLogin={setIsLogin}/>
+            <Testing setIsLogin={setIsLogin} validateOTP={validateOTP}/>
           )}
         </div>
       </div>

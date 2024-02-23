@@ -44,7 +44,7 @@ const register = async (req,res) =>{
             email:email
         })
      
-        // await user.save();
+        await user.save();
 
         if(user){
             const verifiedPassword = await bcrypt.compare(password,user.password);
