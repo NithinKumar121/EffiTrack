@@ -8,7 +8,7 @@ const getLcCount = async (req,res) =>{
         const username = req.user.leetcode;
         const submitStats = await getLeetCount(username);
         if(submitStats.length === 0){
-            res.status(404).json({message:true,message:"No data from Leetcode Api"})
+            res.status(404).json({error:true,message:"No data from Leetcode Api"})
         }
         return res.status(200).json({error:false,message:submitStats.message});
     }catch(err){
@@ -26,7 +26,8 @@ const getLcRating =async (req,res) =>{
             return res.status(404).json({error:true,message:'Username not found or network problem'})
         }
         const attendContest = submitStats.message[1].filter((data)=>{
-            return data.attended==true;
+             if(data.attended)return true;
+             else return false;
         })
         return res.status(200).json({error:false,message:attendContest});
     }
