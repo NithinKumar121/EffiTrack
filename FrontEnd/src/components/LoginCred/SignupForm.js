@@ -232,12 +232,12 @@ export const SignupForm = (props) => {
           <label className="absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-0 -z-10 origin-[0] peer=focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus-translate-y-6 ">
             Password
           </label>
-          <div
+          <button
             className="absolute top-1 right-4 cursor-pointer"
             onClick={handleTogglePassword}
           >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
-          </div>
+          </button>
 
           <br />
         </div>

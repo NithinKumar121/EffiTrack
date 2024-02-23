@@ -13,8 +13,9 @@ const userRoutes = require('./routes/userRoutes');
 const editRoutes = require('./routes/editRoutes');
 const SocialMediaRoutes = require('./routes/socialMediaRoutes');
 const otpRoutes = require("./routes/optRoutes")
+
 const corsOptions ={
-  origin:'*', 
+  origin:['https://effitrack.vercel.app','http://localhost:3000'], 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200,
 }

@@ -6,7 +6,7 @@ import axios from "axios";
 import { getCookie } from "../../services/servicehelp";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-const Error = () => {
+const Err = () => {
   return (
     <>
       <div className="input_field errorbox">
@@ -246,7 +246,7 @@ const UserValid = () => {
                 ) : lcflag === 1 ? (
                   <Success />
                 ) : lcflag === 2 ? (
-                  <Error />
+                  <Err />
                 ) : (
                   <Validation />
                 )}
@@ -267,7 +267,7 @@ const UserValid = () => {
                 ) : ccflag === 1 ? (
                   <Success />
                 ) : ccflag === 2 ? (
-                  <Error />
+                  <Err />
                 ) : (
                   <Validation />
                 )}
@@ -288,7 +288,7 @@ const UserValid = () => {
                 ) : cfflag === 1 ? (
                   <Success />
                 ) : cfflag === 2 ? (
-                  <Error />
+                  <Err />
                 ) : (
                   <Validation />
                 )}
@@ -309,7 +309,7 @@ const UserValid = () => {
                 ) : githubFlag === 1 ? (
                   <Success />
                 ) : githubFlag === 2 ? (
-                  <Error />
+                  <Err />
                 ) : (
                   <Validation />
                 )}

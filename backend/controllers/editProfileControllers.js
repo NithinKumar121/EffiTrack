@@ -47,7 +47,8 @@ const editCodeforceUsername = async (req,res) =>{
 
 const editCodechefUsername = async (req,res) =>{
     try{
-        const doc = await userModel.findOneAndUpdate(req.user,{codechef:req.body.newUsername},{
+        let query = {codechef:req.body.newUsername};
+        const doc = await userModel.findOneAndUpdate(req.user,query,{
             new:true,
         });
         if(!doc){
@@ -62,7 +63,8 @@ const editCodechefUsername = async (req,res) =>{
 
 const editGithubUsername = async (req,res)=>{
     try{
-        const doc = await userModel.findOneAndUpdate(req.user,{github:req.body.newUsername},{
+        let query = {github:req.body.newUsername};
+        const doc = await userModel.findOneAndUpdate(req.user,query,{
             new:true,
         });
         if(!doc){
