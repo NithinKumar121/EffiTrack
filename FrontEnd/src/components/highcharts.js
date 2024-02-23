@@ -17,8 +17,6 @@ const Chart = () => {
       title: {
         text: "Contest Attended", // X-axis label
       },
-      startOnTick: false, // Set to false to prevent axis from starting on tick
-      min: 1, 
     },
     yAxis: {
       title: {
@@ -43,6 +41,12 @@ const Chart = () => {
     const cfdata = cfRating;
     const Rating = [];
     const cfFilterRating = [];
+    Rating.push(
+      {
+        name: "none",
+        y: 1500,
+      }
+    )
     if (data.length > 0) {
       for(let x of data){
         const contest = {
