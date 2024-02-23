@@ -157,7 +157,7 @@ const Upcoming = () => {
   return (
     <>
       <div className="dark:bg-[#1d1d1d] bg-[#fff] px-4 text-[#333] py-4 rounded-xl h-full w-full relative">
-        <div className="text-white grid grid-cols-2 text-center">
+        <div className="dark:text-white text-black grid grid-cols-2 text-center">
             <button className={`w-[70%] mx-auto rounded-xl p-1 ${twoToggle?"contest-filter":""}`} onClick={()=>setTwoToggle(1)}>  
                   Upcoming
             </button>

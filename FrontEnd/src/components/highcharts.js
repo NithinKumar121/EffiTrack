@@ -47,6 +47,12 @@ const Chart = () => {
         y: 1500,
       }
     )
+    cfFilterRating.push(
+      {
+        name: "none",
+        y: 1500,
+      }
+    )
     if (data.length > 0) {
       for(let x of data){
         const contest = {
@@ -55,9 +61,10 @@ const Chart = () => {
         };
         Rating.push(contest);
       }
-    } else {
-      Rating.push({ name: "Contest none", y: 1500 });
-    }
+    } 
+    // else {
+    //   Rating.push({ name: "Contest none", y: 1500 });
+    // }
 
     if (cfdata.length > 0) {
       for(let x of cfdata){
@@ -67,13 +74,14 @@ const Chart = () => {
         };
         cfFilterRating.push(contest);
       }
-    } else {
-      const contest = {
-        name: "Contest None",
-        y: 0,
-      };
-      cfFilterRating.push(contest);
-    }
+    } 
+    // else {
+    //   const contest = {
+    //     name: "Contest None",
+    //     y: 0,
+    //   };
+    //   cfFilterRating.push(contest);
+    // }
 
     setChartOptions({
       chart: {
@@ -84,6 +92,7 @@ const Chart = () => {
         title: {
           text: "Contest Attended", // X-axis label
         },
+        min:1,
       },
       yAxis: {
         title: {
