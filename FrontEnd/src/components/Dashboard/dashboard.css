@@ -106,4 +106,7 @@
   .showcase-top {
     @apply grid lg:grid-cols-[2fr,1fr] grid-cols-1 gap-4 mt-2;
   }
+  .contest-filter{
+    @apply dark:bg-[#333] dark:text-[#f3f3f3] bg-[#f4f5f6]  text-black slowmo
+  }
 }

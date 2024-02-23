@@ -10,7 +10,7 @@ exports.sendOTP = async (req, res) => {
     // If userModel found with provided email
     if (checkUserPresent) {
       return res.status(401).json({
-        success: false,
+        error: false,
         message: 'User is already registered',
       });
     }
@@ -29,12 +29,12 @@ exports.sendOTP = async (req, res) => {
     const otpPayload = { email, otp };
     const otpBody = await OTP.create(otpPayload);
     res.status(200).json({
-      success: true,
+      error: true,
       message: 'OTP sent successfully',
       otp,
     });
   } catch (error) {
     console.log(error.message);
-    return res.status(500).json({ success: false, error: error.message });
+    return res.status(500).json({ error: false, error: error.message });
   }
 };
