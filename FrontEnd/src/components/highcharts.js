@@ -1,9 +1,8 @@
 import highstock from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate } from "react-router-dom";
 const Chart = () => {
   const navigate = useNavigate();
   const leetcodeDetails = useSelector((store) => store.leetcodeDetails);
@@ -42,33 +41,47 @@ const Chart = () => {
     const cfdata = cfRating;
     const Rating = [];
     const cfFilterRating = [];
+    Rating.push(
+      {
+        name: "none",
+        y: 1500,
+      }
+    )
+    cfFilterRating.push(
+      {
+        name: "none",
+        y: 1500,
+      }
+    )
     if (data.length > 0) {
-      for (let i = 0; i < data.length; i++) {
+      for(let x of data){
         const contest = {
-          name: data[i].contest.title,
-          y: Math.round(data[i].rating),
+          name: x.contest.title,
+          y: Math.round(x.rating),
         };
         Rating.push(contest);
       }
-    } else {
-      Rating.push({ name: "Contest none", y: 1500 });
-    }
+    } 
+    // else {
+    //   Rating.push({ name: "Contest none", y: 1500 });
+    // }
 
     if (cfdata.length > 0) {
-      for (let i = 0; i < cfdata.length; i++) {
+      for(let x of cfdata){
         const contest = {
-          name: cfdata[i].contestName,
-          y: Math.round(cfdata[i].newRating),
+          name: x.contestName,
+          y: Math.round(x.newRating),
         };
         cfFilterRating.push(contest);
       }
-    } else {
-      const contest = {
-        name: "Contest None",
-        y: 0,
-      };
-      cfFilterRating.push(contest);
-    }
+    } 
+    // else {
+    //   const contest = {
+    //     name: "Contest None",
+    //     y: 0,
+    //   };
+    //   cfFilterRating.push(contest);
+    // }
 
     setChartOptions({
       chart: {
@@ -79,6 +92,7 @@ const Chart = () => {
         title: {
           text: "Contest Attended", // X-axis label
         },
+        min:1,
       },
       yAxis: {
         title: {
@@ -118,8 +132,10 @@ const Chart = () => {
       tooltip: {
         enabled: true,
         formatter: function () {
+          const point =  this.point.name
+          const y = this.y;
           return (
-            "<b>" + this.point.name + "</b>: " + this.y + " <h3>Rating</h3>"
+            "<b>" + point + "</b>: " + y + " <h3>Rating</h3>"
           );
         },
       },

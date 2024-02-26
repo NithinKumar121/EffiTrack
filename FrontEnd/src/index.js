@@ -15,7 +15,9 @@ import DemoProfile from "./components/ProfilePage/Demoprofile";
 import Home from "./components/Dashboard/Home";
 import PublicProfile from "./components/publicProfile/PublicProfile";
 import { Helmet } from "react-helmet";
-
+import { Validation } from "./components/LoginCred/SignupForm";
+import {persistor} from './redux/store'
+import { PersistGate } from 'redux-persist/integration/react';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const appRouter = createBrowserRouter([
   {
@@ -43,7 +45,16 @@ const appRouter = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <Login page={false} />,
+    children:[
+      {
+        path:"/signup",
+        element: <Login page={false} validateOTP={false}/>,
+      },
+      {
+        path:"/signup/otpverify",
+        element: <Login page={false} validateOTP={true}/>
+      },
+    ],
     errorElement: <Page404 />,
   },
   {
@@ -75,6 +86,7 @@ const appRouter = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
       <Helmet>
         <title>Effitrack</title>
         <meta
@@ -107,7 +119,8 @@ root.render(
           content="EffiTrack is a web application that empowers users to effortlessly track and monitor their coding profiles from popular platforms like LeetCode, CodeChef, GitHub, and Codeforces. With a user-friendly dashboard, EffiTrack provides accessibility and insights into coding accomplishments, progress, and achievements across multiple coding platforms."
         />
       </Helmet>
-      <RouterProvider router={appRouter} />
+        <RouterProvider router={appRouter} />
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

@@ -14,6 +14,11 @@ const initialState = {
       reddit: undefined
     }
   },
+  signupData:{
+    username:null,
+    email:null,
+    password:null,
+  },
   upcomingContest: [],
 };
 
@@ -21,6 +26,11 @@ const userSlice = createSlice({
   name: "userSlice",
   initialState,
   reducers: {
+    changeSignupData:(state,action) =>{
+      console.log(action.payload);
+      const {key,value} = action.payload;
+      state.signupData[key] = value;
+    },
     changeUserDetails: (state, action) => {
       return {
         ...state,
@@ -36,6 +46,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { changeUserDetails, changeUpcomingContest } = userSlice.actions;
+export const { changeUserDetails, changeUpcomingContest , changeSignupData } = userSlice.actions;
 
 export default userSlice.reducer;

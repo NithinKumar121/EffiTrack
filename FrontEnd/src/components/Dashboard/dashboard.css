@@ -46,15 +46,6 @@
     line-height: 2rem;
   }
 
-  .mid-top .mid-left .cards .card .progress {
-    width: 40%;
-    position: relative;
-    width: 92px;
-    height: 92px;
-    border-radius: 50%;
-    bottom: 0;
-  }
-
   .aside-bottom {
     @apply absolute bottom-4 w-full h-20;
   }
@@ -114,5 +105,8 @@
   }
   .showcase-top {
     @apply grid lg:grid-cols-[2fr,1fr] grid-cols-1 gap-4 mt-2;
+  }
+  .contest-filter{
+    @apply dark:bg-[#333] dark:text-[#f3f3f3] bg-[#f4f5f6]  text-black slowmo
   }
 }

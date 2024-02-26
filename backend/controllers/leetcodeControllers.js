@@ -32,7 +32,8 @@ const getLcRating =async (req,res) =>{
             return res.status(404).json({error:true,message:'Username not found or network problem'})
         }
         const attendContest = submitStats.message[1].filter((data)=>{
-            return data.attended==true;
+             if(data.attended)return true;
+             else return false;
         })
         return res.status(200).json({error:false,message:attendContest});
     }
