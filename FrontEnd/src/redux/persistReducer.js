@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    leetcode:false,
-    codechef:false,
-    codeforces:false,
-    atcoder:false,
-    geeksforgeeks:false
+    leetcode:true,
+    codechef:true,
+    codeforces:true,
+    atcoder:true,
+    geeksforgeeks:true
 }
 
 const persistSlice = createSlice({
