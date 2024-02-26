@@ -5,6 +5,9 @@ import { AiOutlineMail } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
 import axios from "axios";
 import otpSvg from "../../assets/jpg/otp-validation.jpg";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
   setCookie,
   getCookie,

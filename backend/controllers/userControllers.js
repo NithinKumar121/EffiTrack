@@ -13,7 +13,7 @@ const register = async (req,res) =>{
         const {error} = signupbodyValidation(req.body);
         username = username.trim();
         if(error)   
-            return res.status(409).json({error:true,message:error.details[0].message});
+            return res.status(406).json({error:true,message:error.details[0].message});
 
         const data = await userModel.findOne({
             $or: [
@@ -24,7 +24,7 @@ const register = async (req,res) =>{
 
         if(data){
             return res
-                    .status(409)
+                    .status(406)
                     .json({error:true,message:"Username or Email already registered"});
         }
 
@@ -43,25 +43,18 @@ const register = async (req,res) =>{
             password:hashedPassword,
             email:email
         })
-     
         await user.save();
 
-        if(user){
-            const verifiedPassword = await bcrypt.compare(password,user.password);
-            if(!verifiedPassword){
-                return res
-                    .status(401)
-                    .json({error:true,message:"Invalid password"});
-            }
-            const {accessToken} = await generateTokens(user);
-            return res.status(201).json({error:false,message:{name:username,email:email,accessToken:accessToken}})  
-          
-            //  201 is for successful creation
-        }else{   
+        if(!user){
             return res
-                   .status(409)
-                   .json({error:true,message:"Invalid user data"});
+                .status(406)
+                .json({error:true,message:"Invalid user data"});
         }
+
+        const {accessToken} = await generateTokens(user);
+        return res.status(201).json({error:false,message:{name:username,email:email,accessToken:accessToken}})  
+        //  201 is for successful creation
+
     } catch(err){
         res.status(409).json({error:true,message:err.message});
     }
